@@ -1,0 +1,11 @@
+body{
+	padding:0px;
+	margin:0px;
+	background-color:rgb(225,225,225);
+	font-family:"Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+.main{
+	margin:0px auto;
+	width:960px;
+}
