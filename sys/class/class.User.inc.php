@@ -41,22 +41,24 @@ class User extends DB_Connect {
 	}
 	public function register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time)
 	{
-		if (check_exsit($user_id)==1)
-		{
+		$sql="SELECT * FROM user WHERE id='".$user_id."' ";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num==1)
 			return 0;
-		}
-		$sql="INSER INTO user 
+		$sql="INSERT INTO user 
 		(
 			id,password,permission,gender,age,
 			province,city,area,department,title,speciality,position,
 			seniority,education,email,register_time
 		)VALUES
-		{
+		(
 			'".$user_id."','".$password."','".$permission."','".$gender."','".$age."',
 			'".$province."','".$city."','".$area."','".$department."','".$title."','".$speciality."','".$position."',
 			'".$seniority."','".$education."','".$email."','".$register_time."'
-		}";
-		if (!mysql_query($insert,$this->root_conn))
+		)";
+		//echo $sql;
+		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());
 		}

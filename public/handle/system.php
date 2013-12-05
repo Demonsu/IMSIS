@@ -7,6 +7,12 @@
 		$system=new System();
 		echo $system->fetch_province();
 	}
+	if ($operation=="FETCHCITY")
+	{
+		$province=$_POST["province"];
+		$system=new System();
+		echo $system->fetch_city($province);
+	}
 
 
 ?>
