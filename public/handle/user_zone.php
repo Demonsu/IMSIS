@@ -13,7 +13,6 @@
 		);
 		*/
 	$operation=$_POST["operation"];
-	
 	if ($operation=="FETCHPALEQUESTIONNAIRE")//获取空白问卷供个人评测时候选关键域
 	{
 		$questionnaire=new Questionnaire();
@@ -37,6 +36,7 @@
 			echo "登陆信息已失效，请重新登陆";
 		else
 		{
+			$remark=$_POST["remark"];
 			$questionnaire=new Questionnaire();
 			echo $questionnaire->create_questionnaire($_SESSION["USERID"],1,$remark,"");
 		}
@@ -51,7 +51,7 @@
 			echo $questionnaire->check_department_questionnaire($_SESSION["USERID"]);
 		}
 	}
-	if ($operation="FETCHUSERQUESTIONNAIRELIST")//获取用户测评列表
+	if ($operation=="FETCHUSERQUESTIONNAIRELIST")//获取用户测评列表
 	{
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -61,7 +61,7 @@
 			echo $questionnaire->fetch_user_questionnaire_list($_SESSION["USERID"],$_POST["state"]);
 		}		
 	}
-	if ($operation="FETCHDEPARTMENTQUESTIONNAIRE")
+	if ($operation=="FETCHDEPARTMENTQUESTIONNAIRE")
 	{		
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
