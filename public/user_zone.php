@@ -59,13 +59,15 @@ include_once '../sys/core/init.inc.php';
 				</div>
 				
 				<div class="row" id="select-quiz" style="display:none;">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
-						<div class="list-group" id="field-select">
-							
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div class="list-group" id="field-select">
+								
+							</div>
 						</div>
+						<div class="col-md-2"></div>
 					</div>
-					<div class="col-md-2"></div>
 					<div class="row">
 						<div class="col-md-12">
 							<label class="label-control">输入备注（可选）：</label>
