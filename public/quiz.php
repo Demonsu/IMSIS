@@ -39,15 +39,7 @@
 	<div class="col-md-2"></div>
 </div>
 
-<div class="row" id="second">
-	<div class="col-md-2"></div>
-	<div class="col-md-8" >
-		<div class="list-group" id="field-select">
-		
-		</div>
-	</div>
-	<div class="col-md-2"></div>
-</div>
+
 
 <div class="row" id="first">
 	<div class="col-md-3">
