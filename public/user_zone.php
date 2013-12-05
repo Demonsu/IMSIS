@@ -60,11 +60,12 @@ include_once '../sys/core/init.inc.php';
 					</div>
 				</div>
 				
-				<div class="row" id="select-quiz" style="display:none;">
+				<div class="row" id="select-quiz" style="display:block;">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="list-group" id="field-select">
-								
+								<input type="checkbox" id="box1" value="1">
+								<input type="checkbox" id="box12" value="2">
 							</div>
 						</div>
 					</div>
