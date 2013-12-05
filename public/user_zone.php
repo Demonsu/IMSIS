@@ -41,16 +41,18 @@ include_once '../sys/core/init.inc.php';
 			<div class="col-md-9">
 			
 				<div class="row" id="user-promise" style="display:none;">
-					<div class="col-md-1"></div>
-					<div class="col-md-10">
-						<div class="panel panel-default">
-						  <div class="panel-heading">承诺书</div>
-						  <div class="panel-body">
-							Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
-						  </div>
+					<div class="row">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<div class="panel panel-default">
+							  <div class="panel-heading">承诺书</div>
+							  <div class="panel-body">
+								Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							  </div>
+							</div>
 						</div>
+						<div class="col-md-1"></div>
 					</div>
-					<div class="col-md-1"></div>
 					<div class="row">
 						<div class="col-md-12 text-center">
 							<button class="btn btn-success" id="readit">我已经仔细阅读《XXX》并同意</button>
@@ -60,13 +62,11 @@ include_once '../sys/core/init.inc.php';
 				
 				<div class="row" id="select-quiz" style="display:none;">
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div class="list-group" id="field-select">
 								
 							</div>
 						</div>
-						<div class="col-md-2"></div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
