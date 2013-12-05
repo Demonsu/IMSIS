@@ -40,14 +40,14 @@ include_once '../sys/core/init.inc.php';
 			</div>
 			<div class="col-md-9">
 				
-				<div class="panel panel-default" id="nc-list" style="display:none">
+				<div class="panel panel-default" id="nc-list" style="display:block">
 				  <div class="panel-heading">
 					<h3 class="panel-title">未完成的测评</h3>
 				  </div>
 				  <div class="panel-body">
 				  
 					<div class="list-group" id="nc-list-items">
-					
+						<span class="badge" onclick="deleteitem(this)">14</span>
 					</div>
 				  </div>
 				</div>

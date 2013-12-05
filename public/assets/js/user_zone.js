@@ -153,6 +153,9 @@ function d_list(){
 		}
 	});
 }
+function deleteitem(t){
+	alert(t.id);
+}
 
 function hide(){
 	$('#nc-list').hide();
