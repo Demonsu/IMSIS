@@ -161,7 +161,7 @@ class Questionnaire extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($result=mysql_fetch_assoc($select))
 		{
-			if ($state==0)
+			if ($result["state"]==0)
 			{
 				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
 			}else
