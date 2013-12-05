@@ -10,7 +10,17 @@ $(document).ready(function(){
 				list += this.value + ";";
 			}
 		});
-		alert(list);
+		$.ajax({
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				key_field_list:list,
+				remark:$('#user-remark').val()
+			},
+			success:function(){
+				window.location = 'quiz.php';
+			}
+		});
 	});
 	
 	$(":checkbox").change(function(){
