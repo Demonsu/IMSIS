@@ -63,6 +63,10 @@ class User extends DB_Connect {
 		return 1;//注册成功
 		
 	}
+	public function change_info()//修改用户信息
+	{
+		
+	}
 }
 
 ?>
