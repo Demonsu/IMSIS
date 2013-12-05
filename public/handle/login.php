@@ -5,7 +5,7 @@
 	{
 		$user_id=$_POST["user_id"];
 		$password=$_POST["password"];
-		$user=new USER();
+		$user=new User();
 		echo $user->login($user_id,$password);
 	}
 ?>

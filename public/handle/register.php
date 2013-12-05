@@ -2,13 +2,13 @@
 	$_BASE_PATH="../../";
 	include_once '../../sys/core/init.inc.php';
 	$operation=$_POST["operation"];
-	if ($operation==0)//查询用户是否已经存在
+	if ($operation=="CHECKEXIST")//查询用户是否已经存在
 	{
 		$user_id=$_POST["user_id"];
-		$user=new USER();
+		$user=new User();
 		echo $user->check_exsit($user_id);//1为存在，0为不存在
 	}
-	if ($operation==1)//注册
+	if ($operation=="REGISTER")//注册
 	{
 		$user_id=$_POST["user_id"];
 		$password=$_post["password"];//明文
