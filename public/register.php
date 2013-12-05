@@ -21,7 +21,7 @@ include_once '../sys/core/init.inc.php';
 <!--header -->
 <?php include './include/header.php'; ?>
 	<div class="wraper">
-		<form class="form-horizontal" role="form">
+		<div class="form-horizontal">
 		  <div class="form-group">
 			<h3 class="text-center"><strong>新用户注册</strong></h3>
 		  </div>
@@ -154,10 +154,10 @@ include_once '../sys/core/init.inc.php';
 		  </div>
 		  <div class="form-group">
 			<div class="control-label col-md-8">
-			  <button type="submit"id="btn-register" class="btn btn-default">注册</button>
+			  <button id="btn-register" class="btn btn-default">注册</button>
 			</div>
 		  </div>
-		</form>
+		</div>
 	</div>
 
 </div>
