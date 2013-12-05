@@ -111,14 +111,14 @@ include_once '../sys/core/init.inc.php';
 			<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
 		  </div>
 		  <div class="form-group hasPosition">
-			<label class="control-label col-md-3"><span style="color:#ff0000"></span>职务</label>
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>职务</label>
 			<div class="col-md-5">
 			  <input type="text" class="form-control" id="inputPosition" placeholder="输入您的职务">
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorPosition"></label>
 		  </div>
 		  <div class="form-group hasWork">
-			<label class="control-label col-md-3"><span style="color:#ff0000"></span>负责工作</label>
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>负责工作</label>
 			<div class="col-md-5">
 			  <input type="text" class="form-control" id="inputWork" placeholder="输入您的负责工作">
 			</div>
@@ -131,8 +131,8 @@ include_once '../sys/core/init.inc.php';
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorTime"></label>
 		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3"><span style="color:#ff0000"></span>专长</label>
+		  <div class="form-group hasSpeciality">
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>专长</label>
 			<div class="col-md-5">
 			  <input type="text" class="form-control" id="inputSpeciality" placeholder="输入您的专长">
 			</div>
@@ -156,6 +156,7 @@ include_once '../sys/core/init.inc.php';
 			<div class="control-label col-md-8">
 			  <button id="btn-register" class="btn btn-default">注册</button>
 			</div>
+			  <label class="control-label col-md-4" style="text-align:left;color:#b94a48" id="errorRegister"></label>
 		  </div>
 		</div>
 	</div>

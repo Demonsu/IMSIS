@@ -19,7 +19,20 @@ $(document).ready(function(){
 		}
 	});
 	$('#select1').change(function(){
-		alert($('#select1').val());
+		var select1 = $('#select1').val();
+		if(select1 != 0){
+			$.ajax({
+				type:'POST',
+				url:'handle/system.php',
+				data:{
+					operation:'FETCHCITY',
+					province:select1
+				}
+				success:function(data){
+					$('#select2').append(data);
+				}
+			});
+		}
 	});
 	$('#inputId').blur(function(){
 		var id = $('#inputId').val();
@@ -97,12 +110,65 @@ $(document).ready(function(){
 			}
 		}
 	});
-	$('#inputTitle').blur(function(){
-		var title = $('#inputTitle').val();
-		var pattern = new RegExp(/^[\u4e00-\u9fa5]{6,20}$/);
+	$('#inputPosition').blur(function(){
+		var title = $('#inputPosition').val();
+		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
+		if(title.length == 0){
+			$('#errorPosition').text('请输入职称');
+			$('.hasPosition').addClass('has-error');
+			check_title = false;
+		}
+		else if(!pattern.test(title)){
+			$('#errorPosition').text('请写中文');
+			$('.hasPosition').addClass('has-error');
+			check_title = false;
+		}
+		else{
+			$('#errorPosition').text('');
+			$('.hasPosition').removeClass('has-error');
+			check_title = true;
+		}
+	});
+	$('#inputWork').blur(function(){
+		var work = $('#inputWork').val();
+		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
+		if(work.length == 0){
+			$('#errorWork').text('请输入负责的工作');
+			$('.hasWork').addClass('has-error');
+			check_title = false;
+		}
+		else if(!pattern.test(work)){
+			$('#errorWork').text('请写中文');
+			$('.hasWork').addClass('has-error');
+			check_title = false;
+		}
+		else{
+			$('#errorWork').text('');
+			$('.hasWork').removeClass('has-error');
+			check_title = true;
+		}
+	});
+	$('#inputSpeciality').blur(function(){
+		var Speciality = $('#inputSpeciality').val();
+		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
+		if(Speciality.length == 0){
+			$('#errorSpeciality').text('请输入您的专长');
+			$('.hasSpeciality').addClass('has-error');
+			check_title = false;
+		}
+		else if(!pattern.test(Speciality)){
+			$('#errorSpeciality').text('请写中文');
+			$('.hasSpeciality').addClass('has-error');
+			check_title = false;
+		}
+		else{
+			$('#errorSpeciality').text('');
+			$('.hasSpeciality').removeClass('has-error');
+			check_title = true;
+		}
 	});
 	$('#btn-register').click(function(){
-		if(check_id == true && check_passwd == true && check_passwd2 == true){
+		if(check_id == true && check_passwd == true && check_passwd2 == true && check_Position == true && check_Work == true && check_Speciality == true){
 			$.ajax({
 				type:'POST',
 				url:'handle/register.php',
@@ -127,6 +193,9 @@ $(document).ready(function(){
 					data==1?window.location='login.php':alert('注册失败');
 				}
 			});
+		}
+		else{
+			$('#errorRegister').text('请检查输入')
 		}
 	});
 });
