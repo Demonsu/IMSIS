@@ -28,7 +28,7 @@ include_once '../sys/core/init.inc.php';
 				<div class="list-group">
 					<a class="list-group-item active">创建测评</a>
 					<a href="javascript:readpromise()" id="person" class="list-group-item text-center" >创建个人测评</a>
-					<a href="javascript:depart_test()" id="department" class="list-group-item text-center">创建单位测评</a>
+					<a href="javascript:doremark()" id="department" class="list-group-item text-center">创建单位测评</a>
 					<a class="list-group-item active">我的测评</a>
 					<a href="javascript:nc_list()" class="list-group-item text-center">未完成的测评</a>
 					<a href="javascript:c_list()" class="list-group-item text-center">已完成的测评</a>
@@ -128,6 +128,29 @@ include_once '../sys/core/init.inc.php';
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<button class="btn btn-success" id="create">确认创建</button>
+							</div>
+						</div>
+					</div>
+				  </div>
+				</div>
+				
+				<div class="panel panel-default" id="enter-remark" style="display:none;">
+				  <div class="panel-heading">
+					<h3 class="panel-title">填写备注（用于区分每次测评）：</h3>
+				  </div>
+				  <div class="panel-body">
+				  
+					<div class="row" >
+						<div class="row">
+							
+							<div class="col-md-12">
+								<label class="label-control">输入备注（可选）：</label>
+								<textarea id="d-remark" class="form-control" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button class="btn btn-success" id="d-create">确认创建</button>
 							</div>
 						</div>
 					</div>
