@@ -24,7 +24,7 @@ class User extends DB_Connect {
 		$result=mysql_fetch_assoc($select);
 		if ($num>0)
 		{
-			$_SESSION["USERID"]=$user;
+			$_SESSION["USERID"]=$user_id;
 			$_SESSION["PERMISSION"]=$result["permisson"];
 			return $result["permisson"];
 		}else

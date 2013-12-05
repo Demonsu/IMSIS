@@ -57,24 +57,25 @@ class Questionnaire extends DB_Connect {
 		{
 			foreach($key_field_list as $key_field)
 			{
-				$sql="INSERT INTO questionnaire_content
-				(
-					key_field_id,questionnaire_id,state,user_id
-				)
-				VALUES
-				(
-					'".$key_field."','".$id."','0','".$user_id."'
-				)
-				";
-				if (!mysql_query($sql,$this->root_conn))
+				if ($key_field!="")
 				{
-				  die('Error: ' . mysql_error());
+					$sql="INSERT INTO questionnaire_content
+					(
+						key_field_id,questionnaire_id,state,user_id
+					)
+					VALUES
+					(
+						'".$key_field."','".$id."','0','".$user_id."'
+					)
+					";
+					if (!mysql_query($sql,$this->root_conn))
+					{
+					  die('Error: ' . mysql_error());
+					}
 				}
 			} 
 		}else if ($is_public==1)//单位评测
 		{
-
-
 			//首先获得所有可用的关键域
 			$sql="SELECT * FROM key_field WHERE available='1'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -97,8 +98,78 @@ class Questionnaire extends DB_Connect {
 			}
 			
 		}
-		return 1;//创建成功
+		return $id;//创建成功
 		
+	}
+	public function check_department_questionnaire($user_id)
+	{
+		
+		$sql="SELECT * FROM user WHERE id='".$user_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$result=mysql_fetch_assoc($select);
+		$sql="SELECT * FROM questionnaire q, user u WHERE 
+				u.province='".$result["province"]."'  AND
+				u.city='".$result["city"]."' AND
+				u.department='".$result["department"]."' AND
+				u.id=q.user_id AND
+				q.is_public='1' AND
+				q.state='0'
+		";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num>0)
+			return 1;
+		else
+		 	return 0;
+	}
+	public function fetch_user_questionnaire_list($user_id,$state)//获取用户的测评列表
+	{
+		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem()">删除</span><span class="badge" onclick="continue(this)">继续填写</span>%s</a>';
+		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem()">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
+		$return_value="";
+		$sql="SELECT * FROM questionnaire WHERE user_id='".$user_id."' AND state='".$state."' ";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($result=mysql_fetch_assoc($select))
+		{
+			if ($state==0)
+			{
+				$return_value=$return_value.sprintf($NCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+			}else
+			{
+				$return_value=$return_value.sprintf($HCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+			}
+		}
+		return $return_value;
+	}
+	public function fetch_department_questionnaire_list($user_id)
+	{
+		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="d_continue(this)">继续填写</span>%s</a>';
+		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';	
+		$return_value="";
+		//首先获取用户的个人信息
+		$sql="SELECT * FROM user WHERE id='".$user_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$user_info=mysql_fetch_assoc($select);	
+		//查找单位的问卷
+		$sql="SELECT * FROM questionnaire q, user u WHERE
+			u.province='".$user_info["province"]."' AND
+			u.city='".$user_info["city"]."' AND
+			u.department='".$user_info["department"]."' AND
+			q.user_id=u.id AND
+			q.is_public='1'
+		";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($result=mysql_fetch_assoc($select))
+		{
+			if ($state==0)
+			{
+				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+			}else
+			{
+				$return_value=$return_value.sprintf($DPHCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+			}
+		}
+		return $return_value;
 	}
 }
 

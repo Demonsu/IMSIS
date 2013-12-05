@@ -14,11 +14,19 @@ $(document).ready(function(){
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
+				operation:"CREATEUSERQUESTIONNAIRE",
 				key_field_list:list,
 				remark:$('#user-remark').val()
 			},
-			success:function(){
-				window.location = 'quiz.php';
+			success:function(data){
+				if (!(isNaN(data)))
+				{
+					alert("创建成功");
+					window.location = 'quiz.php';
+				}else
+				{
+					alert("创建失败");
+				}
 			}
 		});
 	});
