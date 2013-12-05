@@ -15,6 +15,7 @@ $(document).ready(function(){
 			operation:'FETCHPROVINCE'
 		},
 		success:function(data){
+			//alert(data);
 			$('#select1').append(data);
 		}
 	});
@@ -190,6 +191,7 @@ $(document).ready(function(){
 					email:$('#inputEmail').val(),
 				},
 				success:function(data){
+					//alert(data);
 					data==1?window.location='login.php':alert('注册失败');
 				}
 			});

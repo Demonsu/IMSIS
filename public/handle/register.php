@@ -11,7 +11,7 @@
 	if ($operation=="REGISTER")//注册
 	{
 		$user_id=$_POST["user_id"];
-		$password=$_post["password"];//明文
+		$password=$_POST["password"];//明文
 		$permission=0;//普通用户
 		$gender=$_POST["gender"];//男 女
 		$age=$_POST["age"];//数字，20-30则填30
@@ -26,7 +26,7 @@
 		$education=$_POST["education"];//文字
 		$email=$_POST["email"];//email
 		$register_time=date("Y-m-d H:i:s",time());
-		$user=new USER();
+		$user=new User();
 		$result=$user->register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time);
 		echo $result;//1为成功，0为失败
 	}
