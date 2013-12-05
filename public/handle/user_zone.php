@@ -24,12 +24,12 @@
 		$key_field_list=explode(';', $_POST["key_field_list"]);// ‘;’隔开的关键域id 
 		$remark=$_POST["remark"];
 		$questionnaire=new Questionnaire();
-		$questionnaire->create_questionnaire($_SESSION["USERID"],0,$remark,$key_field_list);
+		echo $questionnaire->create_questionnaire($_SESSION["USERID"],0,$remark,$key_field_list);
 	}
 	if ($operation=="CREATEDEPARTMENTQUESTIONNAIRE")//创建单位测评
 	{
 		$questionnaire=new Questionnaire();
-		$questionnaire->create_questionnaire($_SESSION["USERID"],1,$remark,"");
+		echo $questionnaire->create_questionnaire($_SESSION["USERID"],1,$remark,"");
 	}
 
 
