@@ -20,11 +20,11 @@ $(document).ready(function(){
 			success:function(data){
 				if (!isNaN(data))
 				{
-					alert("´´½¨³É¹¦");
+					alert("åˆ›å»ºæˆåŠŸ");
 					window.location = 'quiz.php?quiz_id=data';
 				}else
 				{
-					alert("´´½¨Ê§°Ü");
+					alert("åˆ›å»ºå¤±è´¥");
 				}
 			}
 		});
@@ -83,7 +83,7 @@ function doremark(){
 		},
 		success:function(data){
 			if(data == 1){
-				var returnVal = window.confirm('ÒÑ¾­´æÔÚÎ´ÌîÍêµÄµ¥Î»ÎÊ¾í£¬È·¶¨ÒªÔÙ´´½¨Ò»·İµ¥Î»ÎÊ¾íÂğ£¿','ÊÇ·ñ´´½¨£¿');
+				var returnVal = window.confirm('å·²ç»å­˜åœ¨æœªå¡«å®Œçš„å•ä½é—®å·ï¼Œç¡®å®šè¦å†åˆ›å»ºä¸€ä»½å•ä½é—®å·å—ï¼Ÿ','æ˜¯å¦åˆ›å»ºï¼Ÿ');
 				if(returnVal){
 					hide();
 					$('#enter-remark').show();
@@ -106,7 +106,7 @@ function depart_test(){
 		},
 		success:function(data){
 			if(!isNaN(data)){
-				alert('´´½¨³É¹¦£¬Çëµ½ÎÒµÄ²âÆÀÖĞµÄµ¥Î»²âÆÀÖĞ½øĞĞ²âÆÀ');
+				alert('åˆ›å»ºæˆåŠŸï¼Œè¯·åˆ°æˆ‘çš„æµ‹è¯„ä¸­çš„å•ä½æµ‹è¯„ä¸­è¿›è¡Œæµ‹è¯„');
 				$('#depart_quiz').click();
 			}
 			else{
