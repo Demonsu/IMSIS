@@ -22,7 +22,7 @@ $(document).ready(function(){
 				if (!isNaN(data))
 				{
 					alert("创建成功");
-					window.location = 'quiz.php?quiz_id=data';
+					window.location = 'quiz.php?quiz_id='+data;
 				}else
 				{
 					alert(data);

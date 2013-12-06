@@ -17,9 +17,40 @@
 			echo "登陆信息已失效，请重新登陆";
 		else
 		{
+			//echo $_SESSION["USERID"];
+			//echo $_POST["quiz_id"];
 			$questionnaire=new Questionnaire();
 			echo $questionnaire->fetch_quiz_process($_SESSION["USERID"],$_POST["quiz_id"]);
 		}
+	}
+	if ($operation="FETCHKEYVARIABLE")
+	{
+		$questionnaire=new Questionnaire();
+		echo $questionnaire->fetch_key_variable($_POST["key_field_id"]);
+	}
+	if ($operation="ANSERQUESTIONNAIRE")
+	{	
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$quiz_id=$_POST["quiz_id"];
+			$answer=$_POST["answer"];
+			$temp=explode(';',$answer);
+			foreach($temp as $answer_item)
+			{
+				if ($answer_item!="")
+				{
+					$answer_temp=explode(':',$answer_item);
+					$answer_list[]=array(
+						"key_variable_id"=>$answer_temp[0],
+						"answer"=>$answer_temp[1]
+					);
+				}
+			}
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->answer_questionnaire_by_key_field($quiz_id,$answer_list);
+		}		
 	}
 
 

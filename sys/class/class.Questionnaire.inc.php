@@ -185,11 +185,12 @@ class Questionnaire extends DB_Connect {
 			"comment"=> $part_list[$i*6+5],
 		);
 		*/
+		
 		$return_value='<div class="list-group">';
 		$EFFECTFIELDFORMAT='<a class="list-group-item active">%s</a>';
 		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done">%s</a>';
 		$KEYFIELDDOINGFORMAT='<a href="#" id="%s" class="list-group-item text-center over-doing">%s</a>';
-		$KEYFIELDUNDOFORMAT='<a href="#" id="%s" class="list-group-item text-center">%s</a>';
+		$KEYFIELDUNDOFORMAT='<a href="javascript:get_key_field(this)" id="%s" class="list-group-item text-center">%s</a>';
 		//首先获取问卷的基本信息
 		$sql="SELECT * FROM questionnaire WHERE id='".$quiz_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -200,19 +201,26 @@ class Questionnaire extends DB_Connect {
 		$sql="SELECT * FROM effect_field";
 		$effect_field_list=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		//接着获取属于该用户的关键域
-		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' ORDER BY key_field_id";
-		$select==mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' ";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while($quiz_content=mysql_fetch_assoc($select))
 		{
 			$quiz_content_list[]= array(
-			"id"=> $key_field["id"],
-			"key_field_id"=> $key_field["key_field_id"],
-			"questionnaire_id"=>  $key_field["questionnaire_id"],
-			"state"=> $key_field["state"],
-			"user_id"=> $key_field["user_id"]
+			"id"=> $quiz_content["id"],
+			"key_field_id"=> $quiz_content["key_field_id"],
+			"questionnaire_id"=>  $quiz_content["questionnaire_id"],
+			"state"=> $quiz_content["state"],
+			"user_id"=> $quiz_content["user_id"]
 			);
 		}
 		//反馈进度
+		//首先判断是否答完问卷
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state='0'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num==0) return 0;//不用再答了
+		
+		//未答完，反馈进度
 		$flag=0;//是否找到第一个未答的关键域
 		while ($effect_field=mysql_fetch_assoc($effect_field_list))
 		{
@@ -227,6 +235,8 @@ class Questionnaire extends DB_Connect {
 				//判断是否属于该作用域
 				if ($key_field_info["effect_field_id"]==$effect_field["id"])
 				{
+					$temp=explode('（',$key_field_info["name"]);
+					$key_field_info["name"]=$temp[0];
 					if ($quiz_content["state"]==1)//该关键域已经作答
 					{
 						$return_value=$return_value.sprintf($KEYFIELDDONEFORMAT,$key_field_info["id"],$key_field_info["name"]);
@@ -249,6 +259,81 @@ class Questionnaire extends DB_Connect {
 
 		return $return_value;	
 	
+	}
+	
+	public function fetch_key_variable($key_field_id)
+	{
+		/*
+		<a class="list-group-item active">
+					关键域:1.1 中长期规划（战略规划，Strategy Planning）
+		</a>
+				  <a class="list-group-item">
+			        <p class="">关键变量：中长期规划（E：电子政务战略（eGov Strategy）eGov战略及应用的长期计划。）</p>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					Dapibus ac facilisis in</label><br>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					组织是否意识到eGov战略的重要性（在管理层展开讨论）？</label><br>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					Dapibus ac facilisis in</label><br>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					Dapibus ac facilisis in</label><br>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					Dapibus ac facilisis in</label><br>
+					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					Dapibus ac facilisis in</label><br>
+				  </a>
+		*/
+		$return_value="";
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s</a>';
+		$KEYVARIABLEFORMAT='<a class="list-group-item">
+					<p class="">%s %s</p>
+						<label ><input type="radio" name="radio%s" value="1" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="2">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s "value="3" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="4">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="5">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="0">
+						%s</label><br>
+				  </a>';
+		//首先获取关键域的信息
+		$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$key_field_info=mysql_fetch_assoc($select);
+		$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"]);
+		
+		//然后获取该关键域下的所有关键变量
+		$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."' AND available='1'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($key_variable=mysql_fetch_assoc($select))
+		{
+			$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解");
+		}
+		return $return_value;
+	}
+	
+	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)
+	{
+		$currenttime=date("Y-m-d H:i:s",time());
+		foreach($answer_list as $answer)
+		{
+			$sql="INSERT INTO questionnaire_answer
+			(
+				questionnaire_id,key_variable_id,answer,answer_time
+			)VALUES
+			(
+				'".$quiz_id."','".$answer["key_variable_id"]."','".$answer["answer"]."','".$currenttime."'
+			)";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}
+		}
+		return 1;
 	}
 }
 
