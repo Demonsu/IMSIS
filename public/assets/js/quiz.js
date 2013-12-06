@@ -1,5 +1,6 @@
+var step;
 $(document).ready(function(){
-
+	step = 0;	
 	getprogress();//页面初始化操作
 	
 	
@@ -15,7 +16,6 @@ $(document).ready(function(){
 				phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
 			}
 		});
-		//alert("why!!!");
 		if(checkedNum * 6 < varNum){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
@@ -25,8 +25,8 @@ $(document).ready(function(){
 				url:'handle/quiz.php',
 				data:{
 					operation:'ANSERQUESTIONNAIRE',
-					answer:phpChar,
-					quiz_id:$("#quiz_id").val()
+					quiz_id:$('#quiz_id').val(),
+					answer:phpChar
 				},
 				success:function(data){
 					alert(data);
@@ -41,10 +41,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('.collapse').collapse('hide');
+	
 });
 
 function getprogress(){//获取第一步左边的进度表，调用函数获取问卷
-//alert($('#quiz_id').value);
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -55,15 +56,36 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 		success:function(data){
 			if(data == 0){
 				//跳到下一步
+				$('#progressBar').css('width','50%');
+				hide();
+				$('#second').show();
+				ask_for_target();
 			}
 			else{
 				alert(data);
+				hide();
+				$('#first').show();
 				$('#quiz-progress').html(data);
 				$('.over-doing').each(function(){
-					//alert(123);
 					get_key_field(this);
 				});
 			}
+		}
+	});
+}
+
+function ask_for_target(){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz_php',
+		data:{
+			operation:'FETCHTARGETQUESTIONNAIRE',
+			quiz_id:$('#quiz_id').val()
+		},
+		success:function(data){
+			alert(data);
+			$('#target_select').html(data);
+			
 		}
 	});
 }
@@ -75,8 +97,7 @@ function get_key_field(t){//获取第一步右边的问卷
 		url:'handle/quiz.php',
 		data:{
 			operation:'FETCHKEYVARIABLE',
-			key_field_id:id
-			
+			key_field_id:id	
 		},
 		success:function(data){
 			alert(data);
@@ -85,3 +106,8 @@ function get_key_field(t){//获取第一步右边的问卷
 	});
 }
 
+function hide(){
+	$('#first').hide();
+	$('#second').hide();
+	$('#third').hide();
+}
