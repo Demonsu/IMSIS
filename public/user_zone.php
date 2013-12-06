@@ -186,7 +186,7 @@ include_once '../sys/core/init.inc.php';
 						</div>
 						<div class="form-group">
 							<div class="col-md-12 text-center">
-								<button class="btn btn-success" id="newPasswd">确认</button>
+								<button class="btn btn-success" id="btn-change-passwd">确认</button>
 							</div>
 						</div>
 					</div>
