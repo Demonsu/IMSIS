@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	getprogress();//页面初始化操作
 	
 	
@@ -24,9 +24,11 @@ $(document).ready(function(){
 				url:'handle/quiz.php',
 				data:{
 					operation:'ANSERQUESTIONNAIRE',
+					quiz_id:$('#quiz_id').val(),
 					answer:phpChar
 				},
 				success:function(data){
+					alert(data);
 					if(data == 1){
 						getprogress();
 					}
@@ -37,6 +39,8 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	$('.collapse').collapse('hide');
 	
 });
 
@@ -51,6 +55,10 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 		success:function(data){
 			if(data == 0){
 				//跳到下一步
+				$('#progressBar').css('width','50');
+				hide();
+				$('#second').show();
+				ask_for_target();
 			}
 			else{
 				alert(data);
@@ -63,6 +71,22 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 	});
 }
 
+function ask_for_target(){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz_php',
+		data:{
+			operation:'FETCHTARGETQUESTIONNAIRE',
+			quiz_id:$('#quiz_id').val()
+		},
+		success:function(data){
+			alert(data);
+			$('#target_select').html(data);
+			
+		}
+	});
+}
+
 function get_key_field(t){//获取第一步右边的问卷
 	var id = t.id;
 	$.ajax({
@@ -70,8 +94,7 @@ function get_key_field(t){//获取第一步右边的问卷
 		url:'handle/quiz.php',
 		data:{
 			operation:'FETCHKEYVARIABLE',
-			key_field_id:id
-			
+			key_field_id:id	
 		},
 		success:function(data){
 			alert(data);
@@ -80,3 +103,8 @@ function get_key_field(t){//获取第一步右边的问卷
 	});
 }
 
+function hide(){
+	$('#first').hide();
+	$('#second').hide();
+	$('#third').hide();
+}
