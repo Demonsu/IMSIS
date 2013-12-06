@@ -60,7 +60,7 @@
 		else
 		{
 			$questionnaire=new Questionnaire();
-			echo $questionnaire->fetch_set_goal($_POST["quiz_id"]);
+			echo $questionnaire->fetch_set_goal($_SESSION["USERID"],$_POST["quiz_id"]);
 		}		
 	}
 

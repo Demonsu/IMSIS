@@ -77,7 +77,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 function ask_for_target(){
 	$.ajax({
 		type:'POST',
-		url:'handle/quiz_php',
+		url:'handle/quiz.php',
 		data:{
 			operation:'FETCHTARGETQUESTIONNAIRE',
 			quiz_id:$('#quiz_id').val()

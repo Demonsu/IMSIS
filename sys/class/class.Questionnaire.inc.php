@@ -348,7 +348,7 @@ class Questionnaire extends DB_Connect {
 		
 		return 1;
 	}
-	public function fetch_set_goal($quiz_id)//获取设置问卷目标的页面
+	public function fetch_set_goal($user_id,$quiz_id)//获取设置问卷目标的页面
 	{
 		/*
 		<a href="#" class="list-group-item active">%s</a>
@@ -454,9 +454,9 @@ class Questionnaire extends DB_Connect {
 					$key_variable_list="";
 					while($key_variable=mysql_fetch_assoc($key_variable_select))
 					{
-						$temp=explode('（',$key_variable["name"]);
-						$key_variable["name"]=$temp[0];
-						$key_variable_list=$key_variable_list.$key_variable["name"].'<br>';
+						$temp=explode('（',$key_variable["question"]);
+						$key_variable["question"]=$temp[0];
+						$key_variable_list=$key_variable_list.$key_variable["question"].'<br>';
 					}
 					$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATTAIL,$key_field_info["id"],$key_variable_list);
 				}
