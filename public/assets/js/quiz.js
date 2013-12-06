@@ -1,0 +1,14 @@
+$(document).ready(function(){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz.php',
+		data:{
+			operation:'FETCHQUIZPROCESS',
+			quiz_id:$('#quiz_id').val()
+		},
+		success:function(data){
+			alert(data)
+			$('#quiz-progress').html(data);
+		}
+	});
+});

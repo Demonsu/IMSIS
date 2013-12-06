@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('#create').click(function(){
 		var list = "";
 		$(':checkbox').each(function(){
-			if(this.checked){
+			if(this.checked && this.id.length > 4){
 				list += this.value + ";";
 			}
 		});
@@ -165,11 +165,21 @@ function d_list(){
 		}
 	});
 }
+function change_passwd(){
+	hide();
+	$('#change-passwd').show();
+}
+function change_data(){
+	$.ajax({
+		
+	});
+}
 function deleteitem(t){
 	alert(t.id);
 }
 
 function hide(){
+	$('#change-data').hide();
 	$('#enter-remark').hide();
 	$('#nc-list').hide();
 	$('#c-list').hide();
