@@ -14,6 +14,9 @@ include_once '../sys/core/init.inc.php';
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/user_zone.js"></script>
+
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+
 </head>
 <body>
 <div class="main">

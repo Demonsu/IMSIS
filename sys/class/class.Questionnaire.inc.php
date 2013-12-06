@@ -52,6 +52,8 @@ class Questionnaire extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		$result=mysql_fetch_assoc($select);
 		$id=$result["id"];
+		
+		//echo $id;
 		//添加问卷内容
 		if ($is_public==0)//个人评测
 		{
@@ -170,6 +172,83 @@ class Questionnaire extends DB_Connect {
 			}
 		}
 		return $return_value;
+	}
+	public function fetch_quiz_process($user_id,$quiz_id)
+	{
+		/*
+		$record_list[] = array(
+			"user_id"=> $part_list[$i*6+0],
+			"base_time"=> $part_list[$i*6+1],
+			"performance_level"=> $part_list[$i*6+2],
+			"honor_leader"=> $part_list[$i*6+3],
+			"honor_excellent"=> $part_list[$i*6+4],
+			"comment"=> $part_list[$i*6+5],
+		);
+		*/
+		$return_value='<div class="list-group">';
+		$EFFECTFIELDFORMAT='<a class="list-group-item active">%s</a>';
+		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done">%s</a>';
+		$KEYFIELDDOINGFORMAT='<a href="#" id="%s" class="list-group-item text-center over-doing">%s</a>';
+		$KEYFIELDUNDOFORMAT='<a href="#" id="%s" class="list-group-item text-center">%s</a>';
+		//首先获取问卷的基本信息
+		$sql="SELECT * FROM questionnaire WHERE id='".$quiz_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$quiz_info=mysql_fetch_assoc($select);		
+		$num=mysql_num_rows($select);
+		if ($num==0) return "非法操作：该问卷不存在";
+		//获取系统内的作用域
+		$sql="SELECT * FROM effect_field";
+		$effect_field_list=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		//接着获取属于该用户的关键域
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' ORDER BY key_field_id";
+		$select==mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while($quiz_content=mysql_fetch_assoc($select))
+		{
+			$quiz_content_list[]= array(
+			"id"=> $key_field["id"],
+			"key_field_id"=> $key_field["key_field_id"],
+			"questionnaire_id"=>  $key_field["questionnaire_id"],
+			"state"=> $key_field["state"],
+			"user_id"=> $key_field["user_id"]
+			);
+		}
+		//反馈进度
+		$flag=0;//是否找到第一个未答的关键域
+		while ($effect_field=mysql_fetch_assoc($effect_field_list))
+		{
+			$return_value=$return_value.'<div class="list-group">';
+			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$effect_field["name"]);			
+			foreach($quiz_content_list as $quiz_content)
+			{
+				//获得key_field的详细信息
+				$sql="SELECT * FROM key_field WHERE id='".$quiz_content["key_field_id"]."'";
+				$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				$key_field_info=mysql_fetch_assoc($select);
+				//判断是否属于该作用域
+				if ($key_field_info["effect_field_id"]==$effect_field["id"])
+				{
+					if ($quiz_content["state"]==1)//该关键域已经作答
+					{
+						$return_value=$return_value.sprintf($KEYFIELDDONEFORMAT,$key_field_info["id"],$key_field_info["name"]);
+					}
+					if ($quiz_content["state"]==0)//该关键域尚未作答
+					{
+						if ($flag==0)//第一个未作答的关键域，填充为正在作答
+						{
+							$flag=1;
+							$return_value=$return_value.sprintf($KEYFIELDDOINGFORMAT,$key_field_info["id"],$key_field_info["name"]);
+						}else
+						{
+							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMAT,$key_field_info["id"],$key_field_info["name"]);
+						}
+					}
+				}
+			}
+			$return_value=$return_value.'</div>';
+		}
+
+		return $return_value;	
+	
 	}
 }
 
