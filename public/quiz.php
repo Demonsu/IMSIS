@@ -2,7 +2,7 @@
 	include_once '../sys/core/init.inc.php';
 
 	//echo $result;
-	//$quiz_id = $_GET['quiz_id'];
+	$quiz_id = $_GET['quiz_id'];
 
 ?>
 <html>
@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="main">
-<input type="text" style="display:none" id="quiz_id" value="<?php //echo $quiz_id; ?>" />
+<input type="text" style="display:none" id="quiz_id" value="<?php echo $quiz_id; ?>" />
 <?php include 'include/header.php'; ?>
 
 <div class="row">

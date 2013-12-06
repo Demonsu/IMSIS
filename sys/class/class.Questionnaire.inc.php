@@ -126,8 +126,8 @@ class Questionnaire extends DB_Connect {
 	}
 	public function fetch_user_questionnaire_list($user_id,$state)//获取用户的测评列表
 	{
-		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem()">删除</span><span class="badge" onclick="continue(this)">继续填写</span>%s</a>';
-		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem()">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
+		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
+		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
 		$return_value="";
 		$sql="SELECT * FROM questionnaire WHERE user_id='".$user_id."' AND state='".$state."' ";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -291,7 +291,7 @@ class Questionnaire extends DB_Connect {
 						%s</label><br>
 						<label ><input type="radio" name="radio%s" value="2">
 						%s</label><br>
-						<label ><input type="radio" name="radio%s "value="3" >
+						<label ><input type="radio" name="radio%s" value="3" >
 						%s</label><br>
 						<label ><input type="radio" name="radio%s" value="4">
 						%s</label><br>
@@ -318,6 +318,7 @@ class Questionnaire extends DB_Connect {
 	
 	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)
 	{
+		//首先插入答案
 		$currenttime=date("Y-m-d H:i:s",time());
 		foreach($answer_list as $answer)
 		{
@@ -333,8 +334,142 @@ class Questionnaire extends DB_Connect {
 			  die('Error: ' . mysql_error());
 			}
 		}
+		//标记该关键域已经作答
+		//首先找到答案所属的关键域
+		$sql="SELECT * FROM key_variable WHERE id='".$answer["key_variable_id"]."' ";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$result=mysql_fetch_assoc($select);
+		
+		$sql="UPDATE questionnaire_content SET state='1' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$result["key_field_id"]."' ";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		
 		return 1;
 	}
+	public function fetch_set_goal($quiz_id)//获取设置问卷目标的页面
+	{
+		/*
+		<a href="#" class="list-group-item active">%s</a>
+			  <a class="panel-group" id="accordion">
+				  <div class="panel panel-default" style="margin-bottom:0px;">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse%s">
+						 %s
+						</a>
+						<select style="float:right" id="%s">
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4" selected>4</option>
+						  <option value="5">5</option>
+						</select>
+					  </h4>
+					</div>
+					<div id="collapse%s" class="panel-collapse collapse in">
+					  <div class="panel-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus <br>terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+					  </div>
+					</div>
+				  </div>
+			  </a>
+		*/
+		$return_value="";
+		$EFFECTFIELDFORMAT='<a href="#" class="list-group-item active">%s</a>';
+		$KEYFIELDUNDOFORMATHEAD='
+			<a class="panel-group" id="accordion">
+				  <div class="panel panel-default" style="margin-bottom:0px;">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse%s">
+						 %s
+						</a>
+						<select style="float:right" id="%s">';
+		$KEYFIELDUNDOFORMATOPTION='<option value="%s">%s</option>';
+		$KEYFIELDUNDOFORMATOPTIONSELECTED='<option value="%s" selected>%s</option>';
+		$KEYFIELDUNDOFORMATTAIL='
+						</select>
+					  </h4>
+					</div>
+					<div id="collapse%s" class="panel-collapse collapse in">
+					  <div class="panel-body">
+							%s
+					  </div>
+					</div>
+				  </div>
+			  </a>';
+		//首先获取问卷的基本信息
+		$sql="SELECT * FROM questionnaire WHERE id='".$quiz_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$quiz_info=mysql_fetch_assoc($select);		
+		$num=mysql_num_rows($select);
+		if ($num==0) return "非法操作：该问卷不存在";
+		//获取系统内的作用域
+		$sql="SELECT * FROM effect_field";
+		$effect_field_list=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		//接着获取属于该用户的关键域
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' ";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while($quiz_content=mysql_fetch_assoc($select))
+		{
+			$quiz_content_list[]= array(
+			"id"=> $quiz_content["id"],
+			"key_field_id"=> $quiz_content["key_field_id"],
+			"questionnaire_id"=>  $quiz_content["questionnaire_id"],
+			"state"=> $quiz_content["state"],
+			"user_id"=> $quiz_content["user_id"]
+			);
+		}
+		
+		while ($effect_field=mysql_fetch_assoc($effect_field_list))
+		{
+			$return_value=$return_value.'<div class="list-group">';
+			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$effect_field["name"]);			
+			foreach($quiz_content_list as $quiz_content)
+			{
+				//获得key_field的详细信息
+				$sql="SELECT * FROM key_field WHERE id='".$quiz_content["key_field_id"]."'";
+				$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				$key_field_info=mysql_fetch_assoc($select);
+				//判断是否属于该作用域
+				if ($key_field_info["effect_field_id"]==$effect_field["id"])
+				{
+					$temp=explode('（',$key_field_info["name"]);
+					$key_field_info["name"]=$temp[0];
+					$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATHEAD,$key_field_info["id"],$key_field_info["name"],$key_field_info["id"]);
+					for ($i=1;$i<=5;$i++)
+					{
+						if ($i==$key_field_info["goal"])
+						{
+							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTION,$i,$i);
+						}else
+						{
+							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTIONSELECTED,$i,$i);
+						}
+					}
+					$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_info["id"]."' AND available='1'";
+					$key_variable_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+					$key_variable_list="";
+					while($key_variable=mysql_fetch_assoc($key_variable_select))
+					{
+						$temp=explode('（',$key_variable["name"]);
+						$key_variable["name"]=$temp[0];
+						$key_variable_list=$key_variable_list.$key_variable["name"].'<br>';
+					}
+					$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATTAIL,$key_field_info["id"],$key_variable_list);
+				}
+			}
+		}
+		return $return_value;
+		
+	}
+	public function set_goal($quiz_id,$goal_list)
+	{
+		
+	}
+	
 }
 
 ?>

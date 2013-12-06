@@ -15,6 +15,7 @@ $(document).ready(function(){
 				phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
 			}
 		});
+		//alert("why!!!");
 		if(checkedNum * 6 < varNum){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
@@ -24,9 +25,11 @@ $(document).ready(function(){
 				url:'handle/quiz.php',
 				data:{
 					operation:'ANSERQUESTIONNAIRE',
-					answer:phpChar
+					answer:phpChar,
+					quiz_id:$("#quiz_id").val()
 				},
 				success:function(data){
+					alert(data);
 					if(data == 1){
 						getprogress();
 					}
@@ -41,6 +44,7 @@ $(document).ready(function(){
 });
 
 function getprogress(){//获取第一步左边的进度表，调用函数获取问卷
+//alert($('#quiz_id').value);
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -56,6 +60,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				alert(data);
 				$('#quiz-progress').html(data);
 				$('.over-doing').each(function(){
+					//alert(123);
 					get_key_field(this);
 				});
 			}
