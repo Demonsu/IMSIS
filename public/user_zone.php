@@ -34,8 +34,8 @@ include_once '../sys/core/init.inc.php';
 					<a href="javascript:c_list()" class="list-group-item text-center">已完成的测评</a>
 					<a href="javascript:d_list()" id="depart_quiz" class="list-group-item text-center">单位测评</a>
 					<a class="list-group-item active">个人信息修改</a>
-					<a href="#" class="list-group-item text-center">修改密码</a>
-					<a href="#" class="list-group-item text-center">修改资料</a>
+					<a href="javascript:change_passwd()" class="list-group-item text-center">修改密码</a>
+					<a href="javascript:change_data()" class="list-group-item text-center">修改资料</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -159,7 +159,7 @@ include_once '../sys/core/init.inc.php';
 				
 				<div class="panel panel-default" id="change-passwd" style="display:none">
 				  <div class="panel-heading">
-					<h3 class="panel-title">选择你想要测评的域然后创建</h3>
+					<h3 class="panel-title">修改密码</h3>
 				  </div>
 				  <div class="panel-body">
 					<div class="form-horizontal">
@@ -190,6 +190,108 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				</div>
 				
+				<div class="panel panel-default" id="change-data" class="display:none">
+				  <div class="panel-heading">
+					<h3 class="panel-title">修改个人资料</h3>
+				  </div>
+				  <div class="panel-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-md-3 text-right">用户名:</label>
+							<div class="col-md-5">
+								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 text-right">所属部门:</label>
+							<div class="col-md-5">
+								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 text-right">职务:</label>
+							<div class="col-md-5">
+								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 text-right">负责工作:</label>
+							<div class="col-md-5">
+								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 text-right">技术专长:</label>
+							<div class="col-md-5">
+								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>年龄</label>
+							<div class="col-md-5">
+							  <select class="form-control" id="selectAge">
+								<option value="0">请选择年龄段</option>
+								<option value="1">25岁及以下</option>
+								<option value="2">26~35岁</option>
+								<option value="3">36~45岁</option>
+								<option value="4">46~55岁</option>
+								<option value="5">56岁及以上</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>性别</label>
+							<div class="col-md-5">
+							  <select class="form-control" id="selectGender">
+								<option value="0">请选择性别</option>
+								<option value="1">男</option>
+								<option value="2">女</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>教育程度</label>
+							<div class="col-md-5">
+							  <select class="form-control" id="selectEdu">
+								<option value="0">请选择教育程度</option>
+								<option value="1">大专</option>
+								<option value="2">大学本科</option>
+								<option value="3">硕士</option>
+								<option value="4">博士</option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="form-group hasTitle">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>职称</label>
+							<div class="col-md-5">
+							  <input type="text" class="form-control" id="inputTitle" placeholder="输入您的职称">
+							</div>
+							<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
+						  </div>
+						<div class="form-group">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>从事现工作时长</label>
+							<div class="col-md-5">
+							  <input type="text" class="form-control" id="inputTime" placeholder="输入您从事现任工作的时长">
+							</div>
+							<label class="control-label col-md-3" style="text-align:left;" id="errorTime"></label>
+						  </div>
+						  <div class="form-group">
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>邮箱</label>
+							<div class="col-md-5">
+							  <input type="text" class="form-control" id="inputEmail" placeholder="输入您的邮箱">
+							</div>
+							<label class="control-label col-md-3" style="text-align:left;" id="errorEmail"></label>
+						  </div>
+							</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-8 text-right">
+							<button class="btn btn-success" id="btn-change-data">修改</div>
+						</div>
+						</div>
+					</div>
+				  </div>
+				</div>
 				
 			</div>
 		</div>
