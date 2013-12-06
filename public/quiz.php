@@ -53,7 +53,7 @@
 			<div class="list-group">
 			  <a class="list-group-item active">作用域1</a>
 			  <a href="#" class="list-group-item text-center over-done">关键域1</a>
-			  <a href="#" class="list-group-item text-center over-doing" id="21">关键域2</a>
+			  <a href="javascript:get_key_field(this)" class="list-group-item text-center over-doing" id="21">关键域2</a>
 			  <a href="#" class="list-group-item text-center">关键域3</a>
 			  <a href="#" class="list-group-item text-center">关键域4</a>
 			</div>
@@ -85,17 +85,17 @@
 				  </a>
 				  <a class="list-group-item">
 			        <p class="">关键变量：中长期规划（E：电子政务战略（eGov Strategy）eGov战略及应用的长期计划。）</p>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" value="0">
 					0.Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" id="id11" value="1">
 					1.组织是否意识到eGov战略的重要性（在管理层展开讨论）？</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" value="2">
 					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" value="3">
 					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" value="4">
 					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="option11">
+					<label ><input type="radio" name="radio11" value="5">
 					Dapibus ac facilisis in</label><br>
 				  </a>
 				  <a class="list-group-item">Morbi leo risus</a>
@@ -104,7 +104,7 @@
 				</div>
 				<div class="text-right row">
 					<div class="col-md-12">
-						<button class="btn btn-success">下一个关键域</div>
+						<button class="btn btn-success" id="next-key-field">下一个关键域</div>
 					</div>
 				</div>
 			</div>
