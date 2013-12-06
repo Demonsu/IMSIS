@@ -2,7 +2,7 @@
 	include_once '../sys/core/init.inc.php';
 
 	//echo $result;
-	$quiz_id = $_GET['quiz_id']
+	//$quiz_id = $_GET['quiz_id'];
 
 ?>
 <html>
@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="main">
-<input type="text" style="display:none" id="quiz_id" value="<?php echo $quiz_id; ?>" />
+<input type="text" style="display:none" id="quiz_id" value="<?php //echo $quiz_id; ?>" />
 <?php include 'include/header.php'; ?>
 
 <div class="row">
@@ -53,7 +53,7 @@
 			<div class="list-group">
 			  <a class="list-group-item active">作用域1</a>
 			  <a href="#" class="list-group-item text-center over-done">关键域1</a>
-			  <a href="#" class="list-group-item text-center over-doing">关键域2</a>
+			  <a href="#" class="list-group-item text-center over-doing" id="21">关键域2</a>
 			  <a href="#" class="list-group-item text-center">关键域3</a>
 			  <a href="#" class="list-group-item text-center">关键域4</a>
 			</div>
