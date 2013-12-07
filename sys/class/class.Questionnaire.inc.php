@@ -10,7 +10,7 @@ class Questionnaire extends DB_Connect {
 	{
 		$return_value="";
 		$EFFECTFORMAT='<a class="list-group-item active"><input type="checkbox" id="%s" value="%s">%s</a>';
-	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s"> %s</a>';
+	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
 		//获取所有的作用域
 		$sql="SELECT * FROM effect_field";
 		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -29,6 +29,53 @@ class Questionnaire extends DB_Connect {
 			$effect_index++;
 		}
 		return $return_value;
+	}
+	public function fetch_department_questionnaire($user_id,$quiz_id)//获取单位评测的问卷
+	{
+		$return_value="";
+		$EFFECTFORMAT='<a class="list-group-item active"><input type="checkbox" id="%s" value="%s">%s</a>';
+	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
+		$KEYUNDOFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" selected> %s</a>';
+		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><input type="checkbox" id="%s" value="%s" selected> %s</a>';
+		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><input type="checkbox" id="%s" value="%s" selected disabled> %s</a>';
+		//获取所有的作用域
+		$sql="SELECT * FROM effect_field";
+		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$effect_index=1;
+		while ($effect_result=mysql_fetch_assoc($effect_select))
+		{
+			$return_value=$return_value.sprintf($EFFECTFORMAT,"box".$effect_index,$effect_result["id"],$effect_result["name"]);
+			$key_index=1;
+			$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_result["id"]."' AND available='1'";
+			$key_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			while ($key_result=mysql_fetch_assoc($key_select))
+			{
+				$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_result["id"]."'";
+				$questionnaire_content_info=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				if ($questionnaire_content_info["user_id"]="")//该关键域尚未作答
+				{
+					$return_value=$return_value.sprintf($KEYFORMAT,"box".$effect_index.$key_index,$key_result["id"],$key_result["name"]);//可选
+				}else
+				{
+					if (strcmp($questionnaire_content_info["user_id"],$user_id)==0)//是我自己已选的关键域
+					{
+						if($questionnaire_content_info["state"]==0)//尚未作答
+						{
+							$return_value=$return_value.sprintf($KEYUNDOFORMAT,"box".$effect_index.$key_index,$key_result["id"],$key_result["name"]);
+						}else//已经作答或者已经提交的
+						{
+							$return_value=$return_value.sprintf($KEYDONEFORMAT,"box".$effect_index.$key_index,$key_result["id"],$key_result["name"]);
+						}
+					}else//被别人选掉的关键域
+					{
+						$return_value=$return_value.sprintf($KEYOTHERDONEFORMAT,"box".$effect_index.$key_index,$key_result["id"],$key_result["name"]);
+					}
+				}
+				$key_index++;
+			}
+			$effect_index++;
+		}
+		return $return_value;		
 	}
 	public function create_questionnaire($user_id,$is_public,$remark,$key_field_list)
 	{
@@ -218,7 +265,15 @@ class Questionnaire extends DB_Connect {
 		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state='0'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		$num=mysql_num_rows($select);
-		if ($num==0) return 0;//不用再答了
+		if ($num==0) //不用再答了
+		{
+			$sql="UPDATE questionnaire SET state='1' WHERE id='".$quiz_id."' AND state='0'";//修改问卷的状态,从未答完到已答完
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}
+			return 0;
+		}
 		
 		//未答完，反馈进度
 		$flag=0;//是否找到第一个未答的关键域
@@ -465,9 +520,23 @@ class Questionnaire extends DB_Connect {
 		return $return_value;
 		
 	}
-	public function set_goal($quiz_id,$goal_list)
+	public function set_goal($quiz_id,$goal_list)//设置目标域
 	{
-		
+		foreach($goal_list as $goal)
+		{
+			if ($goal!="")
+			{
+				$temp=explode(':',$goal);
+				$key_field_id=$temp[0];
+				$key_field_goal=$temp[1];
+				$sql="UPDATE questionnaire_content SET goal='".$key_field_goal."',state='2' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."' ";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}
+			}
+		}
+		return 1;
 	}
 	
 }

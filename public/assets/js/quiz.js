@@ -14,6 +14,7 @@ $(document).ready(function(){
 				phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
 			}
 		});
+		alert(phpChar+' '+checkedNum +" "+varNum);
 		if(checkedNum * 6 < varNum){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
@@ -39,7 +40,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#confirm-target').click({
+	$('#confirm-target').click(function(){
 		var phpChar = '';
 		$('select').each(function(){
 			var id = this.id;
@@ -65,7 +66,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#submit-quiz').click({
+	$('#submit-quiz').click(function(){
 		
 	});
 	
@@ -88,7 +89,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				ask_for_target();
 			}
 			else{
-				alert(data);
+				//alert(data);
 				hide();
 				$('#first').show();
 				$('#quiz-progress').html(data);
@@ -128,7 +129,7 @@ function get_key_field(t){//获取第一步右边的问卷
 			key_field_id:id	
 		},
 		success:function(data){
-			alert(data);
+			//alert(data);
 			$('#quiz-answer').html(data);
 		}
 	});

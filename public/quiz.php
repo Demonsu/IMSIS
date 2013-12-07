@@ -88,27 +88,7 @@
 	  <div class="panel-body">
 		<div class="form-group">
 			<div class="list-group" id="preview-quiz">
-			  <a class="list-group-item active">
-				关键域:1.1 中长期规划（战略规划，Strategy Planning）
-			  </a>
-			  <a class="list-group-item">
-				<p class="">关键变量：中长期规划（E：电子政务战略（eGov Strategy）eGov战略及应用的长期计划。）</p>
-				<label ><input type="radio" name="radio11" value="0">
-				0.Dapibus ac facilisis in</label><br>
-				<label ><input type="radio" name="radio11" id="id11" value="1">
-				1.组织是否意识到eGov战略的重要性（在管理层展开讨论）？</label><br>
-				<label ><input type="radio" name="radio11" value="2">
-				Dapibus ac facilisis in</label><br>
-				<label ><input type="radio" name="radio11" value="3">
-				Dapibus ac facilisis in</label><br>
-				<label ><input type="radio" name="radio11" value="4">
-				Dapibus ac facilisis in</label><br>
-				<label ><input type="radio" name="radio11" value="5">
-				Dapibus ac facilisis in</label><br>
-			  </a>
-			  <a class="list-group-item">Morbi leo risus</a>
-			  <a class="list-group-item">Porta ac consectetur ac</a>
-			  <a class="list-group-item">Vestibulum at eros</a>
+			  
 			</div>
 			<div class="text-right row">
 				<div class="col-md-12">
@@ -162,27 +142,7 @@
 		  <div class="panel-body">
 			<div class="form-group">
 				<div class="list-group" id="quiz-answer">
-				  <a class="list-group-item active">
-					关键域:1.1 中长期规划（战略规划，Strategy Planning）
-				  </a>
-				  <a class="list-group-item">
-			        <p class="">关键变量：中长期规划（E：电子政务战略（eGov Strategy）eGov战略及应用的长期计划。）</p>
-					<label ><input type="radio" name="radio11" value="0">
-					0.Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" id="id11" value="1">
-					1.组织是否意识到eGov战略的重要性（在管理层展开讨论）？</label><br>
-					<label ><input type="radio" name="radio11" value="2">
-					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" value="3">
-					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" value="4">
-					Dapibus ac facilisis in</label><br>
-					<label ><input type="radio" name="radio11" value="5">
-					Dapibus ac facilisis in</label><br>
-				  </a>
-				  <a class="list-group-item">Morbi leo risus</a>
-				  <a class="list-group-item">Porta ac consectetur ac</a>
-				  <a class="list-group-item">Vestibulum at eros</a>
+				  
 				</div>
 				<div class="text-right row">
 					<div class="col-md-12">

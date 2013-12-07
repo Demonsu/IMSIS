@@ -63,6 +63,17 @@
 			echo $questionnaire->fetch_set_goal($_SESSION["USERID"],$_POST["quiz_id"]);
 		}		
 	}
+	if ($operation=="USERSETGOAL")
+	{
+		$goal_list=$_POST["goal_list"];
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->set_goal($_POST["quiz_id"],explode(';',$goal_list));
+		}			
+	}
 
 
 ?>
