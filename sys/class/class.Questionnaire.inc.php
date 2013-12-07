@@ -632,6 +632,17 @@ class Questionnaire extends DB_Connect {
 		
 	}
 	
+	public function check_goal_set($user_id,$quiz_id)
+	{
+		$sql="SELECT * FROM questionnaire_content WHERE user_id='".$user_id."' AND questionnaire_id='".$quiz_id."' AND state='1'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num>0)
+			return 0;
+		else
+			return 1;
+	}
+	
 }
 
 ?>

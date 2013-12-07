@@ -92,14 +92,14 @@ $(document).ready(function(){
 		var phpChar2 = '';
 		$(':text').each(function(){
 			if(this.id != 'quiz_id')
-				phpChar2 += this.id + ':' + this.val() + ';';
+				phpChar2 += this.id + ':' + this.value + ';';
 		});
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
-			data{
+			data:{
 				operation:'USERFINALSUBMIT',
-				quiz_id:$('#quiz_id').val()，
+				quiz_id:$('#quiz_id').val(),
 				answer_list:phpChar1,
 				goal_list:phpChar2
 				

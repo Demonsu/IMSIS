@@ -53,6 +53,16 @@
 			echo $questionnaire->answer_questionnaire_by_key_field($quiz_id,$answer_list);
 		}		
 	}
+	if ($operation=="CHECKGOALSET")//检查是否已经设置过目标
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->check_goal_set($_SESSION["USERID"],$_POST["quiz_id"]);
+		}			
+	}
 	if($operation=="FETCHTARGETQUESTIONNAIRE")//获取设置目标的界面
 	{
 		if (!isset($_SESSION["USERID"]))
@@ -85,7 +95,7 @@
 		}	
 		
 	}
-	if($operation=="USERFINALSUBMIT")
+	if($operation=="USERFINALSUBMIT")//提交
 	{
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -98,5 +108,6 @@
 			echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));			
 		}		
 	}
+	
 
 ?>
