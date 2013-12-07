@@ -39,7 +39,35 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('.collapse').collapse('hide');
+	$('#confirm-target').click({
+		var phpChar = '';
+		$('select').each(function(){
+			var id = this.id;
+			phpChar += id + ':' + this.value +';';
+		});
+		alert(phpChar);
+		$.ajax({
+			type:'POST',
+			url:'handle/quiz.php',
+			data:{
+				operation:'USERSETGOAL',
+				quiz_id:$('#quiz_id').val(),
+				goal_list:phpChar
+				
+			},
+			success:function(data){
+				if(data == 1){
+					hide();
+					$('#third').show();
+					$('#progressBar').css('width','80%');
+				}
+			}
+		});
+	});
+	
+	$('#submit-quiz').click({
+		
+	});
 	
 });
 
@@ -73,6 +101,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 }
 
 function ask_for_target(){
+	
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -83,6 +112,7 @@ function ask_for_target(){
 		success:function(data){
 			alert(data);
 			$('#target_select').html(data);
+			$('.collapse').collapse('hide');
 			
 		}
 	});
