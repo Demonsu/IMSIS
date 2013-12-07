@@ -90,7 +90,8 @@ $(document).ready(function(){
 		});
 		var phpChar2 = '';
 		$(':text').each(function(){
-			phpChar2 += this.id + ':' + this.val() + ';';
+			if(this.id != 'quiz_id')
+				phpChar2 += this.id + ':' + this.val() + ';';
 		});
 		$.ajax({
 			type:'POST',
@@ -103,7 +104,7 @@ $(document).ready(function(){
 				
 			},
 			sucess:function(data){
-				
+				window.location = 'statistics.php'+$('#quiz_id').val();
 			}
 		});
 		
