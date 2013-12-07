@@ -15,7 +15,6 @@ include_once '../sys/core/init.inc.php';
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/user_zone.js"></script>
 
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 
 </head>
 <body>
@@ -277,19 +276,17 @@ include_once '../sys/core/init.inc.php';
 							  <input type="text" class="form-control" id="inputTime" placeholder="输入您从事现任工作的时长">
 							</div>
 							<label class="control-label col-md-3" style="text-align:left;" id="errorTime"></label>
-						  </div>
-						  <div class="form-group">
+						</div>
+						<div class="form-group">
 							<label class="control-label col-md-3"><span style="color:#ff0000"></span>邮箱</label>
 							<div class="col-md-5">
 							  <input type="text" class="form-control" id="inputEmail" placeholder="输入您的邮箱">
 							</div>
 							<label class="control-label col-md-3" style="text-align:left;" id="errorEmail"></label>
-						  </div>
-							</div>
 						</div>
 						<div class="form-group">
 						<div class="col-md-8 text-right">
-							<button class="btn btn-success" id="btn-change-data">修改</div>
+							<button class="btn btn-success" id="btn-change-data">修改</button>
 						</div>
 						</div>
 					</div>
@@ -304,6 +301,7 @@ include_once '../sys/core/init.inc.php';
 	</div>
 </div>
 
+<?php include './include/footer.php'; ?>
 
 </div>
 </body>

@@ -56,6 +56,34 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	$('#btn-change-passwd').click(function(){
+		$.ajax{
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:'',
+				
+			},
+			success:function(data){
+			
+			}
+		}
+	});
+	
+	$('#btn-change-data').click(function(){
+		$.ajax{
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:'',
+				
+			},
+			success:function(data){
+			
+			}
+		}
+	});
 });
 
 function readpromise(){//显示承诺书
@@ -171,23 +199,26 @@ function change_data(){//修改用户资料
 	});
 }
 function deleteitem(t){
-	$.ajax({
-		type:'POST',
-		url:'handle/user_zone.php',
-		data:{
-			operation:'',
-			quiz_id:t.id
-		},
-		success:function(data){
-			alert(data);
-			if(data == 1){
-				t.hide();
+	var returnVal = window.confirm('执行操作后不可恢复，是否确定删除？','你确定要删除吗');
+	if(returnVal){
+		$.ajax({
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:'',
+				quiz_id:t.id
+			},
+			success:function(data){
+				alert(data);
+				if(data == 1){
+					t.hide();
+				}
+				else{
+					
+				}
 			}
-			else{
-				
-			}
-		}
-	});
+		});
+	}
 }
 function checkresult(t){
 	$.ajax({

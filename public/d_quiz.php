@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
-	<script style="text/javascript" src="./assets/js/quiz.js"></script>
-	<link rel="stylesheet" href="./assets/css/quiz.css">
+	<script style="text/javascript" src="./assets/js/d_quiz.js"></script>
+	<link rel="stylesheet" href="./assets/css/d_quiz.css">
 </head>
 <body>
 <div class="main">

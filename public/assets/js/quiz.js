@@ -1,6 +1,4 @@
-var step;
-$(document).ready(function(){
-	step = 0;	
+$(document).ready(function(){	
 	getprogress();//页面初始化操作
 	
 	
