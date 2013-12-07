@@ -541,7 +541,7 @@ class Questionnaire extends DB_Connect {
 	public function fetch_preview_questionnaire($user_id,$quiz_id)
 	{
 		$return_value="";
-		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s</a>';
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"><label>目标值:</label><input style="width:20px" type="text" id="%s" value="%s"/></div></a> ';
 		$KEYVARIABLEFORMAT='<a class="list-group-item">
 					<p class="">%s %s</p>
 						<label ><input type="radio" name="radio%s" value="1" >
@@ -556,6 +556,12 @@ class Questionnaire extends DB_Connect {
 						%s</label><br>
 						<label ><input type="radio" name="radio%s" value="0">
 						%s</label><br>
+						<script>
+							$(function(){
+								set_checked("radio%s",%s);	
+							});					
+						</script>
+	
 				  </a>';
 		//首先获取属于该用户的所有关键域
 		$sql="SELECT * FROM questionnaire_content WHERE user_id='".$user_id."' && questionnaire_id='".$quiz_id."'";
@@ -567,17 +573,63 @@ class Questionnaire extends DB_Connect {
 			$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 			$key_field_info=mysql_fetch_assoc($select);
-			$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"]);
+			$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"],$key_field_info["id"],$key_field["goal"]);
 			
 			//然后获取该关键域下的所有关键变量
 			$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."' AND available='1'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 			while ($key_variable=mysql_fetch_assoc($select))
 			{
-				$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解");
+				//获取关键变量的值
+				$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' AND key_variable_id='".$key_variable["id"]."'";
+				$answer_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				$answer=mysql_fetch_assoc($answer_select);
+				$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解",$key_variable["id"],$answer["answer"]);
 			}
 		}
 		return $return_value;		
+	}
+	public function user_final_submit($user_id,$quiz_id,$goal_list,$answer_list)
+	{
+		//首先修改预览后的答案
+		$currentdate=date("Y-m-d H:i:s",time());;
+		foreach($answer_list as $answer_item)
+		{
+			if ($answer_item!="")
+			{
+				$temp=explode(':',$answer_item);
+				$key_variable_id=$temp[0];
+				$answer=$temp[1];
+				$sql="UPDATE questionnaire_answer SET answer='".$answer."',answer_time='".$currentdate."' WHERE questionnaire_id='".$quiz_id."' AND key_variable_id='".$key_variable_id."'";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}		
+			}
+		} 
+		//然后修改目标得分
+		foreach($goal_list as $goal_item)
+		{
+			if ($goal_item!="")
+			{
+				$temp=explode(':',$goal_item);
+				$key_field_id=$temp[0];
+				$goal=$temp[1];		
+				$sql="UPDATE questionnaire_content SET goal='".$goal."' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}
+			}
+		}
+		//最后修改问卷的状态为2，表示已经提交了
+		$sql="UPDATE questionnaire SET state='2' WHERE id='".$quiz_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;	
+		
 	}
 	
 }

@@ -74,7 +74,7 @@
 			echo $questionnaire->set_goal($_POST["quiz_id"],explode(';',$goal_list));
 		}			
 	}
-	if ($operation="FETCHPREVIEWQUESTIONNAIRE")//获取预览问卷的页面
+	if ($operation=="FETCHPREVIEWQUESTIONNAIRE")//获取预览问卷的页面
 	{
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -85,6 +85,18 @@
 		}	
 		
 	}
-
+	if($operation=="USERFINALSUBMIT")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$quiz_id=$_POST["quiz_id"];
+			$goal_list=$_POST["goal_list"];
+			$answer_list=$_POST["answer_list"];
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));			
+		}		
+	}
 
 ?>
