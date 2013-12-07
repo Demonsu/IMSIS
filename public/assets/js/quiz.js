@@ -57,22 +57,7 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				if(data == 1){
-					$.ajax({
-						type:'POST',
-						url:'handle/quiz.php',
-						data:{
-							operation:'FETCHPREVIEWQUESTIONNAIRE',
-							quiz_id:$('#quiz_id').val()
-						},
-						success:function(data){
-							alert(data);
-							$('#target_select').html('');
-							$('#preview-quiz').html(data);
-							hide();
-							$('#third').show();
-							$('#progressBar').css('width','80%');
-						}
-					});
+					ask_for_preview();
 					
 				}
 			}
@@ -91,14 +76,14 @@ $(document).ready(function(){
 		var phpChar2 = '';
 		$(':text').each(function(){
 			if(this.id != 'quiz_id')
-				phpChar2 += this.id + ':' + this.val() + ';';
+				phpChar2 += this.id + ':' + this.value + ';';
 		});
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
 			data{
 				operation:'USERFINALSUBMIT',
-				quiz_id:$('#quiz_id').val()，
+				quiz_id:$('#quiz_id').val(),
 				answer_list:phpChar1,
 				goal_list:phpChar2
 				
@@ -111,7 +96,24 @@ $(document).ready(function(){
 	});
 	
 });
-
+function ask_for_preview(){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz.php',
+		data:{
+			operation:'FETCHPREVIEWQUESTIONNAIRE',
+			quiz_id:$('#quiz_id').val()
+		},
+		success:function(data){
+			alert(data);
+			$('#target_select').html('');
+			$('#preview-quiz').html(data);
+			hide();
+			$('#third').show();
+			$('#progressBar').css('width','80%');
+		}
+	});
+}	
 function set_checked(name,val){
 	$(':radio').each(function(){
 		if(this.value == val && this.name == name){
@@ -151,21 +153,36 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 }
 
 function ask_for_target(){
-	
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
 		data:{
-			operation:'FETCHTARGETQUESTIONNAIRE',
-			quiz_id:$('#quiz_id').val()
+			operation:'CHECKGOALSET',
+			quiz_id:$('#quiz_id').val();
 		},
 		success:function(data){
-			alert(data);
-			$('#target_select').html(data);
-			$('.collapse').collapse('hide');
-			
+			if(data == 1){
+				ask_for_preview();
+			}
+			else if(data == 0){
+				$.ajax({
+					type:'POST',
+					url:'handle/quiz.php',
+					data:{
+						operation:'FETCHTARGETQUESTIONNAIRE',
+						quiz_id:$('#quiz_id').val()
+					},
+					success:function(data){
+						alert(data);
+						$('#target_select').html(data);
+						$('.collapse').collapse('hide');
+					}
+				});
+			}
 		}
 	});
+	
+	
 }
 
 function get_key_field(t){//获取第一步右边的问卷
