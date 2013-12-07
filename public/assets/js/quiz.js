@@ -81,27 +81,34 @@ $(document).ready(function(){
 	});
 	
 	$('#submit-quiz').click(function(){
-	/*
-		var phpChar = '';
+	
+		var phpChar1 = '';
 		$(':radio').each(function(){
 			if(this.checked){
 				var name = this.name;
-				phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
+				phpChar1 += (name.substr(5,name.length) + ':' + this.value + ';');
 			}
+		});
+		var phpChar2 = '';
+		$(':text').each(function(){
+			if(this.id != 'quiz_id')
+				phpChar2 += this.id + ':' + this.val() + ';';
 		});
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
 			data{
-				operation:'',
+				operation:'USERFINALSUBMIT',
 				quiz_id:$('#quiz_id').val()，
+				answer_list:phpChar1,
+				goal_list:phpChar2
 				
 			},
 			sucess:function(data){
-				
+				window.location = 'statistics.php'+$('#quiz_id').val();
 			}
 		});
-		*/
+		
 	});
 	
 });
