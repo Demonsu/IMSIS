@@ -58,7 +58,7 @@ $(document).ready(function(){
 	});
 	
 	$('#btn-change-passwd').click(function(){
-		$.ajax{
+		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
@@ -68,11 +68,11 @@ $(document).ready(function(){
 			success:function(data){
 			
 			}
-		}
+		});
 	});
 	
 	$('#btn-change-data').click(function(){
-		$.ajax{
+		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
@@ -82,7 +82,7 @@ $(document).ready(function(){
 			success:function(data){
 			
 			}
-		}
+		});
 	});
 });
 

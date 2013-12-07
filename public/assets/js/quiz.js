@@ -39,7 +39,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#confirm-target').click({
+	$('#confirm-target').click(function(){
 		var phpChar = '';
 		$('select').each(function(){
 			var id = this.id;
@@ -65,7 +65,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#submit-quiz').click({
+	$('#submit-quiz').click(function(){
 		
 	});
 	
