@@ -150,7 +150,7 @@ class Questionnaire extends DB_Connect {
 		return $id;//创建成功
 		
 	}
-	public function check_department_questionnaire($user_id)
+	public function check_department_questionnaire($user_id)//检测同单位是否已经有问卷了
 	{
 		
 		$sql="SELECT * FROM user WHERE id='".$user_id."'";
@@ -537,6 +537,47 @@ class Questionnaire extends DB_Connect {
 			}
 		}
 		return 1;
+	}
+	public function fetch_preview_questionnaire($user_id,$quiz_id)
+	{
+		$return_value="";
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s</a>';
+		$KEYVARIABLEFORMAT='<a class="list-group-item">
+					<p class="">%s %s</p>
+						<label ><input type="radio" name="radio%s" value="1" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="2">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="3" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="4">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="5">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="0">
+						%s</label><br>
+				  </a>';
+		//首先获取属于该用户的所有关键域
+		$sql="SELECT * FROM questionnaire_content WHERE user_id='".$user_id."' && questionnaire_id='".$quiz_id."'";
+		$key_field_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($key_field=mysql_fetch_assoc($key_field_select))
+		{
+			$key_field_id=$key_field["key_field_id"];
+			//首先获取关键域的信息
+			$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$key_field_info=mysql_fetch_assoc($select);
+			$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"]);
+			
+			//然后获取该关键域下的所有关键变量
+			$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."' AND available='1'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			while ($key_variable=mysql_fetch_assoc($select))
+			{
+				$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解");
+			}
+		}
+		return $return_value;		
 	}
 	
 }

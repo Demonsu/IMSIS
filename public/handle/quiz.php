@@ -11,7 +11,7 @@
 	$_BASE_PATH="../../";
 	include_once '../../sys/core/init.inc.php';
 	$operation=$_POST["operation"];
-	if ($operation=="FETCHQUIZPROCESS")
+	if ($operation=="FETCHQUIZPROCESS")//获取问卷进度
 	{
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -24,12 +24,12 @@
 		}
 	}
 	
-	if ($operation=="FETCHKEYVARIABLE")
+	if ($operation=="FETCHKEYVARIABLE")//获取一个关键域下的所有题目
 	{
 		$questionnaire=new Questionnaire();
 		echo $questionnaire->fetch_key_variable($_POST["key_field_id"]);
 	}
-	if ($operation=="ANSERQUESTIONNAIRE")
+	if ($operation=="ANSERQUESTIONNAIRE")//回答一个关键域
 	{	
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -53,7 +53,7 @@
 			echo $questionnaire->answer_questionnaire_by_key_field($quiz_id,$answer_list);
 		}		
 	}
-	if($operation=="FETCHTARGETQUESTIONNAIRE")
+	if($operation=="FETCHTARGETQUESTIONNAIRE")//获取设置目标的界面
 	{
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -63,7 +63,7 @@
 			echo $questionnaire->fetch_set_goal($_SESSION["USERID"],$_POST["quiz_id"]);
 		}		
 	}
-	if ($operation=="USERSETGOAL")
+	if ($operation=="USERSETGOAL")//设置目标
 	{
 		$goal_list=$_POST["goal_list"];
 		if (!isset($_SESSION["USERID"]))
@@ -73,6 +73,17 @@
 			$questionnaire=new Questionnaire();
 			echo $questionnaire->set_goal($_POST["quiz_id"],explode(';',$goal_list));
 		}			
+	}
+	if ($operation="FETCHPREVIEWQUESTIONNAIRE")//获取预览问卷的页面
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->fetch_preview_questionnaire($_SESSION["USERID"],$_POST["quiz_id"]);
+		}	
+		
 	}
 
 
