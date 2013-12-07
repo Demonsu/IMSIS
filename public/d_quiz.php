@@ -132,7 +132,8 @@
 <div class="row" id="first">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
-		<h3 class="panel-title">请仔细阅读承诺书</h3>
+		<h3 class="panel-title">请仔细阅读承诺书
+		</h3>
 	  </div>
 	  <div class="panel-body">
 	  

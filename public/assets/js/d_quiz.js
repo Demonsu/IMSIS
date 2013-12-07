@@ -31,7 +31,6 @@ $(document).ready(function(){
 		$('#progressBar').css('width','100%');
 	});
 });
-
 function hide(){
 	$('#first').hide();
 	$('#second').hide();

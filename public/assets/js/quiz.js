@@ -105,6 +105,14 @@ $(document).ready(function(){
 	
 });
 
+function set_checked(name,val){
+	$(':radio').each(function(){
+		if(this.value == val && this.name == name){
+			this.checked = true;
+		}
+	});
+}
+
 function getprogress(){//获取第一步左边的进度表，调用函数获取问卷
 	$.ajax({
 		type:'POST',
