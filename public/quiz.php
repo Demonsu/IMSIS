@@ -76,6 +76,11 @@
 				  </div>
 			  </a>
 			</div>
+			<div class="text-right row">
+				<div class="col-md-12">
+					<button class="btn btn-success" id="confirm-target">确定</button>
+				</div>
+			</div>
 		</div>
 	  </div>
 	</div>
@@ -126,11 +131,7 @@
 			  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
 			  <a href="#" class="list-group-item">Vestibulum at eros</a>
 			</div>
-			<div class="text-right row">
-				<div class="col-md-12">
-					<button class="btn btn-success" id="confirm-target">确定</button>
-				</div>
-			</div>
+			
 		  </div>
 		</div>
 	</div>
