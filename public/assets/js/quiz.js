@@ -85,7 +85,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
-			data{
+			data:{
 				operation:'USERFINALSUBMIT',
 				quiz_id:$('#quiz_id').val(),
 				answer_list:phpChar1,
@@ -109,7 +109,7 @@ function ask_for_preview(){
 			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
-			alert(data);
+			//alert(data);
 			$('#target_select').html('');
 			$('#preview-quiz').html(data);
 			hide();
@@ -144,7 +144,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				ask_for_target();
 			}
 			else{
-				alert(data);
+				//alert(data);
 				hide();
 				$('#first').show();
 				$('#quiz-progress').html(data);
@@ -177,7 +177,7 @@ function ask_for_target(){
 						quiz_id:$('#quiz_id').val()
 					},
 					success:function(data){
-						alert(data);
+						//alert(data);
 						$('#target_select').html(data);
 						$('.collapse').collapse('hide');
 					}

@@ -22,7 +22,23 @@
 <input type="text" style="display:none" id="quiz_id" value="<?php echo $quiz_id; ?>" />
 <?php include 'include/header.php'; ?>
 
+<div class="row">
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs">
+	  <li><a href="#home" data-toggle="tab">Home</a></li>
+	  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+	  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+	  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+	</ul>
 
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="home">1</div>
+	  <div class="tab-pane" id="profile">2</div>
+	  <div class="tab-pane" id="messages">3</div>
+	  <div class="tab-pane" id="settings">4</div>
+	</div>
+</div>
 
 <?php include 'include/footer.php'; ?>
 
