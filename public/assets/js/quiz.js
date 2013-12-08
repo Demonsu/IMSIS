@@ -75,6 +75,10 @@ $(document).ready(function(){
 		});
 		var phpChar2 = '';
 		$(':text').each(function(){
+			if(this.value > 5 || this.value < 1 || isNaN(this.value)){
+				alert('目标值限定在1~5之间');
+				return;
+			}
 			if(this.id != 'quiz_id')
 				phpChar2 += this.id + ':' + this.value + ';';
 		});
@@ -88,8 +92,8 @@ $(document).ready(function(){
 				goal_list:phpChar2
 				
 			},
-			sucess:function(data){
-				window.location = 'statistics.php'+$('#quiz_id').val();
+			success:function(data){
+				window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
 			}
 		});
 		
@@ -158,7 +162,7 @@ function ask_for_target(){
 		url:'handle/quiz.php',
 		data:{
 			operation:'CHECKGOALSET',
-			quiz_id:$('#quiz_id').val();
+			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
 			if(data == 1){

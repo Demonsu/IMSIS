@@ -36,26 +36,7 @@ $(document).ready(function(){
 		depart_test();
 	});
 	
-	$(":checkbox").change(function(){//联合checkbox的改动
-		if(this.id.length == 4 && this.checked){
-			var id = this.id;
-			$(':checkbox').each(function(){
-				var id2 = this.id;
-				if(id2.substr(0,4) == id){
-					this.checked = true;
-				}
-			});
-		}
-		if(this.id.length == 5 && !this.checked){
-			var id = this.id;
-			$(':checkbox').each(function(){
-				var id2 = this.id;
-				if(id2 == id.substr(0,4)){
-					this.checked = false;
-				}
-			});
-		}
-	});
+	
 	
 	$('#btn-change-passwd').click(function(){
 		$.ajax({
@@ -101,6 +82,35 @@ function user_test(){
 			hide();
 			$('#field-select').html(data);
 			$('#select-quiz').show();
+			$(":checkbox").change(function(){//联合checkbox的改动
+				if(this.id.length == 4 && this.checked){
+					var id = this.id;
+					$(':checkbox').each(function(){
+						var id2 = this.id;
+						if(id2.substr(0,4) == id){
+							this.checked = true;
+						}
+					});
+				}
+				else if(this.id.length == 4 && !this.checked){
+					var id = this.id;
+					$(':checkbox').each(function(){
+						var id2 = this.id;
+						if(id2.substr(0,4) == id){
+							this.checked = false;
+						}
+					});
+				}
+				else if(this.id.length == 5 && !this.checked){
+					var id = this.id;
+					$(':checkbox').each(function(){
+						var id2 = this.id;
+						if(id2 == id.substr(0,4)){
+							this.checked = false;
+						}
+					});
+				}
+			});
 		}
 	});
 }

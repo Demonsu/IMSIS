@@ -158,7 +158,7 @@
 
 
 
-<?php echo 'include/footer.php'; ?>
+<?php include 'include/footer.php'; ?>
 
 </div>
 
