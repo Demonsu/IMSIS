@@ -14,7 +14,6 @@ $(document).ready(function(){
 				phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
 			}
 		});
-		alert(phpChar+' '+checkedNum +" "+varNum);
 		if(checkedNum * 6 < varNum){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
@@ -28,7 +27,7 @@ $(document).ready(function(){
 					answer:phpChar
 				},
 				success:function(data){
-					alert(data);
+					//alert(data);
 					if(data == 1){
 						getprogress();
 					}
@@ -46,7 +45,7 @@ $(document).ready(function(){
 			var id = this.id;
 			phpChar += id + ':' + this.value +';';
 		});
-		alert(phpChar);
+		//alert(phpChar);
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -76,10 +75,13 @@ $(document).ready(function(){
 		});
 		var phpChar2 = '';
 		$(':text').each(function(){
+			if(this.value > 5 || this.value < 1 || isNaN(this.value)){
+				alert('目标值限定在1~5之间');
+				return;
+			}
 			if(this.id != 'quiz_id')
 				phpChar2 += this.id + ':' + this.value + ';';
 		});
-		//alert("!");
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -88,10 +90,10 @@ $(document).ready(function(){
 				quiz_id:$('#quiz_id').val(),
 				answer_list:phpChar1,
 				goal_list:phpChar2
+				
 			},
 			success:function(data){
-				//alert(data);
-				window.location = 'statistics.php?quiz_id='+$('#quiz_id').val();
+				window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
 			}
 		});
 		
@@ -107,7 +109,7 @@ function ask_for_preview(){
 			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
-			alert(data);
+			//alert(data);
 			$('#target_select').html('');
 			$('#preview-quiz').html(data);
 			hide();
@@ -175,7 +177,7 @@ function ask_for_target(){
 						quiz_id:$('#quiz_id').val()
 					},
 					success:function(data){
-						alert(data);
+						//alert(data);
 						$('#target_select').html(data);
 						$('.collapse').collapse('hide');
 					}
@@ -197,7 +199,7 @@ function get_key_field(t){//获取第一步右边的问卷
 			key_field_id:id	
 		},
 		success:function(data){
-			//alert(data);
+			//	(data);
 			$('#quiz-answer').html(data);
 		}
 	});
