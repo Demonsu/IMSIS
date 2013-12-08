@@ -225,7 +225,7 @@ function deleteitem(t,no){
 			},
 			success:function(data){
 				if(data == 1){
-					alert('删除成功')
+					alert('删除成功');
 					t.parentNode.hide();
 					if(no == 1)
 						c_list();

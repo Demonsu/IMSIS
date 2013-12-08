@@ -185,9 +185,7 @@ function ask_for_target(){
 				});
 			}
 		}
-	});
-	
-	
+	});	
 }
 
 function get_key_field(t){//获取第一步右边的问卷
