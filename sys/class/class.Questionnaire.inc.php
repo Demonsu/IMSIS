@@ -266,7 +266,7 @@ class Questionnaire extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		$user_info=mysql_fetch_assoc($select);	
 		//查找单位的问卷
-		$sql="SELECT * FROM questionnaire q, user u WHERE
+		$sql="SELECT q.* FROM questionnaire q, user u WHERE
 			u.province='".$user_info["province"]."' AND
 			u.city='".$user_info["city"]."' AND
 			u.department='".$user_info["department"]."' AND
