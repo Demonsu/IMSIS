@@ -105,7 +105,10 @@
 			$goal_list=$_POST["goal_list"];
 			$answer_list=$_POST["answer_list"];
 			$questionnaire=new Questionnaire();
-			echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));			
+			if (isset($_POST["is_public"]))
+				echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list),1);
+			else
+				echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));			
 		}		
 	}
 	

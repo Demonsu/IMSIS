@@ -41,7 +41,7 @@ class Questionnaire extends DB_Connect {
 		else
 		{
 			//再检查下有没有尚未被人选择过的问卷
-			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id=''";
+			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='DEFAULTNULL'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 			$num=mysql_num_rows($select);		
 			if ($num==0)
@@ -66,9 +66,9 @@ class Questionnaire extends DB_Connect {
 		$return_value="";
 		$EFFECTFORMAT='<a class="list-group-item active"><input type="checkbox" id="%s" value="%s">%s</a>';
 	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
-		$KEYUNDOFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" selected> %s</a>';
-		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><input type="checkbox" id="%s" value="%s" selected> %s</a>';
-		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><input type="checkbox" id="%s" value="%s" selected disabled> %s</a>';
+		$KEYUNDOFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
+		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
+		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><input type="checkbox" id="%s" value="%s" checked disabled> %s</a>';
 		//获取所有的作用域
 		$sql="SELECT * FROM effect_field";
 		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -77,13 +77,16 @@ class Questionnaire extends DB_Connect {
 		{
 			$return_value=$return_value.sprintf($EFFECTFORMAT,"box".$effect_index,$effect_result["id"],$effect_result["name"]);
 			$key_index=1;
+			//选取该作用域下所有的关键域
 			$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_result["id"]."' AND available='1'";
 			$key_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 			while ($key_result=mysql_fetch_assoc($key_select))
 			{
+				//对于每个关键域，获取在问卷中的信息
 				$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_result["id"]."'";
-				$questionnaire_content_info=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-				if ($questionnaire_content_info["user_id"]="")//该关键域尚未作答
+				$questionnaire_content_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				$questionnaire_content_info=mysql_fetch_assoc($questionnaire_content_select);
+				if ($questionnaire_content_info["user_id"]=="DEFAULTNULL")//该关键域尚未作答
 				{
 					$return_value=$return_value.sprintf($KEYFORMAT,"box".$effect_index.$key_index,$key_result["id"],$key_result["name"]);//可选
 				}else
@@ -164,11 +167,11 @@ class Questionnaire extends DB_Connect {
 			{
 				$sql="INSERT INTO questionnaire_content
 				(
-					key_field_id,questionnaire_id,state
+					key_field_id,questionnaire_id,state,user_id
 				)
 				VALUES
 				(
-					'".$result["id"]."','".$id."','0'
+					'".$result["id"]."','".$id."','0','DEFAULTNULL'
 				)
 				";
 				if (!mysql_query($sql,$this->root_conn))
@@ -276,7 +279,7 @@ class Questionnaire extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($result=mysql_fetch_assoc($select))
 		{
-			if ($result["state"]==0)
+			if ($result["state"]!='2')
 			{
 				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
 			}else
@@ -653,7 +656,7 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;		
 	}
-	public function user_final_submit($user_id,$quiz_id,$goal_list,$answer_list)
+	public function user_final_submit($user_id,$quiz_id,$goal_list,$answer_list,$is_public=0)
 	{
 		//首先修改预览后的答案
 		$currentdate=date("Y-m-d H:i:s",time());;
@@ -687,11 +690,28 @@ class Questionnaire extends DB_Connect {
 			}
 		}
 		//最后修改问卷的状态为2，表示已经提交了
-		$sql="UPDATE questionnaire SET state='2' WHERE id='".$quiz_id."'";
-		if (!mysql_query($sql,$this->root_conn))
+		if ($is_public==0)//如果是个人问卷
 		{
-		  die('Error: ' . mysql_error());
-		}		
+			$sql="UPDATE questionnaire SET state='2' WHERE id='".$quiz_id."'";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}		
+		}else
+		{
+			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND state!='2'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$num=mysql_num_rows($select);
+			if ($num==0)//全部填完了
+			{
+				$sql="UPDATE questionnaire SET state='2' WHERE id='".$quiz_id."'";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}					
+			}
+			
+		}
 		return 1;
 		
 	}

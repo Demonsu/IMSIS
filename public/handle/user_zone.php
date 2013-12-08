@@ -103,14 +103,14 @@
 	}
 	if ($operation=="USERSUBMITDEPARTMENTREQUEST")//用户提交选择的关键域
 	{
-		$key_field_list=$_POST["key_field_list"];
+		$key_field_list=explode(';',$_POST["key_field_list"]);
 		
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
 		else
 		{		
 			$questionnaire=new Questionnaire();
-			echo $questionnaire->fetch_department_questionnaire($_SESSION["USERID"],$_POST["quiz_id"]);
+			echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list);
 		}			
 	}
 	
