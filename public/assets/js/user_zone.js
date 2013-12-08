@@ -128,9 +128,14 @@ function doremark(){//单位测评创建时提示
 					hide();
 					$('#enter-remark').show();
 				}
+				else{
+					d_list();
+				}
 			}
-			else if(data != 0){
-				alert(data);
+			else if(data == 0){
+				hide();
+				$('#enter-remark').show();
+				//alert(data);
 			}
 		}
 	});
@@ -147,7 +152,7 @@ function depart_test(){
 		success:function(data){
 			if(!isNaN(data)){
 				alert('创建成功，请到我的测评中的单位测评中进行测评');
-				$('#depart_quiz').click();
+				d_list();
 			}
 			else{
 				alert(data);
@@ -215,16 +220,16 @@ function deleteitem(t){
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
-				operation:'',
+				operation:'DELETEQUESTIONNAIRE',
 				quiz_id:t.parentNode.id
 			},
 			success:function(data){
-				alert(data);
 				if(data == 1){
+					alert('删除成功')
 					t.hide();
 				}
 				else{
-					
+					alert(data);
 				}
 			}
 		});

@@ -197,7 +197,7 @@ function get_key_field(t){//获取第一步右边的问卷
 		url:'handle/quiz.php',
 		data:{
 			operation:'FETCHKEYVARIABLE',
-			key_field_id:id	
+			key_field_id:id
 		},
 		success:function(data){
 			//	(data);
