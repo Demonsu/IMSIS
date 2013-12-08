@@ -27,7 +27,7 @@ $(document).ready(function(){
 					answer:phpChar
 				},
 				success:function(data){
-					alert(data);
+					//alert(data);
 					if(data == 1){
 						getprogress();
 					}
@@ -45,7 +45,7 @@ $(document).ready(function(){
 			var id = this.id;
 			phpChar += id + ':' + this.value +';';
 		});
-		alert(phpChar);
+		//alert(phpChar);
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -199,7 +199,7 @@ function get_key_field(t){//获取第一步右边的问卷
 			key_field_id:id	
 		},
 		success:function(data){
-			alert(data);
+			//	(data);
 			$('#quiz-answer').html(data);
 		}
 	});
