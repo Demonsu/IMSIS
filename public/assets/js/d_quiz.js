@@ -17,6 +17,7 @@ $(document).ready(function(){
 							quiz_id:$('#quiz_id').val()
 						},
 						success:function(data){
+							alert(data);
 							$('#field-select').html(data);
 							hide();
 							$('#second').show();
