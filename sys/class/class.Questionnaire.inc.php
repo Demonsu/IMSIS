@@ -30,6 +30,37 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;
 	}
+	public function check_if_still_have_my_business($user_id,$quiz_id)//查看单位问卷是不是还有我的事情
+	{
+		//先看看有没有我没答完的问卷
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state!='2'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num>0)
+			return 0;
+		else
+		{
+			//再检查下有没有尚未被人选择过的问卷
+			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id=''";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$num=mysql_num_rows($select);		
+			if ($num==0)
+				return 1;
+			else return 0;	
+		}
+	}
+	public function user_submit_key_field($user_id,$quiz_id,$key_field_list)//用户提交所选的单位评测的关键域
+	{
+		foreach($key_field_list as $key_field_id)
+		{
+			$sql="UPDATE questionnaire_content SET user_id='".$user_id."' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}			
+		}
+		return 1;
+	}
 	public function fetch_department_questionnaire($user_id,$quiz_id)//获取单位评测的问卷
 	{
 		$return_value="";
@@ -255,7 +286,7 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;
 	}
-	public function fetch_quiz_process($user_id,$quiz_id)
+	public function fetch_quiz_process($user_id,$quiz_id)//获取用户测评的进度，问卷页面左半边
 	{
 		/*
 		$record_list[] = array(
@@ -346,12 +377,10 @@ class Questionnaire extends DB_Connect {
 			}
 			$return_value=$return_value.'</div>';
 		}
-
 		return $return_value;	
-	
 	}
 	
-	public function fetch_key_variable($key_field_id)
+	public function fetch_key_variable($key_field_id)//根据关键域获取关键变量的问卷
 	{
 		/*
 		<a class="list-group-item active">
@@ -406,7 +435,7 @@ class Questionnaire extends DB_Connect {
 		return $return_value;
 	}
 	
-	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)
+	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)//回答问卷
 	{
 		//首先插入答案
 		$currenttime=date("Y-m-d H:i:s",time());
