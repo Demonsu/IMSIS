@@ -213,7 +213,7 @@ function change_data(){//修改用户资料
 		
 	});
 }
-function deleteitem(t){
+function deleteitem(t,no){
 	var returnVal = window.confirm('执行操作后不可恢复，是否确定删除？','你确定要删除吗');
 	if(returnVal){
 		$.ajax({
@@ -226,7 +226,13 @@ function deleteitem(t){
 			success:function(data){
 				if(data == 1){
 					alert('删除成功')
-					t.hide();
+					t.parentNode.hide();
+					if(no == 1)
+						c_list();
+					if(no == 2)
+						nc_list();
+					if(no == 3)
+						d_list();
 				}
 				else{
 					alert(data);
