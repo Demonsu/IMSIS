@@ -176,8 +176,8 @@ class Questionnaire extends DB_Connect {
 	}
 	public function fetch_user_questionnaire_list($user_id,$state)//获取用户的测评列表
 	{
-		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
-		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
+		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,1)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
+		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,2)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
 		$return_value="";
 		if ($state==0)
 			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_id."' AND state!='2' AND is_public='0'  ";
@@ -198,20 +198,27 @@ class Questionnaire extends DB_Connect {
 	}
 	public function delete_questionnaire($user_id,$quiz_id)//删除个人问卷
 	{
-		$sql="DELETE FROM questionnaire WHERE id='".$quiz_id."' AND user_id='".$user_id."'";
+		$sql="SELECT * FROM questionnaire WHERE id='".$quiz_id."' AND user_id='".$user_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-		if (mysql_affected_rows($select)>0)
+		if (mysql_num_rows($select)>0)
 		{
-			$sql="DELETE FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."'";
+			$sql="DELETE FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."'";//首先删除答案
 			if (!mysql_query($sql,$this->root_conn))
 			{
 			  die('Error: ' . mysql_error());
 			}
-			$sql="DELETE FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."'";
+			$sql="DELETE FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."'";//删除问卷内容
 			if (!mysql_query($sql,$this->root_conn))
 			{
 			  die('Error: ' . mysql_error());
 			}
+			$sql="DELETE FROM questionnaire WHERE id='".$quiz_id."' AND user_id='".$user_id."'";//删除问卷本身
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}			
+
+
 			return 1;
 		}else
 		{
@@ -220,8 +227,8 @@ class Questionnaire extends DB_Connect {
 	}
 	public function fetch_department_questionnaire_list($user_id)//获取单位评测的列表
 	{
-		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="d_continue(this)">继续填写</span>%s</a>';
-		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';	
+		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="d_continue(this)">继续填写</span>%s</a>';
+		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';	
 		$return_value="";
 		//首先获取用户的个人信息
 		$sql="SELECT * FROM user WHERE id='".$user_id."'";
