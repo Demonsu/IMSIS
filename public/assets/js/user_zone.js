@@ -216,7 +216,7 @@ function deleteitem(t){
 			url:'handle/user_zone.php',
 			data:{
 				operation:'',
-				quiz_id:t.parent.id
+				quiz_id:t.parentNode.id
 			},
 			success:function(data){
 				alert(data);
@@ -241,7 +241,7 @@ function checkresult(t){
 		success:function(data){
 			alert(data);
 			if(data == 1){
-				window.location = 'check_quiz.php?quiz_id=' + t.parent().id;
+				window.location = 'check_quiz.php?quiz_id=' + t.parentNode.id;
 			}
 			else{
 			
@@ -250,10 +250,10 @@ function checkresult(t){
 	});
 }
 function u_continue(t){
-	window.location = 'quiz.php?quiz_id='+t.parent().id;
+	window.location = 'quiz.php?quiz_id='+t.parentNode.id;
 }
 function d_continue(t){
-	window.location = 'd_quiz.php?quiz_id='+t.parent().id;
+	window.location = 'd_quiz.php?quiz_id='+t.parentNode.id;
 }
 
 function hide(){//隐藏函数
