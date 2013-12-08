@@ -628,7 +628,7 @@ class Questionnaire extends DB_Connect {
 		{
 		  die('Error: ' . mysql_error());
 		}		
-		return 1;	
+		return 1;
 		
 	}
 	

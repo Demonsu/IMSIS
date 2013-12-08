@@ -79,6 +79,7 @@ $(document).ready(function(){
 			if(this.id != 'quiz_id')
 				phpChar2 += this.id + ':' + this.value + ';';
 		});
+		//alert("!");
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -87,10 +88,10 @@ $(document).ready(function(){
 				quiz_id:$('#quiz_id').val(),
 				answer_list:phpChar1,
 				goal_list:phpChar2
-				
 			},
-			sucess:function(data){
-				window.location = 'statistics.php'+$('#quiz_id').val();
+			success:function(data){
+				//alert(data);
+				window.location = 'statistics.php?quiz_id='+$('#quiz_id').val();
 			}
 		});
 		
@@ -159,7 +160,7 @@ function ask_for_target(){
 		url:'handle/quiz.php',
 		data:{
 			operation:'CHECKGOALSET',
-			quiz_id:$('#quiz_id').val();
+			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
 			if(data == 1){
