@@ -70,7 +70,16 @@
 			$questionnaire=new Questionnaire();
 			echo $questionnaire->fetch_department_questionnaire_list($_SESSION["USERID"]);
 		}
-		
+	}
+	if ($operation=="DELETEQUESTIONNAIRE")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{	
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->delete_questionnaire($_SESSION["USERID"],$_POST["quiz_id"]);
+		}		
 	}
 
 ?>

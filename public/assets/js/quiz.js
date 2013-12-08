@@ -75,13 +75,13 @@ $(document).ready(function(){
 		});
 		var phpChar2 = '';
 		$(':text').each(function(){
-			alert(this.value);
-			if(this.value > 5 || this.value < 1 || isNaN(this.value)){
-				alert('目标值限定在1~5之间');
-				return;
-			}
-			if(this.id != 'quiz_id')
+			if(this.id != 'quiz_id'){
+				if(this.value > 5 || this.value < 1 || isNaN(this.value) || this.value.length != 1){
+					alert('目标值限定在1~5之间');
+					return;
+				}
 				phpChar2 += this.id + ':' + this.value + ';';
+			}
 		});
 		$.ajax({
 			type:'POST',
