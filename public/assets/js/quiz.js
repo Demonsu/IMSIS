@@ -75,7 +75,7 @@ $(document).ready(function(){
 		});
 		var phpChar2 = '';
 		$(':text').each(function(){
-			if(this.value > 5 || this.value < 1 || isNaN(this.value)){
+			if(this.id != 'quiz_id' && (this.value > 5 || this.value < 1 || isNaN(this.value))){
 				alert('目标值限定在1~5之间');
 				return;
 			}
