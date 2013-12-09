@@ -96,7 +96,8 @@ class Quiz extends DB_Connect
 				}
 				$effect_field->key_field_list[]=$key_field;	
 			}
-			$effect_field->score=$key_field_total_score/$key_field_num;
+			if ($key_field_num!=0)
+				$effect_field->score=$key_field_total_score/$key_field_num;
 			$this->effect_field_list[]=$effect_field;
 			
 		}
@@ -105,7 +106,9 @@ class Quiz extends DB_Connect
 	}
 	
 }
-
+function create_folders($dir){ 
+	   return is_dir($dir) or (create_folders(dirname($dir)) and mkdir($dir, 0777)); 
+}
 class Statistics extends DB_Connect {
 	
 	public function __construct(){
@@ -130,6 +133,7 @@ class Statistics extends DB_Connect {
 			}
 		}
 	}
+
 	public function table1_CVs($quiz_id)
 	{
 		$quiz=new Quiz();
@@ -187,7 +191,13 @@ class Statistics extends DB_Connect {
 			$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field,$effect_field->score);
 			
 		}
-		return sprintf($RETURNFORMAT,$all_effect_field);
+		$jsondata= sprintf($RETURNFORMAT,$all_effect_field);
+		$dir='../statistics/'.date("Ymd",time()).'/'.$quiz_id;
+		$result=create_folders($dir); 
+		$handle = fopen($dir.'/table1.json', "w ");
+		fwrite($handle,$jsondata);
+		fclose($handle);
+		
 	}
 	
 	public function table2_KVs($quiz_id)

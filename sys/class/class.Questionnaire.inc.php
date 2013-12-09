@@ -701,7 +701,8 @@ class Questionnaire extends DB_Connect {
 			if (!mysql_query($sql,$this->root_conn))
 			{
 			  die('Error: ' . mysql_error());
-			}		
+			}
+			return 1;		
 		}else
 		{
 			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND state!='2'";
@@ -713,11 +714,12 @@ class Questionnaire extends DB_Connect {
 				if (!mysql_query($sql,$this->root_conn))
 				{
 				  die('Error: ' . mysql_error());
-				}					
+				}
+				return 1;					
 			}
 			
 		}
-		return 1;
+		return 0;
 		
 	}
 	
