@@ -28,8 +28,9 @@ $(document).ready(function(){
 				data:{
 					operation:'FETCHCITY',
 					province:select1
-				}
+				},
 				success:function(data){
+					$('#select2').html('');
 					$('#select2').append(data);
 				}
 			});

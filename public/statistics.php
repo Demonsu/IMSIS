@@ -15,6 +15,8 @@
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/statistics.js"></script>
+	<script style="text/javascript" src="assets/plugin/highcharts/js/highcharts.js"></script>
+	<script style="text/javascript" src="assets/plugin/highcharts/js/modules/exporting.js"></script>
 	<link rel="stylesheet" href="./assets/css/statistics.css">
 </head>
 <body>
@@ -42,8 +44,19 @@
 	</ul>
 	<!-- Tab panes -->
 	<div class="tab-content">
-	  <div class="tab-pane active" id="tab-div1">1</div>
-	  <div class="tab-pane" id="tab-div2">2</div>
+	  <div class="tab-pane" id="tab-div1">
+		
+	  </div>
+	  <div class="tab-pane" id="tab-div2">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t2">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p2">
+
+		</div>
+	  </div>
 	  <div class="tab-pane" id="tab-div3">3</div>
 	  <div class="tab-pane" id="tab-div4">4</div>
 	  <div class="tab-pane" id="tab-div5">5</div>
