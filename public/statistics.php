@@ -27,8 +27,11 @@
 <div class="row">
 	<!-- Nav tabs -->
 	<div class="row">
-	<div style="width:900px;overflow:hidden">
-	<div style="width:10000px" id="side-left">
+	<div style="float:left;width:60px">
+		<button id="nav-left" class="btn btn-default glyphicon glyphicon-chevron-left" style="width:35px;margin:5px 10px 0 15px"></button>
+	</div>
+	<div style="float:left;width:900px;overflow:hidden;">
+	<div style="width:10000px;float:left;" id="side-left">
 	<ul class="nav nav-tabs">
 	  <li><a href="#tab-div1" id="tab1" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键变量（CVs）得分表">#1关键变量（CVs）得分表</a></li>
 	  <li><a href="#tab-div2" id="tab2" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键变量统计分布">#2关键变量统计分布</a></li>
@@ -48,8 +51,7 @@
 	</div>
 	</div>
 	<div style="width:60px;float:left">
-		<span class="glyphicon glyphicon-chevron-left"></span>
-		<span class="glyphicon glyphicon-chevron-right"></span>
+		<button id="nav-right" class="btn btn-default glyphicon glyphicon-chevron-right" style="width:35px;margin:5px 15px 0 10px"></button>
 	</div>
 	</div>
 	<!-- Tab panes -->

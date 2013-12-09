@@ -1,3 +1,4 @@
+var tab_id = 0;
 $(document).ready(function(){
 	//第一张表
 	/*
@@ -7,13 +8,22 @@ $(document).ready(function(){
 		</table>
 		</div>
 	*/
+	$('#nav-right').click(function(){
+		if(tab_id < 18 ){
+			$('#side-left').animate({marginLeft:'-=100px'},500);
+			tab_id++;
+		}
+	});
+	$('#nav-left').click(function(){
+		if(tab_id > 0){
+			$('#side-left').animate({marginLeft:'+=100px'},500);
+			tab_id--;
+		}
+	});
+	/*
 	$.ajax({
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table1.json',
-		/*data:{
-			operation:'TABLE1',
-			quiz_id:$('#quiz_id').val()
-		},*/
 		success:function(data){
 			var index = 1;
 			//alert(data);
@@ -71,10 +81,7 @@ $(document).ready(function(){
 	$.ajax({
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table2.json',
-		/*data:{
-			operation:'TABLE2',
-			quiz_id:$('#quiz_id').val()
-		},*/
+
 		success:function(data){
 			
 			var table = '';
@@ -179,7 +186,7 @@ $(document).ready(function(){
 		
 		
 	});
-
+*/
 
 	$('a.tab-tip').tooltip('hide');
 	$('#tab1').click();

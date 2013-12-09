@@ -39,6 +39,7 @@
 		<button id="forget" class="btn btn-link">忘记密码?</button>
 	</div>
 </div>
+<?php include './include/footer.php'; ?>
 </div>
 </body>
 </html>

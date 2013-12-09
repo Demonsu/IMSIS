@@ -160,7 +160,7 @@ include_once '../sys/core/init.inc.php';
 		  </div>
 		</div>
 	</div>
-
+<?php include './include/footer.php'; ?>
 </div>
 </body>
 </html>
