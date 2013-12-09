@@ -76,6 +76,7 @@ $(document).ready(function(){
 			data:{
 				operation:"USERSUBMITDEPARTMENTREQUEST",
 				quiz_id:$('#quiz_id').val(),
+				is_public:'1',
 				key_field_list:list
 			},
 			success:function(data){

@@ -51,6 +51,11 @@ class Questionnaire extends DB_Connect {
 	}
 	public function user_submit_key_field($user_id,$quiz_id,$key_field_list)//用户提交所选的单位评测的关键域
 	{
+		$sql="UPDATE questionnaire_content SET user_id='DEFAULTNULL' WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state='0'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}			
 		foreach($key_field_list as $key_field_id)
 		{
 			$sql="UPDATE questionnaire_content SET user_id='".$user_id."' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";

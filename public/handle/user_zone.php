@@ -109,8 +109,12 @@
 			echo "登陆信息已失效，请重新登陆";
 		else
 		{		
+			
 			$questionnaire=new Questionnaire();
-			echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list);
+			if (!isset($_POST["is_public"]))
+				echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list);
+			else
+				echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list,1);
 		}			
 	}
 	
