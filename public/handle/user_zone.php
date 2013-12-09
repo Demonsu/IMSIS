@@ -61,7 +61,7 @@
 			echo $questionnaire->fetch_user_questionnaire_list($_SESSION["USERID"],$_POST["state"]);
 		}		
 	}
-	if ($operation=="FETCHDEPARTMENTQUESTIONNAIRE")
+	if ($operation=="FETCHDEPARTMENTQUESTIONNAIRE")//
 	{		
 		if (!isset($_SESSION["USERID"]))
 			echo "登陆信息已失效，请重新登陆";
@@ -70,9 +70,50 @@
 			$questionnaire=new Questionnaire();
 			echo $questionnaire->fetch_department_questionnaire_list($_SESSION["USERID"]);
 		}
-		
 	}
-
+	if ($operation=="DELETEQUESTIONNAIRE")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{	
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->delete_questionnaire($_SESSION["USERID"],$_POST["quiz_id"]);
+		}		
+	}
+	if ($operation=="IFDEPARTMENTQUESTIONNAIREDONE")//检查问卷是否还有我的事情
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->check_if_still_have_my_business($_SESSION["USERID"],$_POST["quiz_id"]);	
+		}		
+	}
+	if ($operation=="FETCHCHOOSEDEPARTMENTQUESTIONNAIRE")//获取单位选择关键域的页面
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{		
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->fetch_department_questionnaire($_SESSION["USERID"],$_POST["quiz_id"]);
+		}		
+	}
+	if ($operation=="USERSUBMITDEPARTMENTREQUEST")//用户提交选择的关键域
+	{
+		$key_field_list=explode(';',$_POST["key_field_list"]);
+		
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{		
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list);
+		}			
+	}
+	
 ?>
 
 			

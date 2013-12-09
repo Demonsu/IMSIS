@@ -115,6 +115,7 @@ function user_test(){
 	});
 }
 function doremark(){//单位测评创建时提示
+	//alert("aew");
 	$.ajax({
 		type:'POST',
 		url:'handle/user_zone.php',
@@ -122,6 +123,7 @@ function doremark(){//单位测评创建时提示
 			operation:'CHECKDEPARTMENTQUESTIONNAIRE',
 		},
 		success:function(data){
+			//alert(data);
 			if(data == 1){
 				var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
 				if(returnVal){
