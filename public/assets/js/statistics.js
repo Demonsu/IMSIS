@@ -9,7 +9,7 @@ $(document).ready(function(){
 	*/
 	$.ajax({
 		type:'POST',
-		url:'statistics/20131209/53/table1.json',
+		url:'statistics/' + $('#quiz_id').val() + '/table1.json',
 		/*data:{
 			operation:'TABLE1',
 			quiz_id:$('#quiz_id').val()
@@ -70,11 +70,11 @@ $(document).ready(function(){
 	//第二张表
 	$.ajax({
 		type:'POST',
-		url:'handle/statistics.php',
-		data:{
+		url:'statistics/' + $('#quiz_id').val() + '/table2.json',
+		/*data:{
 			operation:'TABLE2',
 			quiz_id:$('#quiz_id').val()
-		},
+		},*/
 		success:function(data){
 			
 			var table = '';

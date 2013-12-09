@@ -21,7 +21,13 @@ $(document).ready(function(){
 	});
 	$('#select1').change(function(){
 		var select1 = $('#select1').val();
-		if(select1 != 0){
+		if (select1=='710000' || select1=='810000' || select1=='820000')
+		{
+			$('#select2').html('');
+			$('#select2').attr("disabled",true);
+		}
+		else if(select1 != 0){
+			
 			$.ajax({
 				type:'POST',
 				url:'handle/system.php',
@@ -30,6 +36,8 @@ $(document).ready(function(){
 					province:select1
 				},
 				success:function(data){
+					//alert(data);
+					$('#select2').attr("disabled",false);
 					$('#select2').html('');
 					$('#select2').append(data);
 				}

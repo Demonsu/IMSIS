@@ -106,9 +106,16 @@
 			$answer_list=$_POST["answer_list"];
 			$questionnaire=new Questionnaire();
 			if (isset($_POST["is_public"]))
-				echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list),1);
+				$result= $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list),1);
 			else
-				echo $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));			
+				$result= $questionnaire->user_final_submit($_SESSION["USERID"],$quiz_id,explode(';',$goal_list),explode(';',$answer_list));	
+				
+			if ($result==1)
+			{
+				$statistics=new Statistics();
+				$statistics->table1_CVs($_SESSION["USERID"],$_POST["quiz_id"]);
+				$statistics->table2_KVs($_SESSION["USERID"],$_POST["quiz_id"]);	
+			}		
 		}		
 	}
 	

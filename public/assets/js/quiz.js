@@ -94,7 +94,7 @@ $(document).ready(function(){
 				
 			},
 			success:function(data){
-				window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
+				window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val();
 			}
 		});
 		
