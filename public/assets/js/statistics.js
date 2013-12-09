@@ -9,11 +9,11 @@ $(document).ready(function(){
 	*/
 	$.ajax({
 		type:'POST',
-		url:'handle/statistics.php',
-		data:{
+		url:'statistics/20131209/53/table1.json',
+		/*data:{
 			operation:'TABLE1',
 			quiz_id:$('#quiz_id').val()
-		},
+		},*/
 		success:function(data){
 			var index = 1;
 			//alert(data);

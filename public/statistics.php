@@ -26,22 +26,32 @@
 
 <div class="row">
 	<!-- Nav tabs -->
+	<div class="row">
+	<div style="width:900px;overflow:hidden">
+	<div style="width:10000px" id="side-left">
 	<ul class="nav nav-tabs">
-	  <li><a href="#tab-div1" id="tab1" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键变量（CVs）得分表">#1</a></li>
-	  <li><a href="#tab-div2" id="tab2" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#2</a></li>
-	  <li><a href="#tab-div3" id="tab3" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#3</a></li>
-	  <li><a href="#tab-div4" id="tab4" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#4</a></li>
-	  <li><a href="#tab-div5" id="tab5" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#5</a></li>
-	  <li><a href="#tab-div6" id="tab6" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#6</a></li>
-	  <li><a href="#tab-div7" id="tab7" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#7</a></li>
-	  <li><a href="#tab-div8" id="tab8" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#8</a></li>
-	  <li><a href="#tab-div9" id="tab9" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#9</a></li>
-	  <li><a href="#tab-div10" id="tab10" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#10</a></li>
-	  <li><a href="#tab-div11" id="tab11" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#11</a></li>
-	  <li><a href="#tab-div12" id="tab12" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#12</a></li>
-	  <li><a href="#tab-div13" id="tab13" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#13</a></li>
-	  <li><a href="#tab-div14" id="tab14" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">#14</a></li>
+	  <li><a href="#tab-div1" id="tab1" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键变量（CVs）得分表">#1关键变量（CVs）得分表</a></li>
+	  <li><a href="#tab-div2" id="tab2" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键变量统计分布">#2关键变量统计分布</a></li>
+	  <li><a href="#tab-div3" id="tab3" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键域（KDs）得分表">#3关键域（KDs）得分表</a></li>
+	  <li><a href="#tab-div4" id="tab4" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="关键域（KDs）能力统计表">#4关键域（KDs）能力统计表</a></li>
+	  <li><a href="#tab-div5" id="tab5" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="作用域（LDs）的得分表">#5作用域（LDs）的得分表</a></li>
+	  <li><a href="#tab-div6" id="tab6" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="目标能力摘要表（用户填写）">#6目标能力摘要表（用户填写）</a></li>
+	  <li><a href="#tab-div7" id="tab7" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="能力对比图">#7能力对比图</a></li>
+	  <li><a href="#tab-div8" id="tab8" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="短缺能力详细信息">#8短缺能力详细信息</a></li>
+	  <li><a href="#tab-div9" id="tab9" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="短缺能力的作用域分析">#9短缺能力的作用域分析</a></li>
+	  <li><a href="#tab-div10" id="tab10" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="能力提升分析">#10能力提升分析</a></li>
+	  <li><a href="#tab-div11" id="tab11" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="优势能力详细信息">#11优势能力详细信息</a></li>
+	  <li><a href="#tab-div12" id="tab12" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="优势能力的作用域分析">#12优势能力的作用域分析</a></li>
+	  <li><a href="#tab-div13" id="tab13" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="优势能力的数量分析">#13优势能力的数量分析</a></li>
+	  <li><a href="#tab-div14" id="tab14" data-toggle="tab" class="tab-tip" data-toggle="tooltip" data-placement="bottom" data-original-title="能力情况总汇表">#14能力情况总汇表</a></li>
 	</ul>
+	</div>
+	</div>
+	<div style="width:60px;float:left">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span class="glyphicon glyphicon-chevron-right"></span>
+	</div>
+	</div>
 	<!-- Tab panes -->
 	<div class="tab-content">
 	  <div class="tab-pane" id="tab-div1">
