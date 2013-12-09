@@ -26,7 +26,8 @@ include_once '../sys/core/init.inc.php';
 	<div class="panel panel-success">
 		<div class="panel-heading"><div class="panel-title">用户空间</div></div>
 		<div class="panel-body">
-			<div class="col-md-3">
+
+			<div class="row col-md-3">
 				<div class="list-group">
 					<a class="list-group-item active">创建测评</a>
 					<a href="javascript:readpromise()" id="person" class="list-group-item text-center" >创建个人测评</a>
@@ -40,8 +41,8 @@ include_once '../sys/core/init.inc.php';
 					<a href="javascript:change_data()" class="list-group-item text-center">修改资料</a>
 				</div>
 			</div>
-			<div class="col-md-9">
-				
+
+			<div class="col-md-9" style="width:746px;padding-right:0px;">
 				<div class="panel panel-default" id="nc-list" style="display:none">
 				  <div class="panel-heading">
 					<h3 class="panel-title">未完成的测评</h3>
@@ -80,26 +81,16 @@ include_once '../sys/core/init.inc.php';
 			
 				<div class="panel panel-default" id="user-promise" style="display:none;">
 				  <div class="panel-heading">
-					<h3 class="panel-title">请仔细阅读承诺书</h3>
+					<h3 class="panel-title">阅读评测说明及测评承诺书</h3>
 				  </div>
 				  <div class="panel-body">
 				  
-					<div class="row">
-						<div class="row">
-							<div class="col-md-1"></div>
-							<div class="col-md-10">
-								<div class="panel panel-default">
-								  <div class="panel-heading">承诺书</div>
-								  <div class="panel-body">
-									Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
-								  </div>
-								</div>
-							</div>
-							<div class="col-md-1"></div>
-						</div>
-						<div class="row">
+					<div class="group">
+						Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit
+								
+						<div class="form-group">
 							<div class="col-md-12 text-center">
-								<button class="btn btn-success" id="readit">我已经仔细阅读《XXX》并同意相关内容</button>
+								<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
 							</div>
 						</div>
 					</div>
@@ -112,23 +103,21 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				  <div class="panel-body">
 				  
-					<div class="row" >
-						<div class="row">
-							<div class="col-md-12">
-								<div class="list-group" id="field-select">
-									
-								</div>
+					<div class="group" >
+						<div class="col-md-12">
+							<div class="list-group" id="field-select">
+								
 							</div>
 						</div>
-						<div class="row">
+						<div class="group">
 							
 							<div class="col-md-12">
 								<label class="label-control">输入备注（可选）：</label>
 								<textarea id="user-remark" class="form-control" rows="3"></textarea>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-12 text-center">
+						<div class="group">
+							<div class="col-md-12 text-center" style="padding-top:10px">
 								<button class="btn btn-success" id="create">确认创建</button>
 							</div>
 						</div>
@@ -192,7 +181,7 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				</div>
 				
-				<div class="panel panel-default" id="change-data" class="display:none">
+				<div class="panel panel-default" id="change-data" >
 				  <div class="panel-heading">
 					<h3 class="panel-title">修改个人资料</h3>
 				  </div>
