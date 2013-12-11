@@ -178,7 +178,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#btn-register').click(function(){
-		if(check_id == true && check_passwd == true && check_passwd2 == true && check_Position == true && check_Work == true && check_Speciality == true){
+		if(check_id == true && check_passwd == true && check_passwd2 == true ){
 			$.ajax({
 				type:'POST',
 				url:'handle/register.php',

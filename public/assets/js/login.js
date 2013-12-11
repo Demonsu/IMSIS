@@ -18,4 +18,8 @@ $(document).ready(function(){
 	$('#forget').click(function(){
 		
 	});
+	$('#inputPassword').keypress(function(e){
+		if(e.keyCode == 13)
+			$('#login').click();
+	});
 });

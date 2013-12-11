@@ -192,7 +192,7 @@ class Statistics extends DB_Connect {
 			
 		}
 		$jsondata= sprintf($RETURNFORMAT,$all_effect_field);
-		$dir='../statistics/'.date("Ymd",time()).'/'.$quiz_id;
+		$dir='../statistics/'.$quiz_id;
 		$result=create_folders($dir); 
 		$handle = fopen($dir.'/table1.json', "w ");
 		fwrite($handle,$jsondata);
@@ -233,8 +233,12 @@ class Statistics extends DB_Connect {
 			$num[]=mysql_num_rows($select);
 		}
 		$result=sprintf($TABLE2FORMAT,$num[0],$num[1],$num[2],$num[3],$num[4],$num[0]/$total_num*100,$num[1]/$total_num*100,$num[2]/$total_num*100,$num[3]/$total_num*100,$num[4]/$total_num*100);
-		return $result;
 		
+		$dir='../statistics/'.$quiz_id;
+		$flag=create_folders($dir); 
+		$handle = fopen($dir.'/table2.json', "w ");
+		fwrite($handle,$result);
+		fclose($handle);
 		
 	}
 }

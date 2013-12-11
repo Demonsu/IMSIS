@@ -20,11 +20,12 @@ $(document).ready(function(){
 			tab_id--;
 		}
 	});
-	/*
+	
 	$.ajax({
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table1.json',
 		success:function(data){
+			//alert(data);
 			var index = 1;
 			//alert(data);
 			var table = '';
@@ -64,7 +65,7 @@ $(document).ready(function(){
 						table += '</tr>';
 					}
 				}
-				table += '<tr><td></td><td></td><td></td><td></td><td></td></tr>';
+				table += '<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>';
 				table += '<tr style="color:red">';
 				table += '<td></td><td colspan="2">' + data.content[i].title_effect + '总均分</td><td></td><td style="text-align:right">' + data.content[i].effect_field_score + '</td>'
 				table += '</tr>';
@@ -186,7 +187,7 @@ $(document).ready(function(){
 		
 		
 	});
-*/
+
 
 	$('a.tab-tip').tooltip('hide');
 	$('#tab1').click();

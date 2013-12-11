@@ -137,7 +137,7 @@ $(document).ready(function(){
 			var id = this.id;
 			phpChar += id + ':' + this.value +';';
 		});
-		alert(phpChar);
+		//alert(phpChar);
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -185,7 +185,16 @@ $(document).ready(function(){
 				
 			},
 			success:function(data){
-				window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
+				if(data == 1)
+					window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
+				else if(data == 0){
+					alert('请等待单位其他人完成整份问卷后再查看结果，点击确定回到主页');
+					window.location = 'login.php';
+				}else
+				{
+					alert(data);
+				}
+					
 			}
 		});
 		hide();
@@ -236,7 +245,7 @@ function ask_for_preview(){
 			$('#preview').html(data);
 			hide();
 			$('#fifth').show();
-			$('#progressBar').css('width','80%');
+			$('#progressBar').css('width','90%');
 		}
 	});
 }

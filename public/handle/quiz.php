@@ -113,8 +113,9 @@
 			if ($result==1)
 			{
 				$statistics=new Statistics();
-				$statistics->table1_CVs($_SESSION["USERID"],$_POST["quiz_id"]);
-				$statistics->table2_KVs($_SESSION["USERID"],$_POST["quiz_id"]);	
+				$statistics->table1_CVs($_POST["quiz_id"]);
+				$statistics->table2_KVs($_POST["quiz_id"]);	
+				echo 1;
 			}		
 		}		
 	}

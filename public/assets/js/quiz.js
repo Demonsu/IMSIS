@@ -94,7 +94,8 @@ $(document).ready(function(){
 				
 			},
 			success:function(data){
-				window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val();
+				//alert(data);
+				setTimeout("window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val()",1000);
 			}
 		});
 		

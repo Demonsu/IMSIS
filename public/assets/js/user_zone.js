@@ -141,7 +141,7 @@ function doremark(){//单位测评创建时提示
 	});
 }
 function depart_test(){
-	alert($('#d-remark').val());
+	//alert($('#d-remark').val());
 	$.ajax({
 		type:'POST',
 		url:'handle/user_zone.php',
@@ -226,7 +226,7 @@ function deleteitem(t,no){
 			success:function(data){
 				if(data == 1){
 					alert('删除成功');
-					t.parentNode.hide();
+					//t.parentNode.hide();
 					if(no == 1)
 						c_list();
 					if(no == 2)

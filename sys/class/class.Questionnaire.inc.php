@@ -215,8 +215,8 @@ class Questionnaire extends DB_Connect {
 	}
 	public function fetch_user_questionnaire_list($user_id,$state)//获取用户的测评列表
 	{
-		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,1)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
-		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,2)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
+		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,2)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
+		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,1)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
 		$return_value="";
 		if ($state==0)
 			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_id."' AND state!='2' AND is_public='0'  ";
@@ -570,10 +570,10 @@ class Questionnaire extends DB_Connect {
 					{
 						if ($i==$key_field_info["goal"])
 						{
-							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTION,$i,$i);
+							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTIONSELECTED,$i,$i);
 						}else
 						{
-							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTIONSELECTED,$i,$i);
+							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMATOPTION,$i,$i);
 						}
 					}
 					$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_info["id"]."' AND available='1'";

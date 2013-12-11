@@ -111,14 +111,12 @@
 		<h3 class="panel-title">选择你想要测评的域然后创建</h3>
 	  </div>
 	  <div class="panel-body">
-		<div class="row" >
-			<div class="row">
-				<div class="col-md-12">
-					<div class="list-group" id="field-select">
-						
-					</div>
-				</div>
-			</div>
+		<div class="group" >
+            <div class="col-md-12">
+                <div class="list-group" id="field-select">
+                    
+                </div>
+            </div>
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<button class="btn btn-success" id="d_confirm">确认</button>
@@ -137,19 +135,8 @@
 	  </div>
 	  <div class="panel-body">
 	  
-		<div class="row">
-			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-10">
-					<div class="panel panel-default">
-					  <div class="panel-heading">承诺书</div>
-					  <div class="panel-body">
+		<div class="group">
 						Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
-					  </div>
-					</div>
-				</div>
-				<div class="col-md-1"></div>
-			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<button class="btn btn-success" id="readit">我已经仔细阅读《XXX》并同意相关内容</button>
