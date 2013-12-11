@@ -108,7 +108,6 @@ include_once '../sys/core/init.inc.php';
 			<label class="control-label col-md-3"><span style="color:#ff0000"></span>职称</label>
 			<div class="col-md-5">
 			 <select class="form-control" id="selectTitle">
-				<option value="0">请选择职称</option>
 			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
@@ -124,7 +123,6 @@ include_once '../sys/core/init.inc.php';
 			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>负责工作</label>
 			<div class="col-md-5">
 			  <select class="form-control" id="selectOnCharge">
-				<option value="0">请选择负责工作</option>
 			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorWork"></label>
@@ -140,7 +138,6 @@ include_once '../sys/core/init.inc.php';
 			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>专长</label>
 			<div class="col-md-5">
 			  <select class="form-control" id="selectSpeciality">
-				<option value="0">请选择专长</option>
 			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorSpeciality"></label>
@@ -152,13 +149,7 @@ include_once '../sys/core/init.inc.php';
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorEmail"></label>
 		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3"><span style="color:#ff0000"></span>电话</label>
-			<div class="col-md-5">
-			  <input type="text" class="form-control" id="inputPhone" placeholder="输入您的电话">
-			</div>
-			<label class="control-label col-md-3" style="text-align:left;" id="errorPhone"></label>
-		  </div>
+		  
 		  <div class="form-group">
 			<div class="control-label col-md-8">
 			  <button id="btn-register" class="btn btn-default">注册</button>

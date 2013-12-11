@@ -26,6 +26,7 @@ $(document).ready(function(){
 			operation:'FETCHTITLE'
 		},
 		success:function(data){
+			//alert(data);
 			$('#selectTitle').append(data);
 		}
 	});
@@ -36,6 +37,7 @@ $(document).ready(function(){
 			operation:'FETCHSPECIALITY'
 		},
 		success:function(data){
+			//alert(data);
 			$('#selectSpeciality').append(data);
 		}
 	});
@@ -46,7 +48,19 @@ $(document).ready(function(){
 			operation:'FETCHONCHARGE'
 		},
 		success:function(data){
+			//alert(data);
 			$('#selectOnCharge').append(data);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'handle/system.php',
+		data:{
+			operation:'FETCHDEPARTMENT'
+		},
+		success:function(data){
+			$('#select3').html('');
+			$('#select3').append(data);
 		}
 	});
 	$('#select1').change(function(){
@@ -73,23 +87,6 @@ $(document).ready(function(){
 				}
 			});
 		}
-	});
-	$('#select2').change(function(){
-		var select2 = $('#select2').val();
-		$.ajax({
-			type:'POST',
-			url:'handle/system.php',
-			data:{
-				operation:'FETCHDEPARTMENT',
-				province:select2
-			},
-			success:function(data){
-				//alert(data);
-				$('#select3').attr("disabled",false);
-				$('#select3').html('');
-				$('#select3').append(data);
-			}
-		});
 	});
 	$('#inputId').blur(function(){
 		var id = $('#inputId').val();
@@ -190,6 +187,7 @@ $(document).ready(function(){
 
 	$('#btn-register').click(function(){
 		if(check_id == true && check_passwd == true && check_passwd2 == true ){
+			//alert(1);
 			$.ajax({
 				type:'POST',
 				url:'handle/register.php',
@@ -202,10 +200,10 @@ $(document).ready(function(){
 					province:$('#select1').val(),
 					city:$('#select2').val(),
 					area:'',
-					oncharge:'',
+					oncharge:$('#selectOnCharge').val(),
 					department:$('#select3').val(),
-					title:$('#inputTitle').val(),
-					speciality:$('#inputSpeciality').val(),
+					title:$('#selectTitle').val(),
+					speciality:$('#selectSpeciality').val(),
 					position:$('#inputPosition').val(),
 					seniority:$('#inputTime').val(),
 					education:$('#selectEdu').val(),
