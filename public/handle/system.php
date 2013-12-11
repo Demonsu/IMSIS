@@ -5,11 +5,13 @@
 	$system=new System();
 	if ($operation=="FETCHPROVINCE")
 	{
+		
 		echo $system->fetch_province();
 	}
 	if ($operation=="FETCHCITY")
 	{
 		$province=$_POST["province"];
+	
 		echo $system->fetch_city($province);
 	}
 	if ($operation=="FETCHDEPARTMENT")
