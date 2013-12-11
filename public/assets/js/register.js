@@ -21,7 +21,7 @@ $(document).ready(function(){
 	});
 	$('#select1').change(function(){
 		var select1 = $('#select1').val();
-		if (select1=='710000' || select1=='810000' || select1=='820000')
+		if (select1=='710000' || select1=='810000' || select1=='820000' || select1=='100000')
 		{
 			$('#select2').html('');
 			$('#select2').attr("disabled",true);
@@ -200,8 +200,9 @@ $(document).ready(function(){
 					email:$('#inputEmail').val(),
 				},
 				success:function(data){
-					alert(data);
+					//alert(data);
 					if(data == 1){
+						alert("注册成功！");
 						$.ajax({
 							type:'POST',
 							url:"handle/login.php",
