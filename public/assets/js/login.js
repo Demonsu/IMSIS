@@ -1,24 +1,32 @@
 $(document).ready(function(){
+	
 	$('#login').click(function(){
-		$.ajax({
-			type:'POST',
-			url:"handle/login.php",
-			data:{
-				user_id:$('#inputId').val(),
-				password:$('#inputPassword').val()
+		var id = $('#inputId').val();
+		var passwd = $('#inputPassword').val();
+		if(id != '' && passwd !=''){
+			$.ajax({
+				type:'POST',
+				url:"handle/login.php",
+				data:{
+					user_id:id,
+					password:passwd
 				},
-			success:function(data){
-				if(data==-1){
-					$('#errorMsg').text("用户名或密码错误");
+				success:function(data){
+					if(data==-1){
+						$('#errorMsg').text("用户名或密码错误");
+					}
+					else if(data==1){
+						window.location="admin_zone.php";
+					}
+					else{
+						window.location="login.php";
+					}
 				}
-				else if(data==1){
-					window.location="admin_zone.php";
-				}
-				else{
-					window.location="login.php";
-				}
-			}
-		});
+			});
+		}
+		else{
+			$('#errorMsg').text("请输入用户名或密码");
+		}
 	});
 	$('#register').click(function(){
 		window.location="register.php";

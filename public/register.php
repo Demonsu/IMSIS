@@ -74,11 +74,11 @@ include_once '../sys/core/init.inc.php';
 			<div class="col-md-5">
 			  <select class="form-control" id="selectAge">
 				<option value="0">请选择年龄段</option>
-				<option value="1">25岁及以下</option>
-				<option value="2">26~35岁</option>
-				<option value="3">36~45岁</option>
-				<option value="4">46~55岁</option>
-				<option value="5">56岁及以上</option>
+				<option value="25">25岁及以下</option>
+				<option value="35">26~35岁</option>
+				<option value="45">36~45岁</option>
+				<option value="55">46~55岁</option>
+				<option value="65">56岁及以上</option>
 			  </select>
 			</div>
 		  </div>
