@@ -10,7 +10,7 @@ foreach( $Const as $name => $val ){
 }
 
 function __autoload($class_name){
-	$filename = "C:/xampp/htdocs/IMSIS/IMSIS/sys/class/class.".$class_name.".inc.php";
+	$filename = "D:/apache/htdocs/IMSIS/sys/class/class.".$class_name.".inc.php";
 	if( file_exists($filename) ){
 		include_once( $filename );
 	}
