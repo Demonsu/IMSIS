@@ -210,15 +210,15 @@ class Statistics extends DB_Connect {
 			[
 				{
 					"title":"成熟度特征",
-					"content":["1","2","3","4","5"]
+					"content":["0","1","2","3","4","5"]
 				},
 				{
 					"title":"发生项数",
-					"content":["%s","%s","%s","%s","%s"]
+					"content":["%s","%s","%s","%s","%s","%s"]
 				},
 				{
 					"title":"百分比率",
-					"content":["%.1f","%.1f","%.1f","%.1f","%.1f"]
+					"content":["%.1f","%.1f","%.1f","%.1f","%.1f","%.1f"]
 				}
 			]
 		}';
@@ -226,13 +226,13 @@ class Statistics extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);	
 		$total_num=mysql_num_rows($select);
 		$num=array();
-		for ($i=1;$i<=5;$i++)
+		for ($i=0;$i<=5;$i++)
 		{
 			$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' AND answer='".$i."'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);	
 			$num[]=mysql_num_rows($select);
 		}
-		$result=sprintf($TABLE2FORMAT,$num[0],$num[1],$num[2],$num[3],$num[4],$num[0]/$total_num*100,$num[1]/$total_num*100,$num[2]/$total_num*100,$num[3]/$total_num*100,$num[4]/$total_num*100);
+		$result=sprintf($TABLE2FORMAT,$num[0],$num[1],$num[2],$num[3],$num[4],$num[5],$num[0]/$total_num*100,$num[1]/$total_num*100,$num[2]/$total_num*100,$num[3]/$total_num*100,$num[4]/$total_num*100,$num[5]/$total_num*100);
 		
 		$dir='../statistics/'.$quiz_id;
 		$flag=create_folders($dir); 
