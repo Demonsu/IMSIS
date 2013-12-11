@@ -15,20 +15,6 @@
 				
 		{
 			"title_variable":"中长期规划 ",
-<<<<<<< HEAD
-			"score":"1"
-		},
-		{
-			"title_variable":"IT基础设施规划",
-			"score":"4"
-		},
-		{
-			"title_variable":"IT与业务的融合",
-			"score":"1"
-		}
-			],
-			"field_score":"2.0"
-=======
 			"score":"2"
 		},
 		{
@@ -41,7 +27,6 @@
 		}
 			],
 			"field_score":"2.3"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		},
 		{
 			"id":"1.2",
@@ -49,14 +34,6 @@
 			"field_content":[
 				
 		{
-<<<<<<< HEAD
-			"title_variable":"实施方案",
-			"score":"1"
-		},
-		{
-			"title_variable":"业务需求分析方案",
-			"score":"5"
-=======
 			"title_variable":"实施方案
 
 ",
@@ -65,24 +42,16 @@
 		{
 			"title_variable":"业务需求分析方案",
 			"score":"4"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		},
 		{
 			"title_variable":"标准规范的遵循",
 			"score":"2"
 		}
 			],
-<<<<<<< HEAD
-			"field_score":"2.7"
-		}
-			],
-			"effect_field_score":"2.3"
-=======
 			"field_score":"3.3"
 		}
 			],
 			"effect_field_score":"2.8"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		
 		},
 		{ 
@@ -136,10 +105,6 @@
 			"title_field":"业务流程管理",
 			"field_content":[
 				
-<<<<<<< HEAD
-			],
-			"field_score":"0.0"
-=======
 		{
 			"title_variable":"流程建模",
 			"score":"3"
@@ -154,7 +119,6 @@
 		}
 			],
 			"field_score":"2.0"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		},
 		{
 			"id":"3.8",
@@ -189,11 +153,7 @@
 			"field_score":"0.0"
 		}
 			],
-<<<<<<< HEAD
-			"effect_field_score":"0.0"
-=======
 			"effect_field_score":"2.0"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		
 		},
 		{ 
@@ -206,33 +166,8 @@
 			"title_field":"技术管理",
 			"field_content":[
 				
-<<<<<<< HEAD
-		{
-			"title_variable":"技术管理",
-			"score":"4"
-		},
-		{
-			"title_variable":"网络管理",
-			"score":"4"
-		},
-		{
-			"title_variable":"数据管理",
-			"score":"2"
-		},
-		{
-			"title_variable":"应用管理",
-			"score":"3"
-		},
-		{
-			"title_variable":"安全管理",
-			"score":"3"
-		}
-			],
-			"field_score":"3.2"
-=======
 			],
 			"field_score":"0.0"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		},
 		{
 			"id":"4.13",
@@ -275,11 +210,7 @@
 			"field_score":"0.0"
 		}
 			],
-<<<<<<< HEAD
-			"effect_field_score":"3.2"
-=======
 			"effect_field_score":"0.0"
->>>>>>> c059aa50680da21302d11a7f2fd918fce87860bd
 		
 		}
 			] 
