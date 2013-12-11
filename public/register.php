@@ -107,7 +107,9 @@ include_once '../sys/core/init.inc.php';
 		  <div class="form-group hasTitle">
 			<label class="control-label col-md-3"><span style="color:#ff0000"></span>职称</label>
 			<div class="col-md-5">
-			  <input type="text" class="form-control" id="inputTitle" placeholder="输入您的职称">
+			 <select class="form-control" id="selectTitle">
+				<option value="0">请选择职称</option>
+			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
 		  </div>
@@ -121,7 +123,9 @@ include_once '../sys/core/init.inc.php';
 		  <div class="form-group hasWork">
 			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>负责工作</label>
 			<div class="col-md-5">
-			  <input type="text" class="form-control" id="inputWork" placeholder="输入您的负责工作">
+			  <select class="form-control" id="selectOnCharge">
+				<option value="0">请选择负责工作</option>
+			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorWork"></label>
 		  </div>
@@ -135,7 +139,9 @@ include_once '../sys/core/init.inc.php';
 		  <div class="form-group hasSpeciality">
 			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>专长</label>
 			<div class="col-md-5">
-			  <input type="text" class="form-control" id="inputSpeciality" placeholder="输入您的专长">
+			  <select class="form-control" id="selectSpeciality">
+				<option value="0">请选择专长</option>
+			  </select>
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorSpeciality"></label>
 		  </div>

@@ -31,7 +31,64 @@ $(document).ready(function(){
 			$('#login').click();
 	});
 	$('#u_t').click(function(){
-		window.location = 'quiz.php';
+		$('#step1').show();
+		//window.location = 'quiz.php';
+	});
+	$('#readit').click(function(){
+		$.ajax({
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:'FETCHPALEQUESTIONNAIRE',
+			},
+			success:function(data){
+				//alert(data);
+				$('#step1').hide();
+				$('#field-select').html(data);
+				$('#step2').show();
+				$(":checkbox").change(function(){//联合checkbox的改动
+					if(this.id.length == 4 && this.checked){
+						var id = this.id;
+						$(':checkbox').each(function(){
+							var id2 = this.id;
+							if(id2.substr(0,4) == id){
+								this.checked = true;
+							}
+						});
+					}
+					else if(this.id.length == 4 && !this.checked){
+						var id = this.id;
+						$(':checkbox').each(function(){
+							var id2 = this.id;
+							if(id2.substr(0,4) == id){
+								this.checked = false;
+							}
+						});
+					}
+					else if(this.id.length == 5 && !this.checked){
+						var id = this.id;
+						$(':checkbox').each(function(){
+							var id2 = this.id;
+							if(id2 == id.substr(0,4)){
+								this.checked = false;
+							}
+						});
+					}
+					
+				});
+			}
+		});
+	});
+	$('#all-select').click(function(){
+		//alert(1);
+		$(':checkbox').each(function(){
+			this.checked = true;
+		});
+	});
+	$('#cancel-select').click(function(){
+		$(':checkbox').each(function(){
+			this.checked = false;
+		});
 	});
 	$('#d_t').click(function(){
 		
@@ -74,7 +131,16 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$('#u-cancel').click(function(){
+		$('#step2').hide();
+	});
 	$('#d-cancel').click(function(){
 		$('#cover').hide();
 	});
+	
 });
+function hide(){
+	$('#cover').hide();
+	$('#step1').hide();
+	$('#step2').hide();
+}

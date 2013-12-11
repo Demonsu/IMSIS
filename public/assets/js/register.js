@@ -19,6 +19,36 @@ $(document).ready(function(){
 			$('#select1').append(data);
 		}
 	});
+	$.ajax({
+		type:'POST',
+		url:'handle/system.php',
+		data:{
+			operation:'FETCHTITLE'
+		},
+		success:function(data){
+			$('#selectTitle').append(data);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'handle/system.php',
+		data:{
+			operation:'FETCHSPECIALITY'
+		},
+		success:function(data){
+			$('#selectSpeciality').append(data);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'handle/system.php',
+		data:{
+			operation:'FETCHONCHARGE'
+		},
+		success:function(data){
+			$('#selectOnCharge').append(data);
+		}
+	});
 	$('#select1').change(function(){
 		var select1 = $('#select1').val();
 		if (select1=='710000' || select1=='810000' || select1=='820000')
@@ -43,6 +73,23 @@ $(document).ready(function(){
 				}
 			});
 		}
+	});
+	$('#select2').change(function(){
+		var select2 = $('#select2').val();
+		$.ajax({
+			type:'POST',
+			url:'handle/system.php',
+			data:{
+				operation:'FETCHDEPARTMENT',
+				province:select2
+			},
+			success:function(data){
+				//alert(data);
+				$('#select3').attr("disabled",false);
+				$('#select3').html('');
+				$('#select3').append(data);
+			}
+		});
 	});
 	$('#inputId').blur(function(){
 		var id = $('#inputId').val();
@@ -139,44 +186,8 @@ $(document).ready(function(){
 			check_title = true;
 		}
 	});
-	$('#inputWork').blur(function(){
-		var work = $('#inputWork').val();
-		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
-		if(work.length == 0){
-			$('#errorWork').text('请输入负责的工作');
-			$('.hasWork').addClass('has-error');
-			check_title = false;
-		}
-		else if(!pattern.test(work)){
-			$('#errorWork').text('请写中文');
-			$('.hasWork').addClass('has-error');
-			check_title = false;
-		}
-		else{
-			$('#errorWork').text('');
-			$('.hasWork').removeClass('has-error');
-			check_title = true;
-		}
-	});
-	$('#inputSpeciality').blur(function(){
-		var Speciality = $('#inputSpeciality').val();
-		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
-		if(Speciality.length == 0){
-			$('#errorSpeciality').text('请输入您的专长');
-			$('.hasSpeciality').addClass('has-error');
-			check_title = false;
-		}
-		else if(!pattern.test(Speciality)){
-			$('#errorSpeciality').text('请写中文');
-			$('.hasSpeciality').addClass('has-error');
-			check_title = false;
-		}
-		else{
-			$('#errorSpeciality').text('');
-			$('.hasSpeciality').removeClass('has-error');
-			check_title = true;
-		}
-	});
+
+
 	$('#btn-register').click(function(){
 		if(check_id == true && check_passwd == true && check_passwd2 == true ){
 			$.ajax({
@@ -191,6 +202,7 @@ $(document).ready(function(){
 					province:$('#select1').val(),
 					city:$('#select2').val(),
 					area:'',
+					oncharge:'',
 					department:$('#select3').val(),
 					title:$('#inputTitle').val(),
 					speciality:$('#inputSpeciality').val(),

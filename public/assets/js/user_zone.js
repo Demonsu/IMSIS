@@ -65,6 +65,17 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$('#all-select').click(function(){
+		//alert(1);
+		$(':checkbox').each(function(){
+			this.checked = true;
+		});
+	});
+	$('#cancel-select').click(function(){
+		$(':checkbox').each(function(){
+			this.checked = false;
+		});
+	});
 });
 
 function readpromise(){//显示承诺书
