@@ -104,7 +104,7 @@ $(document).ready(function(){
 					text: '百分比率'
 				},
 				xAxis: {
-					categories: [1,2,3,4,5],
+					categories: [0,1,2,3,4,5],
 					title: {
 						text: '成熟度特征'
 					}
