@@ -87,6 +87,34 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$('#create').click(function(){
+		var list = "";
+		$(':checkbox').each(function(){
+			if(this.checked && this.id.length > 4){
+				list += this.value + ";";
+			}
+		});
+		$.ajax({
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:"CREATEUSERQUESTIONNAIRE",
+				key_field_list:list,
+				remark:$('#user-remark').val()
+			},
+			success:function(data){
+				if (!isNaN(data))
+				{
+					alert("创建成功");
+					window.location = 'quiz.php?quiz_id='+data;
+				}else
+				{
+					
+					alert("创建失败"+data);
+				}
+			}
+		});
+	});
 	$('#all-select').click(function(){
 		//alert(1);
 		$(':checkbox').each(function(){
