@@ -131,13 +131,37 @@
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p2" style="min-width: 310px; height: 400px; margin: 0 auto">
+		<div class="col-md-7" id="p2" style="width: 600px; height: 400px;">
 			
 		</div>
 	  </div>
-	  <div class="tab-pane" id="tab-show-t3">3</div>
-	  <div class="tab-pane" id="tab-show-t4">4</div>
-	  <div class="tab-pane" id="tab-show-t5">5</div>
+	  <div class="tab-pane" id="tab-show-t3">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t3">
+	
+			</table>
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t4">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t4">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p4" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t5">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t5">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p5" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
 	  <div class="tab-pane" id="tab-show-t6">6</div>
 	  <div class="tab-pane" id="tab-show-t7">7</div>
 	  <div class="tab-pane" id="tab-show-t8">8</div>

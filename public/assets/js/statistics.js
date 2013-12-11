@@ -218,7 +218,7 @@ $(document).ready(function(){
 			
 			var options = {
 				chart: {
-					renderTo:'container4',
+					renderTo:'p4',
 					type: 'line'
 				},
 				title: {
@@ -284,7 +284,7 @@ $(document).ready(function(){
 			
 			var options = {
 				chart: {
-					renderTo:'container5'
+					renderTo:'p5'
 				},
 				title: {
 					text: '作用域（LDs）的得分表'
