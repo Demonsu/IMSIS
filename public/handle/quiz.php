@@ -114,7 +114,10 @@
 			{
 				$statistics=new Statistics();
 				$statistics->table1_CVs($_POST["quiz_id"]);
-				$statistics->table2_KVs($_POST["quiz_id"]);	
+				$statistics->table2_KVs($_POST["quiz_id"]);
+				$statistics->table3_KDs($_POST["quiz_id"]);	
+				$statistics->table4_KDs($_POST["quiz_id"]);	
+				$statistics->table5_LDs($_POST["quiz_id"]);	
 				echo 1;
 			}		
 		}		
