@@ -22,12 +22,13 @@
 		$title=$_POST["title"];//文字
 		$speciality=$_POST["speciality"];//文字
 		$position=$_POST["position"];//文字
+		$oncharge=$_POST["oncharge"];//负责工作
 		$seniority=$_POST["seniority"];//整数
 		$education=$_POST["education"];//文字
 		$email=$_POST["email"];//email
 		$register_time=date("Y-m-d H:i:s",time());
 		$user=new User();
-		$result=$user->register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time);
+		$result=$user->register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time,$oncharge);
 		echo $result;//1为成功，0为失败
 	}
 ?>

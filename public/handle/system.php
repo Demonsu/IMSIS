@@ -13,6 +13,21 @@
 		$system=new System();
 		echo $system->fetch_city($province);
 	}
-
+	if ($operation=="FETCHDEPARTMENT")
+	{
+		echo $system->fetch_department();	
+	}
+	if ($operation=="FETCHTITLE")
+	{
+		echo $system->fetch_title();
+	}
+	if ($operation=="FETCHSPECIALITY")
+	{
+		echo $system->fetch_speciality();
+	}
+	if ($operation=="FETCHONCHARGE")
+	{
+		echo $system->fetch_oncharge();
+	}
 
 ?>
