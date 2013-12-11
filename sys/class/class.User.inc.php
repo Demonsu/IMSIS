@@ -39,7 +39,7 @@ class User extends DB_Connect {
 		$num=mysql_num_rows($select);
 		return $num;
 	}
-	public function register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time)
+	public function register($user_id,$password,$permission,$gender,$age,$province,$city,$area,$department,$title,$speciality,$position,$seniority,$education,$email,$register_time,$oncharge)
 	{
 		$sql="SELECT * FROM user WHERE id='".$user_id."' ";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
@@ -50,12 +50,12 @@ class User extends DB_Connect {
 		(
 			id,password,permission,gender,age,
 			province,city,area,department,title,speciality,position,
-			seniority,education,email,register_time
+			seniority,education,email,register_time,oncharge
 		)VALUES
 		(
 			'".$user_id."','".$password."','".$permission."','".$gender."','".$age."',
 			'".$province."','".$city."','".$area."','".$department."','".$title."','".$speciality."','".$position."',
-			'".$seniority."','".$education."','".$email."','".$register_time."'
+			'".$seniority."','".$education."','".$email."','".$register_time."','".$oncharge."'
 		)";
 		//echo $sql;
 		if (!mysql_query($sql,$this->root_conn))
