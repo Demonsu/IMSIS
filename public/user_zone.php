@@ -88,8 +88,8 @@ include_once '../sys/core/init.inc.php';
 					<div class="group">
 						Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit
 								
-						<div class="form-group">
-							<div class="col-md-12 text-center">
+						<div class="group">
+							<div class="text-center">
 								<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
 							</div>
 						</div>
@@ -103,18 +103,18 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				  <div class="panel-body">
 				  
-					<div class="group" >
-						<div class="col-md-12">
+					<div class="form-horizontal" >
+						<div class="group" style="margin-bottom:10px;">
+							<a class="btn btn-info" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
+						</div>
+						<div class="group">
 							<div class="list-group" id="field-select">
 								
 							</div>
 						</div>
 						<div class="group">
-							
-							<div class="col-md-12">
-								<label class="label-control">输入备注（可选）：</label>
-								<textarea id="user-remark" class="form-control" rows="3"></textarea>
-							</div>
+							<label class="label-control">输入备注（可选）：</label>
+							<textarea id="user-remark" class="form-control" rows="3"></textarea>
 						</div>
 						<div class="group">
 							<div class="col-md-12 text-center" style="padding-top:10px">

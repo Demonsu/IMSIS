@@ -71,7 +71,9 @@
 	<div class="cover_content">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-			<h3 class="panel-title text-center">创建单位测评：</h3>
+			<h3 class="panel-title text-center">创建单位测评：
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+			</h3>
 		  </div>
 		  <div class="panel-body">
 		  
@@ -88,6 +90,68 @@
 					</div>
 					<div class="col-md-6 text-left">
 						<button class="btn btn-danger" id="d-cancel">取消创建</button>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>
+<div class="u_cover" id="step1">
+	<div class="u_cover_content">
+		<div class="panel panel-default" id="user-promise">
+		  <div class="panel-heading">
+			<h3 class="panel-title">阅读评测说明及测评承诺书
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+			</h3>
+		  </div>
+		  <div class="panel-body">
+		  
+			<div class="group">
+				Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit
+						
+				<div class="form-group">
+					<div class="col-md-12 text-center">
+						<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>
+<div class="u_cover" id="step2">
+	<div class="u_cover_content">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			<h3 class="panel-title">选择你想要测评的域然后创建
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+			</h3>
+		  </div>
+		  <div class="panel-body">
+		  
+			<div class="form-horizontal">
+				<div class="group">
+					<div style="margin-bottom:10px;">
+						<a class="btn btn-info" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
+					</div>
+					<div class="list-group" id="field-select">
+						
+					</div>
+				</div>
+				<div class="form-group">
+					
+					<div class="col-md-12">
+						<label class="label-control">输入备注（可选）：</label>
+						<textarea id="user-remark" class="form-control" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6 text-right">
+						<button class="btn btn-success" id="create">确认创建</button>
+					</div>
+					<div class="col-md-6 text-left">
+						<button class="btn btn-danger" id="u-cancel">取消创建</button>
 					</div>
 				</div>
 			</div>

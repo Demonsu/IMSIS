@@ -8,7 +8,7 @@
 		<h2 class="text-center"  onclick="window.location='login.php';"><strong>电子政务服务能力成熟度在线评估系统<strong><br><small>eGov-CMM</small></h2>
 		<?php
 			if (isset($_SESSION['USERID']))
-				echo '<h4 class="text-right" >你好 <a href="user_zone.php">'.$_SESSION['USERID'].'！</a> <span class="label label-danger" onclick="window.location='.'\''.'./handle/logout.php'.'\''.'">退出</span></h4>';
+				echo '<h4 class="text-right" >你好 <a href="user_zone.php" title="点击进入个人中心">'.$_SESSION['USERID'].'！</a> <span class="label label-danger" onclick="window.location='.'\''.'./handle/logout.php'.'\''.'">退出</span></h4>';
 			else
 				echo '<h4 class="text-right"> <span class="label label-success" onclick="window.location='.'\''.'login.php'.'\''.'">登录</span></h4>';
 				
