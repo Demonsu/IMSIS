@@ -1,11 +1,11 @@
-body{
-	padding:0px;
-	margin:0px;
-	background-color:rgb(225,225,225);
+body,html,h1,h2,h3,h4,h5{
 	font-family:"Microsoft YaHei", Helvetica, Arial, sans-serif;
 }
 
 .main{
 	margin:0px auto;
 	width:960px;
+}
+textarea{
+	resize:none;
 }

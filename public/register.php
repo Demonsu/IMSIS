@@ -9,12 +9,13 @@ include_once '../sys/core/init.inc.php';
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>注册</title>
-	<link rel="stylesheet" href="./assets/css/body.css">
+	
 	<link rel="stylesheet" href="./assets/css/register.css">
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/register.js"></script>
+	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
 <body>
 <div class="main">

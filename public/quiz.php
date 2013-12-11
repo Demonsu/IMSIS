@@ -9,13 +9,14 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>问卷</title>
-	<link rel="stylesheet" href="./assets/css/body.css">
+	
 
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/quiz.js"></script>
 	<link rel="stylesheet" href="./assets/css/quiz.css">
+	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
 <body>
 <div class="main">

@@ -8,13 +8,13 @@ include_once '../sys/core/init.inc.php';
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>个人空间</title>
-	<link rel="stylesheet" href="./assets/css/body.css">
+	
 	<link rel="stylesheet" href="./assets/css/user_zone.css">
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/user_zone.js"></script>
-
+	<link rel="stylesheet" href="./assets/css/body.css">
 
 </head>
 <body>
@@ -22,7 +22,7 @@ include_once '../sys/core/init.inc.php';
 <!--header -->
 <?php include './include/header.php'; ?>
 
-<div class="row">
+<div class="group">
 	<div class="panel panel-success">
 		<div class="panel-heading"><div class="panel-title">用户空间</div></div>
 		<div class="panel-body">
@@ -42,7 +42,7 @@ include_once '../sys/core/init.inc.php';
 				</div>
 			</div>
 
-			<div class="col-md-9" style="width:746px;padding-right:0px;">
+			<div class="col-md-9" style="width:725px;padding-right:0px;">
 				<div class="panel panel-default" id="nc-list" style="display:none">
 				  <div class="panel-heading">
 					<h3 class="panel-title">未完成的测评</h3>
@@ -131,7 +131,7 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				  <div class="panel-body">
 				  
-					<div class="row" >
+					<div class="group" >
 						<div class="row">
 							
 							<div class="col-md-12">
@@ -139,7 +139,7 @@ include_once '../sys/core/init.inc.php';
 								<textarea id="d-remark" class="form-control" rows="3"></textarea>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row" style="margin-top:10px">
 							<div class="col-md-12 text-center">
 								<button class="btn btn-success" id="d-create">确认创建</button>
 							</div>

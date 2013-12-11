@@ -21,7 +21,7 @@
 		$department=$_POST["department"];//文字
 		$title=$_POST["title"];//文字
 		$speciality=$_POST["speciality"];//文字
-		$postion=$_POST["position"];//文字
+		$position=$_POST["position"];//文字
 		$seniority=$_POST["seniority"];//整数
 		$education=$_POST["education"];//文字
 		$email=$_POST["email"];//email

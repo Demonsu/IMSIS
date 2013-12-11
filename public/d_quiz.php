@@ -9,13 +9,14 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>问卷</title>
-	<link rel="stylesheet" href="./assets/css/body.css">
+	
 
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/d_quiz.js"></script>
 	<link rel="stylesheet" href="./assets/css/d_quiz.css">
+	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
 <body>
 <div class="main">
@@ -43,7 +44,7 @@
 	<div class="col-md-1"></div>
 </div>
 
-<div class="row" id="fourth" style="display:none">
+<div class="group" id="fourth" style="display:none">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 		<h3 class="panel-title">请指定您的关键域目标值（已给出默认值）</h3>
@@ -89,7 +90,7 @@
 	
 </div>
 
-<div class="row" id="fifth" style="display:none">
+<div class="group" id="fifth" style="display:none">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 		<h3 class="panel-title">预览结果并提交答案</h3>
@@ -105,7 +106,7 @@
 	</div>
 </div>
 
-<div class="row" id="second" style="display:none">
+<div class="group" id="second" style="display:none">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 		<h3 class="panel-title">选择你想要测评的域然后创建</h3>
@@ -127,7 +128,7 @@
 	</div>
 </div>
 
-<div class="row" id="first">
+<div class="group" id="first">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
 		<h3 class="panel-title">请仔细阅读承诺书

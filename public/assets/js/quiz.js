@@ -76,8 +76,8 @@ $(document).ready(function(){
 		var phpChar2 = '';
 		$(':text').each(function(){
 			if(this.id != 'quiz_id'){
-				if(this.value > 5 || this.value < 1 || isNaN(this.value) || this.value.length != 1){
-					alert('目标值限定在1~5之间');
+				if(this.value > 5 || this.value < 0 || isNaN(this.value) || this.value.length != 1){
+					alert('目标值限定在0~5之间');
 					return;
 				}
 				phpChar2 += this.id + ':' + this.value + ';';
@@ -201,6 +201,14 @@ function get_key_field(t){//获取第一步右边的问卷
 		success:function(data){
 			//	(data);
 			$('#quiz-answer').html(data);
+			$(':radio').click(function(){
+				var name = this.name;
+				$(':radio').each(function(){
+					if(this.name == name)
+						$(this.parentNode).removeClass('radio-selected');
+				});
+				$(this.parentNode).addClass('radio-selected');
+			});
 		}
 	});
 }

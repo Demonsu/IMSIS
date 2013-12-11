@@ -200,8 +200,31 @@ $(document).ready(function(){
 					email:$('#inputEmail').val(),
 				},
 				success:function(data){
-					//alert(data);
-					data==1?window.location='login.php':alert('注册失败');
+					alert(data);
+					if(data == 1){
+						$.ajax({
+							type:'POST',
+							url:"handle/login.php",
+							data:{
+								user_id:$('#inputId').val(),
+								password:$('#inputPassword').val()
+								},
+							success:function(data){
+								if(data==-1){
+									$('#errorMsg').text("用户名或密码错误");
+								}
+								else if(data==1){
+									window.location="admin_zone.php";
+								}
+								else{
+									window.location="login.php";
+								}
+							}
+						});
+					}
+					else{
+						alert('注册失败');
+					}
 				}
 			});
 		}

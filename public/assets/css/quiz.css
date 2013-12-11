@@ -2,6 +2,10 @@
 	background-color:#CCCCCC;
 }
 .over-doing{
-	background-color:yellow;
+	background-color:#f0ad4e;
 	color:white;
 }	
+.radio-selected{
+	background-color:#5cb85c;
+	border-radius:5px;
+}

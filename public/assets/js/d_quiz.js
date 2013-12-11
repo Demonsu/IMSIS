@@ -288,6 +288,14 @@ function fetch_right(t){
 		success:function(data){
 			//	(data);
 			$('#quiz-answer').html(data);
+			$(':radio').click(function(){
+				var name = this.name;
+				$(':radio').each(function(){
+					if(this.name == name)
+						$(this.parentNode).removeClass('radio-selected');
+				});
+				$(this.parentNode).addClass('radio-selected');
+			});
 		}
 	});
 }

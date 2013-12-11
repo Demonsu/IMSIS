@@ -1,26 +1,6 @@
 var tab_id = 0;
 $(document).ready(function(){
 	//第一张表
-	/*
-	<div class="col-md-6">
-		<table class="col-md-12">
-	
-		</table>
-		</div>
-	*/
-	$('#nav-right').click(function(){
-		if(tab_id < 18 ){
-			$('#side-left').animate({marginLeft:'-=100px'},500);
-			tab_id++;
-		}
-	});
-	$('#nav-left').click(function(){
-		if(tab_id > 0){
-			$('#side-left').animate({marginLeft:'+=100px'},500);
-			tab_id--;
-		}
-	});
-	
 	$.ajax({
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table1.json',
@@ -32,7 +12,7 @@ $(document).ready(function(){
 			var i;
 			for(i=0;i<data.content.length;i++){
 				if(i%2 == 0)
-					table += '<div class="row">'
+					table += '<div class="row">';
 				table += '<div class="col-md-6"><table class="col-md-12">';
 				table += '<tr>';
 				table += '<th></th>';
@@ -67,14 +47,14 @@ $(document).ready(function(){
 				}
 				table += '<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>';
 				table += '<tr style="color:red">';
-				table += '<td></td><td colspan="2">' + data.content[i].title_effect + '总均分</td><td></td><td style="text-align:right">' + data.content[i].effect_field_score + '</td>'
+				table += '<td></td><td colspan="2">' + data.content[i].title_effect + '总均分</td><td></td><td style="text-align:right">' + data.content[i].effect_field_score + '</td>';
 				table += '</tr>';
 				table += '</table></div>';
 				if(i%2 == 1)
 					table += '</div>';
 				
 			}
-			$('#tab-div1').html(table);
+			$('#t1').html(table);
 			
 		}
 	});
@@ -126,15 +106,15 @@ $(document).ready(function(){
 				xAxis: {
 					categories: [1,2,3,4,5],
 					title: {
-						text: null
+						text: '成熟度特征'
 					}
 				},
 				yAxis: {
 					
 					min: 0,
-					max: 80,
+					max: 100,
 					title: {
-						text: '',
+						text: '百分比率',
 						align: 'high'
 					},
 					labels: {
@@ -187,9 +167,20 @@ $(document).ready(function(){
 		
 		
 	});
-
-
-	$('a.tab-tip').tooltip('hide');
-	$('#tab1').click();
+	hide();
+	$('#tab-show-t0').show();
+	var i;
+	for(i=1;i<=15;i++){
+		$('#show-t' + i).click(function(){
+			//alert(this.id);
+			hide();
+			$('#tab-' + this.id).show();
+		});
+	}
+	
 	
 });
+
+function hide(){
+	$('.tab-pane').hide();
+}
