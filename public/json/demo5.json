@@ -1,0 +1,24 @@
+{
+	"content":[
+		{
+			"title":"业务管理",
+			"score":"2.8",
+			"proportion":"28"
+		},
+		{
+			"title":"信息技术",
+			"score":"2.5",
+			"proportion":"25"
+		},
+		{
+			"title":"组织与运营",
+			"score":"2.4",
+			"proportion":"24"
+		},
+		{
+			"title":"电子政务规划",
+			"score":"2.3",
+			"proportion":"23"
+		}
+	]
+}
