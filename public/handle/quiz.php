@@ -113,11 +113,15 @@
 			if ($result==1)
 			{
 				$statistics=new Statistics();
-				$statistics->table1_CVs($_POST["quiz_id"]);
-				$statistics->table2_KVs($_POST["quiz_id"]);
-				$statistics->table3_KDs($_POST["quiz_id"]);	
-				$statistics->table4_KDs($_POST["quiz_id"]);	
-				$statistics->table5_LDs($_POST["quiz_id"]);	
+				//$quiz_id=$_POST["quiz_id"];
+				//$statistics->init_key_goal_list($quiz_id,$config_id=1);
+				//$statistics->table1_CVs($quiz_id);
+				//$statistics->table2_KVs($quiz_id);
+				//$statistics->table3_KDs($quiz_id);	
+				//$statistics->table4_KDs($quiz_id);	
+				//$statistics->table5_LDs($quiz_id);		
+ 				//$statistics->table6_KTs($quiz_id);
+				$statistics->table_all($quiz_id);
 				echo 1;
 			}		
 		}		
