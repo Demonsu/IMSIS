@@ -5,9 +5,10 @@ class KeyVariable
 	public $id;
 	public $question;
 	public $score=-1;
-	public $need_promote;
-	public $promote_space;
-	public $contribution;
+	public $need_promote;//特别弱项或者特别优秀
+	public $promote_space;//提升空间
+	public $good_rate;//优秀指数
+	public $contribution;//贡献率
 	public $key_field_id;
 }
 class KeyField
@@ -17,6 +18,7 @@ class KeyField
 	public $score=-1;
 	public $round_score=-1;//尾化处理过的分数
 	public $is_short=0;//是否为短缺项
+	public $is_good=0;
 	public $total_variable;//关键变量的数量
 	public $total_promote_space=0;
 	public $key_variable_list=array();
@@ -36,7 +38,7 @@ class Quiz extends DB_Connect
 	public $id;
 	public $user_id;
 	public $quiz_id;
-	public $total_variable=0;
+	public $total_variable=0;//关键变量总数
 	public function __construct(){
 		parent::__construct();
 	}
@@ -601,7 +603,10 @@ class Statistics extends DB_Connect {
 							{
 								$effect_field->key_field_list[$key_fied_index]->is_short=1;
 								//echo $effect_field->key_field_list[$key_fied_index]->name."<br>".$key_field->name;
-							}						
+							}else if ($second_goal_complete>100)//该项为优势项
+							{
+								$effect_field->key_field_list[$key_fied_index]->is_good=1;
+							}					
 						}					
 						$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$key_field->name,$key_field->round_score,$first_goal,$first_goal_complete,$second_goal,$second_goal_complete);
 					}
@@ -681,7 +686,7 @@ class Statistics extends DB_Connect {
 						else
 							$need_promote="false";
 						$key_field->key_variable_list[$key_variable_index]->need_promote=$need_promote;
-						$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,($key_variable->score-$target_score)/$key_variable->score*100,($target_score-$key_variable->score)/$key_variable->score*100,$need_promote);
+						$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,($key_variable->score-$key_field->round_score)/$key_field->round_score*100,($target_score-$key_variable->score)/$key_variable->score*100,$need_promote);
 						$key_field->key_variable_list[$key_variable_index]->promote_space=($target_score-$key_variable->score)/$key_variable->score*100;
 						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$target_score)/$key_variable->score*100;
 						$key_field->total_promote_space+=$key_field->key_variable_list[$key_variable_index]->promote_space;
@@ -811,14 +816,17 @@ class Statistics extends DB_Connect {
 					if ($key_field->score!=-1 && $key_field->is_short==1)
 					foreach($key_field->key_variable_list as $key_variable)
 					{
-						if ($all_variable_field!="")
-							$all_variable_field=$all_variable_field.",";
-						if ($key_variable->contribution<0)
-							$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space,$key_variable->promote_space/$key_field->total_promote_space,"true");
-						else
-							$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space,$key_variable->promote_space/$key_field->total_promote_space,"false");
-						$need_promote_variable_num++;
-						$total_need_promote_variable++;
+						if ($key_variable->promote_space>0)
+						{
+							if ($all_variable_field!="")
+								$all_variable_field=$all_variable_field.",";
+							if ($key_variable->contribution<0)
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space,$key_variable->promote_space/$key_field->total_promote_space,"true");
+							else
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space,$key_variable->promote_space/$key_field->total_promote_space,"false");
+							$need_promote_variable_num++;
+							$total_need_promote_variable++;
+						}
 					}
 				}
 				if($all_effect_field!="")
@@ -837,9 +845,12 @@ class Statistics extends DB_Connect {
 					if ($key_field->score!=-1 && $key_field->is_short==1)
 					foreach($key_field->key_variable_list as $key_variable)
 					{
-						if ($all_variable_field=="")
-							$all_variable_field=$all_variable_field.",";
-						$all_variable_list_field=$all_variable_list_field.sprintf($KEYVARIABLELISTFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space);
+						if ($key_variable->promote_space>0)
+						{
+							if ($all_variable_field=="")
+								$all_variable_field=$all_variable_field.",";
+							$all_variable_list_field=$all_variable_list_field.sprintf($KEYVARIABLELISTFORMAT,$key_variable->question,$key_variable->score,$key_variable->promote_space);
+						}
 					}
 				}
 			}
@@ -851,6 +862,314 @@ class Statistics extends DB_Connect {
 		fwrite($handle,$result);
 		fclose($handle);			
 		
+	}
+	public function table11_GAs()
+	{
+		$KEYVARIABLEFORMAT='
+		{
+			"title":"%s",
+			"vari_score":"%s",
+			"contribution":"%.2f",
+			"space":"%.2f"
+		}';
+		$KEYFIELDFORMAT='
+		{
+			"title":"%s",
+			"content":[
+				%s
+			],
+			"compre":"%s",
+			"third":"%s",
+			"com_rate":"%.2f",
+			"promote_rate":"%.2f"
+		}';
+		$EFFECTFIELDFORMAT='
+		{
+			"title":"%s",
+			"content":[
+				%s
+			]
+		}';
+		$RESULTFORMAT='
+		{
+			"level":"%s",
+			"content":[
+				%s
+			 ]
+		}';
+		$all_effect_field="";
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			$flag=0;//该作用域下无优势关键域
+			$all_key_field="";
+			$key_field_index=0;
+			foreach($effect_field->key_field_list as $key_field)
+			{
+				if ($key_field->is_good==1)
+				{
+					//echo "table8<br>".$key_field->name;
+					$flag=1;
+					$all_key_variable="";
+					$target_score=$this->key_field_goal_list[$key_field->id][$this->mature_level];
+					$key_variable_index=0;
+					foreach($key_field->key_variable_list as $key_variable)
+					{
+						if ($all_key_variable!="")
+							$all_key_variable=$all_key_variable.",";
+						if ($key_variable->score>$target_score)
+							$need_promote="true";//特别优势
+						else
+							$need_promote="false";
+						$key_field->key_variable_list[$key_variable_index]->need_promote=$need_promote;
+						$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,($key_variable->score-$key_field->round_score)/$key_field->round_score*100,($key_variable->score-$target_score)/$target_score);
+						//$key_field->key_variable_list[$key_variable_index]->promote_space=($target_score-$key_variable->score)/$key_variable->score*100;
+						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$key_field->round_score)/$key_field->round_score*100;
+						$key_field->key_variable_list[$key_variable_index]->good_rate=($key_variable->score-$target_score)/$target_score;
+						//$key_field->total_promote_space+=$key_field->key_variable_list[$key_variable_index]->promote_space;
+						$key_variable_index++;
+					}
+					if ($all_key_field!="")
+						$all_key_field=$all_key_field.",";
+					$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$key_field->name,$all_key_variable,$key_field->round_score,$target_score,$key_field->round_score/$target_score*100,$key_field->round_score/$target_score*100-100);
+					//$effect_field->key_field_list[$key_field_index]->total_promote_space=$key_field->total_promote_space;
+				}
+				$key_field_index++;
+			}
+			if ($all_effect_field!="")
+				$all_effect_field=$all_effect_field.",";
+			if ($flag==1)
+				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field);
+		}
+		$result=sprintf($RESULTFORMAT,$this->mature_level,$all_effect_field);		
+		$dir='../statistics/'.$this->quiz_id;
+		$flag=create_folders($dir); 
+		$handle = fopen($dir.'/table11.json', "w");
+		fwrite($handle,$result);
+		fclose($handle);	
+	}
+	public function table12_GAEs()
+	{
+		$EFFECTFIELDFORMAT='
+		{
+			"title":"%s",
+			"content":["%s","%s","%.2f","%.2f"]
+		}';
+		$RESULTFORMAT='
+		{
+			"content":[
+					%s
+			],
+			"total":["%s","%s","%.2f"]
+		}';
+		$total_test_items=0;
+		$total_good_items=0;
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			foreach($effect_field->key_field_list as $key_field)
+			{
+				if ($key_field->score!=-1)
+				{
+					$total_test_items++;
+					if ($key_field->is_good==1)
+					{
+						$total_good_items++;
+					}
+				}
+			}
+		}
+		$all_effect_field="";
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			if ($effect_field->score!=-1)
+			{
+				$effect_field_test_items=0;
+				$effect_field_good_items=0;
+				foreach($effect_field->key_field_list as $key_field)
+				{
+					if ($key_field->score!=-1)
+					{
+						$effect_field_test_items++;
+						if ($key_field->is_good==1)
+						{
+							$effect_field_good_items++;
+						}
+					}
+				}
+				if ($all_effect_field!="")
+					$all_effect_field=$all_effect_field.",";
+				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$effect_field_good_items,$effect_field_test_items,$effect_field_good_items/$effect_field_test_items*100,$effect_field_good_items/$total_good_items*100);	
+			}
+		} 
+		$result=sprintf($RESULTFORMAT,$all_effect_field,$total_good_items,$total_test_items,$total_good_items/$total_test_items*100);		
+		$dir='../statistics/'.$this->quiz_id;
+		$flag=create_folders($dir); 
+		$handle = fopen($dir.'/table12.json', "w");
+		fwrite($handle,$result);
+		fclose($handle);		
+	}
+	public function table13_GANs()
+	{
+		$KEYVARIABLEFORMAT='
+		{
+			"title":"%s",
+			"content":["%s","%s","%s"]
+		}';
+		$EFFECTFIELDFORMAT='
+		{
+			"title":"%s",
+			"T56":"%s",
+			"rate":"%.2f",
+			"content":[
+				%s
+			]
+		}';
+		$RESULTFORMAT='
+		{
+			"table1":[
+				%s
+			],
+			"table1_total":["%s","%.2f"],
+			"table2":[
+				%s
+			]
+		}';
+		$KEYVARIABLELISTFORMAT='
+		{
+			"title":"%s",
+			"content":["%s","%.2f"]
+		}';
+		//table1的内容
+		$all_effect_field="";
+		$total_good_variable=0;
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			$all_variable_field="";
+			$effect_good_variable=0;//作用域下优秀的能力数
+			if ($effect_field->score!=-1)
+			{
+				foreach($effect_field->key_field_list as $key_field)
+				{
+					if ($key_field->score!=-1 && $key_field->is_good==1)
+					foreach($key_field->key_variable_list as $key_variable)
+					{
+						if ($key_variable->good_rate>0)//优秀的关键变量
+						{
+							if ($all_variable_field!="")
+								$all_variable_field=$all_variable_field.",";
+	
+							$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,$key_variable->need_promote);
+	
+							$effect_good_variable++;
+							$total_good_variable++;
+						}
+					}
+				}
+				if($all_effect_field!="")
+					$all_effect_field=$all_effect_field.",";
+				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$effect_good_variable,$effect_good_variable/$effect_field->total_variable*100,$all_variable_field);
+			}
+		}
+		//table2的内容
+		$all_variable_list_field="";
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			if ($effect_field->score!=-1)
+			{				
+				foreach($effect_field->key_field_list as $key_field)
+				{
+					if ($key_field->score!=-1 && $key_field->is_good==1)
+					foreach($key_field->key_variable_list as $key_variable)
+					{
+						if($key_variable->good_rate>0)
+						{
+							if ($all_variable_field=="")
+								$all_variable_field=$all_variable_field.",";
+							$all_variable_list_field=$all_variable_list_field.sprintf($KEYVARIABLELISTFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate);
+						}
+					}
+				}
+			}
+		}
+		$result=sprintf($RESULTFORMAT,$all_effect_field,$total_good_variable,$total_good_variable/$this->quiz->total_variable*100,$all_variable_list_field);
+		$dir='../statistics/'.$this->quiz_id;
+		$flag=create_folders($dir); 
+		$handle = fopen($dir.'/table13.json', "w");
+		fwrite($handle,$result);
+		fclose($handle);			
+
+	}
+	public function table14_CONCLUDE()
+	{
+		$RESULTFORMAT='
+		{
+			"content":[
+				{
+					"title":"领域",
+					"content":["%s","%s","%s"]
+				},
+				{
+					"title":"关键域",
+					"content":["%s","%s","%s"]
+				},
+				{
+					"title":"关键变量",
+					"content":["%s","%s","%s"]
+				}
+			],
+			"level":"%s"
+		}';
+		$total_effect_field=0;
+		$total_key_field=0;
+		$total_key_variable=0;
+		$total_good_effect_field=0;
+		$total_good_key_field=0;
+		$total_good_key_variable=0;
+		$total_short_effect_field=0;
+		$total_short_key_field=0;
+		$total_short_key_variable=0;
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			if ($effect_field->score!=-1)
+			{				
+				$total_effect_field++;
+				$good_flag=1;
+				$short_flag=1;
+				foreach($effect_field->key_field_list as $key_field)
+				{
+					if ($key_field->score!=-1)
+					{
+						$total_key_field++;
+						if ($key_field->is_short==1)
+							$total_short_key_field++;
+						if ($key_field->is_good==1)
+							$total_good_key_field++;
+						foreach($key_field->key_variable_list as $key_variable)
+						{
+							if ($key_variable->score!=-1)
+							{
+								$total_key_variable++;
+								if($key_variable->good_rate>0)
+								{
+									$total_good_key_variable++;
+								}
+								if ($key_variable->promote_space>0)
+								{
+									$total_short_key_variable++;
+								}
+							}
+						}
+					}
+				}
+				if ($good_flag==1) $total_good_effect_field++;
+				if ($short_flag==1) $total_short_effect_field++;
+			}
+		}
+		$result=sprintf($RESULTFORMAT,$total_effect_field,$total_short_effect_field,$total_good_effect_field,$total_key_field,$total_short_key_field,$total_good_key_field,$total_key_variable,$total_short_key_variable,$total_good_key_variable,$this->mature_level-1);
+		$dir='../statistics/'.$this->quiz_id;
+		$flag=create_folders($dir); 
+		$handle = fopen($dir.'/table14.json', "w");
+		fwrite($handle,$result);
+		fclose($handle);	
 	}
 	public function table_all($quiz_id,$config_id=1)
 	{
@@ -868,6 +1187,11 @@ class Statistics extends DB_Connect {
 		$this->table8_SEs();
 		$this->table9_SAs();	
 		$this->table10_APs();	
+		$this->table11_GAs();
+		$this->table12_GAEs();
+		$this->table13_GANs();
+		$this->table14_CONCLUDE();
+		
 	}
 }
 
