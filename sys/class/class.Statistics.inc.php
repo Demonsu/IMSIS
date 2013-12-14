@@ -1082,8 +1082,8 @@ class Statistics extends DB_Connect {
 					{
 						if($key_variable->good_rate>0)
 						{
-							if ($all_variable_field=="")
-								$all_variable_field=$all_variable_field.",";
+							if ($all_variable_list_field!="")
+								$all_variable_list_field=$all_variable_list_field.",";
 							$all_variable_list_field=$all_variable_list_field.sprintf($KEYVARIABLELISTFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate);
 						}
 					}
