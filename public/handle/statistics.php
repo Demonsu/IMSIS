@@ -25,6 +25,6 @@
 	if ($operation=="TABLE5")
 	{
 		$statistics=new Statistics();
-		echo $statistics->table2_LDs($_POST["$quiz_id"]);		
+		echo $statistics->table5_LDs($_POST["$quiz_id"]);		
 	}
 ?>

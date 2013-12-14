@@ -152,7 +152,6 @@ $(document).ready(function(){
 				series: []
 				
 			};
-			
 			options.series = new Array();
 			options.series[0] = new Object();
 			options.series[0].name = '关键变量';
@@ -353,11 +352,44 @@ $(document).ready(function(){
 			options.series[1].dataLabels.enabled = false;
 			var chart = new Highcharts.Chart(options);
 		}
-	});	
-	/*
+	});
 	$.ajax({
 		type:'POST',
-		url:'json/demo7.json',
+		url:'statistics/' + $('#quiz_id').val() + '/table6.json',
+		success:function(data){
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>作用域(一级指标)</th><th>关键域(二级指标)</th><th colspan=5>组织的成熟度水平</th>';
+			table += '</tr>';
+			table += '<tr>';
+			table += '<td></td><td></td>';
+			table += '<td>成熟度1级</td><td>成熟度2级</td><td>成熟度3级</td><td>成熟度4级</td><td>成熟度5级</td>';
+			table += '</tr>';
+			
+			var i;
+			for(i=0;i<data.content.length;i++){
+				var j;
+				for(j=0;j<data.content[i].content.length;j++){
+					table += '<tr>';
+					if(j == 0)
+						table += '<td>'+data.content[i].title+'</td>';
+					else
+						table += '<td></td>';
+					table += '<td>'+data.content[i].content[j].title+'</td>';
+					table += '<td>'+data.content[i].content[j].content[0]+'</td>';
+					table += '<td>'+data.content[i].content[j].content[1]+'</td>';
+					table += '<td>'+data.content[i].content[j].content[2]+'</td>';
+					table += '<td>'+data.content[i].content[j].content[3]+'</td>';
+					table += '<td>'+data.content[i].content[j].content[4]+'</td>';
+					table += '</tr>';
+				}
+			}
+			$('#t6').html(table);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/' + $('#quiz_id').val() + '/table7.json',
 		success:function(data){
 			table = '';
 			table += '<tr style="text-align:center"> <th></th> <th></th> <th>实际得分</th> <th>成熟度2级</th> <th>完成比例</th> <th>成熟度3级</th> <th>完成比例</th> </tr>';
@@ -385,7 +417,7 @@ $(document).ready(function(){
 			
 			var options = {
 				chart: {
-					renderTo:'container7',
+					renderTo:'p7',
 					type: 'bar'
 				},
 				title: {
@@ -467,9 +499,671 @@ $(document).ready(function(){
 			}
 			var chart = new Highcharts.Chart(options);
 		}
-	});*/
-	hide();
-	$('#tab-show-t0').show();
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/' + $('#quiz_id').val() + '/table8.json',
+		success:function(data){
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>领域</th>';
+			table += '<th>残缺的关键域</th>';
+			table += '<th colspan="2">关键变量得分</th>';
+			table += '<th>综合得分</th>';
+			table += '<th>贡献率</th>';
+			table += '<th>第三级</th>';
+			table += '<th>完成比例</th>';
+			table += '<th>提升空间</th>';
+			table += '<th>提升结点空间</th>';
+			table += '<th>需要努力提高的关键变量</th>';
+			table += '</tr>';
+			var i;
+			for(i=0;i<data.content.length;i++){
+				
+				var k;
+				for(k=0;k<data.content[i].content.length;k++){
+					table += '<tr>';
+					if(k == 0)
+						table += '<td>'+data.content[i].title+'</td>';
+					else
+						table += '<td></td>';
+					table += '<td>'+data.content[i].content[k].title+'</td>';
+					table += '<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>';
+					table += '</tr>';
+					var j;
+					for(j=0;j<data.content[i].content[k].content.length;j++){
+						table += '<tr>';
+						table += '<td></td><td></td>';
+						table += '<td>'+data.content[i].content[k].content[j].title+'</td>';
+						table += '<td  style="text-align:right">'+data.content[i].content[k].content[j].vari_score+'</td>';
+						if(j == 0){
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].compre +'</td>';
+						}
+						if(parseFloat(data.content[i].content[k].content[j].contribution) < 0)
+							table += '<td style="background:rgb(183,222,232)" >'+data.content[i].content[k].content[j].contribution+'%</td>';
+						else
+							table += '<td  style="text-align:center">'+data.content[i].content[k].content[j].contribution+'%</td>';
+						if(j == 0){
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].third +'</td>';
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].com_rate +'%</td>';
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].promote_rate +'%</td>';
+						}
+						if(parseFloat(data.content[i].content[k].content[j].space) > 0)
+							table += '<td style="background:rgb(252,213,180)">'+data.content[i].content[k].content[j].space+'%</td>';
+						else
+							table += '<td>'+data.content[i].content[k].content[j].space+'%</td>';
+						table += '<td>'+data.content[i].content[k].content[j].need_promote+'</td>';
+						table += '</tr>';
+					}
+				}
+			}
+			
+			$('#t8').html(table);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/' + $('#quiz_id').val() + '/table9.json',
+		success:function(data){
+			var table = '';
+			table += '<tr>';
+			table += '<th colspan=5 style="text-align:center">短缺能力的领域分析表</th>';
+			table += '</tr>';
+			table += '<tr>';
+			table += '<th></th><th>短缺能力项数</th><th>被测项数</th><th>所占比例</th><th>占短缺能力的百分比</th>';
+			table += '</tr>';
+			var i;
+			for(i=0;i<data.content.length;i++){
+				table += '<tr>';
+				table += '<td>'+data.content[i].title+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[1]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[2]+'%</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[3]+'%</td>';
+				table += '</tr>';
+			}
+			table += '<tr>';
+			table += '<td style="text-align:right">总数</td>';
+			table += '<td style="text-align:right">'+data.total[0]+'</td>';
+			table += '<td style="text-align:right">'+data.total[1]+'</td>';
+			table += '<td style="text-align:right">'+data.total[2]+'%</td>';
+			table += '<td></td>'
+			table += '</tr>';
+			
+			$('#t9').html(table);
+			
+			var options = {
+				chart: {
+					renderTo:'p9-1',
+					type: 'column'
+				},
+				title: {
+					text: '短缺能力与被测能力项数'
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					categories: []
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: ''
+					}
+				},
+				tooltip: {
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+						'<td style="padding:0"><b>{point.y}</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0,
+						dataLabels: {
+							enabled: true,
+							format:'<b>{point.y}</b>'
+						}
+					}
+				},
+				series: []
+			};
+			options.xAxis.categories = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.xAxis.categories.push(data.content[i].title);
+			}
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].name = '短缺能力项数';
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[0].data.push(parseInt(data.content[i].content[0]));
+			}
+			options.series[1] = new Object();
+			options.series[1].name = '被测项数';
+			options.series[1].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[1].data.push(parseInt(data.content[i].content[1]));
+			}
+			var chart = new Highcharts.Chart(options);
+			
+			options = {
+				chart: {
+					renderTo:'p9-2',
+					type: 'column'
+				},
+				title: {
+					text: '短缺能力项数占测评项数的百分比'
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					categories: []
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: ''
+					}
+				},
+				tooltip: {
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+						'<td style="padding:0"><b>{point.y}%</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0,
+						dataLabels: {
+							enabled: true,
+							format:'<b>{point.y}%</b>'
+						}
+						
+					}
+				},
+				series: []
+			};
+			options.xAxis.categories = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.xAxis.categories.push(data.content[i].title);
+			}
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].name = '所占比例';
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[0].data.push(parseFloat(data.content[i].content[2]));
+			}
+			var chart = new Highcharts.Chart(options);
+			
+			options = {
+				chart: {
+					renderTo:'p9-3',
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false
+				},
+				title: {
+					text: '占短缺能力的百分比'
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							color: '#000000',
+							connectorColor: '#000000',
+							format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+						}
+					}
+				},
+				series: []
+			};
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].type = 'pie';
+			options.series[0].name = '占短缺能力的百分比';
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[0].data[i] = new Array();
+				options.series[0].data[i].push(data.content[i].title);
+				options.series[0].data[i].push(parseFloat(data.content[i].content[3]));
+			}
+			var chart = new Highcharts.Chart(options);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/' + $('#quiz_id').val() + '/table10.json',
+		success:function(data){
+			//alert(data);
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>类型</th>';
+			table += '<th>关键变量提升的项数(T=56)</th>';
+			table += '<th>占该领域的百分比</th>';
+			table += '<th>需要提升的流程(关键变量)</th>';
+			table += '<th>得分</th>';
+			table += '<th>提升空间</th>';
+			table += '<th>用功比例</th>';
+			table += '<th>特别弱项</th>';
+			table += '</tr>';
+			
+			var i;
+			for(i=0;i<data.table1.length;i++){
+				var j;
+				if(parseInt(data.table1[i].T56) == 0){
+					table += '<tr>';
+					table += '<td>'+data.table1[i].title+'</td>';
+					table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].T56+'</td>';
+					table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].rate+'%</td>';
+					table += '<td></td><td></td><td></td><td></td>';
+					table += '</tr>';
+				}
+				else{
+					for(j=0;j<data.table1[i].content.length;j++){
+						table += '<tr>';
+						if(j == 0){
+							table += '<td>'+data.table1[i].title+'</td>';
+							table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].T56+'</td>';
+							table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].rate+'%</td>';
+						}
+						else
+							table += '<td></td>';
+						table += '<td>'+data.table1[i].content[j].title+'</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'%</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[3]+'</td>';
+						table += '</tr>';
+					}
+				}
+			}
+			table += '<tr>';
+			table += '<td style="text-align:right">总数</td>';
+			table += '<td style="text-align:right">'+data.table1_total[0]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '</tr>';
+			table += '<tr>';
+			table += '<td style="text-align:right">占总关键变量百分比</td>';
+			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '</tr>';
+			$('#t10-1').html(table);
+			
+			table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>需要提升的流程</th>';
+			table += '<th>得分</th>';
+			table += '<th>提升空间(降序排序)</th>';
+			table += '</tr>';
+			for(i=0;i<data.table2.length;i++){
+				table += '<tr>';
+				table += '<td>'+data.table2[0].title+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
+				table += '</tr>';
+			}
+			$('#t10-2').html(table);
+			
+			var options = {
+				chart:{
+					renderTo:'p10'
+				},
+				title: {
+					text: '能力提升图',
+					x: -20 //center
+				},
+				subtitle: {
+					text: '',
+					x: -20
+				},
+				xAxis: {
+					categories: []
+				},
+				yAxis: {
+					title: {
+						text: ''
+					},
+					plotLines: [{
+						value: 0,
+						width: 1,
+						color: '#808080'
+					}]
+				},
+				tooltip: {
+					valueSuffix: ''
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'middle',
+					borderWidth: 0
+				},
+				series: []
+			};
+			options.xAxis.categories = new Array();
+			for(i=0;i<data.table2.length;i++){
+				options.xAxis.categories.push(data.table2[i].title);
+			}
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].name = '得分';
+			options.series[0].data = new Array();
+			for(i=0;i<data.table2.length;i++){
+				options.series[0].data.push(parseInt(data.table2[i].content[0]));
+			}
+			options.series[1] = new Object();
+			options.series[1].name = '提升空间';
+			options.series[1].data = new Array();
+			for(i=0;i<data.table2.length;i++){
+				options.series[1].data.push(parseFloat(data.table2[i].content[0])*(1.0+parseFloat(data.table2[i].content[1])/100));
+			}
+			var chart = new Highcharts.Chart(options);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/'+ $('#quiz_id').val() +'/table11.json',
+		success:function(data){
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>领域</th>';
+			table += '<th>优势能力</th>';
+			table += '<th colspan="2">关键变量得分</th>';
+			table += '<th>综合得分</th>';
+			table += '<th>贡献率</th>';
+			table += '<th>第三级</th>';
+			table += '<th>完成比例</th>';
+			table += '<th>超越比例</th>';
+			table += '<th>提升结点空间</th>';
+			table += '</tr>';
+			var i;
+			for(i=0;i<data.content.length;i++){
+				var k;
+				for(k=0;k<data.content[i].content.length;k++){
+					table += '<tr>';
+					if(k == 0)
+						table += '<td>'+data.content[i].title+'</td>';
+					else
+						table += '<td></td>';
+					table += '<td>'+data.content[i].content[k].title+'</td>';
+					table += '<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>';
+					table += '</tr>';
+					var j;
+					for(j=0;j<data.content[i].content[k].content.length;j++){
+						table += '<tr>';
+						table += '<td></td><td></td>';
+						table += '<td>'+data.content[i].content[k].content[j].title+'</td>';
+						table += '<td  style="text-align:right">'+data.content[i].content[k].content[j].vari_score+'</td>';
+						if(j == 0)
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].compre +'</td>';
+						
+						if(parseFloat(data.content[i].content[k].content[j].contribution) > 0)
+							table += '<td style="background:rgb(196,215,155)" >'+data.content[i].content[k].content[j].contribution+'%</td>';
+						else
+							table += '<td  style="text-align:center">'+data.content[i].content[k].content[j].contribution+'%</td>';
+						if(j == 0){
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].third +'</td>';
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].com_rate +'</td>';
+							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].promote_rate +'</td>';
+						}
+						if(parseFloat(data.content[i].content[k].content[j].space) > 0)
+							table += '<td style="background:rgb(252,213,180)">'+data.content[i].content[k].content[j].space+'%</td>';
+						else
+							table += '<td>'+data.content[i].content[k].content[j].space+'%</td>';
+						table += '</tr>';
+					}
+				}
+			}
+			
+			$('#t11').html(table);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/'+$('#quiz_id').val()+'/table12.json',
+		success:function(data){
+			var table = '';
+			table += '<tr>';
+			table += '<th colspan=5 style="text-align:center">优势能力的领域分析表</th>';
+			table += '</tr>';
+			table += '<tr style="text-align:center">';
+			table += '<th></th><th>优势能力项数</th><th>总项数</th><th>所占比例</th><th>占优势能力的百分比</th>';
+			table += '</tr>';
+			var i;
+			for(i=0;i<data.content.length;i++){
+				table += '<tr>';
+				table += '<td>'+data.content[i].title+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[1]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[2]+'%</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[3]+'%</td>';
+				table += '</tr>';
+			}
+			table += '<tr>';
+			table += '<td style="text-align:right">总数</td>';
+			table += '<td style="text-align:right">'+data.total[0]+'</td>';
+			table += '<td style="text-align:right">'+data.total[1]+'</td>';
+			table += '<td style="text-align:right">'+data.total[2]+'%</td>';
+			table += '<td></td>'
+			table += '</tr>';
+			
+			$('#t12').html(table);
+			
+			var options = {
+				chart: {
+					renderTo:'p12-1',
+					type: 'column'
+				},
+				title: {
+					text: '优势能力分布图'
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					categories: []
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: ''
+					}
+				},
+				tooltip: {
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+						'<td style="padding:0"><b>{point.y}</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0,
+						dataLabels: {
+							enabled: true,
+							format:'<b>{point.y}</b>'
+						}
+					}
+				},
+				series: []
+			};
+			options.xAxis.categories = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.xAxis.categories.push(data.content[i].title);
+			}
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].name = '优势能力项数';
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[0].data.push(parseInt(data.content[i].content[0]));
+			}
+			options.series[1] = new Object();
+			options.series[1].name = '总项数';
+			options.series[1].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[1].data.push(parseInt(data.content[i].content[1]));
+			}
+			var chart = new Highcharts.Chart(options);
+			
+			options = {
+				chart: {
+					renderTo:'p12-2',
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false
+				},
+				title: {
+					text: '占短缺能力的百分比'
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							color: '#000000',
+							connectorColor: '#000000',
+							format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+						}
+					}
+				},
+				series: []
+			};
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].type = 'pie';
+			options.series[0].name = '占短缺能力的百分比';
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				options.series[0].data[i] = new Array();
+				options.series[0].data[i].push(data.content[i].title);
+				options.series[0].data[i].push(parseFloat(data.content[i].content[3]));
+			}
+			var chart = new Highcharts.Chart(options);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/'+$('#quiz_id').val()+'/table13.json',
+		success:function(data){
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>领域</th>';
+			table += '<th>优秀关键变量的项数(T=56)</th>';
+			table += '<th>占该领域的百分比</th>';
+			table += '<th>优秀关键变量</th>';
+			table += '<th>得分</th>';
+			table += '<th>优秀指数</th>';
+			table += '<th>特别优秀关键变量</th>';
+			table += '</tr>';
+			
+			var i;
+			for(i=0;i<data.table1.length;i++){
+				var j;
+				if(parseInt(data.table1[i].T56) == 0){
+					table += '<tr>';
+					table += '<td>'+data.table1[i].title+'</td>';
+					table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].T56+'</td>';
+					table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].rate+'%</td>';
+					table += '<td></td><td></td><td></td><td></td>';
+					table += '</tr>';
+				}
+				else{
+					for(j=0;j<data.table1[i].content.length;j++){
+						table += '<tr>';
+						if(j == 0){
+							table += '<td>'+data.table1[i].title+'</td>';
+							table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].T56+'</td>';
+							table += '<td rowspan='+data.table1[i].content.length+' style="text-align:center">'+data.table1[i].rate+'%</td>';
+						}
+						else
+							table += '<td></td>';
+						table += '<td>'+data.table1[i].content[j].title+'</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'%</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
+						table += '</tr>';
+					}
+				}
+			}
+			table += '<tr>';
+			table += '<td style="text-align:right">总数</td>';
+			table += '<td style="text-align:right">'+data.table1_total[0]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '</tr>';
+			table += '<tr>';
+			table += '<td style="text-align:right">占总关键变量百分比</td>';
+			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '</tr>';
+			$('#t13-1').html(table);
+			
+			table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th>优秀关键变量</th>';
+			table += '<th>得分</th>';
+			table += '<th>优秀指数</th>';
+			table += '</tr>';
+			for(i=0;i<data.table2.length;i++){
+				table += '<tr>';
+				table += '<td>'+data.table2[i].title+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
+				table += '</tr>';
+			}
+			$('#t13-2').html(table);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'statistics/'+$('#quiz_id').val()+'/table14.json',
+		success:function(data){
+			var table = '';
+			table += '<tr style="text-align:center">';
+			table += '<th></th><th>参加测评</th><th>短缺能力</th><th>优势能力</th>';
+			table += '</tr>';
+			var i;
+			for(i=0;i<data.content.length;i++){
+				table += '<tr>';
+				table += '<td>'+data.content[i].title+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[1]+'</td>';
+				table += '<td style="text-align:right">'+data.content[i].content[2]+'</td>';
+				table += '</tr>';
+			}
+			table += '<tr>';
+			table += '<td>成熟度等级</td>';
+			table += '<td colspan=3 style="text-align:center">'+data.level+'级</td>';
+			table += '</tr>';
+			$('#t14').html(table);
+		}
+	});
+	$('#index-show').click(function(){
+		hide();
+		$('#tab-show-t0').show();
+	});
+	$('#index-show').click();
 	var i;
 	for(i=1;i<=15;i++){
 		$('#show-t' + i).click(function(){
