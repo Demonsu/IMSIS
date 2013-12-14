@@ -309,9 +309,9 @@ class Questionnaire extends DB_Connect {
 		
 		$return_value='<div class="list-group">';
 		$EFFECTFIELDFORMAT='<a class="list-group-item active">%s</a>';
-		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done">%s</a>';
-		$KEYFIELDDOINGFORMAT='<a href="#" id="%s" class="list-group-item text-center over-doing">%s</a>';
-		$KEYFIELDUNDOFORMAT='<a href="#" id="%s" class="list-group-item text-center">%s</a>';
+		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span>%s</a>';
+		$KEYFIELDDOINGFORMAT='<a href="#" id="%s" class="list-group-item text-center over-doing"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span>%s</a>';
+		$KEYFIELDUNDOFORMAT='<a href="#" id="%s" class="list-group-item text-center"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span>%s</a>';
 		//首先获取问卷的基本信息
 		$sql="SELECT * FROM questionnaire WHERE id='".$quiz_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -387,7 +387,60 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;	
 	}
-	
+	public function fetch_my_key_variable($quiz_id,$key_field_id)
+	{
+		$return_value="";
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s</a>';
+		$KEYVARIABLEFORMAT='<a class="list-group-item">
+					<p class="">%s %s </p>
+						<label ><input type="radio" name="radio%s" value="1" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="2">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="3" >
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="4">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="5">
+						%s</label><br>
+						<label ><input type="radio" name="radio%s" value="0">
+						%s</label><br>
+				  </a>';
+		$SCRIPTFORMAT='
+					<script>
+						$(function(){
+							set_checked("radio%s",%s);	
+						});					
+					</script>
+						';
+		//首先获取关键域的信息
+		$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$key_field_info=mysql_fetch_assoc($select);
+		$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"]);
+		//再获取这个关键域在问卷中的状态，即查看是否有答案存在
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$my_field_info=mysql_fetch_assoc($select);		
+		//然后获取该关键域下的所有关键变量
+		$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."' AND available='1'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($key_variable=mysql_fetch_assoc($select))
+		{
+			
+			$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解");
+			if ($key_field_info['state']!=0)
+			{
+				$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' AND key_variable_id='".$key_variable["id"]."'";
+				$my_variable_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+				$my_variable_info=mysql_fetch_assoc($my_variable_select);
+				$return_value=$return_value.sprintf($SCRIPTFORMAT,$key_variable["id"],$my_variable_info["answer"]);
+			}
+			
+		}
+		return $return_value;		
+		
+	}
 	public function fetch_key_variable($key_field_id)//根据关键域获取关键变量的问卷
 	{
 		/*
@@ -427,6 +480,13 @@ class Questionnaire extends DB_Connect {
 						<label ><input type="radio" name="radio%s" value="0">
 						%s</label><br>
 				  </a>';
+		$SCRIPTFORMAT='
+					<script>
+						$(function(){
+							set_checked("radio%s",%s);	
+						});					
+					</script>
+						';
 		//首先获取关键域的信息
 		$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -442,7 +502,22 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;
 	}
-	
+	public function delete_key_field($quiz_id,$key_field_id,$user_id)//删除不想做的关键域
+	{
+		//首先删掉问卷答案部分的内容
+		$sql="DELETE qa.* FROM questionnaire_answer qa,key_variable kv WHERE qa.questionnaire_id='".$quiz_id."' AND qa.key_variable_id=kv.id AND kv.key_field_id='".$key_field_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		//然后删除问卷关键域
+		$sql="DELETE FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}	
+		return 1;		
+	}
 	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)//回答问卷
 	{
 		//首先插入答案

@@ -29,6 +29,24 @@
 		$questionnaire=new Questionnaire();
 		echo $questionnaire->fetch_key_variable($_POST["key_field_id"]);
 	}
+	if ($operation=="FETCHMYKEYVARIABLE")
+	{
+		$questionnaire=new Questionnaire();
+		echo $questionnaire->fetch_my_key_variable($_POST["quiz_id"],$_POST["key_field_id"]);		
+	}
+	if ($operation=="DELETEKEYFIELD")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$quiz_id=$_POST["quiz_id"];
+			$key_field_id=$_POST["key_field_id"];
+			$questionnaire=new Questionnaire();
+			//echo $questionnaire->check_goal_set($_SESSION["USERID"],$_POST["quiz_id"]);			
+			echo $questionnaire->delete_key_field($quiz_id,$key_field_id,$_SESSION["USERID"]);
+		}		
+	}
 	if ($operation=="ANSERQUESTIONNAIRE")//回答一个关键域
 	{	
 		if (!isset($_SESSION["USERID"]))
