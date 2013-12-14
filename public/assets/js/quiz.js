@@ -216,6 +216,11 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 									$('.over-doing').removeClass('over-doing');
 									$(t.parentNode).addClass('over-doing');
 									$('#quiz-answer').html(data);
+									$(':radio').each(function(){
+										if(this.checked == true){
+											$(this.parentNode).addClass('radio-selected');
+										}
+									});
 									$(':radio').click(function(){
 										var name = this.name;
 										$(':radio').each(function(){

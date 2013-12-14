@@ -184,7 +184,79 @@ $(document).ready(function(){
 				}
 			}
 			$('#t3').html(table);
+			var options = {
+				chart: {
+					renderTo:'p3',
+					type: 'bar'
+				},
+				title: {
+					text: '关键域（KDs）得分表'
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					categories: [],
+					title: {
+						text: null
+					}
+				},
+				yAxis: {
+					min: 0,
+					max: 5,
+					title: {
+						text: '得分',
+						align: 'high'
+					},
+					labels: {
+						overflow: 'justify'
+					}
+				},
+				tooltip: {
+					valueSuffix: ''
+				},
+				plotOptions: {
+					bar: {
+						dataLabels: {
+							enabled: false
+						}
+					}
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'top',
+					x: -40,
+					y: 100,
+					floating: true,
+					borderWidth: 1,
+					backgroundColor: '#FFFFFF',
+					shadow: true
+				},
+				credits: {
+					enabled: false
+				},
+				series: []
+			};
 			
+			options.xAxis.categories = new Array();
+			var i,j;
+			for(i=0;i<data.content.length;i++){
+				for(j=0;j<data.content[i].content.length;j++){
+					options.xAxis.categories.push(data.content[i].content[j].title);
+				}
+			}
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].name = "得分";
+			options.series[0].data = new Array();
+			for(i=0;i<data.content.length;i++){
+				for(j=0;j<data.content[i].content.length;j++){
+					options.series[0].data.push(parseFloat(data.content[i].content[j].content));
+				}
+			}
+			var chart = new Highcharts.Chart(options);
 		}
 	});
 	$.ajax({
@@ -564,10 +636,13 @@ $(document).ready(function(){
 							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].promote_rate +'%</td>';
 						}
 						if(parseFloat(data.content[i].content[k].content[j].space) > 0)
-							table += '<td style="background:rgb(252,213,180)">'+data.content[i].content[k].content[j].space+'%</td>';
+							table += '<td style="background:rgb(252,213,180);text-align:right">'+data.content[i].content[k].content[j].space+'%</td>';
 						else
-							table += '<td>'+data.content[i].content[k].content[j].space+'%</td>';
-						table += '<td>'+data.content[i].content[k].content[j].need_promote+'</td>';
+							table += '<td style="text-align:right">'+data.content[i].content[k].content[j].space+'%</td>';
+						if(data.content[i].content[k].content[j].need_promote == 'true')
+							table += '<td style="text-align:center"><span class="glyphicon glyphicon-ok-sign"></span></td>';
+						else
+							table += '<td style="text-align:center"></td>';
 						table += '</tr>';
 					}
 				}
@@ -804,7 +879,10 @@ $(document).ready(function(){
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'%</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
-						table += '<td style="text-align:right">'+data.table1[i].content[j].content[3]+'</td>';
+						if(data.table1[i].content[j].content[3] == 'true')
+								table += '<td style="text-align:center"><span class="glyphicon glyphicon-star"></span></td>';
+							else
+								table += '<td style="text-align:center"></td>';
 						table += '</tr>';
 					}
 				}
@@ -905,6 +983,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/'+ $('#quiz_id').val() +'/table11.json',
 		success:function(data){
+			var ar = new Array('一','二','三','四','五');
 			var table = '';
 			table += '<tr style="text-align:center">';
 			table += '<th>领域</th>';
@@ -912,10 +991,10 @@ $(document).ready(function(){
 			table += '<th colspan="2">关键变量得分</th>';
 			table += '<th>综合得分</th>';
 			table += '<th>贡献率</th>';
-			table += '<th>第三级</th>';
+			table += '<th>第'+ar[parseInt(data.level)-1]+'级</th>';
 			table += '<th>完成比例</th>';
 			table += '<th>超越比例</th>';
-			table += '<th>提升结点空间</th>';
+			table += '<th>优秀指数</th>';
 			table += '</tr>';
 			var i;
 			for(i=0;i<data.content.length;i++){
@@ -939,7 +1018,7 @@ $(document).ready(function(){
 							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].compre +'</td>';
 						
 						if(parseFloat(data.content[i].content[k].content[j].contribution) > 0)
-							table += '<td style="background:rgb(196,215,155)" >'+data.content[i].content[k].content[j].contribution+'%</td>';
+							table += '<td style="background:rgb(196,215,155);text-align:center" >'+data.content[i].content[k].content[j].contribution+'%</td>';
 						else
 							table += '<td  style="text-align:center">'+data.content[i].content[k].content[j].contribution+'%</td>';
 						if(j == 0){
@@ -948,9 +1027,9 @@ $(document).ready(function(){
 							table += '<td rowspan=' + data.content[i].content[k].content.length + ' style="text-align:center">'+ data.content[i].content[k].promote_rate +'</td>';
 						}
 						if(parseFloat(data.content[i].content[k].content[j].space) > 0)
-							table += '<td style="background:rgb(252,213,180)">'+data.content[i].content[k].content[j].space+'%</td>';
+							table += '<td style="background:rgb(252,213,180);text-align:right">'+data.content[i].content[k].content[j].space+'</td>';
 						else
-							table += '<td>'+data.content[i].content[k].content[j].space+'%</td>';
+							table += '<td style="text-align:right">'+data.content[i].content[k].content[j].space+'</td>';
 						table += '</tr>';
 					}
 				}
@@ -1129,7 +1208,10 @@ $(document).ready(function(){
 						table += '<td>'+data.table1[i].content[j].title+'</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'</td>';
-						table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
+						if(data.table1[i].content[j].content[2] == 'true')
+							table += '<td style="text-align:center"><span class="glyphicon glyphicon-tag"></span></td>';
+						else
+							table += '<td style="text-align:center"></td>';
 						table += '</tr>';
 					}
 				}
