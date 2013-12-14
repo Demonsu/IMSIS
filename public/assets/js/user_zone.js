@@ -258,7 +258,7 @@ function checkresult(t){
 		url:'handle/user_zone.php',
 		data:{
 			operation:'',
-			quiz_id:t.id
+			quiz_id:t.parentNode.id
 		},
 		success:function(data){
 			alert(data);
