@@ -429,7 +429,7 @@ class Questionnaire extends DB_Connect {
 		{
 			
 			$return_value=$return_value.sprintf($KEYVARIABLEFORMAT,$key_variable["id"],$key_variable["question"],$key_variable["id"],$key_variable["answer_a"],$key_variable["id"],$key_variable["answer_b"],$key_variable["id"],$key_variable["answer_c"],$key_variable["id"],$key_variable["answer_d"],$key_variable["id"],$key_variable["answer_e"],$key_variable["id"],"不了解");
-			if ($key_field_info['state']!=0)
+			if ($my_field_info['state']!=0)
 			{
 				$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' AND key_variable_id='".$key_variable["id"]."'";
 				$my_variable_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
