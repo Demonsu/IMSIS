@@ -152,7 +152,6 @@ $(document).ready(function(){
 				series: []
 				
 			};
-			
 			options.series = new Array();
 			options.series[0] = new Object();
 			options.series[0].name = '关键变量';

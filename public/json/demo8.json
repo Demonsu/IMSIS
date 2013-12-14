@@ -2,34 +2,38 @@
 	"content":[
 		{
 			"title":"电子政务战略",
-			"sec-title":"战略规划",
 			"content":[
 				{
-					"title":"中长期规划",
-					"vari-score":"2",
-					"contribution":"33.33",
-					"space":"50.00",
-					"need-promote":"true"
-				},
-				{
-					"title":"IT基础设施规划",
-					"vari-score":"2",
-					"contribution":"33.33",
-					"space":"50.00",
-					"need-promote":"true"
-				},
-				{
-					"title":"IT与业务的融合",
-					"vari-score":"1",
-					"contribution":"-33.33",
-					"space":"200.00",
-					"need-promote":"true"
+					"title":"战略规划",
+					"content":[
+						{
+							"title":"中长期规划",
+							"vari_score":"2",
+							"contribution":"33.33",
+							"space":"50.00",
+							"need_promote":"true"
+						},
+						{
+							"title":"IT基础设施规划",
+							"vari_score":"2",
+							"contribution":"33.33",
+							"space":"50.00",
+							"need_promote":"true"
+						},
+						{
+							"title":"IT与业务的融合",
+							"vari_score":"1",
+							"contribution":"-33.33",
+							"space":"200.00",
+							"need_promote":"true"
+						}
+					],
+					"compre":"1.5",
+					"third":"3",
+					"com_rate":"50.00",
+					"promote_rate":"50.00"
 				}
-			],
-			"compre":"1.5",
-			"third":"3",
-			"com-rate":"50.00",
-			"promote-rate":"50.00"
+			]
 		}
 	]
 }

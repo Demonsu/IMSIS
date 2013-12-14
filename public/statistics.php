@@ -162,16 +162,106 @@
 			
 		</div>
 	  </div>
-	  <div class="tab-pane" id="tab-show-t6">6</div>
-	  <div class="tab-pane" id="tab-show-t7">7</div>
-	  <div class="tab-pane" id="tab-show-t8">8</div>
-	  <div class="tab-pane" id="tab-show-t9">9</div>
-	  <div class="tab-pane" id="tab-show-t10">10</div>
-	  <div class="tab-pane" id="tab-show-t11">11</div>
-	  <div class="tab-pane" id="tab-show-t12">12</div>
-	  <div class="tab-pane" id="tab-show-t13">13</div>
-	  <div class="tab-pane" id="tab-show-t14">14</div>
-	  <div class="tab-pane" id="tab-show-t15">15</div>
+	  <div class="tab-pane" id="tab-show-t6">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t6">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p6" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t7">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t7">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p7" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t8">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t8">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p8" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t9">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t9">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p9" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t10">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t10">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p10" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t11">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t11">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p11" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t12">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t12">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p12" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t13">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t13">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p13" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t14">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t14">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p14" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
+	  <div class="tab-pane" id="tab-show-t15">
+		<div class="col-md-6">
+			<table class="col-md-12" id="t15">
+	
+			</table>
+		</div>
+		<div class="col-md-7" id="p15" style="width: 600px; height: 400px;">
+			
+		</div>
+	  </div>
 	</div>
 </div>
 

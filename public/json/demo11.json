@@ -1,0 +1,36 @@
+{
+	"content":[
+		{
+			"title":"业务管理",
+			"content":[
+				{
+					"title":"质量与安全保障",
+					"content":[
+						{
+							"title":"质量安全体系",
+							"vari_score":"3",
+							"contribution":"-14.29",
+							"space":"0.50"
+						},
+						{
+							"title":"信息安全管理系统",
+							"vari_score":"4",
+							"contribution":"14.29",
+							"space":"1.00"
+						},
+						{
+							"title":"绩效测评和监控体系",
+							"vari_score":"5",
+							"contribution":"-14.29",
+							"space":"0.50"
+						}
+					],
+					"compre":"3.5",
+					"third":"2",
+					"com_rate":"175.00",
+					"promote_rate":"75"
+				}
+			]
+		}
+	]
+}
