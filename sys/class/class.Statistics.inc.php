@@ -549,6 +549,7 @@ class Statistics extends DB_Connect {
 		while ($mature_level<=5)
 		{
 			$flag=1;//表示满足该等级要求
+			//echo "mature_level:".$mature_level."<br>";
 			foreach($this->quiz->effect_field_list as $effect_field)
 			{
 				if($effect_field->score!=-1) 
@@ -558,6 +559,7 @@ class Statistics extends DB_Connect {
 					{	
 						if ($key_field->round_score<$this->key_field_goal_list[$key_field->id][$mature_level])
 						{
+							//echo $key_field->name.":".$key_field->round_score;
 							$flag=0;
 						}
 					}
@@ -633,9 +635,9 @@ class Statistics extends DB_Connect {
 		{
 			"title":"%s",
 			"vari_score":"%s",
-			"contribution":"%s",
-			"space":"%s",
-			"need_promote":"%s"
+			"contribution":"%.2f",
+			"space":"%.2f",
+			"need_promote":"%.2f"
 		}';
 		$KEYFIELDFORMAT='
 		{
@@ -645,8 +647,8 @@ class Statistics extends DB_Connect {
 			],
 			"compre":"%s",
 			"third":"%s",
-			"com_rate":"%s",
-			"promote_rate":"%s"
+			"com_rate":"%.2f",
+			"promote_rate":"%.2f"
 		}';
 		$EFFECTFIELDFORMAT='
 		{
@@ -699,10 +701,13 @@ class Statistics extends DB_Connect {
 				}
 				$key_field_index++;
 			}
-			if ($all_effect_field!="")
-				$all_effect_field=$all_effect_field.",";
+
 			if ($flag==1)
+			{
+				if ($all_effect_field!="")
+					$all_effect_field=$all_effect_field.",";
 				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field);
+			}
 		}
 		$result=sprintf($RESULTFORMAT,$this->mature_level,$all_effect_field);		
 		$dir='../statistics/'.$this->quiz_id;
@@ -935,10 +940,13 @@ class Statistics extends DB_Connect {
 				}
 				$key_field_index++;
 			}
-			if ($all_effect_field!="")
-				$all_effect_field=$all_effect_field.",";
+
 			if ($flag==1)
+			{
+				if ($all_effect_field!="")
+					$all_effect_field=$all_effect_field.",";
 				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field);
+			}
 		}
 		$result=sprintf($RESULTFORMAT,$this->mature_level,$all_effect_field);		
 		$dir='../statistics/'.$this->quiz_id;
@@ -1012,7 +1020,7 @@ class Statistics extends DB_Connect {
 		$KEYVARIABLEFORMAT='
 		{
 			"title":"%s",
-			"content":["%s","%s","%s"]
+			"content":["%s","%.2f","%s"]
 		}';
 		$EFFECTFIELDFORMAT='
 		{
