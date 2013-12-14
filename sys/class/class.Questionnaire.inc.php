@@ -613,7 +613,7 @@ class Questionnaire extends DB_Connect {
 	public function fetch_preview_questionnaire($user_id,$quiz_id)
 	{
 		$return_value="";
-		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"><label>目标值:</label><input style="width:20px" type="text" id="%s" value="%s"/></div></a> ';
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"><label>目标值:%s<button class="button-modify">修改</button></label></div></a> ';
 		$KEYVARIABLEFORMAT='<a class="list-group-item">
 					<p class="">%s %s</p>
 						<label ><input type="radio" name="radio%s" value="1" >
