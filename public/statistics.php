@@ -161,6 +161,11 @@
 	
 			</table>
 		</div>
+		<div class="col-md-12 text-center">
+			<div id="p3" style="width:960px;height: 400px;">
+				
+			</div>
+		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t4">
 		<div class="col-md-12">
