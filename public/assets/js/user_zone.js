@@ -253,23 +253,8 @@ function deleteitem(t,no){
 	}
 }
 function checkresult(t){
-	$.ajax({
-		type:'POST',
-		url:'handle/user_zone.php',
-		data:{
-			operation:'',
-			quiz_id:t.parentNode.id
-		},
-		success:function(data){
-			alert(data);
-			if(data == 1){
-				window.location = 'check_quiz.php?quiz_id=' + t.parentNode.id;
-			}
-			else{
-			
-			}
-		}
-	});
+	window.location = 'statistics.php?quiz_id=' + t.parentNode.id;
+
 }
 function u_continue(t){
 	window.location = 'quiz.php?quiz_id='+t.parentNode.id;
