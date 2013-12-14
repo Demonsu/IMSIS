@@ -613,7 +613,7 @@ class Questionnaire extends DB_Connect {
 	public function fetch_preview_questionnaire($user_id,$quiz_id)
 	{
 		$return_value="";
-		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"><label>目标值:%s</label></div></a> ';
+		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"></div></a> ';
 		$KEYVARIABLEFORMAT='<a class="list-group-item">
 					<p class="">%s %s<button class="button-modify">修改</button></p>
 						<label ><input type="radio" name="radio%s" value="1" >
@@ -645,7 +645,7 @@ class Questionnaire extends DB_Connect {
 			$sql="SELECT * FROM key_field WHERE id='".$key_field_id."'";
 			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 			$key_field_info=mysql_fetch_assoc($select);
-			$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"],$key_field_info["id"],$key_field["goal"]);
+			$return_value=$return_value.sprintf($KEYFIELDFORMAT,$key_field_info["effect_field_id"],$key_field_info["id"],$key_field_info["name"],$key_field_info["id"]);
 			
 			//然后获取该关键域下的所有关键变量
 			$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."' AND available='1'";
