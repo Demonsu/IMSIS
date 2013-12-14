@@ -309,7 +309,7 @@ class Questionnaire extends DB_Connect {
 		
 		$return_value='<div class="list-group">';
 		$EFFECTFIELDFORMAT='<a class="list-group-item active">%s</a>';
-		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span><span class="select-field">%s</span>></a>';
+		$KEYFIELDDONEFORMAT='<a href="#" id="%s" class="list-group-item text-center over-done"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span><span class="select-field">%s</span></a>';
 		$KEYFIELDDOINGFORMAT='<a href="#" id="%s" class="list-group-item text-center over-doing"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span><span class="select-field">%s</span></a>';
 		$KEYFIELDUNDOFORMAT='<a href="#" id="%s" class="list-group-item text-center"><span class="remove-circle glyphicon glyphicon-remove-circle" style="float:right"></span><span class="select-field">%s</span></a>';
 		//首先获取问卷的基本信息
