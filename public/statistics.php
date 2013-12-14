@@ -30,7 +30,7 @@
 	<div class="group">
 		<nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
         <div class="navbar-header">
-          <a class="navbar-brand">请选择统计结果</a>
+          <a class="navbar-brand" id="index-show">请选择统计结果</a>
         </div>
         <div class="collapse navbar-collapse bs-js-navbar-collapse">
           <ul class="nav navbar-nav">
@@ -183,7 +183,7 @@
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t8">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t8">
 	
 			</table>
@@ -193,18 +193,29 @@
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t9">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t9">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p9" style="width: 600px; height: 400px;">
+		<div class="col-md-6" id="p9-1" style="width: 600px; height: 400px;">
+			
+		</div>
+		<div class="col-md-6" id="p9-2" style="width: 600px; height: 400px;">
+			
+		</div>
+		<div class="col-md-6" id="p9-3" style="width: 600px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t10">
+		<div class="col-md-12">
+			<table class="col-md-12" id="t10-1">
+	
+			</table>
+		</div>
 		<div class="col-md-6">
-			<table class="col-md-12" id="t10">
+			<table class="col-md-12" id="t10-2">
 	
 			</table>
 		</div>
@@ -213,7 +224,7 @@
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t11">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t11">
 	
 			</table>
@@ -223,18 +234,26 @@
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t12">
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<table class="col-md-12" id="t12">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p12" style="width: 600px; height: 400px;">
+		<div class="col-md-7" id="p12-1" style="width: 600px; height: 400px;">
+			
+		</div>
+		<div class="col-md-7" id="p12-2" style="width: 600px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t13">
+		<div class="col-md-12">
+			<table class="col-md-12" id="t13-1">
+	
+			</table>
+		</div>
 		<div class="col-md-6">
-			<table class="col-md-12" id="t13">
+			<table class="col-md-12" id="t13-2">
 	
 			</table>
 		</div>
