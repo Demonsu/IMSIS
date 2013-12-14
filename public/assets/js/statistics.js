@@ -751,7 +751,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table10.json',
 		success:function(data){
-			alert(data);
+			//alert(data);
 			var table = '';
 			table += '<tr style="text-align:center">';
 			table += '<th>类型</th>';
@@ -1127,9 +1127,9 @@ $(document).ready(function(){
 			table += '</tr>';
 			for(i=0;i<data.table2.length;i++){
 				table += '<tr>';
-				table += '<td>'+data.table2[0].title+'</td>';
-				table += '<td style="text-align:right">'+data.table2[0].content[0]+'</td>';
-				table += '<td style="text-align:right">'+data.table2[0].content[1]+'%</td>';
+				table += '<td>'+data.table2[i].title+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[0]+'</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
 				table += '</tr>';
 			}
 			$('#t13-2').html(table);
