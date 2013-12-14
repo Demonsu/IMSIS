@@ -11,13 +11,18 @@
 	<title>问卷</title>
 	
 
-	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/dist/css/bootstrap.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/quiz.js"></script>
 	<link rel="stylesheet" href="./assets/css/quiz.css">
 	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
+<style>
+a .over-doing:hover{
+	background-color:#f0ad4e;
+}
+</style>
 <body>
 <div class="main">
 <input type="text" style="display:none" id="quiz_id" value="<?php echo $quiz_id; ?>" />
@@ -36,9 +41,9 @@
 </div>
 <div class="row">
 	<div class="col-md-2"></div>
-	<label class="form control col-md-3">第一步:填写问卷</label>
-	<label class="form control col-md-3">第二步:设定目标值</label>
-	<label class="form control col-md-2">第三步:预览并提交</label>
+	<label class="form control col-md-6">第一步:填写问卷</label>
+	<!--<label class="form control col-md-3">第二步:设定目标值</label>-->
+	<label class="form control col-md-2">第二步:预览并提交</label>
 	<div class="col-md-2"></div>
 </div>
 

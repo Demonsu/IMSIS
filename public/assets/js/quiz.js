@@ -113,7 +113,34 @@ function ask_for_preview(){
 		success:function(data){
 			//alert(data);
 			$('#target_select').html('');
+			data = data.replace(/<br>/g,'');
 			$('#preview-quiz').html(data);
+			
+			$(':radio').each(function(){
+				if(this.checked == false){
+					$(this.parentNode).hide();
+				}
+				if(this.checked == true){
+					$(this.parentNode).addClass('radio-selected');
+				}
+			});
+			$('.button-modify').click(function(){
+				var siblings = $(this.parentNode).siblings();
+				var i;
+
+				for(i=0;i<siblings.length;i++){
+					$(siblings[i]).css('display','block');
+				}
+				$(siblings[i-1]).css('display','none');
+			});
+			$(':radio').click(function(){
+				var name = this.name;
+				$(':radio').each(function(){
+					if(this.name == name)
+						$(this.parentNode).removeClass('radio-selected');
+				});
+				$(this.parentNode).addClass('radio-selected');
+			});
 			hide();
 			$('#third').show();
 			$('#progressBar').css('width','80%');
@@ -150,6 +177,59 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				hide();
 				$('#first').show();
 				$('#quiz-progress').html(data);
+				
+				$('.remove-circle').each(function(){
+					$(this).click(function(){
+						//alert(this.parentNode.id);
+						$.ajax({
+							type:'POST',
+							url:'handle/quiz.php',
+							data:{
+								operation:'DELETEKEYFIELD',
+								quiz_id:$('#quiz_id').val(),
+								key_field_id:this.parentNode.id
+							},
+							success:function(data){
+								if(data == 1){
+									window.location.reload();
+								}
+								else
+									alert(data);
+							}
+						});
+					});
+				});
+				$('.select-field').each(function(){
+					$(this).click(function(){
+						//alert($(this.parentNode.parentNode).html());
+						if(!$(this.parentNode).hasClass('over-doing')){
+							var t = this;
+							$.ajax({
+								type:'POST',
+								url:'handle/quiz.php',
+								data:{
+									operation:'FETCHMYKEYVARIABLE',
+									quiz_id:$('#quiz_id').val(),
+									key_field_id:this.parentNode.id
+								},
+								success:function(data){
+									$('.over-doing').removeClass('over-doing');
+									$(t.parentNode).addClass('over-doing');
+									$('#quiz-answer').html(data);
+									$(':radio').click(function(){
+										var name = this.name;
+										$(':radio').each(function(){
+											if(this.name == name)
+												$(this.parentNode).removeClass('radio-selected');
+										});
+										$(this.parentNode).addClass('radio-selected');
+									});
+								}
+							});
+						}
+					});
+				});
+				
 				$('.over-doing').each(function(){
 					get_key_field(this);
 				});
@@ -182,6 +262,8 @@ function ask_for_target(){
 						//alert(data);
 						$('#target_select').html(data);
 						$('.collapse').collapse('hide');
+						//目标不用用户设置
+						$('#confirm-target').click();
 					}
 				});
 			}

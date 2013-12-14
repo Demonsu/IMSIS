@@ -54,16 +54,16 @@
 			<li class="dropdown">
               <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">短缺能描述<b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                <li role="presentation"><a role="menuitem" tabindex="8" href="#" id="show-t8">短缺能力的作用域分析</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="9" href="#" id="show-t9">短缺能力的详细信息</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="8" href="#" id="show-t8">短缺能力的详细信息</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="9" href="#" id="show-t9">短缺能力的作用域分析</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="10" href="#" id="show-t10">能力提升分析</a></li>
               </ul>
             </li>
 			<li class="dropdown">
               <a href="#" id="drop4" role="button" class="dropdown-toggle" data-toggle="dropdown">优势能力描述<b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                <li role="presentation"><a role="menuitem" tabindex="11" href="#" id="show-t11">优势能力的作用域分析</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="12" href="#" id="show-t12">优势能力详细信息</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="11" href="#" id="show-t11">优势能力详细信息</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="12" href="#" id="show-t12">优势能力的作用域分析</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="13" href="#" id="show-t13">优势能力数量分析</a></li>
               </ul>
             </li>
@@ -71,7 +71,7 @@
               <a href="#" id="drop5" role="button" class="dropdown-toggle" data-toggle="dropdown">评估结果摘要<b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="drop5">
                 <li role="presentation"><a role="menuitem" tabindex="14" href="#" id="show-t14">能力情况汇总表</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="15" href="#"  id="show-t15">评估报告描述</a></li>
+                <!--<li role="presentation"><a role="menuitem" tabindex="15" href="#"  id="show-t15">评估报告描述</a></li>-->
               </ul>
             </li>
           </ul>
@@ -121,164 +121,232 @@
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t1">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>1.关键变量（CVs）得分表</h1>
+			  <p>该表展示所选被评估项的得分，并计算了关键域（KDs）和作用域（LDs）的计算结果。</p>
+			</div>
+		</div>
 		<div class="col-md-12" id="t1">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t2">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>2.关键变量统计分布</h1>
+			  <p>此表可帮助发现，关键变量集中的趋势，成熟度高的关键变量越多，总体能力越好</p>
+			</div>
+		</div>
+		<div class="col-md-12 text-center">
 			<table class="col-md-12" id="t2">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p2" style="width: 600px; height: 400px;">
-			
+		<div class="col-md-12 text-center">
+			<div id="p2" style="width:960px;height: 400px;">
+				
+			</div>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t3">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>3.关键域（KDs）得分表</h1>
+			  <p>此表是关键域（二级指标）得分的摘要表，数据经过化尾处理，转化为正分和半分数。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t3">
 	
 			</table>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t4">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>4. 关键域（KDs）能力统计表</h1>
+			  <p>此表可帮助发现，关键域集中的趋势，成熟度高的关键变量越多，总体能力越好</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t4">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p4" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p4" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t5">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>5.作用域（LDs）的得分表</h1>
+			  <p>业务管理、信息技术、组织和运营、电子政务规划是组织能力的四个方面，该表直观表现组织能力的大致分布，看出哪个领域能力强，哪个领域稍弱。实际中，不同领域分管领导不同，该表提供了一个能力对比的展现，组织要均衡发展，四个方面的能力越平均，组织的整体能力越优良。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t5">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p5" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p5" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t6">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>6.目标能力摘要表</h1>
+			  <p>成熟度等级不是一个均数，而是多个关键域的表现集合。该表呈现为了达到一定成熟度，需要在关键域中有何种表现。有些目标能力为空，表示该成熟度下并不对该关键域有能力上的要求，相对应，能力上的数字表示应该达到的成熟度水平。当所有关键域都达到了目标值，才能说组织达到了该成熟度水平。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t6">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p6" style="width: 600px; height: 400px;">
-			
-		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t7">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>7.能力对比图</h1>
+			  <p>此表是目标能力与实际能力之间的比较，“完成比例”指标告诉我们，未达到较高一级成熟度的原因，是某些关键域未完成，即完成度小于100。也可以得到哪些关键域表现优异，即完成度超过了较高一级成熟度的目标。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t7">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p7" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p7" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t8">
 		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>8.短缺能力详细信息</h1>
+			  <p>此表是在能力对比的基础上对短缺能力的详细描述，贡献率是指每个关键变量对整体得分贡献了多少，贡献的越少，能力越不足。因而从贡献率可以发现短缺的关键变量。同时，与较高一级成熟度比较，完成比例告诉我们，现在能力完成了目标能力的比例，提升空间有多大。在这样一个提升空间内，细分下来，可看到每个关键节点（关键变量）的提升空间，从而指导在不同关键变量下应该付出多大的努力。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t8">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p8" style="width: 600px; height: 400px;">
-			
-		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t9">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>9.短缺能力的作用域分析</h1>
+			  <p>该表是对整个能力提升工作量的描述。很明显，百分比越大，说明需要提升的方面越多，工作量越大，在提升能力的过程中，应该多分配资源。</p>
+			</div>
+		</div>
 		<div class="col-md-12">
 			<table class="col-md-12" id="t9">
 	
 			</table>
 		</div>
-		<div class="col-md-6" id="p9-1" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p9-1" style="width:960px; height: 400px;">
 			
 		</div>
-		<div class="col-md-6" id="p9-2" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p9-2" style="width:960px; height: 400px;">
 			
 		</div>
-		<div class="col-md-6" id="p9-3" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p9-3" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t10">
 		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>10.能力提升分析</h1>
+			  <p></p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t10-1">
 	
 			</table>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t10-2">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p10" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p10" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t11">
 		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>11.优势能力详细信息</h1>
+			  <p>通过贡献率大小可以获知优势能力中具体哪个流程表现最佳，贡献率大于0，表示该流程（关键变量）已经超越比现有能力高一级的能力等级的要求，表现极佳。就关键域而言，与现有等级要求对比，超越比例是超出要求的部分。优秀指数则用于指出，优秀关键域中关键变量之间的优秀程度。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t11">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p11" style="width: 600px; height: 400px;">
-			
-		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t12">
-		<div class="col-md-8">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>12.优势能力的作用域分析</h1>
+			  <p>该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t12">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p12-1" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p12-1" style="width:960px; height: 400px;">
 			
 		</div>
-		<div class="col-md-7" id="p12-2" style="width: 600px; height: 400px;">
+		<div class="col-md-12" id="p12-2" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t13">
 		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>13.优势能力的数量分析</h1>
+			  <p>按照优秀指数的大小，获知优秀的关键变量有哪些。</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t13-1">
 	
 			</table>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t13-2">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p13" style="width: 600px; height: 400px;">
-			
-		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t14">
-		<div class="col-md-6">
+		<div class="col-md-12">
+			<div class="jumbotron" style="border-radius:6px">
+			  <h1>14.能力情况总汇表</h1>
+			  <p>该次共有17个关键域参加参评，统计分析显示，战略规划、组织机构、创新管理、规章遵循、IT资源利用方面还存在不足。改进的方法，请参见《能力提升分析》表</p>
+			</div>
+		</div>
+		<div class="col-md-12">
 			<table class="col-md-12" id="t14">
 	
 			</table>
 		</div>
-		<div class="col-md-7" id="p14" style="width: 600px; height: 400px;">
-			
-		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t15">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<table class="col-md-12" id="t15">
 	
 			</table>
-		</div>
-		<div class="col-md-7" id="p15" style="width: 600px; height: 400px;">
-			
 		</div>
 	  </div>
 	</div>

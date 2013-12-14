@@ -87,10 +87,7 @@ $(document).ready(function(){
 			
 			$('#t2').html(table);
 			
-			var array1 = new Array();
-			for(i=0;i<data.content[0].content.length;i++){
-				array1.push(data.content[0].content[i]);
-			}
+			
 			
 			var options = {
 				chart: {
@@ -104,7 +101,7 @@ $(document).ready(function(){
 					text: '百分比率'
 				},
 				xAxis: {
-					categories: [0,1,2,3,4,5],
+					categories: [5,4,3,2,1,0],
 					title: {
 						text: '成熟度特征'
 					}
@@ -271,13 +268,21 @@ $(document).ready(function(){
 			table += '<th></th><th>加权分数</th><th>能力比例</th>'
 			table += '</tr>';
 			var i;
+			var ave = 0;
 			for(i=0;i<data.content.length;i++){
 				table += '<tr>';
 				table += '<td>'+data.content[i].title+'</td>';
 				table += '<td style="text-align:right">'+data.content[i].score+'</td>';
+				ave += data.content[i].score / 4.0;
 				table += '<td style="text-align:right">'+data.content[i].proportion+'%</td>';
 				table += '</tr>';
 			}
+			table += '<tr>';
+			table += '<td style="text-align:right">均值</td>';
+			
+			table += '<td style="text-align:right">'+ave+'</td>';
+			table += '<td></td>';
+			table += '</tr>';
 			
 			$('#t5').html(table);
 			
@@ -344,12 +349,14 @@ $(document).ready(function(){
 				options.series[1].data[j].y = parseFloat(data.content[j].proportion);
 			}
 			options.series[1].center = new Array();
-			options.series[1].center[0] = 80;
+			options.series[1].center[0] = 220;
 			options.series[1].center[1] = 60;
 			options.series[1].size = 100;
 			options.series[1].showInLegend = false;
 			options.series[1].dataLabels = new Object();
 			options.series[1].dataLabels.enabled = false;
+			options.series[1].dataLabels = new Object();
+			options.series[1].dataLabels.format = '<b>{point.name}{point.y}%</b>';
 			var chart = new Highcharts.Chart(options);
 		}
 	});
@@ -377,10 +384,10 @@ $(document).ready(function(){
 						table += '<td></td>';
 					table += '<td>'+data.content[i].content[j].title+'</td>';
 					table += '<td>'+data.content[i].content[j].content[0]+'</td>';
-					table += '<td>'+data.content[i].content[j].content[1]+'</td>';
-					table += '<td>'+data.content[i].content[j].content[2]+'</td>';
-					table += '<td>'+data.content[i].content[j].content[3]+'</td>';
-					table += '<td>'+data.content[i].content[j].content[4]+'</td>';
+					table += '<td style="background:rgb(253,253,217)">'+data.content[i].content[j].content[1]+'</td>';
+					table += '<td style="background:rgb(235,241,222)">'+data.content[i].content[j].content[2]+'</td>';
+					table += '<td style="background:rgb(242,220,219)">'+data.content[i].content[j].content[3]+'</td>';
+					table += '<td style="background:rgb(220,230,241)">'+data.content[i].content[j].content[4]+'</td>';
 					table += '</tr>';
 				}
 			}
@@ -405,8 +412,16 @@ $(document).ready(function(){
 					table += '<td>'+data.content[i].content[j].title+'</td>';
 					var k;
 					for(k=0;k<data.content[i].content[j].content.length;k++){
-						if((k == 2 || k == 4) && data.content[i].content[j].content[k] != '')
+						if((k == 2) && data.content[i].content[j].content[k] != '')
 							table += '<td style="text-align:right">'+data.content[i].content[j].content[k]+'%</td>';
+						else if(k == 4 && data.content[i].content[j].content[k] != ''){
+							if(parseFloat(data.content[i].content[j].content[k]) < 100)
+								table += '<td style="text-align:right;background:rgb(230,184,183)">'+data.content[i].content[j].content[k]+'%</td>';
+							else if(parseFloat(data.content[i].content[j].content[k]) > 100)
+								table += '<td style="text-align:right;background:rgb(183,222,232)">'+data.content[i].content[j].content[k]+'%</td>';
+							else
+								table += '<td style="text-align:right">'+data.content[i].content[j].content[k]+'%</td>';
+						}
 						else
 							table += '<td style="text-align:right">'+data.content[i].content[j].content[k]+'</td>';
 					}
@@ -810,9 +825,19 @@ $(document).ready(function(){
 			table += '<th>得分</th>';
 			table += '<th>提升空间(降序排序)</th>';
 			table += '</tr>';
+			var ii,jj;
+			for(ii=0;ii<data.table2.length;ii++){
+				for(jj=0;jj<data.table2.length;jj++){
+					if(parseFloat(data.table2[ii].content[1])>parseFloat(data.table2[jj].content[1])){
+						var temp = data.table2[ii];
+						data.table2[ii] = data.table2[jj];
+						data.table2[jj] = temp;
+					}
+				}
+			}
 			for(i=0;i<data.table2.length;i++){
 				table += '<tr>';
-				table += '<td>'+data.table2[0].title+'</td>';
+				table += '<td>'+data.table2[i].title+'</td>';
 				table += '<td style="text-align:right">'+data.table2[i].content[0]+'</td>';
 				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
 				table += '</tr>';
@@ -1103,7 +1128,7 @@ $(document).ready(function(){
 							table += '<td></td>';
 						table += '<td>'+data.table1[i].content[j].title+'</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
-						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'%</td>';
+						table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'</td>';
 						table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
 						table += '</tr>';
 					}
@@ -1111,11 +1136,11 @@ $(document).ready(function(){
 			}
 			table += '<tr>';
 			table += '<td style="text-align:right">总数</td>';
-			table += '<td style="text-align:right">'+data.table1_total[0]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '<td style="text-align:right">'+data.table1_total[0]+'</td><td></td><td></td><td></td><td></td><td></td>';
 			table += '</tr>';
 			table += '<tr>';
 			table += '<td style="text-align:right">占总关键变量百分比</td>';
-			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
+			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td>';
 			table += '</tr>';
 			$('#t13-1').html(table);
 			
@@ -1125,11 +1150,21 @@ $(document).ready(function(){
 			table += '<th>得分</th>';
 			table += '<th>优秀指数</th>';
 			table += '</tr>';
+			var ii,jj;
+			for(ii=0;ii<data.table2.length;ii++){
+				for(jj=0;jj<data.table2.length;jj++){
+					if(parseFloat(data.table2[ii].content[1])>parseFloat(data.table2[jj].content[1])){
+						var temp = data.table2[ii];
+						data.table2[ii] = data.table2[jj];
+						data.table2[jj] = temp;
+					}
+				}
+			}
 			for(i=0;i<data.table2.length;i++){
 				table += '<tr>';
 				table += '<td>'+data.table2[i].title+'</td>';
 				table += '<td style="text-align:right">'+data.table2[i].content[0]+'</td>';
-				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
+				table += '<td style="text-align:right">'+data.table2[i].content[1]+'</td>';
 				table += '</tr>';
 			}
 			$('#t13-2').html(table);

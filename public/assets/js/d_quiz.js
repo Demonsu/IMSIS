@@ -242,7 +242,34 @@ function ask_for_preview(){
 		success:function(data){
 			//alert(data);
 			$('#target_select').html('');
+			data = data.replace(/<br>/g,'');
 			$('#preview').html(data);
+			
+			$(':radio').each(function(){
+				if(this.checked == false){
+					$(this.parentNode).hide();
+				}
+				if(this.checked == true){
+					$(this.parentNode).addClass('radio-selected');
+				}
+			});
+			$('.button-modify').click(function(){
+				var siblings = $(this.parentNode).siblings();
+				var i;
+
+				for(i=0;i<siblings.length;i++){
+					$(siblings[i]).css('display','block');
+				}
+				$(siblings[i-1]).css('display','none');
+			});
+			$(':radio').click(function(){
+				var name = this.name;
+				$(':radio').each(function(){
+					if(this.name == name)
+						$(this.parentNode).removeClass('radio-selected');
+				});
+				$(this.parentNode).addClass('radio-selected');
+			});
 			hide();
 			$('#fifth').show();
 			$('#progressBar').css('width','90%');
@@ -265,6 +292,7 @@ function fetch_left(){
 				$('#progressBar').css('width','70%');
 				hide();
 				$('#fourth').show();
+				$('#confirm-target').click();
 			}
 			else{
 				//alert(data);

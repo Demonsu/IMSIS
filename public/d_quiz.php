@@ -37,10 +37,10 @@
 <div class="row">
 	<div class="col-md-1"></div>
 	<label class="form control col-md-2">第一步:阅读承诺书</label>
-	<label class="form control col-md-2">第二步:选择关键域</label>
-	<label class="form control col-md-2">第三步:填写问卷</label>
-	<label class="form control col-md-2">第四步:设定目标值</label>
-	<label class="form control col-md-2">第五步:预览并提交</label>
+	<label class="form control col-md-3">第二步:选择关键域</label>
+	<label class="form control col-md-3">第三步:填写问卷</label>
+	<!--<label class="form control col-md-2"></label>-->
+	<label class="form control col-md-2">第四步:预览并提交</label>
 	<div class="col-md-1"></div>
 </div>
 

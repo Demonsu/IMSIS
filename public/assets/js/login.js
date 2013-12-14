@@ -105,7 +105,7 @@ $(document).ready(function(){
 			success:function(data){
 				if (!isNaN(data))
 				{
-					alert("创建成功");
+					//alert("创建成功");
 					window.location = 'quiz.php?quiz_id='+data;
 				}else
 				{
