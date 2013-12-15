@@ -29,23 +29,91 @@
 		  <div class="panel-heading">管理员功能</div>
 		  <div class="panel-body">
 			<div class="list-group">
-			  <a href="#" class="list-group-item active">
-				Cras justo odio
+			  <a class="list-group-item active">
+				内容管理
 			  </a>
-			  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-			  <a href="#" class="list-group-item">Morbi leo risus</a>
-			  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-			  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			  <a href="#" class="list-group-item">管理动态</a>
+			  <a href="#" class="list-group-item">管理分享</a>
+			  <a class="list-group-item active">
+				查看评测
+			  </a>
+			  <a href="#" class="list-group-item">按条件搜索评测结果</a>
+			  <a href="#" class="list-group-item">评测结果总览</a>
+			  <a class="list-group-item active">
+				设置指标
+			  </a>
+			  <a href="#" class="list-group-item" id="manage-effect-field">管理作用域</a>
+			  <a href="#" class="list-group-item" id="manage-key-field">管理关键域</a>
+			  <a href="#" class="list-group-item" id="manage-key-variable">管理关键变量</a>
+			   <a class="list-group-item active">
+				设置参数
+			  </a>
+			  <a href="#" class="list-group-item">修改关键域目标值</a>
+			  <a class="list-group-item active">
+				用户管理
+			  </a>
+			  <a href="#" class="list-group-item">修改用户密码</a>
+			  <a class="list-group-item active">
+				账户管理
+			  </a>
+			  <a href="#" class="list-group-item">修改管理员密码</a>
 			</div>
-			<ul class="list-group">
-			  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-			  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-			  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-			  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="change-effect-field">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">管理作用域</div>
+		  <div class="panel-body">
+			<ul class="list-group" id="effect-field-list">
+			  <li class="list-group-item" id="">Cras justo odiodwads
+				<label class="label label-danger" onclick="delete_effect_field(this)">删除</label>
+				<label class="label label-info" onclick="show_hide_effect_field(this)">显示</label>
+				<label class="label label-warning" onclick="modify_effect_field(this)">修改</label>
+			  </li>
+			  <li class="list-group-item text-center" onclick="add_effect_field()"><span class="glyphicon glyphicon-plus"></span></li>
 			</ul>
 		  </div>
 		</div>
 	</div>
+	<div id="effect-field-cover">
+		<div class="effect-field-edit">
+			<div class="alert alert-warning">
+				<div class="input-group">
+				  <span class="input-group-addon" id="effect-field-title"></span>
+				  <input type="text" id="effect-field-input" class="form-control" placeholder="作用域名称">
+				  <span class="input-group-btn">
+					<button class="btn btn-default" type="button" id="confirm-effect-field">确认</button>
+					<button class="btn btn-default" type="button" id="cancel-effect-field">取消</button>
+				  </span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="change-key-field">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">管理关键域</div>
+		  <div class="panel-body">
+			<ul class="list-group">
+			
+			</ul>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="change-key-variable">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">管理关键变量</div>
+		  <div class="panel-body">
+			<ul>
+			
+			</ul>
+		  </div>
+		</div>
+	</div>
+	
 	<div class="col-md-9">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title"></div>
@@ -54,6 +122,7 @@
 		  </div>
 		</div>
 	</div>
+	
 </div>
 <?php include './include/footer.php' ?>
 </div>
