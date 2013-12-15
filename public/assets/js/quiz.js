@@ -18,6 +18,7 @@ $(document).ready(function(){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
 		else{
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/quiz.php',
@@ -28,6 +29,7 @@ $(document).ready(function(){
 				},
 				success:function(data){
 					//alert(data);
+					$('#loading-cover').hide();
 					if(data == 1){
 						getprogress();
 					}
@@ -83,6 +85,7 @@ $(document).ready(function(){
 				phpChar2 += this.id + ':' + this.value + ';';
 			}
 		});
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -94,6 +97,7 @@ $(document).ready(function(){
 				
 			},
 			success:function(data){
+				$('#loading-cover').hide();
 				//alert(data);
 				setTimeout("window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val()",1000);
 			}
@@ -144,6 +148,7 @@ function ask_for_preview(){
 			hide();
 			$('#third').show();
 			$('#progressBar').css('width','80%');
+			$('#loading-cover').hide();
 		}
 	});
 }	
@@ -156,6 +161,7 @@ function set_checked(name,val){
 }
 
 function getprogress(){//获取第一步左边的进度表，调用函数获取问卷
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -204,6 +210,8 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 						//alert($(this.parentNode.parentNode).html());
 						if(!$(this.parentNode).hasClass('over-doing')){
 							var t = this;
+							
+							$('#loading-cover').show();
 							$.ajax({
 								type:'POST',
 								url:'handle/quiz.php',
@@ -229,6 +237,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 										});
 										$(this.parentNode).addClass('radio-selected');
 									});
+									$('#loading-cover').hide();
 								}
 							});
 						}
@@ -238,6 +247,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				$('.over-doing').each(function(){
 					get_key_field(this);
 				});
+				$('#loading-cover').hide();
 			}
 		}
 	});
@@ -278,6 +288,7 @@ function ask_for_target(){
 
 function get_key_field(t){//获取第一步右边的问卷
 	var id = t.id;
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -296,6 +307,7 @@ function get_key_field(t){//获取第一步右边的问卷
 				});
 				$(this.parentNode).addClass('radio-selected');
 			});
+			$('#loading-cover').hide();
 		}
 	});
 }

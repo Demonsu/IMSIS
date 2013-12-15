@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$('#readit').click(function(){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -52,10 +53,12 @@ $(document).ready(function(){
 									});
 								}
 							});
+							$('#loading-cover').hide();
 						}
 					});
 				}
 				else if(data == 1){
+					$('#loading-cover').hide();
 					alert('该问卷已经选完所有关键域，点击确定回到个人中心');
 					window.location = "user_zone.php";
 				}
@@ -70,6 +73,7 @@ $(document).ready(function(){
 				list += this.value + ";";
 			}
 		});
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -84,10 +88,10 @@ $(document).ready(function(){
 					fetch_left();
 					hide();
 					$('#third').show();
-					$('#progressBar').css('width','50%');
+					$('#progressBar').css('width','60%');
 				}
 				else{
-					
+					$('#loading-cover').hide();
 					alert("失败"+data);
 				}
 			}
@@ -111,6 +115,7 @@ $(document).ready(function(){
 			alert('您还有关键变量没有选择，请选完后继续下一个关键域');
 		}
 		else{
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/quiz.php',
@@ -125,6 +130,7 @@ $(document).ready(function(){
 						fetch_left();
 					}
 					else{
+						$('#loading-cover').hide();
 						//上传失败
 					}
 				}
@@ -173,6 +179,7 @@ $(document).ready(function(){
 				phpChar2 += this.id + ':' + this.value + ';';
 			}
 		});
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -185,6 +192,7 @@ $(document).ready(function(){
 				
 			},
 			success:function(data){
+				$('#loading-cover').hide();
 				if(data == 1)
 					window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
 				else if(data == 0){
@@ -273,6 +281,7 @@ function ask_for_preview(){
 			hide();
 			$('#fifth').show();
 			$('#progressBar').css('width','90%');
+			$('#loading-cover').hide();
 		}
 	});
 }
@@ -324,6 +333,7 @@ function fetch_right(t){
 				});
 				$(this.parentNode).addClass('radio-selected');
 			});
+			$('#loading-cover').hide();
 		}
 	});
 }

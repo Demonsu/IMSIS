@@ -1,5 +1,6 @@
 var tab_id = 0;
 $(document).ready(function(){
+	$('#loading-cover').show();
 	//第一张表
 	$.ajax({
 		type:'POST',
@@ -1289,7 +1290,7 @@ $(document).ready(function(){
 			$('#tab-' + this.id).show();
 		});
 	}
-	
+	$('#loading-cover').hide();
 	
 });
 

@@ -154,23 +154,26 @@ include_once '../sys/core/init.inc.php';
 				  </div>
 				  <div class="panel-body">
 					<div class="form-horizontal">
-						<div class="form-group">
+						<div class="form-group hasOrigin">
 							<label class="control-label col-md-4 text-right">原密码：</label>
 							<div class="col-md-4">
 								<input class="form-control" type="password" id="originPasswd" placeholder="输入原密码"/>
 							</div>
+							<label class="control-label col-md-4" style="text-align:left;" id="errorPasswd"></label>
 						</div>
-						<div class="form-group">
+						<div class="form-group hasPasswd">
 							<label class="control-label col-md-4 text-right">新密码：</label>
 							<div class="col-md-4">
 								<input class="form-control" type="password" id="newPasswd" placeholder="输入新密码"/>
 							</div>
+							<label class="control-label col-md-4" style="text-align:left;" id="errorPassword"></label>
 						</div>
-						<div class="form-group">
+						<div class="form-group hasConfirm">
 							<label class="control-label col-md-4 text-right">确认新密码：</label>
 							<div class="col-md-4">
 								<input class="form-control" type="password" id="confirmPasswd" placeholder="确认新密码"/>
 							</div>
+							<label class="control-label col-md-4" style="text-align:left;" id="errorConfirmPassword"></label>
 						</div>
 						<div class="form-group">
 							<div class="col-md-12 text-center">
@@ -190,31 +193,31 @@ include_once '../sys/core/init.inc.php';
 						<div class="form-group">
 							<label class="control-label col-md-3 text-right">用户名:</label>
 							<div class="col-md-5">
-								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+								<input class="form-control" type="text" id="user_id" value="dwadwa" placeholder="" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 text-right">所属部门:</label>
 							<div class="col-md-5">
-								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+								<input class="form-control" type="text" id="user_department" value="dwadwa" placeholder="" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 text-right">职务:</label>
+							<label class="control-label col-md-3 text-right">职称:</label>
 							<div class="col-md-5">
-								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+								<input class="form-control" type="text" id="user_title" value="dwadwa" placeholder="" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 text-right">负责工作:</label>
 							<div class="col-md-5">
-								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+								<input class="form-control" type="text" id="user_oncharge" value="dwadwa" placeholder="" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3 text-right">技术专长:</label>
 							<div class="col-md-5">
-								<input class="form-control" type="text" value="dwadwa" placeholder="输入原密码" disabled/>
+								<input class="form-control" type="text" id="user_spaciality" value="dwadwa" placeholder="" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -222,11 +225,11 @@ include_once '../sys/core/init.inc.php';
 							<div class="col-md-5">
 							  <select class="form-control" id="selectAge">
 								<option value="0">请选择年龄段</option>
-								<option value="1">25岁及以下</option>
-								<option value="2">26~35岁</option>
-								<option value="3">36~45岁</option>
-								<option value="4">46~55岁</option>
-								<option value="5">56岁及以上</option>
+								<option value="25">25岁及以下</option>
+								<option value="35">26~35岁</option>
+								<option value="45">36~45岁</option>
+								<option value="55">46~55岁</option>
+								<option value="56">56岁及以上</option>
 							  </select>
 							</div>
 						  </div>
@@ -253,9 +256,9 @@ include_once '../sys/core/init.inc.php';
 							</div>
 						  </div>
 						  <div class="form-group hasTitle">
-							<label class="control-label col-md-3"><span style="color:#ff0000"></span>职称</label>
+							<label class="control-label col-md-3"><span style="color:#ff0000"></span>职务</label>
 							<div class="col-md-5">
-							  <input type="text" class="form-control" id="inputTitle" placeholder="输入您的职称">
+							  <input type="text" class="form-control" id="inputPosition" placeholder="输入您的职务">
 							</div>
 							<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
 						  </div>

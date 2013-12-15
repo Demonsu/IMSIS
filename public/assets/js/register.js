@@ -164,25 +164,6 @@ $(document).ready(function(){
 			}
 		}
 	});
-	$('#inputPosition').blur(function(){
-		var title = $('#inputPosition').val();
-		var pattern = new RegExp(/^[\u4e00-\u9fa5]{1,20}$/);
-		if(title.length == 0){
-			$('#errorPosition').text('请输入职称');
-			$('.hasPosition').addClass('has-error');
-			check_title = false;
-		}
-		else if(!pattern.test(title)){
-			$('#errorPosition').text('请写中文');
-			$('.hasPosition').addClass('has-error');
-			check_title = false;
-		}
-		else{
-			$('#errorPosition').text('');
-			$('.hasPosition').removeClass('has-error');
-			check_title = true;
-		}
-	});
 
 
 	$('#btn-register').click(function(){

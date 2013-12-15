@@ -69,6 +69,30 @@ include_once '../sys/core/init.inc.php';
 			</div>
 			<label class="control-label col-md-1" style="text-align:left;" id="errorSelect"></label>
 		  </div>
+		  <div class="form-group hasTitle">
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>职称</label>
+			<div class="col-md-5">
+			 <select class="form-control" id="selectTitle">
+			  </select>
+			</div>
+			<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
+		  </div>
+		   <div class="form-group hasWork">
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>负责工作</label>
+			<div class="col-md-5">
+			  <select class="form-control" id="selectOnCharge">
+			  </select>
+			</div>
+			<label class="control-label col-md-3" style="text-align:left;" id="errorWork"></label>
+		  </div>
+		  <div class="form-group hasSpeciality">
+			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>专长</label>
+			<div class="col-md-5">
+			  <select class="form-control" id="selectSpeciality">
+			  </select>
+			</div>
+			<label class="control-label col-md-3" style="text-align:left;" id="errorSpeciality"></label>
+		  </div>
 		  <div class="form-group">
 			<label class="control-label col-md-3"><span style="color:#ff0000"></span>年龄</label>
 			<div class="col-md-5">
@@ -104,29 +128,15 @@ include_once '../sys/core/init.inc.php';
 			  </select>
 			</div>
 		  </div>
-		  <div class="form-group hasTitle">
-			<label class="control-label col-md-3"><span style="color:#ff0000"></span>职称</label>
-			<div class="col-md-5">
-			 <select class="form-control" id="selectTitle">
-			  </select>
-			</div>
-			<label class="control-label col-md-3" style="text-align:left;" id="errorTitle"></label>
-		  </div>
+		  
 		  <div class="form-group hasPosition">
-			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>职务</label>
+			<label class="control-label col-md-3"><span style="color:#ff0000"></span>职务</label>
 			<div class="col-md-5">
 			  <input type="text" class="form-control" id="inputPosition" placeholder="输入您的职务">
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorPosition"></label>
 		  </div>
-		  <div class="form-group hasWork">
-			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>负责工作</label>
-			<div class="col-md-5">
-			  <select class="form-control" id="selectOnCharge">
-			  </select>
-			</div>
-			<label class="control-label col-md-3" style="text-align:left;" id="errorWork"></label>
-		  </div>
+		  
 		  <div class="form-group">
 			<label class="control-label col-md-3"><span style="color:#ff0000"></span>从事现工作时长</label>
 			<div class="col-md-5">
@@ -134,14 +144,7 @@ include_once '../sys/core/init.inc.php';
 			</div>
 			<label class="control-label col-md-3" style="text-align:left;" id="errorTime"></label>
 		  </div>
-		  <div class="form-group hasSpeciality">
-			<label class="control-label col-md-3"><span style="color:#ff0000">*</span>专长</label>
-			<div class="col-md-5">
-			  <select class="form-control" id="selectSpeciality">
-			  </select>
-			</div>
-			<label class="control-label col-md-3" style="text-align:left;" id="errorSpeciality"></label>
-		  </div>
+		  
 		  <div class="form-group">
 			<label class="control-label col-md-3"><span style="color:#ff0000"></span>邮箱</label>
 			<div class="col-md-5">

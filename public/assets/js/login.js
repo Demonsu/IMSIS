@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 	$('#login').click(function(){
+		$('#loading-cover').show();
 		var id = $('#inputId').val();
 		var passwd = $('#inputPassword').val();
 		if(id != '' && passwd !=''){
@@ -14,6 +15,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data==-1){
 						$('#errorMsg').text("用户名或密码错误");
+						$('#loading-cover').hide();
 					}
 					else if(data==1){
 						window.location="admin_zone.php";
@@ -43,6 +45,7 @@ $(document).ready(function(){
 		//window.location = 'quiz.php';
 	});
 	$('#readit').click(function(){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -84,6 +87,7 @@ $(document).ready(function(){
 					}
 					
 				});
+				$('#loading-cover').hide();
 			}
 		});
 	});
@@ -94,6 +98,7 @@ $(document).ready(function(){
 				list += this.value + ";";
 			}
 		});
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -109,7 +114,7 @@ $(document).ready(function(){
 					window.location = 'quiz.php?quiz_id='+data;
 				}else
 				{
-					
+					$('#loading-cover').hide();
 					alert("创建失败"+data);
 				}
 			}
@@ -127,7 +132,7 @@ $(document).ready(function(){
 		});
 	});
 	$('#d_t').click(function(){
-		
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -135,6 +140,7 @@ $(document).ready(function(){
 				operation:'CHECKDEPARTMENTQUESTIONNAIRE',
 			},
 			success:function(data){
+				$('#loading-cover').hide();
 				if(data == 1){
 					var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
 					if(returnVal){
@@ -149,6 +155,7 @@ $(document).ready(function(){
 		});
 	});
 	$('#d-create').click(function(){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/user_zone.php',
@@ -157,6 +164,7 @@ $(document).ready(function(){
 				remark:$('#d-remark').val()
 			},
 			success:function(data){
+				$('#loading-cover').hide();
 				if(!isNaN(data)){
 					alert('创建成功，请到我的测评中的单位测评中进行测评');
 					$('#cover').hide();
