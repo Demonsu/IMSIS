@@ -214,22 +214,28 @@ class Statistics extends DB_Connect {
 		foreach($this->quiz->effect_field_list as $effect_field)
 		{
 			$all_key_field="";
-			foreach($effect_field->key_field_list as $key_field)
+			if ($effect_field->score!=-1)
 			{
-				$all_key_variable="";
-				foreach($key_field->key_variable_list as $key_variable)
+				foreach($effect_field->key_field_list as $key_field)
 				{
-					if ($all_key_variable!="")
-						$all_key_variable=$all_key_variable.",";
-					$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score);
+					$all_key_variable="";
+					if ($key_field->score!=-1)
+					{
+						foreach($key_field->key_variable_list as $key_variable)
+						{
+							if ($all_key_variable!="")
+								$all_key_variable=$all_key_variable.",";
+							$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score);
+						}
+						if ($all_key_field!="")
+							$all_key_field=$all_key_field.",";
+						$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$effect_field->id,$key_field->id,$key_field->name,$all_key_variable,$key_field->score);
+					}
 				}
-				if ($all_key_field!="")
-					$all_key_field=$all_key_field.",";
-				$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$effect_field->id,$key_field->id,$key_field->name,$all_key_variable,$key_field->score);
+				if ($all_effect_field!="")
+					$all_effect_field=$all_effect_field.",";
+				$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field,$effect_field->score);
 			}
-			if ($all_effect_field!="")
-				$all_effect_field=$all_effect_field.",";
-			$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field,$effect_field->score);
 			
 		}
 		$jsondata= sprintf($RETURNFORMAT,$all_effect_field);
@@ -485,7 +491,7 @@ class Statistics extends DB_Connect {
 			$all_key_field="";
 			foreach($effect_field->key_field_list as $key_field)
 			{
-				if ($key_field->score!=-1)
+				//if ($key_field->score!=-1)
 				{
 					if ($all_key_field!="")
 						$all_key_field=$all_key_field.",";
@@ -506,7 +512,7 @@ class Statistics extends DB_Connect {
 					$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$key_field->name,$result[1],$result[2],$result[3],$result[4],$result[5]);
 				}
 			}
-			if ($effect_field->score!=-1)
+			//if ($effect_field->score!=-1)
 			{
 				if ($all_effect_field!="")
 					$all_effect_field=$all_effect_field.",";
@@ -637,7 +643,7 @@ class Statistics extends DB_Connect {
 			"vari_score":"%s",
 			"contribution":"%.2f",
 			"space":"%.2f",
-			"need_promote":"%.2f"
+			"need_promote":"%s"
 		}';
 		$KEYFIELDFORMAT='
 		{
@@ -690,7 +696,7 @@ class Statistics extends DB_Connect {
 						$key_field->key_variable_list[$key_variable_index]->need_promote=$need_promote;
 						$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,($key_variable->score-$key_field->round_score)/$key_field->round_score*100,($target_score-$key_variable->score)/$key_variable->score*100,$need_promote);
 						$key_field->key_variable_list[$key_variable_index]->promote_space=($target_score-$key_variable->score)/$key_variable->score*100;
-						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$target_score)/$key_variable->score*100;
+						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$key_field->round_score)/$key_field->round_score;
 						$key_field->total_promote_space+=$key_field->key_variable_list[$key_variable_index]->promote_space;
 						$key_variable_index++;
 					}
@@ -1064,8 +1070,10 @@ class Statistics extends DB_Connect {
 						{
 							if ($all_variable_field!="")
 								$all_variable_field=$all_variable_field.",";
-	
-							$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,$key_variable->need_promote);
+							if ($key_variable->contribution>0)
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,"true");
+							else
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,"false");
 	
 							$effect_good_variable++;
 							$total_good_variable++;
@@ -1140,17 +1148,23 @@ class Statistics extends DB_Connect {
 			if ($effect_field->score!=-1)
 			{				
 				$total_effect_field++;
-				$good_flag=1;
-				$short_flag=1;
+				$good_flag=0;
+				$short_flag=0;
 				foreach($effect_field->key_field_list as $key_field)
 				{
 					if ($key_field->score!=-1)
 					{
 						$total_key_field++;
 						if ($key_field->is_short==1)
+						{
 							$total_short_key_field++;
+							$short_flag=1;
+						}
 						if ($key_field->is_good==1)
+						{
 							$total_good_key_field++;
+							$good_flag=1;
+						}
 						foreach($key_field->key_variable_list as $key_variable)
 						{
 							if ($key_variable->score!=-1)
