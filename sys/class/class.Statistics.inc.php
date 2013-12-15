@@ -696,7 +696,7 @@ class Statistics extends DB_Connect {
 						$key_field->key_variable_list[$key_variable_index]->need_promote=$need_promote;
 						$all_key_variable=$all_key_variable.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,($key_variable->score-$key_field->round_score)/$key_field->round_score*100,($target_score-$key_variable->score)/$key_variable->score*100,$need_promote);
 						$key_field->key_variable_list[$key_variable_index]->promote_space=($target_score-$key_variable->score)/$key_variable->score*100;
-						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$target_score)/$key_variable->score*100;
+						$key_field->key_variable_list[$key_variable_index]->contribution=($key_variable->score-$key_field->round_score)/$key_field->round_score;
 						$key_field->total_promote_space+=$key_field->key_variable_list[$key_variable_index]->promote_space;
 						$key_variable_index++;
 					}
@@ -1070,8 +1070,10 @@ class Statistics extends DB_Connect {
 						{
 							if ($all_variable_field!="")
 								$all_variable_field=$all_variable_field.",";
-	
-							$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,$key_variable->need_promote);
+							if ($key_variable->contribution>0)
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,"true");
+							else
+								$all_variable_field=$all_variable_field.sprintf($KEYVARIABLEFORMAT,$key_variable->question,$key_variable->score,$key_variable->good_rate,"false");
 	
 							$effect_good_variable++;
 							$total_good_variable++;

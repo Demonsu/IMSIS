@@ -326,12 +326,16 @@ class Questionnaire extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while($quiz_content=mysql_fetch_assoc($select))
 		{
+			$sql="SELECT * FROM key_field WHERE id='".$quiz_content["key_field_id"]."'";
+			$key_field_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$key_field_info=mysql_fetch_assoc($key_field_select);
 			$quiz_content_list[]= array(
 			"id"=> $quiz_content["id"],
 			"key_field_id"=> $quiz_content["key_field_id"],
 			"questionnaire_id"=>  $quiz_content["questionnaire_id"],
 			"state"=> $quiz_content["state"],
-			"user_id"=> $quiz_content["user_id"]
+			"user_id"=> $quiz_content["user_id"],
+			"effect_field_id"=>$key_field_info["effect_field_id"]
 			);
 		}
 		//反馈进度
@@ -353,37 +357,46 @@ class Questionnaire extends DB_Connect {
 		$flag=0;//是否找到第一个未答的关键域
 		while ($effect_field=mysql_fetch_assoc($effect_field_list))
 		{
-			$return_value=$return_value.'<div class="list-group">';
-			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$effect_field["name"]);			
+			$has_flag=0;//不存在
 			foreach($quiz_content_list as $quiz_content)
 			{
-				//获得key_field的详细信息
-				$sql="SELECT * FROM key_field WHERE id='".$quiz_content["key_field_id"]."'";
-				$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-				$key_field_info=mysql_fetch_assoc($select);
-				//判断是否属于该作用域
-				if ($key_field_info["effect_field_id"]==$effect_field["id"])
+				if ($quiz_content["effect_field_id"]==$effect_field["id"])
+					$has_flag=1;
+			}
+			if ($has_flag==1)
+			{
+				$return_value=$return_value.'<div class="list-group">';
+				$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$effect_field["name"]);			
+				foreach($quiz_content_list as $quiz_content)
 				{
-					$temp=explode('（',$key_field_info["name"]);
-					$key_field_info["name"]=$temp[0];
-					if ($quiz_content["state"]==1)//该关键域已经作答
+					//获得key_field的详细信息
+					$sql="SELECT * FROM key_field WHERE id='".$quiz_content["key_field_id"]."'";
+					$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+					$key_field_info=mysql_fetch_assoc($select);
+					//判断是否属于该作用域
+					if ($key_field_info["effect_field_id"]==$effect_field["id"])
 					{
-						$return_value=$return_value.sprintf($KEYFIELDDONEFORMAT,$key_field_info["id"],$key_field_info["name"]);
-					}
-					if ($quiz_content["state"]==0)//该关键域尚未作答
-					{
-						if ($flag==0)//第一个未作答的关键域，填充为正在作答
+						$temp=explode('（',$key_field_info["name"]);
+						$key_field_info["name"]=$temp[0];
+						if ($quiz_content["state"]==1)//该关键域已经作答
 						{
-							$flag=1;
-							$return_value=$return_value.sprintf($KEYFIELDDOINGFORMAT,$key_field_info["id"],$key_field_info["name"]);
-						}else
+							$return_value=$return_value.sprintf($KEYFIELDDONEFORMAT,$key_field_info["id"],$key_field_info["name"]);
+						}
+						if ($quiz_content["state"]==0)//该关键域尚未作答
 						{
-							$return_value=$return_value.sprintf($KEYFIELDUNDOFORMAT,$key_field_info["id"],$key_field_info["name"]);
+							if ($flag==0)//第一个未作答的关键域，填充为正在作答
+							{
+								$flag=1;
+								$return_value=$return_value.sprintf($KEYFIELDDOINGFORMAT,$key_field_info["id"],$key_field_info["name"]);
+							}else
+							{
+								$return_value=$return_value.sprintf($KEYFIELDUNDOFORMAT,$key_field_info["id"],$key_field_info["name"]);
+							}
 						}
 					}
 				}
+				$return_value=$return_value.'</div>';
 			}
-			$return_value=$return_value.'</div>';
 		}
 		return $return_value;	
 	}

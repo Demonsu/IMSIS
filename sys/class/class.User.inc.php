@@ -65,9 +65,94 @@ class User extends DB_Connect {
 		return 1;//注册成功
 		
 	}
-	public function change_info()//修改用户信息
+	public function fetch_info($user_id)
 	{
-		
+		$RESULTFORMAT='
+		{
+			"id":"%s",
+			"department":"%s",
+			"title":"%s",
+			"oncharge":"%s",
+			"spaciality":"%s",
+			"age":"%s",
+			"gender":"%s",
+			"edu":"%s",
+			"position":"%s",
+			"time":"%s",
+			"email":"%s"
+		}';
+		$age_array=array(
+		"25"=>"1",
+		"35"=>"2",
+		"45"=>"3",
+		"55"=>"4",
+		"56"=>"5"
+		);
+		$edu_array=array(
+		"大专"=>"1",
+		"大学本科"=>"2",
+		"硕士"=>"3",
+		"博士"=>"4"
+		);
+		//首先获取个人信息
+		$sql="SELECT * FROM user WHERE id='".$user_id."'";
+		$user_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$user_info=mysql_fetch_assoc($user_select);
+		//根据个人信息中的省份，城市码获取所在省市,部门
+		$department="";
+		if ($user_info["province"]!=0)
+		{
+			$sql="SELECT * FROM province WHERE code='".$user_info["province"]."'";	
+			$province_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+			$province_info=mysql_fetch_assoc($province_select);
+			$department=$province_info["name"];
+		}
+		if ($user_info["city"]!=0)
+		{
+			$sql="SELECT * FROM city WHERE code='".$user_info["city"]."'";	
+			$city_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+			$city_info=mysql_fetch_assoc($city_select);
+			$department=$department." ".$city_info["name"];			
+		}
+		$department=$department." ".$user_info["department"];
+		$age_select=$age_array[$user_info["age"]];
+		$gender_select=1;
+		if ($user_info["gender"]=="女")
+			$gender_select=2;
+		$edu_select=$edu_array[$user_info["education"]];
+		return sprintf($RESULTFORMAT,$user_id,$department,$user_info["title"],$user_info["oncharge"],$user_info["speciality"],$age_select,$gender_select,$edu_select,$user_info["position"],$user_info["seniority"],$user_info["email"]);
+			
+	}
+	public function change_info($user_id,$age,$gender,$edu,$position,$time,$email)//修改用户信息
+	{
+		$sql="UPDATE user SET
+		age='".$age."',
+		gender='".$gender."',
+		education='".$edu."',
+		position='".$position."',
+		seniority='".$time."',
+		email='".$email."'
+		WHERE id='".$user_id."'
+		";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;//修改成功
+	}
+	public function change_password($user_id,$old_pass,$new_pass)
+	{
+		$sql="SELECT * FROM user WHERE id='".$user_id."' AND password='".$new_pass."'";
+		$select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num==0)
+			return 0;
+		$sql="UPDATE user SET password='".$new_pass."' WHERE id='".$user_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;		
 	}
 }
 

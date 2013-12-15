@@ -117,6 +117,44 @@
 				echo $questionnaire->user_submit_key_field($_SESSION["USERID"],$_POST["quiz_id"],$key_field_list,1);
 		}			
 	}
+	if ($operation=="FETCHUSERINFO")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$user=new User();
+			echo $user->fetch_info($_SESSION["USERID"]);	
+		}
+	}
+	if ($operation=="CHANGEUSERINFO")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$age=$_POST["age"];
+			$gender=$_POST["gender"];
+			$edu=$_POST["edu"];
+			$position=$_POST["position"];
+			$time=$_POST["time"];
+			$email=$_POST["email"];
+			$user=new User();
+			echo $user->change_info($_SESSION["USERID"],$age,$gender,$edu,$position,$time,$email);	
+		}		
+	}
+	if ($operation=="CHANGEPASSWORD")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$old_pass=$_POST["old_pass"];
+			$new_pass=$_POST["new_pass"];
+			$user=new User();
+			echo $user->change_password($_SESSION["USERID"],$old_pass,$new_pass);
+		}		
+	}
 	
 ?>
 

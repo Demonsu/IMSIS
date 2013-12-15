@@ -3,7 +3,7 @@
 	include_once '../../sys/core/init.inc.php';
 	//$system=new System();
 	//echo $system->add();
-	$quiz_id=86;
+	$quiz_id=87;
 	$statistics=new Statistics();
 	$statistics->table_all($quiz_id);
 ?>
