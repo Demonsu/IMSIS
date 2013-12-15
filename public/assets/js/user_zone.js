@@ -114,9 +114,10 @@ $(document).ready(function(){
 				email:$('#inputEmail').val()
 			},
 			success:function(data){
-				if(data == 1)
-					alert(修改成功);
-				$('#loading-cover').hide();
+				if(data == 1){
+					$('#loading-cover').hide();
+					alert('修改成功');
+				}	
 			}
 		});
 	});
@@ -131,7 +132,7 @@ $(document).ready(function(){
 			this.checked = false;
 		});
 	});
-	//fetch_userdata();
+	fetch_userdata();
 });
 
 function readpromise(){//显示承诺书
@@ -293,7 +294,7 @@ function change_data(){//修改用户资料
 	$('#change-data').show();
 }
 function fetch_userdata(){
-	//$('#loading-cover').show();
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/user_zone.php',
@@ -301,7 +302,8 @@ function fetch_userdata(){
 			operation:'FETCHUSERINFO'
 		},
 		success:function(str){
-			var data = parseJSON(str);
+			//alert(str);
+			var data = jQuery.parseJSON(str);
 			$('#user_id').val(data.id);
 			$('#user_department').val(data.department);
 			$('#user_title').val(data.title);

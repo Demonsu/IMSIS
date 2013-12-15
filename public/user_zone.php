@@ -248,10 +248,10 @@ include_once '../sys/core/init.inc.php';
 							<div class="col-md-5">
 							  <select class="form-control" id="selectEdu">
 								<option value="0">请选择教育程度</option>
-								<option value="1">大专</option>
-								<option value="2">大学本科</option>
-								<option value="3">硕士</option>
-								<option value="4">博士</option>
+								<option value="大专">大专</option>
+								<option value="大学本科">大学本科</option>
+								<option value="硕士">硕士</option>
+								<option value="博士">博士</option>
 							  </select>
 							</div>
 						  </div>

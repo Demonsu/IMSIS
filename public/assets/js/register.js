@@ -167,6 +167,9 @@ $(document).ready(function(){
 
 
 	$('#btn-register').click(function(){
+		//alert($('#selectEdu').val());
+		//alert($('#selectAge').val());
+		//alert($('#selectGender').val());
 		if(check_id == true && check_passwd == true && check_passwd2 == true ){
 			//alert(1);
 			$.ajax({
