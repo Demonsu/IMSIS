@@ -46,6 +46,8 @@ class User extends DB_Connect {
 		$num=mysql_num_rows($select);
 		if ($num==1)
 			return 0;
+		if($seniority=="")
+			$seniority=0;
 		$sql="INSERT INTO user 
 		(
 			id,password,permission,gender,age,
@@ -142,7 +144,7 @@ class User extends DB_Connect {
 	}
 	public function change_password($user_id,$old_pass,$new_pass)
 	{
-		$sql="SELECT * FROM user WHERE id='".$user_id."' AND password='".$new_pass."'";
+		$sql="SELECT * FROM user WHERE id='".$user_id."' AND password='".$old_pass."'";
 		$select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$num=mysql_num_rows($select);
 		if ($num==0)

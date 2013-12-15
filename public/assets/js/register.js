@@ -218,7 +218,7 @@ $(document).ready(function(){
 						});
 					}
 					else{
-						alert('注册失败');
+						alert('注册失败：'+data);
 					}
 				}
 			});

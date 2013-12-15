@@ -286,10 +286,10 @@ class Questionnaire extends DB_Connect {
 		{
 			if ($result["state"]!='2')
 			{
-				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]." ".$result["user_id"]);
 			}else
 			{
-				$return_value=$return_value.sprintf($DPHCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]);
+				$return_value=$return_value.sprintf($DPHCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]." ".$result["user_id"]);
 			}
 		}
 		return $return_value;
