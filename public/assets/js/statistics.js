@@ -592,6 +592,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table8.json',
 		success:function(data){
+			var ar = new Array('一','二','三','四','五');
 			var table = '';
 			table += '<tr style="text-align:center">';
 			table += '<th>领域</th>';
@@ -599,7 +600,7 @@ $(document).ready(function(){
 			table += '<th colspan="2">关键变量得分</th>';
 			table += '<th>综合得分</th>';
 			table += '<th>贡献率</th>';
-			table += '<th>第三级</th>';
+			table += '<th>第'+ar[parseInt(data.level)]+'级</th>';
 			table += '<th>完成比例</th>';
 			table += '<th>提升空间</th>';
 			table += '<th>提升结点空间</th>';
