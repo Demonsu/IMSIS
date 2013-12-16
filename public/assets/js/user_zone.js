@@ -360,6 +360,23 @@ function u_continue(t){
 function d_continue(t){
 	window.location = 'd_quiz.php?quiz_id='+t.parentNode.id;
 }
+function reformresult(t){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz.php',
+		data{
+			operation:'REFORMSTATISTICS',
+			quiz_id:t.parentNode.id
+		},
+		success:function(data){
+			if(data == 1){
+				window.location = "statistics.php?quiz_id="+t.parentNode.id;
+			}
+			else
+				alert(data);
+		}
+	});
+}
 
 function hide(){//隐藏函数
 	$('#change-data').hide();

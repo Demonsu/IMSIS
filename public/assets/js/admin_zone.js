@@ -514,11 +514,11 @@ function fetch_target_form(){
 					else
 						table += '<td></td>';
 					table += '<td>'+data.content[i].content[j].title+'</td>';
-					table += '<td><input class="level" type="text" id="id-'+data.content[i].id+'-1" value="'+data.content[i].content[j].content[0]+'" /></td>';
-					table += '<td style="background:rgb(253,253,217)"><input class="level" type="text" id="id-'+data.content[i].id+'-2" value="'+data.content[i].content[j].content[1]+'" /></td>';
-					table += '<td style="background:rgb(235,241,222)"><input class="level" type="text" id="id-'+data.content[i].id+'-3" value="'+data.content[i].content[j].content[2]+'" /></td>';
-					table += '<td style="background:rgb(242,220,219)"><input class="level" type="text" id="id-'+data.content[i].id+'-4" value="'+data.content[i].content[j].content[3]+'" /></td>';
-					table += '<td style="background:rgb(220,230,241)"><input class="level" type="text" id="id-'+data.content[i].id+'-5" value="'+data.content[i].content[j].content[4]+'" /></td>';
+					table += '<td><input class="level" type="text" id="id-'+data.content[i].content[j].id+'-1" value="'+data.content[i].content[j].content[0]+'" /></td>';
+					table += '<td style="background:rgb(253,253,217)"><input class="level" type="text" id="id-'+data.content[i].content[j].id+'-2" value="'+data.content[i].content[j].content[1]+'" /></td>';
+					table += '<td style="background:rgb(235,241,222)"><input class="level" type="text" id="id-'+data.content[i].content[j].id+'-3" value="'+data.content[i].content[j].content[2]+'" /></td>';
+					table += '<td style="background:rgb(242,220,219)"><input class="level" type="text" id="id-'+data.content[i].content[j].id+'-4" value="'+data.content[i].content[j].content[3]+'" /></td>';
+					table += '<td style="background:rgb(220,230,241)"><input class="level" type="text" id="id-'+data.content[i].content[j].id+'-5" value="'+data.content[i].content[j].content[4]+'" /></td>';
 					table += '</tr>';
 				}
 			}
@@ -529,7 +529,7 @@ function fetch_target_form(){
 				if(id[0] == 'id'){
 					$(this).blur(function(){
 						var val = $(this).val();
-						if(val == '' || (!isNaN(val) && parseFloat(val) >= 1 && parseFloat(val) <= 5)){
+						if(val == '-1' || val == '' || (!isNaN(val) && parseFloat(val) >= 1 && parseFloat(val) <= 5)){
 							$.ajax({
 								type:'POST',
 								url:'handle/admin_zone.php',
@@ -540,9 +540,13 @@ function fetch_target_form(){
 									mature_value:(val == '')?-1:parseFloat(val)
 								},
 								success:function(data){
-									alert(data);
+									//alert(id[1]+'-'+id[2]);
+									//alert(data);
 								}
 							});
+						}
+						else{
+							alert('"'+val+'"不符合要求，范围1~5');
 						}
 					});
 				}
