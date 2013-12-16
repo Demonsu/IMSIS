@@ -493,7 +493,7 @@ function fetch_target_form(){
 			operation:'FETCHGOALTABLE'
 		},
 		success:function(str){
-			alert(str);
+			//$('#target-table').html(str);
 			var data = jQuery.parseJSON(str);
 			var table = '';
 			table += '<tr style="text-align:center">';
@@ -522,8 +522,8 @@ function fetch_target_form(){
 					table += '</tr>';
 				}
 			}
-			$('#target-table').html(table)
-			
+			$('#target-table').html(table);
+
 			$(':text').each(function(){
 				var id = this.id.split('-');
 				if(id[0] == 'id'){
