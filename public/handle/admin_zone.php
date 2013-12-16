@@ -238,4 +238,23 @@
 			echo $admin->set_goal($key_field_id,$mature_level,$mature_value);
 		}				
 	}
+	if ($operation="SEARCHQUESTIONNAIRE")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}
+		{
+			$province=$_POST["province"];
+			$city=$_POST["city"];
+			$department=$_POST["department"];
+			$quiz_type=$_POST["quiz_type"];
+			$quiz_state=$_POST["quiz_state"];
+			$start_time=$_POST["start_time"];
+			$end_time=$_POST["end_time"];
+			$admin=new Admin();
+			echo $admin->search_quiz($province,$city,$department,$start_time,$end_time,$quiz_type,$quiz_state);
+		}
+		
+	}
 ?>

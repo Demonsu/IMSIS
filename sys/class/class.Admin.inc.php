@@ -336,6 +336,55 @@ class Admin extends DB_Connect {
 		return 1;	
 		
 	}
+	public function search_quiz($province,$city,$department,$start_time,$end_time,$quiz_type,$quiz_state)
+	{
+		$SQLADDFORMAT="%s%s";
+		$sql="SELECT * FROM questionnaire q, user u WHERE q.user_id=u.id ";
+		if ($province!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND u.province='".$province."' ");
+		}
+		if ($city!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND u.city='".$city."' ");
+		}
+		if ($department!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND u.department='".$department."' ");
+		}
+		if ($quiz_type!=0)
+		{
+			$is_public=0;
+			if ($quiz_type==1)
+				$is_public=1;
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND q.is_public='".$is_public."'");
+		}
+		if ($quiz_state!=0)
+		{
+			$state=0;
+			if ($quiz_state==1)
+				$sql=sprintf($SQLADDFORMAT,$sql,"AND q.state!='2' ");
+			else
+				$sql=sprintf($SQLADDFORMAT,$sql,"AND q.state='2' ");
+		}
+		$sql=sprintf($SQLADDFORMAT,$sql,"AND q.create_time>='".$start_time."' AND q.create_time<='".$end_time."' ");
+		echo $sql."<br>";
+		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a><br>';
+		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a><br>';	
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$return_value="";
+		while ($result=mysql_fetch_assoc($select))
+		{
+			if ($result["state"]!='2')
+			{
+				$return_value=$return_value.sprintf($DPNCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]." ".$result["user_id"]);
+			}else
+			{
+				$return_value=$return_value.sprintf($DPHCFORMAT,$result["id"],$result["create_time"]." ".$result["remark"]." ".$result["user_id"]);
+			}
+		}
+		return $return_value;		
+	}
 }
 
 ?>
