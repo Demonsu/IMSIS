@@ -82,6 +82,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						$('#manage-effect-field').click();
+						$('#effect-field-cover').hide();
 					}
 				}
 			});
@@ -99,6 +100,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						$('#manage-effect-field').click();
+						$('#effect-field-cover').hide();
 					}
 				}
 			});
@@ -123,6 +125,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						fetch_key_field_list(effect_field1);
+						$('#key-field-cover').hide();
 					}
 				}
 			});
@@ -140,6 +143,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						fetch_key_field_list(effect_field1);
+						$('#key-field-cover').hide();
 					}
 				}
 			});
@@ -164,6 +168,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						fetch_key_variable_list(key_field2);
+						$('#key-variable-cover').hide();
 					}
 				}
 			});
@@ -181,6 +186,7 @@ $(document).ready(function(){
 				success:function(data){
 					if(data == 1){
 						fetch_key_variable_list(key_field2);
+						$('#key-variable-cover').hide();
 					}
 				}
 			});
@@ -215,7 +221,7 @@ function delete_effect_field(t){
 	if(returnType){
 		$.ajax({
 			type:'POST',
-			url:'handle/admin_zone',
+			url:'handle/admin_zone.php',
 			data:{
 				operation:'DELETEEFFECTFIELD',
 				effect_field_id:t.parentNode.id
@@ -223,6 +229,7 @@ function delete_effect_field(t){
 			success:function(data){
 				if(data == 1){
 					alert('删除成功');
+					$('#manage-effect-field').click();
 				}
 				else
 					alert(data);
@@ -235,7 +242,7 @@ function modify_effect_field(t){
 	effect_field_change = true;
 	$('#effect-field-title').text('修改作用域名称');
 	$('#effect-field-id').val(t.parentNode.id);
-	$('#effect-field-input').val($(t.parentNode).text().substr(0,$(t.parentNode).text().length-27));
+	$('#effect-field-input').val($(t.parentNode).text().substr(0,$(t.parentNode).text().length-25));
 	$('#effect-field-cover').show();
 }
 function add_effect_field(){
@@ -246,21 +253,21 @@ function add_effect_field(){
 function show_hide_effect_field(t){
 	var temp;
 	if($(t).text() == '显示'){
-		temp = 0;
+		temp = 1;
 	}
 	else
-		temp = 1;
-	
+		temp = 0;
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
 		data:{
 			operation:'SHOWORHIDEEFFECTFIELD',
+			effect_field_id:t.parentNode.id,
 			available:temp
 		},
 		success:function(data){
 			if(data == 1){
-				if(temp == 0)
+				if(temp == 1)
 					$(t).text('隐藏');
 				else
 					$(t).text('显示');
@@ -310,21 +317,22 @@ function add_key_field(){
 function show_hide_key_field(t){
 	var temp;
 	if($(t).text() == '显示'){
-		temp = 0;
+		temp = 1;
 	}
 	else
-		temp = 1;
+		temp = 0;
 	
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
 		data:{
 			operation:'SHOWORHIDEKEYFIELD',
+			key_field_id:t.parentNode.id,
 			available:temp
 		},
 		success:function(data){
 			if(data == 1){
-				if(temp == 0)
+				if(temp == 1)
 					$(t).text('隐藏');
 				else
 					$(t).text('显示');
@@ -400,6 +408,7 @@ function show_hide_key_variable(t){
 		url:'handle/admin_zone.php',
 		data:{
 			operation:'SHOWORHIDEKEYVARIABLE',
+			key_variable_id:t.parentNode.id,
 			available:temp
 		},
 		success:function(data){
