@@ -48,7 +48,7 @@
 			   <a class="list-group-item active">
 				设置参数
 			  </a>
-			  <a href="#" class="list-group-item">修改关键域目标值</a>
+			  <a href="#" class="list-group-item" id="manage-target">修改关键域目标值</a>
 			  <a class="list-group-item active">
 				用户管理
 			  </a>
@@ -190,6 +190,17 @@
 				  <input type="text" id="key_variable_e" class="form-control" placeholder="5">
 				</div>
 			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="target-change">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title"></div>
+		  <div class="panel-body">
+			<table id="target-table">
+			
+			</table>
+		  </div>
 		</div>
 	</div>
 	
