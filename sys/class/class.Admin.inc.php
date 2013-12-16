@@ -85,7 +85,7 @@ class Admin extends DB_Connect {
 		while($key_field_info=mysql_fetch_assoc($select))
 		{
 			$available="隐藏";
-			if ($effect_field_info["available"]==0)
+			if ($key_field_info["available"]==0)
 				$available="显示";
 			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$key_field_info["id"],$key_field_info["name"],$available);
 		}
@@ -204,7 +204,7 @@ class Admin extends DB_Connect {
 	public function fetch_effect_field_select_list()
 	{
 		$EFFECTLISTFORMAT='<option value="%s">%s</option>';
-		$sql="SELECT * FROM effect_field WHERE available='1'";
+		$sql="SELECT * FROM effect_field";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while($effect_field_info=mysql_fetch_assoc($select))
 		{
@@ -215,7 +215,7 @@ class Admin extends DB_Connect {
 	public function fetch_key_field_select_list($effect_field_id)
 	{
 		$EFFECTLISTFORMAT='<option value="%s">%s</option>';
-		$sql="SELECT * FROM key_field WHERE available='1' AND effect_field_id='".$effect_field_id."'";
+		$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_field_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while($key_field_info=mysql_fetch_assoc($select))
 		{
