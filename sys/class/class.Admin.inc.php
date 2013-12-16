@@ -158,6 +158,23 @@ class Admin extends DB_Connect {
 		}	
 		return 1;			
 	}
+	public function fetch_key_variable_detail($key_variable_id)
+	{
+		$RESULTFORMAT='
+		{
+			"question":"",
+			"answer_a":"",
+			"answer_b":"",
+			"answer_c":"",
+			"answer_d":"",
+			"answer_e":""
+		}';
+		$sql="SELECT * FROM key_variable WHERE id='".$key_variable_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);	
+		$key_variable_info=mysql_fetch_assoc($select);
+		$result=sprintf($RESULTFORMAT,$key_variable_info["question"],$key_variable_info["answer_a"],$key_variable_info["answer_b"],$key_variable_info["answer_c"],$key_variable_info["answer_d"],$key_variable_info["answer_e"]);
+		return $result;
+	}
 	public function modify_key_variable($add,$key_variable_id,$question,$answer_a,$answer_b,$answer_c,$answer_d,$answer_e)
 	{
 		$sql="UPDATE key_variable SET question='".$question."',answer_a='".$answer_a."',answer_b='".$answer_b."',answer_c='".$answer_c."',answer_d='".$answer_d."',answer_e='".$answer_e."'";
