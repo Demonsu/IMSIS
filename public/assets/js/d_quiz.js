@@ -143,7 +143,7 @@ $(document).ready(function(){
 			var id = this.id;
 			phpChar += id + ':' + this.value +';';
 		});
-		//alert(phpChar);
+		alert(phpChar);
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -230,7 +230,7 @@ function ask_for_target(){
 						quiz_id:$('#quiz_id').val()
 					},
 					success:function(data){
-						//alert(data);
+						alert(data);
 						$('#target_select').html(data);
 						$('.collapse').collapse('hide');
 					}
