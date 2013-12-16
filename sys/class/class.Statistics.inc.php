@@ -787,7 +787,7 @@ class Statistics extends DB_Connect {
 		$KEYVARIABLEFORMAT='
 		{
 			"title":"%s",
-			"content":["%s","%s","%s","%s"]
+			"content":["%s","%.2f","%.2f","%s"]
 		}';
 		$EFFECTFIELDFORMAT='
 		{
