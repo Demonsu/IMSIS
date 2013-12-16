@@ -238,12 +238,12 @@
 			echo $admin->set_goal($key_field_id,$mature_level,$mature_value);
 		}				
 	}
-	if ($operation="SEARCHQUESTIONNAIRE")
+	if ($operation=="SEARCHQUESTIONNAIRE")
 	{
 		if ($_SESSION["PERMISSION"]!=1)
 		{
 			echo "权限不够";
-		}
+		}else
 		{
 			$province=$_POST["province"];
 			$city=$_POST["city"];
