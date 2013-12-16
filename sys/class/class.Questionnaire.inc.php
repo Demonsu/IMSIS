@@ -216,7 +216,7 @@ class Questionnaire extends DB_Connect {
 	public function fetch_user_questionnaire_list($user_id,$state)//获取用户的测评列表
 	{
 		$NCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,2)">删除</span><span class="badge" onclick="u_continue(this)">继续填写</span>%s</a>';
-		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,1)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';
+		$HCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,1)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>';
 		$return_value="";
 		if ($state==0)
 			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_id."' AND state!='2' AND is_public='0'  ";
@@ -267,7 +267,7 @@ class Questionnaire extends DB_Connect {
 	public function fetch_department_questionnaire_list($user_id)//获取单位评测的列表
 	{
 		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="d_continue(this)">继续填写</span>%s</a>';
-		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span>%s</a>';	
+		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>';	
 		$return_value="";
 		//首先获取用户的个人信息
 		$sql="SELECT * FROM user WHERE id='".$user_id."'";

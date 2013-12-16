@@ -144,6 +144,26 @@
 			}		
 		}		
 	}
+	if ($operation=="REFORMSTATISTICS")
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			$quiz_id=$_POST["quiz_id"];
+			$statistics=new Statistics();
+			//$quiz_id=$_POST["quiz_id"];
+			//$statistics->init_key_goal_list($quiz_id,$config_id=1);
+			//$statistics->table1_CVs($quiz_id);
+			//$statistics->table2_KVs($quiz_id);
+			//$statistics->table3_KDs($quiz_id);	
+			//$statistics->table4_KDs($quiz_id);	
+			//$statistics->table5_LDs($quiz_id);		
+			//$statistics->table6_KTs($quiz_id);
+			$statistics->table_all($quiz_id);		
+			echo 1;	
+		}
+	}
 	
 
 ?>
