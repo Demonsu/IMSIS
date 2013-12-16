@@ -29,6 +29,7 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				$('#fetch-effect-field-list').html('<option value=0>请选择作用域</option>'+data);
+				$('#key-field-list').html('');
 			}
 		});
 		$('#change-key-field').show();
