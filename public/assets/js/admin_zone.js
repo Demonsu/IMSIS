@@ -5,8 +5,6 @@ var key_variable_change = true;
 var effect_field1;
 var key_field2;
 
-var timecheck1 = true;
-var timecheck2 = true;
 $(document).ready(function(){
 	$('#manage-effect-field').click(function(){
 		hide();
@@ -17,6 +15,7 @@ $(document).ready(function(){
 				operation:'FETCHEFFECTFIELDLIST'
 			},
 			success:function(data){
+				//alert(data.substr(1000,data.length));
 				$('#effect-field-list').html(data);
 			}
 		});
@@ -386,28 +385,24 @@ $(document).ready(function(){
 		var start_time = '1000-01-01';
 		var end_time = '3000-01-01';
 		
-		if(!$('#timespan-check').attr('disabled')){
-			if(!timecheck1 && !timecheck2){
-				alert('时间格式错误，请检查');
-				return;
-			}
-			else{
-				var time;
-				time = $('#time-start').val().split('/');
-				start_time = time[2]+'-'+time[0]+'-'+time[1];
-				time = $('#time-end').val().split('/');
-				end_time = time[2]+'-'+time[0]+'-'+time[1];
-			}
+		if(!document.getElementById('timespan-check').checked){
+			var time;
+			time = $('#time-start').val().split('/');
+			start_time = time[2]+'-'+time[0]+'-'+time[1];
+			time = $('#time-end').val().split('/');
+			end_time = time[2]+'-'+time[0]+'-'+time[1];
 		}
-		if(!$('#area-check').attr('disabled')){
+		if(!document.getElementById('area-check').checked){
 			province = $('#select1').val();
 			city = $('#select2').val();
 			department = $('#select3').val();
 		}
-		
+		//alert(start_time+end_time);
+		//alert(province +' '+ city+' ' + department);
 		var quiz_type = $(':radio[name="radio-settype"]:checked').val();
 		var quiz_state = $(':radio[name="radio-setstate"]:checked').val();
 		
+		$('#search-result-list').html('');
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -415,7 +410,7 @@ $(document).ready(function(){
 				operation:'SEARCHQUESTIONNAIRE',
 				province:province,
 				city:city,
-				deparment:department,
+				department:department,
 				start_time:start_time,
 				end_time:end_time,
 				quiz_type:quiz_type,
@@ -745,6 +740,55 @@ function fetch_target_form(){
 					});
 				}
 			});
+		}
+	});
+}
+
+function deleteitem(t,no){
+	var returnVal = window.confirm('执行操作后不可恢复，是否确定删除？','你确定要删除吗');
+	if(returnVal){
+		$('#loading-cover').show();
+		$.ajax({
+			type:'POST',
+			url:'handle/user_zone.php',
+			data:{
+				operation:'DELETEQUESTIONNAIRE',
+				quiz_id:t.parentNode.id
+			},
+			success:function(data){
+				if(data == 1){
+					$('#loading-cover').hide();
+					alert('删除成功');
+					//t.parentNode.hide();
+					if(no == 1)
+						c_list();
+					if(no == 2)
+						nc_list();
+					if(no == 3)
+						d_list();
+				}
+				else{
+					alert(data);
+				}
+			}
+		});
+	}
+}
+function checkresult(t){
+	window.location = 'statistics.php?quiz_id=' + t.parentNode.id;
+
+}
+function reformresult(t){
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz.php',
+		data:{
+			operation:'REFORMSTATISTICS',
+			quiz_id:t.parentNode.id
+		},
+		success:function(data){
+			//alert(data);
+			window.location = "statistics.php?quiz_id="+t.parentNode.id;
 		}
 	});
 }
