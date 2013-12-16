@@ -300,7 +300,24 @@
 			<div class="alert alert-info">
 				<ul class="list-group">
 				  <li class="list-group-item">
-					
+					用户条件：
+					<div>
+						<select id="select-province">
+						  <option value="0">请选择省份</option>
+						</select>
+						<select id="select-city">
+						  <option value="0">请选择城市</option>
+						</select>
+						<select id="select-department">
+						  <option value="0">请选择单位</option>
+						</select>
+						<select id="select-title">
+						  <option value="0">请选择职称</option>
+						</select>
+						<div style="float:right">
+							<button class="btn btn-success btn-sm" id="user-search-btn">搜索</button>
+						</div>
+					</div>
 				  </li>
 				</ul>
 			</div>
@@ -313,6 +330,14 @@
 				  <span class="input-group-addon">专长</span>
 				  <span class="input-group-addon">
 					<button class="btn btn-default" type="button" onclick="user_data(this)">更多信息...</button>
+					<button class="btn btn-default" type="button" id="quiz-list1">问卷列表</button>
+					<script>
+						$(function(){
+							$('#quiz-list1').click(function(){
+								$('#quiz-list-1').toggle();
+							});
+						});
+					</script>
 				  </span>
 				</div>
 				<div class="list-group" id="quiz-list-1" style="margin-bottom:0">
@@ -334,6 +359,20 @@
 			  <li href="#" class="list-group-item">Vestibulum at eros</li>
 			</ul>
 		  </div>
+		</div>
+	</div>
+	
+	<div id="user-info-cover" style="display:none">
+		<div id="user-info-bar">
+			<div class="jumbotron">
+			  <h1>详细信息</h1>
+			  <p>用户名：<span id="user-info1">123</span>  部门：<span id="user-info2">123</span></p>
+			  <p>职务：<span id="user-info3">123</span>  负责工作：<span id="user-info4">123</span></p>
+			  <p>专长：<span id="user-info5">123</span>  年龄：<span id="user-info6">123</span></p>
+			  <p>性别：<span id="user-info7">123</span>  教育程度：<span id="user-info8">123</span></p>
+			  <p>职称：<span id="user-info9">123</span>  工作时长：<span id="user-info10">123</span></p>
+			  <p>电子邮件：<span id="user-info11">123</span></p>
+			</div>
 		</div>
 	</div>
 	
