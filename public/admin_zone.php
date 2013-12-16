@@ -14,8 +14,6 @@
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/admin_zone.js"></script>
-	<script style="text/javascript" src="assets/plugin/highcharts/js/highcharts.js"></script>
-	<script style="text/javascript" src="assets/plugin/highcharts/js/modules/exporting.js"></script>
 	<link rel="stylesheet" href="./assets/css/admin_zone.css">
 	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
@@ -195,7 +193,7 @@
 	
 	<div class="col-md-9" id="target-change">
 		<div class="panel panel-default">
-		  <div class="panel-heading" id="body_title"></div>
+		  <div class="panel-heading" id="body_title">修改关键域目标值</div>
 		  <div class="panel-body">
 			<table id="target-table">
 			
