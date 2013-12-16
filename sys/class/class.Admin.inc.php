@@ -428,7 +428,10 @@ class Admin extends DB_Connect {
 		{
 			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_info["id"]."' AND is_public='0' ";
 			$quiz_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-			while ($qui)
+			while ($quiz_info=mysql_fetch_assos($quiz_select))
+			{
+				
+			}
 		}
 		
 	}
