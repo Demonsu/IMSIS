@@ -339,7 +339,7 @@ class Admin extends DB_Connect {
 	public function search_quiz($province,$city,$department,$start_time,$end_time,$quiz_type,$quiz_state)
 	{
 		$SQLADDFORMAT="%s%s";
-		$sql="SELECT * FROM questionnaire q, user u WHERE q.user_id=u.id ";
+		$sql="SELECT q.* FROM questionnaire q, user u WHERE q.user_id=u.id ";
 		if ($province!=0)
 		{
 			$sql=sprintf($SQLADDFORMAT,$sql,"AND u.province='".$province."' ");
