@@ -22,7 +22,7 @@
 <body>
 <div class="main">
 
-<?php include './include/header.php' ?>
+<?php include './include/header.php'; ?>
 <div class="row">
 	<div class="col-md-3">
 		<div class="panel panel-default panel-success">
