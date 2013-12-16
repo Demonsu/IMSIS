@@ -364,7 +364,7 @@ function reformresult(t){
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
-		data{
+		data:{
 			operation:'REFORMSTATISTICS',
 			quiz_id:t.parentNode.id
 		},
