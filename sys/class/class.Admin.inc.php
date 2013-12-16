@@ -391,19 +391,35 @@ class Admin extends DB_Connect {
 			<li href="#" class="list-group-item" id="user-%s">
 				<div class="input-group">
 				  <span class="input-group-addon">%s</span>
-				  <span class="input-group-addon">$s</span>
 				  <span class="input-group-addon">%s</span>
 				  <span class="input-group-addon">%s</span>
+				  <span class="input-group-addon">%s</span>
+				  <span class="input-group-addon">
+					<button class="btn btn-default" type="button" onclick="user_data(this)">更多信息...</button>
+					<button class="btn btn-default" type="button" id="quiz-list%s">问卷列表</button>
+				  </span>
 				</div>
+
 				%s
 			</li>';
 		$QUIZFORMAT='
 			<div class="list-group" id="quiz-list-%s" style="margin-bottom:0">
 				%s
-			</div>		 
+			</div>		
+			<script>
+				$(function(){
+					$("#quiz-list%s").click(function(){
+						$("#quiz-list-%s").toggle();
+					});
+					$("#quiz-list-%s").hide();
+				});
+			</script> 
 		';
-		$QUIZITEMFORMAT='
+		$QUIZUNDOFORMAT='
 			<a href="#" class="list-group-item" id="quiz-%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a>
+		';
+		$QUIZDONEFORMAT='
+			<a href="#" class="list-group-item" id="quiz-%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>
 		';
 		$SQLADDFORMAT="%s%s";
 		$sql="SELECT * FROM user WHERE 1=1 ";
@@ -423,17 +439,68 @@ class Admin extends DB_Connect {
 		{
 			$sql=sprintf($SQLADDFORMAT,$sql,"AND title='".$title."' ");
 		}
+		//echo $sql."<br>";
 		$user_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$user_list="";
 		while ($user_info=mysql_fetch_assoc($user_select))
 		{
 			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_info["id"]."' AND is_public='0' ";
 			$quiz_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-			while ($quiz_info=mysql_fetch_assos($quiz_select))
+			$all_quiz="";
+			while ($quiz_info=mysql_fetch_assoc($quiz_select))
 			{
-				
+				if ($quiz_info["state"]==2)
+				{
+					$all_quiz=$all_quiz.sprintf($QUIZDONEFORMAT,$quiz_info["id"],$quiz_info["create_time"]." ".$quiz_info["remark"]." ".$quiz_info["user_id"]);
+				}else
+					$all_quiz=$all_quiz.sprintf($QUIZUNDOFORMAT,$quiz_info["id"],$quiz_info["create_time"]." ".$quiz_info["remark"]." ".$quiz_info["user_id"]);
 			}
+			$all_quiz=sprintf($QUIZFORMAT,$user_info["id"],$all_quiz,$user_info["id"],$user_info["id"],$user_info["id"]);
+			$user_list=$user_list.sprintf($USERFORMAT,$user_info["id"],$user_info["id"],$user_info["password"],$user_info["oncharge"],$user_info["speciality"],$user_info["id"],$all_quiz);
 		}
+		return $user_list;
 		
+		
+	}
+	public function fetch_user_detail_info($user_id)
+	{
+		$RESULTFORMAT='
+		{
+			"id":"%s",
+			"department":"%s",
+			"title":"%s",
+			"oncharge":"%s",
+			"spaciality":"%s",
+			"age":"%s",
+			"gender":"%s",
+			"edu":"%s",
+			"position":"%s",
+			"time":"%s",
+			"email":"%s"
+		}';
+		//首先获取个人信息
+		$sql="SELECT * FROM user WHERE id='".$user_id."'";
+		$user_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$user_info=mysql_fetch_assoc($user_select);
+		//根据个人信息中的省份，城市码获取所在省市,部门
+		$department="";
+		if ($user_info["province"]!=0)
+		{
+			$sql="SELECT * FROM province WHERE code='".$user_info["province"]."'";	
+			$province_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+			$province_info=mysql_fetch_assoc($province_select);
+			$department=$province_info["name"];
+		}
+		if ($user_info["city"]!=0)
+		{
+			$sql="SELECT * FROM city WHERE code='".$user_info["city"]."'";	
+			$city_select=mysql_query($sql, $this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+			$city_info=mysql_fetch_assoc($city_select);
+			$department=$department." ".$city_info["name"];			
+		}
+		$department=$department." ".$user_info["department"];
+		return sprintf($RESULTFORMAT,$user_id,$department,$user_info["title"],$user_info["oncharge"],$user_info["speciality"],$user_info["age"],$user_info["gender"],$user_info["education"],$user_info["position"],$user_info["seniority"],$user_info["email"]);
+					
 	}
 }
 
