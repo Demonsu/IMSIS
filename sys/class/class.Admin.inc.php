@@ -39,12 +39,36 @@ class Admin extends DB_Connect {
 		{
 		  die('Error: ' . mysql_error());
 		}	
+		$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_field_id."'";
+		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($key_field=mysql_fetch_assoc($select))
+		{
+			$sql="DELETE FROM key_variable WHERE key_field_id='".$key_field["id"]."'";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}	
+			$sql="DELETE FROM key_field WHERE id='".$key_field["id"]."'";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}
+		}
 		return 1;
 	}
 	public function modify_effect_field($add,$effect_field_id,$name)
 	{
 		
 		$sql="UPDATE effect_field SET name='".$name."' WHERE id='".$effect_field_id."'";
+		//首先判断添加作用键域是否已经存在了
+		if ($add==1)
+		{
+			$sql="SELECT * FROM effect_field WHERE name='".$name."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$num=mysql_num_rows($select);
+			if ($num>0)
+				return "该作用域已经存在";
+		}		
 		if ($add==1)
 			$sql="INSERT INTO effect_field
 			(name,available)
@@ -99,11 +123,31 @@ class Admin extends DB_Connect {
 		{
 		  die('Error: ' . mysql_error());
 		}	
+		$sql="DELETE FROM key_field_goal WHERE key_field_id='".$key_field_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		$sql="DELETE FROM key_variable WHERE key_field_id='".$key_field_id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
 		return 1;		
 	}
 	public function modify_key_field($add,$key_field_id,$name,$effect_field_id)
 	{
 		$sql="UPDATE key_field SET name='".$name."' WHERE id='".$key_field_id."'";
+		//首先判断添加的关键域是否已经存在了
+		if ($add==1)
+		{
+			$sql="SELECT * FROM key_field WHERE name='".$name."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$num=mysql_num_rows($select);
+			if ($num>0)
+				return "该关键域已经存在";
+		}
+		//添加关键域
 		if ($add==1)
 			$sql="INSERT INTO key_field (name,available,effect_field_id)
 			VALUES
@@ -113,6 +157,18 @@ class Admin extends DB_Connect {
 		{
 		  die('Error: ' . mysql_error());
 		}	
+		//设置关键域的目标
+		if ($add==1)
+		{
+			$sql="SELECT * FROM key_field WHERE name='".$name."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$key_field=mysql_fetch_assoc($select);
+			$sql="INSERT INTO key_field_goal(key_field_id)VALUES('".$key_field["id"]."')";
+			if (!mysql_query($sql,$this->root_conn))
+			{
+			  die('Error: ' . mysql_error());
+			}
+		}
 		return 1;				
 	}
 	public function show_or_hide_key_field($key_field_id,$available)
