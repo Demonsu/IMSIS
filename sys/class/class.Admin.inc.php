@@ -368,9 +368,9 @@ class Admin extends DB_Connect {
 				$sql=sprintf($SQLADDFORMAT,$sql,"AND q.state='2' ");
 		}
 		$sql=sprintf($SQLADDFORMAT,$sql,"AND q.create_time>='".$start_time."' AND q.create_time<='".$end_time."' ");
-		echo $sql."<br>";
-		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a><br>';
-		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a><br>';	
+		//echo $sql."<br>";
+		$DPNCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a>';
+		$DPHCFORMAT='<a class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>';	
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		$return_value="";
 		while ($result=mysql_fetch_assoc($select))
