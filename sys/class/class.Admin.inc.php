@@ -385,6 +385,53 @@ class Admin extends DB_Connect {
 		}
 		return $return_value;		
 	}
+	public function search_user($province,$city,$department,$title)
+	{
+		$USERFORMAT='
+			<li href="#" class="list-group-item" id="user-%s">
+				<div class="input-group">
+				  <span class="input-group-addon">%s</span>
+				  <span class="input-group-addon">$s</span>
+				  <span class="input-group-addon">%s</span>
+				  <span class="input-group-addon">%s</span>
+				</div>
+				%s
+			</li>';
+		$QUIZFORMAT='
+			<div class="list-group" id="quiz-list-%s" style="margin-bottom:0">
+				%s
+			</div>		 
+		';
+		$QUIZITEMFORMAT='
+			<a href="#" class="list-group-item" id="quiz-%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a>
+		';
+		$SQLADDFORMAT="%s%s";
+		$sql="SELECT * FROM user WHERE 1=1 ";
+		if ($province!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND province='".$province."' ");
+		}
+		if ($city!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND city='".$city."' ");
+		}
+		if ($department!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND department='".$department."' ");
+		}
+		if ($title!=0)
+		{
+			$sql=sprintf($SQLADDFORMAT,$sql,"AND title='".$title."' ");
+		}
+		$user_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($user_info=mysql_fetch_assoc($user_select))
+		{
+			$sql="SELECT * FROM questionnaire WHERE user_id='".$user_info["id"]."' AND is_public='0' ";
+			$quiz_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			while ($qui)
+		}
+		
+	}
 }
 
 ?>
