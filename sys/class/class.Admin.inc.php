@@ -72,9 +72,9 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$EFFECTFIELDFORMAT='	
 			<li class="list-group-item" id="%s">%s
-				<label class="label label-danger" onclick="delete_effect_field(this)">删除</label>
-				<label class="label label-info" onclick="show_hide_effect_field(this)">%s</label>
-				<label class="label label-warning" onclick="modify_effect_field(this)">修改</label>
+				<label class="label label-danger" onclick="delete_key_field(this)">删除</label>
+				<label class="label label-info" onclick="show_hide_key_field(this)">%s</label>
+				<label class="label label-warning" onclick="modify_key_field(this)">修改</label>
 			</li>	
 		';
 		$ADDEFFECTFIELDFORMAT='
@@ -129,9 +129,9 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$EFFECTFIELDFORMAT='	
 			<li class="list-group-item" id="%s">%s
-				<label class="label label-danger" onclick="delete_effect_field(this)">删除</label>
-				<label class="label label-info" onclick="show_hide_effect_field(this)">%s</label>
-				<label class="label label-warning" onclick="modify_effect_field(this)">修改</label>
+				<label class="label label-danger" onclick="delete_key_variable(this)">删除</label>
+				<label class="label label-info" onclick="show_hide_key_variable(this)">%s</label>
+				<label class="label label-warning" onclick="modify_key_variable(this)">修改</label>
 			</li>	
 		';
 		$ADDEFFECTFIELDFORMAT='
