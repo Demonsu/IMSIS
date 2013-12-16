@@ -1040,6 +1040,8 @@ class Statistics extends DB_Connect {
 				}
 			}
 		}
+		if ($total_good_items==0)
+			$total_good_items=0.00000001;
 		$all_effect_field="";
 		foreach($this->quiz->effect_field_list as $effect_field)
 		{
