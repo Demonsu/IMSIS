@@ -117,7 +117,8 @@ $(document).ready(function(){
 				if(data == 1){
 					$('#loading-cover').hide();
 					alert('修改成功');
-				}	
+				}	else
+				alert(data);
 			}
 		});
 	});
@@ -302,7 +303,7 @@ function fetch_userdata(){
 			operation:'FETCHUSERINFO'
 		},
 		success:function(str){
-			//alert(str);
+			alert(str);
 			var data = jQuery.parseJSON(str);
 			$('#user_id').val(data.id);
 			$('#user_department').val(data.department);

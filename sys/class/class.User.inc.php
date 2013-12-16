@@ -84,6 +84,7 @@ class User extends DB_Connect {
 			"email":"%s"
 		}';
 		$age_array=array(
+		"0"=>"0",
 		"25"=>"1",
 		"35"=>"2",
 		"45"=>"3",
@@ -119,14 +120,19 @@ class User extends DB_Connect {
 		$department=$department." ".$user_info["department"];
 		$age_select=$age_array[$user_info["age"]];
 		$gender_select=1;
+		if ($user_info["gender"]!="")
 		if ($user_info["gender"]=="女")
 			$gender_select=2;
-		$edu_select=$edu_array[$user_info["education"]];
+		if ($user_info["education"]!="")
+			$edu_select=$edu_array[$user_info["education"]];
+		else $edu_select=0;
 		return sprintf($RESULTFORMAT,$user_id,$department,$user_info["title"],$user_info["oncharge"],$user_info["speciality"],$age_select,$gender_select,$edu_select,$user_info["position"],$user_info["seniority"],$user_info["email"]);
 			
 	}
 	public function change_info($user_id,$age,$gender,$edu,$position,$time,$email)//修改用户信息
 	{
+		if ($time=="")
+			$time=0;
 		$sql="UPDATE user SET
 		age='".$age."',
 		gender='".$gender."',

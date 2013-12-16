@@ -228,7 +228,7 @@ class Admin extends DB_Connect {
 		$KEYFIELDFORMAT='
 		{
 			"title":"%s",
-			"id":"%s".
+			"id":"%s",
 			"content":["%s","%s","%s","%s","%s"]
 		}';		
 		$EFFECTFIELDFORMAT='
