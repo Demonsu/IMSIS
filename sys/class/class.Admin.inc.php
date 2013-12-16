@@ -416,10 +416,10 @@ class Admin extends DB_Connect {
 			</script> 
 		';
 		$QUIZUNDOFORMAT='
-			<a href="#" class="list-group-item" id="quiz-%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a>
+			<a href="#" class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span>%s</a>
 		';
 		$QUIZDONEFORMAT='
-			<a href="#" class="list-group-item" id="quiz-%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>
+			<a href="#" class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>
 		';
 		$SQLADDFORMAT="%s%s";
 		$sql="SELECT * FROM user WHERE 1=1 ";
