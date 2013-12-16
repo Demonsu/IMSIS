@@ -146,6 +146,9 @@ $(document).ready(function(){
 					if(returnVal){
 						$('#cover').show();
 					}
+					else{
+						window.location = 'user_zone.php';
+					}
 				}
 				else if(data == 0){
 					$('#cover').show();

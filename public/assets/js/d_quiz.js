@@ -194,7 +194,7 @@ $(document).ready(function(){
 			success:function(data){
 				$('#loading-cover').hide();
 				if(data == 1)
-					window.location = 'statistics.php?quiz_id'+ $('#quiz_id').val();
+					window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val();
 				else if(data == 0){
 					alert('请等待单位其他人完成整份问卷后再查看结果，点击确定回到主页');
 					window.location = 'login.php';
