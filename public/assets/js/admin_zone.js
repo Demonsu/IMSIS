@@ -497,7 +497,7 @@ function fetch_target_form(){
 			var data = jQuery.parseJSON(str);
 			var table = '';
 			table += '<tr style="text-align:center">';
-			table += '<th>作用域(一级指标)</th><th>关键域(二级指标)</th><th colspan=5>组织的成熟度水平</th>';
+			table += '<th>作用域(一级指标)</th><th>关键域(二级指标)</th><th colspan=5 style="text-align:center">组织的成熟度水平</th>';
 			table += '</tr>';
 			table += '<tr>';
 			table += '<td></td><td></td>';
@@ -514,11 +514,11 @@ function fetch_target_form(){
 					else
 						table += '<td></td>';
 					table += '<td>'+data.content[i].content[j].title+'</td>';
-					table += '<td><input type="text" id="id-'+data.content[i].id+'-1" value="'+data.content[i].content[j].content[0]+'" /></td>';
-					table += '<td style="background:rgb(253,253,217)"><input type="text" id="id-'+data.content[i].id+'-2" value="'+data.content[i].content[j].content[1]+'" /></td>';
-					table += '<td style="background:rgb(235,241,222)"><input type="text" id="id-'+data.content[i].id+'-3" value="'+data.content[i].content[j].content[2]+'" /></td>';
-					table += '<td style="background:rgb(242,220,219)"><input type="text" id="id-'+data.content[i].id+'-4" value="'+data.content[i].content[j].content[3]+'" /></td>';
-					table += '<td style="background:rgb(220,230,241)"><input type="text" id="id-'+data.content[i].id+'-5" value="'+data.content[i].content[j].content[4]+'" /></td>';
+					table += '<td><input class="level" type="text" id="id-'+data.content[i].id+'-1" value="'+data.content[i].content[j].content[0]+'" /></td>';
+					table += '<td style="background:rgb(253,253,217)"><input class="level" type="text" id="id-'+data.content[i].id+'-2" value="'+data.content[i].content[j].content[1]+'" /></td>';
+					table += '<td style="background:rgb(235,241,222)"><input class="level" type="text" id="id-'+data.content[i].id+'-3" value="'+data.content[i].content[j].content[2]+'" /></td>';
+					table += '<td style="background:rgb(242,220,219)"><input class="level" type="text" id="id-'+data.content[i].id+'-4" value="'+data.content[i].content[j].content[3]+'" /></td>';
+					table += '<td style="background:rgb(220,230,241)"><input class="level" type="text" id="id-'+data.content[i].id+'-5" value="'+data.content[i].content[j].content[4]+'" /></td>';
 					table += '</tr>';
 				}
 			}
@@ -528,17 +528,22 @@ function fetch_target_form(){
 				var id = this.id.split('-');
 				if(id[0] == 'id'){
 					$(this).blur(function(){
-						$.ajax({
-							type:'POST',
-							url:'handle/admin_zone.php',
-							data:{
-								operation:'',
-								
-							},
-							success:function(data){
-								alert(data);
-							}
-						});
+						var val = $(this).val();
+						if(val == '' || (!isNaN(val) && parseFloat(val) >= 1 && parseFloat(val) <= 5)){
+							$.ajax({
+								type:'POST',
+								url:'handle/admin_zone.php',
+								data:{
+									operation:'MODIFYGOAL',
+									key_field_id:parseInt(id[1]),
+									mature_level:parseInt(id[2]),
+									mature_value:(val == '')?-1:parseFloat(val)
+								},
+								success:function(data){
+									alert(data);
+								}
+							});
+						}
 					});
 				}
 			});

@@ -233,6 +233,7 @@ function ask_for_target(){
 						//alert(data);
 						$('#target_select').html(data);
 						$('.collapse').collapse('hide');
+						$('#confirm-target').click();
 					}
 				});
 			}
@@ -301,7 +302,6 @@ function fetch_left(){
 				$('#progressBar').css('width','70%');
 				hide();
 				$('#fourth').show();
-				$('#confirm-target').click();
 			}
 			else{
 				//alert(data);
