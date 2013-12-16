@@ -255,6 +255,31 @@
 			$admin=new Admin();
 			echo $admin->search_quiz($province,$city,$department,$start_time,$end_time,$quiz_type,$quiz_state);
 		}
-		
 	}
+	if ($operation=="SEARCHUSER")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$province=$_POST["province"];
+			$city=$_POST["city"];
+			$department=$_POST["department"];
+			$title=$_POST["title"];
+			$admin=new Admin();
+			echo $admin->search_user($province,$city,$department,$title);
+		}
+	}
+	if ($operation=="FETCHUSERINFO")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+			echo "权限不够";
+		else
+		{
+			$admin=new Admin();
+			echo $admin->fetch_user_detail_info($_POST["user_id"]);	
+		}
+	}
+
 ?>
