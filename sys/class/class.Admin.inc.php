@@ -326,6 +326,16 @@ class Admin extends DB_Connect {
 		$result=sprintf($RESULTFORMAT,$all_effect_field);
 		return $result;
 	}
+	public function set_goal($key_field_id,$mature_level,$mature_value)
+	{
+		$sql="UPDATE key_field_goal SET goal_".$mature_level."='".$mature_value."' WHERE key_field_id='".$key_field_id."' AND config_id='1'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;	
+		
+	}
 }
 
 ?>

@@ -224,4 +224,18 @@
 			echo $admin->fetch_goal_table();
 		}				
 	}
+	if ($operation=="MODIFYGOAL")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$key_field_id=$_POST["key_field_id"];
+			$mature_level=$_POST["mature_level"];
+			$mature_value=$_POST["mature_value"];
+			$admin=new Admin();
+			echo $admin->set_goal($key_field_id,$mature_level,$mature_value);
+		}				
+	}
 ?>
