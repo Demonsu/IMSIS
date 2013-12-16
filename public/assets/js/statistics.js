@@ -600,7 +600,7 @@ $(document).ready(function(){
 			table += '<th colspan="2">关键变量得分</th>';
 			table += '<th>综合得分</th>';
 			table += '<th>贡献率</th>';
-			table += '<th>第'+ar[parseInt(data.level)]+'级</th>';
+			table += '<th>第'+ar[parseInt(data.level)-1f]+'级</th>';
 			table += '<th>完成比例</th>';
 			table += '<th>提升空间</th>';
 			table += '<th>提升结点空间</th>';

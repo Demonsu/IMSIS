@@ -423,6 +423,12 @@ $(document).ready(function(){
 	});
 	$('#time-start').datepicker();
 	$('#time-end').datepicker();
+	
+	//用户数据
+	$('#check-user').click(function(){
+		hide();
+		$('#check-user-data').show();
+	});
 });
 function fetch_key_field_list(t){
 	$.ajax({
@@ -793,6 +799,7 @@ function reformresult(t){
 	});
 }
 function hide(){
+	$('#check-user-data').hide();
 	$('#quiz-result-search').hide();
 	$('#passwd-reset').hide();
 	$('#target-change').hide();

@@ -52,7 +52,7 @@
 			  <a class="list-group-item active">
 				用户管理
 			  </a>
-			  <a href="#" class="list-group-item">修改用户密码</a>
+			  <a href="#" class="list-group-item" id="check-user">查看用户资料</a>
 			  <a class="list-group-item active">
 				账户管理
 			  </a>
@@ -252,11 +252,6 @@
 				
 			</div>
 			<div class="list-group" id="search-result-list">
-			  <li class="list-group-item">Cras justo odio</li>
-			  <li class="list-group-item">Dapibus ac facilisis in</li>
-			  <li class="list-group-item">Morbi leo risus</li>
-			  <li class="list-group-item">Porta ac consectetur ac</li>
-			  <li class="list-group-item">Vestibulum at eros</li>
 			</div>
 		  </div>
 		</div>
@@ -294,6 +289,50 @@
 					</div>
 				</div>
 			</div>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="check-user-data">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">用户资料查询</div>
+		  <div class="panel-body">
+			<div class="alert alert-info">
+				<ul class="list-group">
+				  <li class="list-group-item">
+					
+				  </li>
+				</ul>
+			</div>
+			<ul class="list-group" id="user-info-list">
+			  <li href="#" class="list-group-item" id="quiz-1">
+				<div class="input-group">
+				  <span class="input-group-addon">用户名</span>
+				  <span class="input-group-addon">密码</span>
+				  <span class="input-group-addon">负责工作</span>
+				  <span class="input-group-addon">专长</span>
+				  <span class="input-group-addon">
+					<button class="btn btn-default" type="button" onclick="user_data(this)">更多信息...</button>
+				  </span>
+				</div>
+				<div class="list-group" id="quiz-list-1" style="margin-bottom:0">
+					<a href="#" class="list-group-item">Morbi leo risus</a>
+					<a href="#" class="list-group-item">Porta ac consectetur ac</a>
+					<a href="#" class="list-group-item">Vestibulum at eros</a>
+				</div>
+			  </li>
+			  <li href="#" class="list-group-item">
+				<div class="input-group">
+				  <span class="input-group-addon">用户名</span>
+				  <span class="input-group-addon">密码</span>
+				  <span class="input-group-addon">负责工作</span>
+				  <span class="input-group-addon">专长</span>
+				</div>
+			  </li>
+			  <li href="#" class="list-group-item">Morbi leo risus</li>
+			  <li href="#" class="list-group-item">Porta ac consectetur ac</li>
+			  <li href="#" class="list-group-item">Vestibulum at eros</li>
+			</ul>
 		  </div>
 		</div>
 	</div>
