@@ -526,6 +526,55 @@ class Statistics extends DB_Connect {
 		fwrite($handle,$result);
 		fclose($handle);		
 	}
+	public function fetch_goal_table_admin()
+	{
+		//$quiz=new Quiz();
+		//$quiz->init_quiz($quiz_id);
+		$KEYFIELDFORMAT='
+		{
+			"title":"%s",
+			"id":"%s",
+			"content":["%s","%s","%s","%s","%s"]
+		}';		
+		$EFFECTFIELDFORMAT='
+		{
+			"title":"%s",
+			"content":[%s]
+		}';
+		$RESULTFORMAT='
+		{
+			"content":[
+				%s
+			]
+		}';
+		$all_effect_field="";
+		foreach($this->quiz->effect_field_list as $effect_field)
+		{
+			$all_key_field="";
+			foreach($effect_field->key_field_list as $key_field)
+			{
+				if ($all_key_field!="")
+					$all_key_field=$all_key_field.",";
+				$result=$this->key_field_goal_list[$key_field->id];
+				if ($result[1]==-1)
+					$result[1]="";
+				if ($result[2]==-1)
+					$result[2]="";
+				if ($result[3]==-1)
+					$result[3]="";
+				if ($result[4]==-1)
+					$result[4]="";
+				if ($result[5]==-1)
+					$result[5]="";
+				$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$key_field->name,$key_field->id,$result[1],$result[2],$result[3],$result[4],$result[5]);
+			}
+			if ($all_effect_field!="")
+				$all_effect_field=$all_effect_field.",";
+			$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field->name,$all_key_field);
+		}	
+		$result=sprintf($RESULTFORMAT,$all_effect_field);	
+		return $result;	
+	}
 	public function table7_ACs()
 	{
 		//$quiz=new Quiz();

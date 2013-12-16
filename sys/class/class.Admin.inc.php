@@ -223,6 +223,51 @@ class Admin extends DB_Connect {
 		}		
 		return $return_value;
 	}
+	public function fetch_goal_table()
+	{
+		$KEYFIELDFORMAT='
+		{
+			"title":"%s",
+			"id":"%s".
+			"content":["%s","%s","%s","%s","%s"]
+		}';		
+		$EFFECTFIELDFORMAT='
+		{
+			"title":"%s",
+			"content":[%s]
+		}';
+		$RESULTFORMAT='
+		{
+			"content":[
+				%s
+			]
+		}';
+		$sql="SELECT * FROM effect_field";
+		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		$all_effect_field="";
+		while ($effect_field=mysql_fetch_assoc($effect_select))
+		{
+			$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_field["id"]."'";
+			$key_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$all_key_field="";
+			while ($key_field=mysql_fetch_assoc($key_select))
+			{	
+				$sql="SELECT * FROM key_field_goal WHERE key_field_id='".$key_field["id"]."' AND config_id='1'";
+				$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+				$result=mysql_fetch_assoc($select);
+				if ($all_key_field!="")
+					$all_key_field=$all_key_field.",";
+				$temp=explode("（",$key_field["name"]);
+				$key_field["name"]=$temp[0];
+				$all_key_field=$all_key_field.sprintf($KEYFIELDFORMAT,$key_field["name"],$key_field["id"],$result["goal_1"],$result["goal_2"],$result["goal_3"],$result["goal_4"],$result["goal_5"]);	
+			}
+			if ($all_effect_field!="")
+				$all_effect_field=$all_effect_field.",";
+			$all_effect_field=$all_effect_field.sprintf($EFFECTFIELDFORMAT,$effect_field["name"],$all_key_field);
+		}	
+		$result=sprintf($RESULTFORMAT,$all_effect_field);
+		return $result;
+	}
 }
 
 ?>

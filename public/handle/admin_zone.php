@@ -211,4 +211,15 @@
 			echo $admin->fetch_key_variable_detail($key_variable_id);
 		}		
 	}
+	if ($operation=="FETCHGOALTABLE")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$admin=new Admin();
+			echo $admin->fetch_goal_table();
+		}				
+	}
 ?>
