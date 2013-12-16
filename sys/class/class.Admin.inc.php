@@ -78,7 +78,7 @@ class Admin extends DB_Connect {
 			</li>	
 		';
 		$ADDEFFECTFIELDFORMAT='
-			<li class="list-group-item text-center" onclick="add_effect_field()"><span class="glyphicon glyphicon-plus"></span></li>
+			<li class="list-group-item text-center" onclick="add_key_field()"><span class="glyphicon glyphicon-plus"></span></li>
 		';
 		$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_field_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -101,13 +101,13 @@ class Admin extends DB_Connect {
 		}	
 		return 1;		
 	}
-	public function modify_key_field($add,$key_field_id,$name)
+	public function modify_key_field($add,$key_field_id,$name,$effect_field_id)
 	{
 		$sql="UPDATE key_field SET name='".$name."' WHERE id='".$key_field_id."'";
 		if ($add==1)
-			$sql="INSERT INTO key_field (name,available)
+			$sql="INSERT INTO key_field (name,available,effect_field_id)
 			VALUES
-			('".$name."','".$available."')
+			('".$name."','1','".$effect_field_id."')
 			";
 		if (!mysql_query($sql,$this->root_conn))
 		{
@@ -135,14 +135,14 @@ class Admin extends DB_Connect {
 			</li>	
 		';
 		$ADDEFFECTFIELDFORMAT='
-			<li class="list-group-item text-center" onclick="add_effect_field()"><span class="glyphicon glyphicon-plus"></span></li>
+			<li class="list-group-item text-center" onclick="add_key_variable()"><span class="glyphicon glyphicon-plus"></span></li>
 		';
 		$sql="SELECT * FROM key_variable WHERE key_field_id='".$key_field_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
 		while($key_variable_info=mysql_fetch_assoc($select))
 		{
 			$available="隐藏";
-			if ($effect_field_info["available"]==0)
+			if ($key_variable_info["available"]==0)
 				$available="显示";
 			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$key_variable_info["id"],$key_variable_info["question"],$available);
 		}
@@ -162,12 +162,12 @@ class Admin extends DB_Connect {
 	{
 		$RESULTFORMAT='
 		{
-			"question":"",
-			"answer_a":"",
-			"answer_b":"",
-			"answer_c":"",
-			"answer_d":"",
-			"answer_e":""
+			"question":"%s",
+			"answer_a":"%s",
+			"answer_b":"%s",
+			"answer_c":"%s",
+			"answer_d":"%s",
+			"answer_e":"%s"
 		}';
 		$sql="SELECT * FROM key_variable WHERE id='".$key_variable_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);	
@@ -175,15 +175,15 @@ class Admin extends DB_Connect {
 		$result=sprintf($RESULTFORMAT,$key_variable_info["question"],$key_variable_info["answer_a"],$key_variable_info["answer_b"],$key_variable_info["answer_c"],$key_variable_info["answer_d"],$key_variable_info["answer_e"]);
 		return $result;
 	}
-	public function modify_key_variable($add,$key_variable_id,$question,$answer_a,$answer_b,$answer_c,$answer_d,$answer_e)
+	public function modify_key_variable($add,$key_variable_id,$key_field_id,$question,$answer_a,$answer_b,$answer_c,$answer_d,$answer_e)
 	{
-		$sql="UPDATE key_variable SET question='".$question."',answer_a='".$answer_a."',answer_b='".$answer_b."',answer_c='".$answer_c."',answer_d='".$answer_d."',answer_e='".$answer_e."'";
+		$sql="UPDATE key_variable SET question='".$question."',answer_a='".$answer_a."',answer_b='".$answer_b."',answer_c='".$answer_c."',answer_d='".$answer_d."',answer_e='".$answer_e."' WHERE id='".$key_variable_id."'";
 		if ($add==1)
 		{
 			$sql="INSERT INTO key_variable
-			(question,answer_a,answer_b,answer_c,answer_d,answer_e,available)
+			(question,answer_a,answer_b,answer_c,answer_d,answer_e,available,key_field_id)
 			VALUES
-			('".$question."','".$answer_a."','".$answer_b."','".$answer_c."','".$answer_d."','".$answer_e."','1')
+			('".$question."','".$answer_a."','".$answer_b."','".$answer_c."','".$answer_d."','".$answer_e."','1','".$key_field_id."')
 			";
 		}
 		if (!mysql_query($sql,$this->root_conn))
@@ -203,6 +203,7 @@ class Admin extends DB_Connect {
 	}
 	public function fetch_effect_field_select_list()
 	{
+		$return_value="";
 		$EFFECTLISTFORMAT='<option value="%s">%s</option>';
 		$sql="SELECT * FROM effect_field";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -214,6 +215,7 @@ class Admin extends DB_Connect {
 	}	
 	public function fetch_key_field_select_list($effect_field_id)
 	{
+		$return_value="";
 		$EFFECTLISTFORMAT='<option value="%s">%s</option>';
 		$sql="SELECT * FROM key_field WHERE effect_field_id='".$effect_field_id."'";
 		$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
