@@ -4,6 +4,9 @@ var key_variable_change = true;
 
 var effect_field1;
 var key_field2;
+
+var timecheck1 = true;
+var timecheck2 = true;
 $(document).ready(function(){
 	$('#manage-effect-field').click(function(){
 		hide();
@@ -234,6 +237,197 @@ $(document).ready(function(){
 		fetch_target_form();
 		$('#target-change').show();
 	});
+	
+	$('#newPasswd').blur(function(){
+		var passwd = $('#newPasswd').val();
+		var pattern = new RegExp(/^[a-zA-Z0-9_]{6,20}$/);
+		if(passwd.length >20 || passwd.length < 6){
+			$('#errorPassword').text('密码长度限制为6~20个字符');
+			$('.hasPasswd').addClass('has-error');
+			check_passwd = false;
+		}
+		else if(!pattern.test(passwd)){
+			$('#errorPassword').text('密码要求:字母大小写、数字、下划线(_)');
+			$('.hasPasswd').addClass('has-error');
+			check_passwd = false;
+		}
+		else{
+			$('#errorPassword').text('密码可用');
+			$('.hasPasswd').removeClass('has-error');
+			check_passwd = true;
+		}
+	});
+	$('#confirmPasswd').blur(function(){
+		var passwd1 = $('#newPasswd').val();
+		var passwd2 = $('#confirmPasswd').val();
+		if(passwd1 != passwd2){
+			$('#errorConfirmPassword').text('两次输入密码不相符');
+			$('.hasConfirm').addClass('has-error');
+			confirm_passwd = false;
+		}
+		else{
+			$('#errorConfirmPassword').text('');
+			$('.hasConfirm').removeClass('has-error');
+			confirm_passwd = true;
+		}
+	});
+	$('#change-passwd').click(function(){
+		hide();
+		$('#passwd-reset').show();
+	});
+	$('#btn-change-passwd').click(function(){
+		$.ajax({
+			type:'POST',
+			url:'handle/admin_zone.php',
+			data:{
+				operation:'CHANGEPASSWORD',
+				old_pass:$('#originPasswd').val(),
+				new_pass:$('#newPasswd').val()
+			},
+			success:function(data){
+				if(data == 1){
+					alert('修改成功');
+					window.location.reload();
+				}
+				else if(data == 0){
+					alert('原密码不正确！');
+					$('#originPasswd').val('');
+				}
+			}
+		});
+	});
+	
+	//条件查找
+	$('#search-quiz').click(function(){
+		hide();
+		$('#quiz-result-search').show();
+	});
+	
+	$('#select1').change(function(){
+		var select1 = $('#select1').val();
+		if (select1=='710000' || select1=='810000' || select1=='820000' || select1=='100000')
+		{
+			$('#select2').html('<option value="0">请选择城市</option>');
+			$('#select2').attr('disabled',true);
+		}
+		else if(select1 != 0){
+			
+			$.ajax({
+				type:'POST',
+				url:'handle/system.php',
+				data:{
+					operation:'FETCHCITY',
+					province:select1
+				},
+				success:function(data){
+					//alert(data);
+					$('#select2').attr('disabled',false);
+					$('#select2').html('<option value="0">请选择城市</option>'+data);
+				}
+			});
+		}
+	});
+	$('#area-check').change(function(){
+		if(this.checked){
+			$('#select1').html('<option value="0">请选择省份</option>');
+			$('#select2').html('<option value="0">请选择城市</option>');
+			$('#select3').html('<option value="0">请选择单位</option>');
+			$('#select1').attr('disabled',true);
+			$('#select2').attr('disabled',true);
+			$('#select3').attr('disabled',true);
+		}
+		else{
+			$.ajax({
+				type:'POST',
+				url:'handle/system.php',
+				data:{
+					operation:'FETCHPROVINCE'
+				},
+				success:function(data){
+					//alert(data);
+					$('#select1').html('<option value="0">请选择省份</option>'+data);
+				}
+			});
+			$.ajax({
+				type:'POST',
+				url:'handle/system.php',
+				data:{
+					operation:'FETCHDEPARTMENT'
+				},
+				success:function(data){
+					$('#select3').html('<option value="0">请选择单位</option>'+data);
+				}
+			});
+			$('#select1').attr('disabled',false);
+			$('#select2').attr('disabled',false);
+			$('#select3').attr('disabled',false);
+		}
+	});
+	$('#timespan-check').change(function(){
+		if(this.checked){
+			$('#time-start').val('');
+			$('#time-end').val('');
+			$('#time-start').attr('disabled',true);
+			$('#time-end').attr('disabled',true);
+		}
+		else{
+			$('#time-start').val('01/01/2013');
+			$('#time-end').val('01/01/2013');
+			$('#time-start').attr('disabled',false);
+			$('#time-end').attr('disabled',false);
+		}
+	});
+	
+	$('#search-btn').click(function(){
+		var province = '0';
+		var city = '0';
+		var department = '0';
+		
+		var start_time = '1000-01-01';
+		var end_time = '3000-01-01';
+		
+		if(!$('#timespan-check').attr('disabled')){
+			if(!timecheck1 && !timecheck2){
+				alert('时间格式错误，请检查');
+				return;
+			}
+			else{
+				var time;
+				time = $('#time-start').val().split('/');
+				start_time = time[2]+'-'+time[0]+'-'+time[1];
+				time = $('#time-end').val().split('/');
+				end_time = time[2]+'-'+time[0]+'-'+time[1];
+			}
+		}
+		if(!$('#area-check').attr('disabled')){
+			province = $('#select1').val();
+			city = $('#select2').val();
+			department = $('#select3').val();
+		}
+		
+		var quiz_type = $(':radio[name="radio-settype"]:checked').val();
+		var quiz_state = $(':radio[name="radio-setstate"]:checked').val();
+		
+		$.ajax({
+			type:'POST',
+			url:'handle/admin_zone.php',
+			data:{
+				operation:'SEARCHQUESTIONNAIRE',
+				province:province,
+				city:city,
+				deparment:department,
+				start_time:start_time,
+				end_time:end_time,
+				quiz_type:quiz_type,
+				quiz_state:quiz_state
+			},
+			success:function(data){
+				$('#search-result-list').html(data);
+			}
+		});
+	});
+	$('#time-start').datepicker();
+	$('#time-end').datepicker();
 });
 function fetch_key_field_list(t){
 	$.ajax({
@@ -555,6 +749,8 @@ function fetch_target_form(){
 	});
 }
 function hide(){
+	$('#quiz-result-search').hide();
+	$('#passwd-reset').hide();
 	$('#target-change').hide();
 	$('#change-effect-field').hide();
 	$('#change-key-field').hide();

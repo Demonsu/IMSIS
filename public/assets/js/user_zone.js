@@ -369,11 +369,8 @@ function reformresult(t){
 			quiz_id:t.parentNode.id
 		},
 		success:function(data){
-			if(data == 1){
-				window.location = "statistics.php?quiz_id="+t.parentNode.id;
-			}
-			else
-				alert(data);
+			//alert(data);
+			window.location = "statistics.php?quiz_id="+t.parentNode.id;
 		}
 	});
 }
