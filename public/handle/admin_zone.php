@@ -103,8 +103,9 @@
 			$add=$_POST["add"];
 			$key_field_id=$_POST["key_field_id"];
 			$name=$_POST["name"];	
+			$effect_field_id=$_POST["effect_field_id"];
 			$admin=new Admin();
-			echo $admin->modify_key_field($add,$key_field_id,$name);
+			echo $admin->modify_key_field($add,$key_field_id,$name,$effect_field_id);
 		}
 
 	}	
@@ -179,8 +180,9 @@
 			$answer_c=$_POST["answer_c"];
 			$answer_d=$_POST["answer_d"];
 			$answer_e=$_POST["answer_e"];
+			$key_field_id=$_POST["key_field_id"];
 			$admin=new Admin();
-			echo $admin->modify_key_variable($add,$key_variable_id,$question,$answer_a,$answer_b,$answer_c,$answer_d,$answer_e);
+			echo $admin->modify_key_variable($add,$key_variable_id,$key_field_id,$question,$answer_a,$answer_b,$answer_c,$answer_d,$answer_e);
 		}
 
 		
