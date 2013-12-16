@@ -199,4 +199,16 @@
 		}
 
 	}		
+	if ($operation=="FETCHKEYVARIABLEDETAIL")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$key_variable_id=$_POST["key_variable_id"];
+			$admin=new Admin();
+			echo $admin->fetch_key_variable_detail($key_variable_id);
+		}		
+	}
 ?>
