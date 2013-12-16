@@ -72,7 +72,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 			<h3 class="panel-title text-center">创建单位测评：
-				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onClick="hide()"></div>
 			</h3>
 		  </div>
 		  <div class="panel-body">
@@ -102,7 +102,7 @@
 		<div class="panel panel-default" id="user-promise">
 		  <div class="panel-heading">
 			<h3 class="panel-title">阅读评测说明及测评承诺书
-				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onClick="hide()"></div>
 			</h3>
 		  </div>
 		  <div class="panel-body">
@@ -125,7 +125,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 			<h3 class="panel-title">选择你想要测评的域然后创建
-				<div style="float:right" class="glyphicon glyphicon-remove-circle" onclick="hide()"></div>
+				<div style="float:right" class="glyphicon glyphicon-remove-circle" onClick="hide()"></div>
 			</h3>
 		  </div>
 		  <div class="panel-body">

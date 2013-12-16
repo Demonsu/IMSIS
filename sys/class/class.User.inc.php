@@ -25,8 +25,8 @@ class User extends DB_Connect {
 		if ($num>0)
 		{
 			$_SESSION["USERID"]=$user_id;
-			$_SESSION["PERMISSION"]=$result["permisson"];
-			return $result["permisson"];
+			$_SESSION["PERMISSION"]=$result["permission"];
+			return $result["permission"];
 		}else
 		{
 			return -1;
