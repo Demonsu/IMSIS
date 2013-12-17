@@ -1,0 +1,56 @@
+
+		{ 
+			"content":
+			[ 
+				
+		{ 
+			"title_effect":"电子政府规划",
+			"effect_content":
+			[ 
+				
+		{
+			"id":"1.1",
+			"title_field":"中长期规划",
+			"field_content":[
+				
+		{
+			"title_variable":"中长期规划 ",
+			"score":"2"
+		},
+		{
+			"title_variable":"IT基础设施规划",
+			"score":"5"
+		},
+		{
+			"title_variable":"IT与业务的融合",
+			"score":"2"
+		}
+			],
+			"field_score":"3.0"
+		},
+		{
+			"id":"1.2",
+			"title_field":"规划实施",
+			"field_content":[
+				
+		{
+			"title_variable":"实施方案",
+			"score":"4"
+		},
+		{
+			"title_variable":"业务需求分析方案",
+			"score":"4"
+		},
+		{
+			"title_variable":"标准规范的遵循",
+			"score":"1"
+		}
+			],
+			"field_score":"3.0"
+		}
+			],
+			"effect_field_score":"3.0"
+		
+		}
+			] 
+		}

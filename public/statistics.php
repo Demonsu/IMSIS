@@ -119,7 +119,7 @@
 			同样你也可以将测评结果生产的表格以及图标下载到您的PC上<br>
 			<br>
 		  </p>
-		  <p><a class="btn btn-primary btn-lg" role="button" onclick="download_result()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
+		  <p><a class="btn btn-primary btn-lg" role="button" onclick="method1()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t1">
