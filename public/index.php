@@ -216,6 +216,7 @@ body{
               
     <div class="content clearfix">
       <a href="/" id="logo" rel="home" title="Return to the Data.gov home page"><img src="./assets/img/index/logo.png" height="60px" alt="logo" /></a>
+
     </div>
 
 

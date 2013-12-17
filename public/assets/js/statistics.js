@@ -14,9 +14,6 @@ $(document).ready(function(){
 			var i;
 			t1_num = data.content.length;
 			for(i=0;i<data.content.length;i++){
-				if(i%2 == 0)
-					table += '<div class="row">';
-				table += '<div class="col-md-6"><table class="col-md-12" id="t1-'+(i+1)+'">';
 				table += '<tr>';
 				table += '<th></th>';
 				table += '<th colspan="2">'+ data.content[i].title_effect + '</th>';
@@ -52,9 +49,6 @@ $(document).ready(function(){
 				table += '<tr style="color:red">';
 				table += '<td></td><td colspan="2">' + data.content[i].title_effect + '总均分</td><td></td><td style="text-align:right">' + data.content[i].effect_field_score + '</td>';
 				table += '</tr>';
-				table += '</table></div>';
-				if(i%2 == 1)
-					table += '</div>';
 				
 			}
 			$('#t1').html(table);
@@ -899,9 +893,6 @@ $(document).ready(function(){
 			table += '<td style="text-align:right">占总关键变量百分比</td>';
 			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td><td></td>';
 			table += '</tr>';
-			$('#t10-1').html(table);
-			
-			table = '';
 			table += '<tr style="text-align:center">';
 			table += '<th>需要提升的流程</th>';
 			table += '<th>得分</th>';
@@ -924,7 +915,7 @@ $(document).ready(function(){
 				table += '<td style="text-align:right">'+data.table2[i].content[1]+'%</td>';
 				table += '</tr>';
 			}
-			$('#t10-2').html(table);
+			$('#t10').html(table);
 			
 			var options = {
 				chart:{
@@ -1228,9 +1219,7 @@ $(document).ready(function(){
 			table += '<td style="text-align:right">占总关键变量百分比</td>';
 			table += '<td style="text-align:right">'+data.table1_total[1]+'</td><td></td><td></td><td></td><td></td><td></td>';
 			table += '</tr>';
-			$('#t13-1').html(table);
-			
-			table = '';
+
 			table += '<tr style="text-align:center">';
 			table += '<th>优秀关键变量</th>';
 			table += '<th>得分</th>';
@@ -1253,7 +1242,7 @@ $(document).ready(function(){
 				table += '<td style="text-align:right">'+data.table2[i].content[1]+'</td>';
 				table += '</tr>';
 			}
-			$('#t13-2').html(table);
+			$('#t13').html(table);
 		}
 	});
 	$.ajax({

@@ -17,6 +17,7 @@
 	<script style="text/javascript" src="./assets/js/statistics.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/highcharts.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/modules/exporting.js"></script>
+	<script style="text/javascript" src="assets/js/export_excel.js"></script>
 	<link rel="stylesheet" href="./assets/css/statistics.css">
 	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
@@ -117,7 +118,7 @@
 			同样你也可以将测评结果生产的表格以及图标下载到您的PC上<br>
 			<br>
 		  </p>
-		  <p><a class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-arrow-right"></span> 教程</a></p>
+		  <p><a class="btn btn-primary btn-lg" role="button" onclick="download_result()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t1">
@@ -127,8 +128,10 @@
 			  <p>该表展示所选被评估项的得分，并计算了关键域（KDs）和作用域（LDs）的计算结果。</p>
 			</div>
 		</div>
-		<div class="col-md-12" id="t1">
+		<div class="col-md-12">
+			<table class="col-md-12" id="t1">
 			
+			</table>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t2">
@@ -271,12 +274,7 @@
 			</div>
 		</div>
 		<div class="col-md-12">
-			<table class="col-md-12" id="t10-1">
-	
-			</table>
-		</div>
-		<div class="col-md-12">
-			<table class="col-md-12" id="t10-2">
+			<table class="col-md-12" id="t10">
 	
 			</table>
 		</div>
@@ -324,12 +322,7 @@
 			</div>
 		</div>
 		<div class="col-md-12">
-			<table class="col-md-12" id="t13-1">
-	
-			</table>
-		</div>
-		<div class="col-md-12">
-			<table class="col-md-12" id="t13-2">
+			<table class="col-md-12" id="t13">
 	
 			</table>
 		</div>
