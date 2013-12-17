@@ -423,7 +423,125 @@ $(document).ready(function(){
 	});
 	$('#time-start').datepicker();
 	$('#time-end').datepicker();
+	
+	//用户数据
+	$('#check-user').click(function(){
+		hide();
+		$.ajax({
+			type:'POST',
+			url:'handle/system.php',
+			data:{
+				operation:'FETCHPROVINCE'
+			},
+			success:function(data){
+				//alert(data);
+				$('#select-province').html('<option value="0">请选择省份</option>'+data);
+			}
+		});
+		$.ajax({
+			type:'POST',
+			url:'handle/system.php',
+			data:{
+				operation:'FETCHDEPARTMENT'
+			},
+			success:function(data){
+				$('#select-department').html('<option value="0">请选择单位</option>'+data);
+			}
+		});
+		$.ajax({
+			type:'POST',
+			url:'handle/system.php',
+			data:{
+				operation:'FETCHTITLE'
+			},
+			success:function(data){
+				//alert(data);
+				$('#select-title').html('<option vlaue="0">请选择职称</option>'+data);
+			}
+		});
+		$('#check-user-data').show();
+	});
+	$('#select-province').change(function(){
+		var select1 = $('#select-province').val();
+		if (select1=='710000' || select1=='810000' || select1=='820000' || select1=='100000')
+		{
+			$('#select-city').html('<option value="0">请选择城市</option>');
+			$('#select-city').attr('disabled',true);
+		}
+		else if(select1 != 0){
+			
+			$.ajax({
+				type:'POST',
+				url:'handle/system.php',
+				data:{
+					operation:'FETCHCITY',
+					province:select1
+				},
+				success:function(data){
+					//alert(data);
+					$('#select-city').attr('disabled',false);
+					$('#select-city').html('<option value="0">请选择城市</option>'+data);
+				}
+			});
+		}
+	});
+	$('#user-search-btn').click(function(){
+		var province = $('#select-province').val();
+		var city = $('#select-city').val();
+		var department = $('#select-department').val();
+		var title = $('#select-title').val();
+		
+		$.ajax({
+			type:'POST',
+			url:'handle/admin_zone.php',
+			data:{
+				operation:'SEARCHUSER',
+				province:province,
+				city:city,
+				department:department,
+				title:title
+			},
+			success:function(data){
+				$('#user-info-list').html(data);
+			}
+		});
+	});
+	$('#user-info-cover').click(function(){
+		$('#user-info-cover').hide();
+	});
 });
+function user_data(t){
+	var id = t.parentNode.parentNode.parentNode.id;
+	var token = id.split('-');
+	$.ajax({
+		type:'POST',
+		url:'handle/admin_zone.php',
+		data:{
+			operation:'FETCHUSERINFO',
+			user_id:token[1]
+		},
+		success:function(str){
+			var data = jQuery.parseJSON(str);
+			$('#user-info1').html(data.id);
+			$('#user-info2').html(data.department);
+			$('#user-info3').html(data.position);
+			$('#user-info4').html(data.oncharge);
+			$('#user-info5').html(data.spaciality);
+			$('#user-info6').html(data.age);
+			$('#user-info7').html(data.gender);
+			$('#user-info8').html(data.edu);
+			$('#user-info9').html(data.title);
+			$('#user-info10').html(data.time);
+			$('#user-info11').html(data.email);
+			$('#user-info-cover').show();
+		}
+	});
+}
+function user_quiz(t){
+	id = t.parentNode.parentNode.parentNode.id;
+	var token = id.split('-');
+	$('#quiz-list-'+token[1]).toggle();
+}
 function fetch_key_field_list(t){
 	$.ajax({
 		type:'POST',
@@ -793,6 +911,7 @@ function reformresult(t){
 	});
 }
 function hide(){
+	$('#check-user-data').hide();
 	$('#quiz-result-search').hide();
 	$('#passwd-reset').hide();
 	$('#target-change').hide();

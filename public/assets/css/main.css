@@ -1,0 +1,14 @@
+.td-css{
+	height:60px;
+	border-right:1px solid #a94442;
+}
+.span-level{
+	padding:10px 0px 0px 10px;
+	width:230px;
+	height:40px;
+	border:1px solid #ffffff;
+}
+.span-level:hover{
+	border:1px solid #a94442;
+	cursor:pointer;
+}

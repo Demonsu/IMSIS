@@ -52,7 +52,7 @@
 			  <a class="list-group-item active">
 				用户管理
 			  </a>
-			  <a href="#" class="list-group-item">修改用户密码</a>
+			  <a href="#" class="list-group-item" id="check-user">查看用户资料</a>
 			  <a class="list-group-item active">
 				账户管理
 			  </a>
@@ -252,11 +252,6 @@
 				
 			</div>
 			<div class="list-group" id="search-result-list">
-			  <li class="list-group-item">Cras justo odio</li>
-			  <li class="list-group-item">Dapibus ac facilisis in</li>
-			  <li class="list-group-item">Morbi leo risus</li>
-			  <li class="list-group-item">Porta ac consectetur ac</li>
-			  <li class="list-group-item">Vestibulum at eros</li>
 			</div>
 		  </div>
 		</div>
@@ -295,6 +290,93 @@
 				</div>
 			</div>
 		  </div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="check-user-data">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">用户资料查询</div>
+		  <div class="panel-body">
+			<div class="alert alert-info">
+				<ul class="list-group">
+				  <li class="list-group-item">
+					用户条件：
+					<div>
+						<select id="select-province">
+						  <option value="0">请选择省份</option>
+						</select>
+						<select id="select-city">
+						  <option value="0">请选择城市</option>
+						</select>
+						<select id="select-department">
+						  <option value="0">请选择单位</option>
+						</select>
+						<select id="select-title">
+						  <option value="0">请选择职称</option>
+						</select>
+						<div style="float:right">
+							<button class="btn btn-success btn-sm" id="user-search-btn">搜索</button>
+						</div>
+					</div>
+				  </li>
+				</ul>
+			</div>
+			<ul class="list-group" id="user-info-list">
+			  <li href="#" class="list-group-item" id="quiz-1">
+				<div class="input-group">
+				  <span class="input-group-addon">用户名</span>
+				  <span class="input-group-addon">密码</span>
+				  <span class="input-group-addon">负责工作</span>
+				  <span class="input-group-addon">专长</span>
+				  <span class="input-group-addon">
+					<button class="btn btn-default" type="button" onclick="user_data(this)">更多信息...</button>
+					<button class="btn btn-default" type="button" id="quiz-list1">问卷列表</button>
+					<script>
+						$(function(){
+							$('#quiz-list1').click(function(){
+								$('#quiz-list-1').toggle();
+							});
+						});
+					</script>
+				  </span>
+				</div>
+				<div class="list-group" id="quiz-list-1" style="margin-bottom:0">
+					<a href="#" class="list-group-item">Morbi leo risus</a>
+					<a href="#" class="list-group-item">Porta ac consectetur ac</a>
+					<a href="#" class="list-group-item">Vestibulum at eros</a>
+				</div>
+			  </li>
+			  <li href="#" class="list-group-item">
+				<div class="input-group">
+				  <span class="input-group-addon">用户名</span>
+				  <span class="input-group-addon">密码</span>
+				  <span class="input-group-addon">负责工作</span>
+				  <span class="input-group-addon">专长</span>
+				</div>
+			  </li>
+			  <li href="#" class="list-group-item">Morbi leo risus</li>
+			  <li href="#" class="list-group-item">Porta ac consectetur ac</li>
+			  <li href="#" class="list-group-item">Vestibulum at eros</li>
+			</ul>
+		  </div>
+		</div>
+	</div>
+	
+	<div id="user-info-cover" style="display:none">
+		<div id="user-info-bar">
+			<div class="alert alert-warning">
+			<div class="jumbotron" style="border-radius:10px;margin:0">
+			  <h1>详细信息</h1>
+			  <table style="width:100%">
+			  <tr><td>用户名：<span id="user-info1">123</span></td><td>部门：<span id="user-info2">123</span></td></tr>
+			  <tr><td>职务：<span id="user-info3">123</span></td><td>  负责工作：<span id="user-info4">123</span></td></tr>
+			  <tr><td>专长：<span id="user-info5">123</span></td><td>  年龄：<span id="user-info6">123</span></td></tr>
+			  <tr><td>性别：<span id="user-info7">123</span></td><td>  教育程度：<span id="user-info8">123</span></td></tr>
+			  <tr><td>职称：<span id="user-info9">123</span></td><td>  工作时长：<span id="user-info10">123</span></td></tr>
+			  <tr><td>电子邮件：<span id="user-info11">123</span></td></tr>
+			  </table>
+			</div>
+			</div>
 		</div>
 	</div>
 	

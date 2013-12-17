@@ -1,4 +1,5 @@
 var tab_id = 0;
+var t1_num;
 $(document).ready(function(){
 	$('#loading-cover').show();
 	//第一张表
@@ -11,10 +12,11 @@ $(document).ready(function(){
 			//alert(data);
 			var table = '';
 			var i;
+			t1_num = data.content.length;
 			for(i=0;i<data.content.length;i++){
 				if(i%2 == 0)
 					table += '<div class="row">';
-				table += '<div class="col-md-6"><table class="col-md-12">';
+				table += '<div class="col-md-6"><table class="col-md-12" id="t1-'+(i+1)+'">';
 				table += '<tr>';
 				table += '<th></th>';
 				table += '<th colspan="2">'+ data.content[i].title_effect + '</th>';
@@ -600,7 +602,7 @@ $(document).ready(function(){
 			table += '<th colspan="2">关键变量得分</th>';
 			table += '<th>综合得分</th>';
 			table += '<th>贡献率</th>';
-			table += '<th>第'+ar[parseInt(data.level)]+'级</th>';
+			table += '<th>第'+ar[parseInt(data.level)-1]+'级</th>';
 			table += '<th>完成比例</th>';
 			table += '<th>提升空间</th>';
 			table += '<th>提升结点空间</th>';
@@ -1294,7 +1296,13 @@ $(document).ready(function(){
 	$('#loading-cover').hide();
 	
 });
-
+function download_result(){
+	var test=new PageToExcel("t1-1",0,255,"测试.xls");//table id , 第几行开始，最后一行颜色 ，保存的文件名
+	test.CreateExcel(false);
+	test.Exec();
+	test.SaveAs();
+	test.CloseExcel();
+}
 function hide(){
 	$('.tab-pane').hide();
 }
