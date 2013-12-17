@@ -1,5 +1,7 @@
 <?php
 	include_once '../sys/core/init.inc.php';
+	if (isset($_SESSION["PERMISSION"]) && $_SESSION["PERMISSION"]==1)
+		header("Location:./admin_zone.php");
 ?>
 <html>
 <head>
