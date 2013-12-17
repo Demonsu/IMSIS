@@ -205,36 +205,7 @@ body{
     <div id="page-inner" class="page-inner">
       
 <!-- header-top region -->
-<div id="header-top-wrapper" class="header-top-wrapper full-width clearfix">
-  <div id="header-top" class="region region-header-top header-top  grid12-12">
-    <div id="header-top-inner" class="header-top-inner inner">
-      <div id="block-boxes-usaflag_info" class="block block-boxes block-boxes-simple usaflag-info grid12-4 first  odd">
-  <div class="gutter inner clearfix">
-              
-    <div class="content clearfix">
-      <div id='boxes-box-usaflag_info' class='boxes-box'><div class="boxes-box-content"><p><a href=""><img title="" src="" alt="" border="0" /></a><em>An Official Web Site of the Chinese Government</em></p>
-</div></div>    </div>
-  </div><!-- /block-inner -->
-</div><!-- /block -->
-<div id="block-addthis-addthis_block" class="block block-addthis addthis-block fusion-right   even">
-  <div class="gutter inner clearfix">
-              
-    <div class="content clearfix">
 
-    </div>
-  </div><!-- /block-inner -->
-</div><!-- /block -->
-<div id="block-boxes-current_date_preheader" class="block block-boxes block-boxes-simple current-date-preheader grid12-2 fusion-center-content fusion-right  last odd">
-  <div class="gutter inner clearfix">
-              
-    <div class="content clearfix">
-      <div id='boxes-box-current_date_preheader' class='boxes-box'><div class="boxes-box-content">
-</div></div>    </div>
-  </div><!-- /block-inner -->
-</div><!-- /block -->
-    </div><!-- /header-top-inner -->
-  </div><!-- /header-top -->
-</div><!-- /header-top-wrapper -->
 
       <!-- header-group region: width = grid_width -->
       <div id="header-group-wrapper" class="header-group-wrapper full-width clearfix">

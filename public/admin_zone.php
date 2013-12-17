@@ -364,14 +364,18 @@
 	
 	<div id="user-info-cover" style="display:none">
 		<div id="user-info-bar">
-			<div class="jumbotron">
+			<div class="alert alert-warning">
+			<div class="jumbotron" style="border-radius:10px;margin:0">
 			  <h1>详细信息</h1>
-			  <p>用户名：<span id="user-info1">123</span>  部门：<span id="user-info2">123</span></p>
-			  <p>职务：<span id="user-info3">123</span>  负责工作：<span id="user-info4">123</span></p>
-			  <p>专长：<span id="user-info5">123</span>  年龄：<span id="user-info6">123</span></p>
-			  <p>性别：<span id="user-info7">123</span>  教育程度：<span id="user-info8">123</span></p>
-			  <p>职称：<span id="user-info9">123</span>  工作时长：<span id="user-info10">123</span></p>
-			  <p>电子邮件：<span id="user-info11">123</span></p>
+			  <table style="width:100%">
+			  <tr><td>用户名：<span id="user-info1">123</span></td><td>部门：<span id="user-info2">123</span></td></tr>
+			  <tr><td>职务：<span id="user-info3">123</span></td><td>  负责工作：<span id="user-info4">123</span></td></tr>
+			  <tr><td>专长：<span id="user-info5">123</span></td><td>  年龄：<span id="user-info6">123</span></td></tr>
+			  <tr><td>性别：<span id="user-info7">123</span></td><td>  教育程度：<span id="user-info8">123</span></td></tr>
+			  <tr><td>职称：<span id="user-info9">123</span></td><td>  工作时长：<span id="user-info10">123</span></td></tr>
+			  <tr><td>电子邮件：<span id="user-info11">123</span></td></tr>
+			  </table>
+			</div>
 			</div>
 		</div>
 	</div>

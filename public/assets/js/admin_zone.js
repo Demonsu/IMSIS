@@ -493,7 +493,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'POST',
-			url:'admin_zone.php',
+			url:'handle/admin_zone.php',
 			data:{
 				operation:'SEARCHUSER',
 				province:province,
