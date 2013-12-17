@@ -422,7 +422,7 @@ class Admin extends DB_Connect {
 			<a href="#" class="list-group-item" id="%s"><span class="badge" onclick="deleteitem(this,3)">删除</span><span class="badge" onclick="checkresult(this)">查看结果</span><span class="badge" onclick="reformresult(this)">重新生成结果</span>%s</a>
 		';
 		$SQLADDFORMAT="%s%s";
-		$sql="SELECT * FROM user WHERE 1=1 ";
+		$sql="SELECT * FROM user WHERE permission='0' ";
 		if ($province!=0)
 		{
 			$sql=sprintf($SQLADDFORMAT,$sql,"AND province='".$province."' ");
