@@ -15,6 +15,7 @@
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/statistics.js"></script>
+    <script style="text/javascript" src="./assets/js/paste_to_excel.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/highcharts.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/modules/exporting.js"></script>
 	<link rel="stylesheet" href="./assets/css/statistics.css">

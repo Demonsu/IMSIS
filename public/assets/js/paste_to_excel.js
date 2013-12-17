@@ -1,13 +1,16 @@
 // JavaScript Document
 
-        function method1(tableid) {//整个表格拷贝到EXCEL中    
-            var curTbl = document.getElementById(tableid);
+        function method1() {//整个表格拷贝到EXCEL中   
             var oXL = new ActiveXObject("Excel.Application");
             //创建AX对象excel    
             var oWB = oXL.Workbooks.Add();
             //获取workbook对象    
+			oWB.Worksheets(1).Delete();
+			oWB.Worksheets(1).Delete();
+			 
+            var curTbl = document.getElementById("t1");
             var oSheet = oWB.ActiveSheet;
-			oSheet.Name="wyjdsb";
+			oSheet.Name="关键变量（CVs）得分表";
             //激活当前sheet    
             var sel = document.body.createTextRange();
             sel.moveToElementText(curTbl);
@@ -19,7 +22,139 @@
             oSheet.Paste();
             //粘贴到活动的EXCEL中          
             oXL.Visible = true;
-            //设置excel可见属性    
+            //设置excel可见属性 
+			   
+			var curTb2 = document.getElementById("t2");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="关键变量统计分布表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb2);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;
+						
+			var curTb3 = document.getElementById("t3");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="关键域（KDs）得分表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb3);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;		
+			
+			var curTb4 = document.getElementById("t4");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="关键域（KDs）能力统计表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb4);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;	
+
+			var curTb5 = document.getElementById("t5");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="作用域（LDs）的得分表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb5);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;	
+	
+			var curTb6 = document.getElementById("t6");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="目标能力摘要表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb6);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;			
+
+			var curTb7 = document.getElementById("t7");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="能力对比图";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb7);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;		
+
+			var curTb8 = document.getElementById("t8");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="短缺能力详细信息";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb8);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;		
+
+			var curTb9 = document.getElementById("t9");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="短缺能力的作用域分析";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb9);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;	
+			
+			var curTb10 = document.getElementById("t10");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="能力提升分析";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb10);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;	
+			
+			
+			var curTb11 = document.getElementById("t11");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="优势能力详细信息";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb11);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;	
+			
+			var curTb12 = document.getElementById("t12");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="优势能力的作用域分析";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb12);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;			
+
+			var curTb13 = document.getElementById("t13");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="优势能力的数量分析";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb13);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;		
+			
+			var curTb14 = document.getElementById("t14");
+            var oSheet = oWB.Sheets.Add();
+			oSheet.Name="能力情况总汇表";   
+            var sel = document.body.createTextRange();
+            sel.moveToElementText(curTb14);    
+            sel.select();    
+            sel.execCommand("Copy");     
+            oSheet.Paste();        
+            oXL.Visible = true;						
+											
         }
         function method2(tableid) //读取表格中每个单元到EXCEL中    
         {
