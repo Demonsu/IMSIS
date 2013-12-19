@@ -15,7 +15,7 @@ $(document).ready(function(){
 					remember:remember
 				},
 				success:function(data){
-					alert(data);
+					//alert(data);
 					if(data==-1){
 						$('#errorMsg').text("用户名或密码错误");
 						$('#loading-cover').hide();
