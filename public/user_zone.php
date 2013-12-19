@@ -1,7 +1,7 @@
 <?php
 include_once '../sys/core/init.inc.php';
 
-
+$op = $_GET['navigation'];
 
 ?>
 <html>
@@ -9,14 +9,48 @@ include_once '../sys/core/init.inc.php';
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>个人空间</title>
 	
-	<link rel="stylesheet" href="./assets/css/user_zone.css">
+	
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/user_zone.js"></script>
 	<link rel="stylesheet" href="./assets/css/body.css">
+	<link rel="stylesheet" href="./assets/css/user_zone.css">
 
 </head>
+<script>
+$(document).ready(function(){
+	var op = <?php echo $op ?>;
+	if(op == 1){
+		$('#collapse1').click();
+		readpromise();
+	}
+	else if(op == 2){
+		$('#collapse1').click();
+		doremark();
+	}
+	else if(op == 3){
+		$('#collapse2').click();
+		nc_list();
+	}
+	else if(op == 4){
+		$('#collapse2').click();
+		c_list();
+	}
+	else if(op == 5){
+		$('#collapse2').click();
+		d_list();
+	}
+	else if(op == 6){
+		$('#collapse3').click();
+		change_passwd();
+	}
+	else if(op == 7){
+		$('#collapse3').click();
+		change_data();
+	}
+});
+</script>
 <body>
 <div class="main">
 <!--header -->
@@ -28,7 +62,49 @@ include_once '../sys/core/init.inc.php';
 		<div class="panel-body">
 
 			<div class="row col-md-3">
-				<div class="list-group">
+				<div class="panel-group" id="accordion">
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="collapse1">
+						  创建测评
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse list-group">
+						<a href="javascript:readpromise()" id="person" class="list-group-item text-center" >创建个人测评</a>
+						<a href="javascript:doremark()" id="department" class="list-group-item text-center">创建单位测评</a>
+					</div>
+				  </div>
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" id="collapse2">
+						  我的测评
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse list-group">
+						<a href="javascript:nc_list()" class="list-group-item text-center">未完成的测评</a>
+						<a href="javascript:c_list()" class="list-group-item text-center">已完成的测评</a>
+						<a href="javascript:d_list()" id="depart_quiz" class="list-group-item text-center">单位测评</a>
+					</div>
+				  </div>
+				  <div class="panel panel-default">
+					<div class="panel-heading">
+					  <h4 class="panel-title">
+						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" id="collapse3">
+						  个人信息修改
+						</a>
+					  </h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse list-group">
+						<a href="javascript:change_passwd()" class="list-group-item text-center">修改密码</a>
+						<a href="javascript:change_data()" class="list-group-item text-center">修改资料</a>
+					</div>
+				  </div>
+				</div>
+				<div class="list-group" style="display:none">
 					<a class="list-group-item active">创建测评</a>
 					<a href="javascript:readpromise()" id="person" class="list-group-item text-center" >创建个人测评</a>
 					<a href="javascript:doremark()" id="department" class="list-group-item text-center">创建单位测评</a>
@@ -113,7 +189,7 @@ include_once '../sys/core/init.inc.php';
 							</div>
 						</div>
 						<div class="group">
-							<label class="label-control">输入备注（可选）：</label>
+							<label class="label-control">输入备注（为了便于区分每一次测评，请填写备注标识这分问卷，可选）：</label>
 							<textarea id="user-remark" class="form-control" rows="3"></textarea>
 						</div>
 						<div class="group">
@@ -135,7 +211,7 @@ include_once '../sys/core/init.inc.php';
 						<div class="row">
 							
 							<div class="col-md-12">
-								<label class="label-control">输入备注（可选）：</label>
+								<label class="label-control">输入备注（为了便于区分每一次测评，请填写备注标识这分问卷，可选）：</label>
 								<textarea id="d-remark" class="form-control" rows="3"></textarea>
 							</div>
 						</div>

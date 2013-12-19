@@ -4,15 +4,18 @@ $(document).ready(function(){
 		$('#loading-cover').show();
 		var id = $('#inputId').val();
 		var passwd = $('#inputPassword').val();
+		var remember = document.getElementById('remember').checked?1:0;
 		if(id != '' && passwd !=''){
 			$.ajax({
 				type:'POST',
 				url:"handle/login.php",
 				data:{
 					user_id:id,
-					password:passwd
+					password:passwd,
+					remember:remember
 				},
 				success:function(data){
+					alert(data);
 					if(data==-1){
 						$('#errorMsg').text("用户名或密码错误");
 						$('#loading-cover').hide();
@@ -28,6 +31,7 @@ $(document).ready(function(){
 		}
 		else{
 			$('#errorMsg').text("请输入用户名或密码");
+			$('#loading-cover').hide();
 		}
 	});
 	$('#register').click(function(){
@@ -41,7 +45,28 @@ $(document).ready(function(){
 			$('#login').click();
 	});
 	$('#u_t').click(function(){
-		$('#step1').show();
+		$('#loading-cover').show();
+		$.ajax({
+			type:'POST',
+			url:'./handle/login.php',
+			data:{
+				operation:'USERLOGINSTATE',
+				is_public:0
+			},
+			success:function(data){
+				if(data == 0){
+					$('#loading-cover').hide();
+					$('#step1').show();
+				}
+				else if(data == 1){
+					window.location = 'user_zone.php?navigation=4';
+				}
+				else
+					alert(data);
+			}
+			
+		});
+		
 		//window.location = 'quiz.php';
 	});
 	$('#readit').click(function(){
@@ -135,26 +160,44 @@ $(document).ready(function(){
 		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
-			url:'handle/user_zone.php',
+			url:'./handle/login.php',
 			data:{
-				operation:'CHECKDEPARTMENTQUESTIONNAIRE',
+				operation:'USERLOGINSTATE',
+				is_public:1
 			},
 			success:function(data){
-				$('#loading-cover').hide();
-				if(data == 1){
-					var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
-					if(returnVal){
-						$('#cover').show();
-					}
-					else{
-						window.location = 'user_zone.php';
-					}
+				if(data == 0){
+					$.ajax({
+						type:'POST',
+						url:'handle/user_zone.php',
+						data:{
+							operation:'CHECKDEPARTMENTQUESTIONNAIRE',
+						},
+						success:function(data){
+							$('#loading-cover').hide();
+							if(data == 1){
+								var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
+								if(returnVal){
+									$('#cover').show();
+								}
+								else{
+									window.location = 'user_zone.php?navigation=5';
+								}
+							}
+							else if(data == 0){
+								$('#cover').show();
+								//alert(data);
+							}
+						}
+					});
 				}
-				else if(data == 0){
-					$('#cover').show();
-					//alert(data);
+				else if(data == 1){
+					window.location = 'user_zone.php';
 				}
+				else
+					alert(data);
 			}
+			
 		});
 	});
 	$('#d-create').click(function(){

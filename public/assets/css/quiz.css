@@ -9,3 +9,6 @@
 	background-color:#5cb85c;
 	border-radius:5px;
 }
+.list-group-item label{
+	font-weight:normal;
+}

@@ -5,7 +5,7 @@
 	$quiz_id = $_GET['quiz_id'];
 
 ?>
-<html>
+<html >
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	<title>问卷</title>
@@ -199,7 +199,10 @@
 	
 			</table>
 		</div>
-		<div class="col-md-12" id="p5" style="width:960px; height: 400px;">
+		<div class="col-md-12" id="p5-1" style="width:960px; height: 400px;">
+			
+		</div>
+		<div class="col-md-12" id="p5-2" style="width:960px; height: 400px;">
 			
 		</div>
 	  </div>

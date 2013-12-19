@@ -207,9 +207,44 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				$('.select-field').each(function(){
 					$(this).click(function(){
 						//alert($(this.parentNode.parentNode).html());
-						if(!$(this.parentNode).hasClass('over-doing')){
+						if(!$(this.parentNode).hasClass('over-doing') && !$(this.parentNode).hasClass('over-done')){
 							var t = this;
-							
+							var varNum = 0;
+							var checkedNum = 0;
+							var phpChar = '';
+							$(':radio').each(function(){
+								varNum++;
+								if(this.checked){
+									checkedNum++;
+									var name = this.name;
+									phpChar += (name.substr(5,name.length) + ':' + this.value + ';');
+								}
+							});
+							if(checkedNum * 6 >= varNum){
+								var sub = window.confirm('你已经填完当前关键域，是否保存');
+								if(sub){
+									$('#loading-cover').show();
+									$.ajax({
+										type:'POST',
+										url:'handle/quiz.php',
+										data:{
+											operation:'ANSERQUESTIONNAIRE',
+											quiz_id:$('#quiz_id').val(),
+											answer:phpChar
+										},
+										success:function(data){
+											//alert(data);
+											$('#loading-cover').hide();
+											if(data == 1){
+												$('.over-doing').addClass('over-done');
+											}
+											else{
+												alert(data);//上传失败
+											}
+										}
+									});
+								}
+							}
 							$('#loading-cover').show();
 							$.ajax({
 								type:'POST',
