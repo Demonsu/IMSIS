@@ -157,6 +157,10 @@ $(document).ready(function(){
 				if(data == 1){
 					ask_for_preview();
 				}
+				else
+				{
+					alert(data);
+				}
 			}
 		});
 		
@@ -295,6 +299,7 @@ function fetch_left(){
 			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
+			//alert(data);
 			if(data == 0){
 				//跳到下一步
 				ask_for_target();

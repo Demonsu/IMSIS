@@ -49,13 +49,42 @@ class Questionnaire extends DB_Connect {
 			else return 0;	
 		}
 	}
-	public function user_submit_key_field($user_id,$quiz_id,$key_field_list)//用户提交所选的单位评测的关键域
+	public function user_submit_key_field($user_id,$quiz_id,$key_field_list,$is_public=0)//用户提交所选的单位评测的关键域
 	{
-		$sql="UPDATE questionnaire_content SET user_id='DEFAULTNULL' WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state='0'";
-		if (!mysql_query($sql,$this->root_conn))
+		//首先删掉用户不想做的部分
+		//$sql="UPDATE questionnaire_content SET user_id='DEFAULTNULL' WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' AND state!='2'";
+		if ($is_public==1)
 		{
-		  die('Error: ' . mysql_error());
-		}			
+			$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			while($q_c=mysql_fetch_assoc($select))
+			{
+				$flag=0;//这个选项这次没选
+				foreach($key_field_list as $key_field_id)
+				{	
+					if($q_c["key_field_id"]==$key_field_id)
+					{
+						$flag=1;
+						break;
+					}
+				}
+				if ($flag==0)
+				{
+					//首先删掉这个用户选择的关键域
+					$sql="UPDATE questionnaire_content SET user_id='DEFAULTNULL',state='0' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$q_c["key_field_id"]."'";
+					if (!mysql_query($sql,$this->root_conn))
+					{
+					  die('Error: ' . mysql_error());
+					}					
+					//然后删掉这个用户的所有作答的daan
+					$sql="DELETE qa.* FROM questionnaire_answer qa, key_variable kv WHERE qa.questionnaire_id='".$quiz_id."' AND qa.key_variable_id=kv.id AND kv.key_field_id='".$q_c["key_field_id"]."'";
+					if (!mysql_query($sql,$this->root_conn))
+					{
+					  die('Error: ' . mysql_error());
+					}
+				}
+			}
+		}
 		foreach($key_field_list as $key_field_id)
 		{
 			$sql="UPDATE questionnaire_content SET user_id='".$user_id."' WHERE questionnaire_id='".$quiz_id."' AND key_field_id='".$key_field_id."'";
@@ -73,6 +102,7 @@ class Questionnaire extends DB_Connect {
 	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
 		$KEYUNDOFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
 		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
+		//$KEYSUBMITFORMAT='<a class="list-group-item key_field_done" title="您已经提交过的关键域"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
 		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><input type="checkbox" id="%s" value="%s" checked disabled> %s</a>';
 		//获取所有的作用域
 		$sql="SELECT * FROM effect_field";
@@ -533,10 +563,13 @@ class Questionnaire extends DB_Connect {
 	}
 	public function answer_questionnaire_by_key_field($quiz_id,$answer_list)//回答问卷
 	{
-		//首先插入答案
 		$currenttime=date("Y-m-d H:i:s",time());
 		foreach($answer_list as $answer)
 		{
+			//首先查看答案中是否已经有了这个问卷的答案
+			//$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' and key_variable_id='".$answer["key_variable_id"]."'";
+			//$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			//$num=mysql_num_rows($select);
 			$sql="INSERT INTO questionnaire_answer
 			(
 				questionnaire_id,key_variable_id,answer,answer_time
@@ -544,6 +577,7 @@ class Questionnaire extends DB_Connect {
 			(
 				'".$quiz_id."','".$answer["key_variable_id"]."','".$answer["answer"]."','".$currenttime."'
 			)";
+
 			if (!mysql_query($sql,$this->root_conn))
 			{
 			  die('Error: ' . mysql_error());

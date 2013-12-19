@@ -6,6 +6,13 @@
 		$user_id=$_POST["user_id"];
 		$password=$_POST["password"];
 		$user=new User();
-		echo $user->login($user_id,$password);
+		if ( $user->login($user_id,$password)!=-1)
+		{
+			if ($_POST["remember"]==1)
+			{
+				setcookie("username",$user_id);
+		 		setcookie("password",$password);
+			}
+		}
 	}
 ?>

@@ -1273,7 +1273,7 @@ $(document).ready(function(){
 		hide();
 		$('#tab-show-t0').show();
 	});
-	$('#index-show').click();
+	//$('#index-show').click();
 	var i;
 	for(i=1;i<=15;i++){
 		$('#show-t' + i).click(function(){

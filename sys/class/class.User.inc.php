@@ -123,7 +123,7 @@ class User extends DB_Connect {
 		if ($user_info["gender"]!="")
 		if ($user_info["gender"]=="女")
 			$gender_select=2;
-		if ($user_info["education"]!="")
+		if ($user_info["education"]!=0)
 			$edu_select=$edu_array[$user_info["education"]];
 		else $edu_select=0;
 		return sprintf($RESULTFORMAT,$user_id,$department,$user_info["title"],$user_info["oncharge"],$user_info["speciality"],$age_select,$gender_select,$edu_select,$user_info["position"],$user_info["seniority"],$user_info["email"]);
@@ -161,6 +161,11 @@ class User extends DB_Connect {
 		  die('Error: ' . mysql_error());
 		}
 		return 1;		
+	}
+	public function fetch_user_state($user_id,$is_public)
+	{
+		//$sql="SELECT * FROM questionnaire WHERE is_public='".$is_public."' and user_id='".$user_id."'";
+		
 	}
 }
 
