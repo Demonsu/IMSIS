@@ -1,6 +1,6 @@
 <?php
 	include_once '../sys/core/init.inc.php';
-	
+
 	if (isset($_SESSION["PERMISSION"]) && $_SESSION["PERMISSION"]==1)
 		header("Location:./admin_zone.php");
 ?>
@@ -30,6 +30,22 @@
 	</div>
 	<div class="col-md-4">
 		<?php 
+			if (isset($_COOKIE['username']))
+			{
+				$username=$_COOKIE['username'];
+				//echo $username;
+			}else
+			{
+				//echo "坑爹啊";
+				$username="";
+			}
+			if (isset($_COOKIE['password']))
+			{
+				$password=$_COOKIE['password'];
+			}else
+			{
+				$password="";
+			}
 			if (!isset($_SESSION["USERID"])){
 			echo '
 		
@@ -40,13 +56,13 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">用户名:</label>
 				<div class="col-md-8">
-					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.isset($_COOKIE['username'])?$_COOKIE['username']:''.'">
+					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.$username.'">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-4">密码:</label>
 				<div class="col-md-8">
-					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.isset($_COOKIE['password'])?$_COOKIE['password']:''.'">
+					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.$password.'">
 				</div>
 			</div>
 			<div class="form-group text-right">
