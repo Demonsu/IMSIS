@@ -52,6 +52,13 @@ $(document).ready(function(){
 										}
 									});
 								}
+								//alert($(this).hasClass('key_field_done'));
+								if(!this.checked && $(this.parentNode).hasClass('key_field_done')){
+									var ri = window.confirm('放弃该关键域，您的作答将会被删除');
+									if(!ri){
+										this.checked = true;
+									}
+								}
 							});
 							$('#loading-cover').hide();
 						}
@@ -60,7 +67,7 @@ $(document).ready(function(){
 				else if(data == 1){
 					$('#loading-cover').hide();
 					alert('该问卷已经选完所有关键域，点击确定回到个人中心');
-					window.location = "user_zone.php";
+					window.location = "user_zone.php?navigation=5";
 				}
 			}
 		});
@@ -196,8 +203,8 @@ $(document).ready(function(){
 				if(data == 1)
 					window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val();
 				else if(data == 0){
-					alert('请等待单位其他人完成整份问卷后再查看结果，点击确定回到主页');
-					window.location = 'login.php';
+					alert('请等待单位其他人完成整份问卷后再查看结果，点击确定回到个人中心');
+					window.location = 'user_zone.php?navigation=5';
 				}else
 				{
 					alert(data);

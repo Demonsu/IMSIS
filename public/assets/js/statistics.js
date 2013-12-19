@@ -357,39 +357,37 @@ $(document).ready(function(){
 			
 			var options = {
 				chart: {
-					renderTo:'p5'
+					renderTo:'p5-1',
+					type: 'column'
 				},
 				title: {
 					text: '作用域（LDs）的得分表'
+				},
+				subtitle: {
+					text: ''
 				},
 				xAxis: {
 					categories: []
 				},
 				yAxis: {
-					max:10
-				},
-				tooltip: {
-					formatter: function() {
-						var s;
-						if (this.point.name) { // the pie chart
-							s = ''+
-								this.point.name +': '+ this.y +'%';
-						} else {
-							s = ''+
-								this.x  +': '+ this.y;
-						}
-						return s;
+					min: 0,
+					title: {
+						text: '加权分数'
 					}
 				},
-				labels: {
-					items: [{
-						html: '',
-						style: {
-							left: '40px',
-							top: '8px',
-							color: 'black'
-						}
-					}]
+				tooltip: {
+					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+						'<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+					footerFormat: '</table>',
+					shared: true,
+					useHTML: true
+				},
+				plotOptions: {
+					column: {
+						pointPadding: 0.2,
+						borderWidth: 0
+					}
 				},
 				series: []
 			};
@@ -407,25 +405,46 @@ $(document).ready(function(){
 			options.series[0].data = new Array();
 			for(j=0;j<data.content.length;j++)
 				options.series[0].data.push(parseFloat(data.content[j].score));
+			var chart = new Highcharts.Chart(options);
 			
-			options.series[1] = new Object();
-			options.series[1].type = 'pie';
-			options.series[1].name = '能力比率';
-			options.series[1].data = new Array();
-			for(j=0;j<data.content.length;j++){
-				options.series[1].data[j] = new Object();
-				options.series[1].data[j].name = data.content[j].title;
-				options.series[1].data[j].y = parseFloat(data.content[j].proportion);
+			options = {
+				chart: {
+					renderTo:'p5-2',
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false
+				},
+				title: {
+					text: '作用域（LDs）的得分表'
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							color: '#000000',
+							connectorColor: '#000000',
+							format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+						}
+					}
+				},
+				series: []
 			}
-			options.series[1].center = new Array();
-			options.series[1].center[0] = 220;
-			options.series[1].center[1] = 60;
-			options.series[1].size = 100;
-			options.series[1].showInLegend = false;
-			options.series[1].dataLabels = new Object();
-			options.series[1].dataLabels.enabled = false;
-			options.series[1].dataLabels = new Object();
-			options.series[1].dataLabels.format = '<b>{point.name}{point.y}%</b>';
+			
+			options.series = new Array();
+			options.series[0] = new Object();
+			options.series[0].type = 'pie';
+			options.series[0].name = '能力比率';
+			options.series[0].data = new Array();
+			for(j=0;j<data.content.length;j++){
+				options.series[0].data[j] = new Array();
+				options.series[0].data[j][0] = data.content[j].title;
+				options.series[0].data[j][1] = parseFloat(data.content[j].proportion);
+			}
 			var chart = new Highcharts.Chart(options);
 		}
 	});

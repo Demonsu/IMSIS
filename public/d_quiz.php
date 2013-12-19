@@ -11,7 +11,7 @@
 	<title>问卷</title>
 	
 
-	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/dist/css/bootstrap.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/d_quiz.js"></script>

@@ -1,5 +1,6 @@
 <?php
 	include_once '../sys/core/init.inc.php';
+	
 	if (isset($_SESSION["PERMISSION"]) && $_SESSION["PERMISSION"]==1)
 		header("Location:./admin_zone.php");
 ?>
@@ -39,34 +40,90 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">用户名:</label>
 				<div class="col-md-8">
-					<input type="id" class="form-control" id="inputId" placeholder="输入用户名">
+					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.isset($_COOKIE['username'])?$_COOKIE['username']:''.'">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-4">密码:</label>
 				<div class="col-md-8">
-					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码">
+					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.isset($_COOKIE['password'])?$_COOKIE['password']:''.'">
 				</div>
 			</div>
 			<div class="form-group text-right">
 				<button id="login" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				<button id="register" class="btn btn-warning">注册</button>
-				<button id="forget" class="btn btn-link">忘记密码?</button>
+				<span style="margin-right:20px"><input type="checkbox" id="remember"> 记住密码</span>
 			</div>
 		</div>
 		' ;
 			}
 			else{
 				echo '
-		<div class="form-horizontal" id="login_second" >
-			<button class="btn btn-info btn-lg btn-block" id="u_t"><span class="glyphicon glyphicon-user"></span><br><h3>个人测评</h3></button>
+		<div class="group" id="login_second">
+			<div style="position:relative">
+			<div id="cover-u" style="position:absolute;width:300px;height:85px;background:#5bc0de;z-index:1002;border-radius:5px;cursor:pointer" onclick="hide_cover(1)">
+				<button type="button" class="btn btn-info btn-lg btn-block" style="width:300px;height:85px;">
+					<span class="glyphicon glyphicon-user"></span><br><h3>个人测评</h3>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-info" id="u_t" style="width:150px;height:85px">
+					<span class="glyphicon glyphicon-user"></span><br><h4>开始测评</h4>
+				</button>
+				
+				<button class="btn btn-info" onclick="window.location=\'user_zone.php?navigation=4\'" style="width:150px;height:85px">
+					<span class="glyphicon glyphicon-th-list"></span><br><h4>我的测评</h4>
+				</button>
+			</div>
+			</div>
 			<label class="label-control alert alert-success">个人评测说明:<br>个人测评中用户选择自己想要测评的关键域进行测评，每个用户只能看到自己的测评</label>
-			<button class="btn btn-warning btn-lg btn-block" id="d_t"><span class="glyphicon glyphicon-briefcase"></span><br><h3>单位测评</h3></button>
+			<div style="position:relative">
+			<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer"  onclick="hide_cover(2)">
+				<button type="button" class="btn btn-warning btn-lg btn-block" style="width:300px;height:85px;">
+					<span class="glyphicon glyphicon-briefcase"></span><br><h3>单位测评</h3>
+				</button>
+			</div>
+			<div class="btn-group" style="position:relative">
+				<button class="btn btn-warning" id="d_t" style="width:150px;height:85px">
+					<span class="glyphicon glyphicon-briefcase"></span><br><h4>创建测评</h4>
+				</button>
+				
+				<button class="btn btn-warning" onclick="window.location=\'user_zone.php?navigation=5\'" style="width:150px;height:85px">
+					<span class="glyphicon glyphicon-th-list"></span><br><h4>单位测评</h4>
+				</button>
+			</div>
+			</div>
 			<label class="label-control alert alert-success">单位评测说明:<br>单位测评创建时所有属于本单位的用户都可以看到并进行测评，每个用户可以选择自己想要测评的关键域进行测评，只有所有关键域都测评完之后才能查看结果</label>
 		</div>
+		
 		' ;
 			}
 		?>
+		<script>
+			function show_cover(id){
+				if(id == 1)
+					$("#cover-u").animate({height:"85px"},400);
+				else if(id == 2){
+					$("#cover-d").animate({height:"85px"},400);
+				}
+			}
+			$(document).click(function(){
+				$('#cover-u').show();
+				$('#cover-d').show();
+				$("#cover-u").animate({height:"85px"},400);
+				$("#cover-d").animate({height:"85px"},400);
+			});
+			function hide_cover(t){
+				if(t == 1){
+					$("#cover-u").animate({height:"0px"},400);
+					setTimeout("$('#cover-u').hide()",400);
+				}
+				else if(t == 2){
+					$("#cover-d").animate({height:"0px"},400);
+					setTimeout("$('#cover-d').hide()",400);
+				}
+			}
+		</script>
 	</div>
 </div>
 <div class="d_cover" id="cover">
@@ -82,7 +139,7 @@
 			<div class="form-horizontal" >
 				<div class="form-group">
 					<div class="col-md-12">
-						<label class="label-control">输入备注（用于区分每次测评，可选）：</label>
+						<label class="label-control">输入备注（为了便于区分每一次测评，请填写备注标识这分问卷，可选）：</label>
 						<textarea id="d-remark" class="form-control" rows="3"></textarea>
 					</div>
 				</div>
