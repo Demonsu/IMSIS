@@ -40,13 +40,13 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">用户名:</label>
 				<div class="col-md-8">
-					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.isset($_COOKIE['username'])?$_COOKIE['username']:''.'">
+					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.$_COOKIE['username'].'">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-4">密码:</label>
 				<div class="col-md-8">
-					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.isset($_COOKIE['password'])?$_COOKIE['password']:''.'">
+					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.$_COOKIE['password'].'">
 				</div>
 			</div>
 			<div class="form-group text-right">
