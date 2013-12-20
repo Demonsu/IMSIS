@@ -45,27 +45,7 @@ $(document).ready(function(){
 			$('#login').click();
 	});
 	$('#u_t').click(function(){
-		$('#loading-cover').show();
-		$.ajax({
-			type:'POST',
-			url:'./handle/login.php',
-			data:{
-				operation:'USERLOGINSTATE',
-				is_public:0
-			},
-			success:function(data){
-				if(data == 0){
-					$('#loading-cover').hide();
-					$('#step1').show();
-				}
-				else if(data == 1){
-					window.location = 'user_zone.php?navigation=4';
-				}
-				else
-					alert(data);
-			}
-			
-		});
+		$('#step1').show();
 		
 		//window.location = 'quiz.php';
 	});
@@ -160,44 +140,27 @@ $(document).ready(function(){
 		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
-			url:'./handle/login.php',
+			url:'handle/user_zone.php',
 			data:{
-				operation:'USERLOGINSTATE',
-				is_public:1
+				operation:'CHECKDEPARTMENTQUESTIONNAIRE',
 			},
 			success:function(data){
-				if(data == 0){
-					$.ajax({
-						type:'POST',
-						url:'handle/user_zone.php',
-						data:{
-							operation:'CHECKDEPARTMENTQUESTIONNAIRE',
-						},
-						success:function(data){
-							$('#loading-cover').hide();
-							if(data == 1){
-								var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
-								if(returnVal){
-									$('#cover').show();
-								}
-								else{
-									window.location = 'user_zone.php?navigation=5';
-								}
-							}
-							else if(data == 0){
-								$('#cover').show();
-								//alert(data);
-							}
-						}
-					});
+				$('#loading-cover').hide();
+				if(data == 1){
+					var returnVal = window.confirm('已经存在未填完的单位问卷，确定要再创建一份单位问卷吗？','是否创建？');
+					if(returnVal){
+						$('#cover').show();
+					}
+					else{
+						window.location = 'user_zone.php?navigation=5';
+					}
 				}
-				else if(data == 1){
-					window.location = 'user_zone.php';
+				else if(data == 0){
+					$('#cover').show();
+					//alert(data);
 				}
-				else
-					alert(data);
 			}
-			
+		});	
 		});
 	});
 	$('#d-create').click(function(){
