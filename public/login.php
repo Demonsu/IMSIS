@@ -1,6 +1,6 @@
 <?php
 	include_once '../sys/core/init.inc.php';
-	
+
 	if (isset($_SESSION["PERMISSION"]) && $_SESSION["PERMISSION"]==1)
 		header("Location:./admin_zone.php");
 ?>
@@ -23,13 +23,36 @@
 <div class="row">
 	<div class="col-md-8">
 		<div class="jumbotron"  style="border-radius:6px">
-		  <h1>系统简介</h1>
-		  <p>该系统（下称“eGov-CMM”）作为电子政务能力成熟度模型的网络评估工具，旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。它是政府快速了解自我能力的渠道，也将成为政府提升服务能力的有效工具，对我国电子政务事业的深化发展具有重要的促进意义。</p>
-		  <p><a class="btn btn-primary btn-lg" role="button">更多......</a></p>
+		  <h2>系统简介</h2>
+		  <p style="font-size:14px">
+			本次测评以地方政府职能部门为主要研究对象，通过对电子政务系统（权利阳光系统）内部人员使用电子政务服务系统的感受，服务能力进行识别，从而明确电子政务服务能力的价值传导途径与各部分之间的关系。<br>
+			希望通过本调查了解政府内部人员（尤其是日常工作中使用电子政务系统的公务人员）对电子政务系统使用情况的感受，以及各部门应用电子政务提供服务情况的客观评价。<br>
+			您的评测结果将有助于寻找提高贵部门电子政务服务能力的方法和思路。<br>
+			调查内容包括个人信息、电子政务系统使用情况的个人感受、电子政务系统服务情况的个人感受等三项内容。<br>
+			作为本领域的专业人士，您的意见对我们的研究工作非常重要，它将是我们了解电子政务系统应用情况的重要参考依据。评测完后，我们将会根据您的评测内容给出评测分析和最终评价结果。<br>
+			<br>填写问卷时，请选择您认可的成熟度水平相应的选项，1代表成熟度水平最低，5代表成熟度水平最高。
+		  </p>
+		  <p><a class="btn btn-primary btn-lg" role="button">更多...</a></p>
 		</div>
 	</div>
 	<div class="col-md-4">
 		<?php 
+			if (isset($_COOKIE['username']))
+			{
+				$username=$_COOKIE['username'];
+				//echo $username;
+			}else
+			{
+				//echo "坑爹啊";
+				$username="";
+			}
+			if (isset($_COOKIE['password']))
+			{
+				$password=$_COOKIE['password'];
+			}else
+			{
+				$password="";
+			}
 			if (!isset($_SESSION["USERID"])){
 			echo '
 		
@@ -40,13 +63,13 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">用户名:</label>
 				<div class="col-md-8">
-					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.$_COOKIE['username'].'">
+					<input type="id" class="form-control" id="inputId" placeholder="输入用户名" value="'.$username.'">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-4">密码:</label>
 				<div class="col-md-8">
-					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.$_COOKIE['password'].'">
+					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.$password.'">
 				</div>
 			</div>
 			<div class="form-group text-right">
@@ -166,9 +189,12 @@
 		  </div>
 		  <div class="panel-body">
 		  
-			<div class="group">
-				Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit
-						
+			<div class="group" style="font-weight:normal">
+				
+				<p>测评须知：</p>
+				<p>您好！您正在使用电子政务服务管理能力测评系统，问卷中您所填写的信息和数据仅作为电子政务服务能力测评及学术研究之用，绝不会泄露或做其他用途，请放心如实填写。<br>
+				请在填写过程中如实填写，这样您才能得到相对真实的测评结果和中肯的测评建议。</p>
+		
 				<div class="form-group">
 					<div class="col-md-12 text-center">
 						<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
