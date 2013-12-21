@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
-	<script style="text/javascript" src="./assets/js/statistics.js"></script>
+	<script style="text/javascript" src="./assets/js/statistics_server.js"></script>
     <script style="text/javascript" src="./assets/js/paste_to_excel.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/highcharts.js"></script>
 	<script style="text/javascript" src="assets/plugin/highcharts/js/modules/exporting.js"></script>
@@ -120,7 +120,7 @@
 			同样你也可以将测评结果生产的表格以及图标下载到您的PC上<br>
 			<br>
 		  </p>
-		  <p><a class="btn btn-primary btn-lg" role="button" onClick="method1()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
+		  <p><a class="btn btn-primary btn-lg" role="button" onClick="method_server()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
 		</div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t1">
@@ -226,7 +226,7 @@
 		<div class="col-md-12">
 			<div class="jumbotron" style="border-radius:6px">
 			  <h1>7.能力对比图</h1>
-			  <p>此表是目标能力与实际能力之间的比较，“完成比例”指标告诉我们，未达到较高一级成熟度的原因，是某些关键域未完成，即完成度小于100。也可以得到哪些关键域表现优异，即完成度超过了较高一级成熟度的目标。</p>
+			  <p>此表是目标能力与实际能力之间的比较，"完成比例"指标告诉我们，未达到较高一级成熟度的原因，是某些关键域未完成，即完成度小于100。也可以得到哪些关键域表现优异，即完成度超过了较高一级成熟度的目标。</p>
 			</div>
 		</div>
 		<div class="col-md-12">
