@@ -407,18 +407,18 @@ body{
 <div id="views_slideshow_cycle_div_slideshow-block_7" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-8 views_slideshow_cycle_hidden views-row-even">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-first views-row-odd">
     
-  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="http://www.healthdata.gov/" title="Visit the new Health Data Community"><img src="./assets/img/index/stage-healthdata.jpg" width="570" height="325" alt="Visit the new Health Data Community" title="Visit the new Health Data Community" /></a></div>  </div></div>
+  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="#" title="Visit the new Health Data Community"><img src="./assets/img/index/stage-healthdata.jpg" width="570" height="325" alt="Visit the new Health Data Community" title="Visit the new Health Data Community" /></a></div>  </div></div>
 </div>
 
 <div id="views_slideshow_cycle_div_slideshow-block_13" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-14 views_slideshow_cycle_hidden views-row-even">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-first views-row-odd">
     
-  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="http://www.data.gov/safety/blog/obama-administration-drives-release-car-safety-data-unveils-new-nhtsa-safercar-app-ios" title="Safety Homepage"><img src="./assets/img/index/homepage_0.jpg" width="570" height="325" alt="NHTSA releases SaferCar APIs and mobile app" title="NHTSA releases SaferCar APIs and mobile app" /></a></div>  </div></div>
+  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="#" title="Safety Homepage"><img src="./assets/img/index/homepage_0.jpg" width="570" height="325" alt="NHTSA releases SaferCar APIs and mobile app" title="NHTSA releases SaferCar APIs and mobile app" /></a></div>  </div></div>
 </div>
 <div id="views_slideshow_cycle_div_slideshow-block_14" class="views-slideshow-cycle-main-frame-row views_slideshow_cycle_slide views_slideshow_slide views-row-15 views_slideshow_cycle_hidden views-row-odd">
   <div class="views-slideshow-cycle-main-frame-row-item views-row views-row-0 views-row-first views-row-odd">
     
-  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="http://www.data.gov/research/community/research" title="Explore Federal Research Data"><img src="./assets/img/index/homepage.jpg" width="570" height="325" alt="Explore Federal Research Data" title="Explore Federal Research Data" /></a></div>  </div></div>
+  <div class="views-field views-field-field-slide-image">        <div class="field-content"><a href="#" title="Explore Federal Research Data"><img src="./assets/img/index/homepage.jpg" width="570" height="325" alt="Explore Federal Research Data" title="Explore Federal Research Data" /></a></div>  </div></div>
 </div>
 </div>
 </div>
@@ -446,18 +446,11 @@ body{
     
     <div class="pane-content content">
       <div id='boxes-box-latest_datasets_ckan' class='boxes-box'><div class="boxes-box-content"><div class="item-list">
-      <ul >
-<li class="first" style="color:white">US Fish and Wildlife Service 2002 Lan...</li>
-<li style="color:white">US Bureau of Land Management Lands</li>
-<li style="color:white">ARCGIS.COM - GAME AND FISH DEPARTMENT</li>
-<li style="color:white">Military Lands</li>
-<li style="color:white">Grand Forks Aerial Photography 2012</li>
-<li style="color:white">Elevation Web Services</li>
-<li style="color:white">Landuse/Landcover Web Services</li>
-<li style="color:white">Surface Geology</li>
-<li style="color:white">Section Polygons for the Public Land ...</li>
-<li class="last" style="color:white">NDGF Lakes</li>
-</ul></div></div></div>    </div>
+      <ul style="list-style:none;margin-left:6px">
+<li class="last" style="color:white">  南京大学电子政务与数据智能实验室（E-government & Data Intelligence Laboratory，EG&DI lab）成立于2012年，依托于南京大学信息管理学院，面向电子政务及数据智能，结合当前信息社会发展的需要，开展电子政务系统以及大数据的相关管理与应用研究。主要研究方向包括：电子政务系统的开发与管理、电子政务服务能力管理、大数据智能、互联网商务模式（IBMs）管理、分布式信息系统设计与开发方法等。实验室具备充满活力的科研梯队以及良好的硬件设施环境。胡广伟副教授为实验室主要负责人，固定成员包括硕士研究生8人，本科生多名。实验室先后承担各类科研项目几十项，发表国内外学术期刊论文数十篇，出版专著多部，研究报告多部。实验室本着“充实、完善、凝炼、提升”思想，坚持“开放与联合”的原则，不断开拓进取，努力成为特色鲜明、可持续创新的电子政务系统及大数据智能研究开发基地和人才培养基地。</li>
+
+</ul>
+</div></div></div>    </div>
 
     
       </div>
@@ -550,11 +543,13 @@ body{
       <div id='boxes-box-home_open_government' class='boxes-box'>
 	  <div class="boxes-box-content">
 
-<ul><li><a title="Open Government Initiative" href="">Open Government Initiative</a></li>
-<li><a title="Open Government Platform" href="/opengovplatform">Open Government Platform</a></li>
-<li><a title="Recovery.gov" href="">Recovery.gov</a>  </li>
-<li><a title="USASpending.gov" href="">USASpending.gov</a> </li>
-<li><a title="We the People" href="">We the People</a>  </li>
+<ul>
+<li>南京大学主页:<a title="南京大学主页" href="http://nju.edu.cn" target="_blank">http://nju.edu.cn</a></li>
+<li>南京大学信息管理学院:<a title="南京大学信息管理学院" href="http://im.nju.edu.cn/" target="_blank">http://im.nju.edu.cn/</a></li>
+<li>中国政务网站服务能力建设网:<a title="中国政务网站服务能力建设网" href="http://www.gwd.gov.cn/" target="_blank">http://www.gwd.gov.cn/</a>  </li>
+<li>北京市政务数据资源网:<a title="北京市政务数据资源网" href="http://www.bjdata.gov.cn/" target="_blank">http://www.bjdata.gov.cn/</a> </li>
+<li>上海市政务数据服务网<a title="上海市政务数据服务网" href="http://www.datashanghai.gov.cn/" target="_blank">http://www.datashanghai.gov.cn/</a>  </li>
+<li>美国政府数据中心<a title="美国政府数据中心" href="http://www.data.gov/" target="_blank">http://www.data.gov/</a>  </li>
 </ul>
 </div></div>  
   </div>
