@@ -1,0 +1,153 @@
+body{
+	background-color:rgb(235,235,235);
+}
+
+/* 以下为头header部分的css */
+.header-group{
+	background-color:#ffffff;
+	background-image:url('../img/index/header-start-bg.jpg');
+	background-repeat:no-repeat;
+	border-radius:5px 5px 0px 0px;
+	width:960px;
+	padding-left:10px;
+	padding-right:10px;
+	height:100px;
+}
+.navi-container{
+	
+}
+.navbar-mine{
+	background-color:#284a77;
+}
+.navbar{
+	border-radius:0px;
+	margin-top:10px;
+	height:30px;
+	min-height:30px;
+	margin-bottom:0px;
+}
+.navbar-nav>li>a{
+	padding-top:4px;
+	color:#ffffff;
+	padding-bottom:4px;
+	background-color:#284a77;
+}
+.navbar-nav>li>a:hover{
+	background-color:#4782b1;
+}
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus{
+	background-color:#4782b1;
+}
+.dropdown-menu>li>a{
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.428571429;
+	color: #ffffff;
+	background-color:#3372b1;
+	white-space: nowrap;
+}
+.dropdown-menu>li>a:hover{
+	background-color:#4782b1;
+	color:#ffffff;
+}
+.dropdown-menu{
+	padding:0px;
+	margin:0px;
+}
+
+/* 以下是主要部分的css */
+.main-wapper{
+	background-color:#ffffff;
+	width:960px;
+	height:335px;
+}
+
+/* 以下是图片css */
+.view-content{
+	float:left;
+	width:570px;
+	height:325px;
+	margin-left:10px;
+}
+
+/* 以下是实验室简介css */
+.brief-content{
+	float:left;
+	padding:15px;
+	width:370px;
+	height:325px;
+	background-color:#000000;
+	margin-right:10px;
+	background:-webkit-gradient(linear, left top, left bottom, from(rgb(93,159,209)), to(rgb(3,49,98)));
+}
+
+/* 以下是各部分链接css */
+.main-content{
+	background-color:#ffffff;
+	width:960px;
+	padding-bottom:20px;
+	border-radius:0px 0px 5px 5px;
+}
+.content-container{
+	position:relative;
+	margin-left:10px;
+	margin-right:10px;
+	width:940px;
+	min-height:400px;
+	background-image:url('../img/index/featureblocks-bg.jpg');
+	background-repeat:no-repeat;
+	background-size:940px;
+	border-radius:5px 5px 0px 0px;
+}
+
+.content-one{
+	float:left;
+	/*background-color:#000000;*/
+	margin-top:25px;
+	margin-left:15px;
+	margin-right:15px;
+	width:285px;
+	min-height:100px;
+}
+.content-two{
+	float:left;
+	/*background-color:#ff0000;*/
+	margin-top:25px;
+	margin-left:13px;
+	margin-right:15px;
+	width:285px;
+	min-height:100px;
+}
+.content-three{
+	float:left;
+	/*background-color:#00ff00;*/
+	margin-top:25px;
+	margin-left:13px;
+	margin-right:5px;
+	width:285px;
+	min-height:100px;
+}
+
+.list-group-item {
+	background-color:transparent;
+	border:0px;
+	padding:5px;
+}
+.link-border{
+	float:left;
+	width:80px;
+	height:80px;
+	padding:3px;
+	border:1px solid #999999;
+	margin-right:20px;
+	margin-top:10px;
+}
+
+/* 以下是页脚css */
+.footer-wapper{
+	width:960px;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:10px;
+}
