@@ -60,14 +60,14 @@ body{
 .main-wapper{
 	background-color:#ffffff;
 	width:960px;
-	height:335px;
+	height:215px;
 }
 
 /* 以下是图片css */
 .view-content{
 	float:left;
 	width:570px;
-	height:325px;
+	height:205px;
 	margin-left:10px;
 }
 
@@ -76,10 +76,10 @@ body{
 	float:left;
 	padding:15px;
 	width:370px;
-	height:325px;
-	background-color:#000000;
+	height:205px;
 	margin-right:10px;
-	background:-webkit-gradient(linear, left top, left bottom, from(rgb(93,159,209)), to(rgb(3,49,98)));
+	background-image:url('../img/index/brief.jpg');
+	background-repeat:no-repeat;
 }
 
 /* 以下是各部分链接css */
@@ -94,7 +94,7 @@ body{
 	margin-left:10px;
 	margin-right:10px;
 	width:940px;
-	min-height:400px;
+	min-height:330px;
 	background-image:url('../img/index/featureblocks-bg.jpg');
 	background-repeat:no-repeat;
 	background-size:940px;
@@ -128,7 +128,10 @@ body{
 	width:285px;
 	min-height:100px;
 }
-
+.thumbnail{
+	background:transparent;
+	border:0px;
+}
 .list-group-item {
 	background-color:transparent;
 	border:0px;
@@ -150,4 +153,14 @@ body{
 	text-align:center;
 	margin-top:20px;
 	margin-bottom:10px;
+}
+.footer-content a{
+	color:#000000;
+}
+.line-vertical{
+	height:12px;
+	border-left:1px dashed #000000;
+	width:1px;
+	margin-left:10px;
+	margin-right:10px;
 }

@@ -6,6 +6,24 @@ var effect_field1;
 var key_field2;
 
 $(document).ready(function(){
+	//管理动态新闻
+	$('#manage-news').click(function(){
+		hide();
+		$.ajax({
+			type:'POST',
+			url:'./handle/admin_zone.php',
+			data:{
+				operation:'FETCHNEWSLIST'
+			},
+			success:function(data){
+				alert(data);
+				$('#news-list').html(data);
+				$('#change-news').show();
+			}
+		});
+	});
+	
+	//
 	$('#manage-effect-field').click(function(){
 		hide();
 		$.ajax({
@@ -509,6 +527,9 @@ $(document).ready(function(){
 	$('#user-info-cover').click(function(){
 		$('#user-info-cover').hide();
 	});
+	
+	
+	hide();
 });
 function user_data(t){
 	var id = t.parentNode.parentNode.parentNode.id;
@@ -910,7 +931,186 @@ function reformresult(t){
 		}
 	});
 }
+
+//管理动态新闻
+function news_delete(t){
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'DELETENEWS',
+			id:t.parentNode.id
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-news').click();
+			else
+				alert(data);
+		}
+	});
+}
+function news_edit(t){
+	window.open('./include/newsedit.php?newsid='+t.parentNode.id,'newwindow');
+}
+function news_moveup(t){
+	var id1,id2;
+	id2 = t.parentNode.id;
+	var s = t.parentNode.previousSibling;
+	if(s == null)
+		id1 = id2;
+	else
+		id1 = s.id;
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'CHANGENEWSSORT',
+			id1:id1,
+			id2:id2
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-news').click();
+			else
+				alert(data);
+		}
+	});
+}
+function news_movedown(t){
+	var id1,id2;
+	id1 = t.parentNode.id;
+	var s = t.parentNode.nextSibling.nextSibling;
+	if(s == null)
+		id2 = id1;
+	else
+		id2 = t.parentNode.nextSibling.id;
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'CHANGENEWSSORT',
+			id1:id1,
+			id2:id2
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-news').click();
+			else
+				alert(data);
+		}
+	});
+}
+function news_settop(t){
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'UPBANGNEWS',
+			id:t.parentNode.id
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-news').click();
+			else
+				alert(data);
+		}
+	});
+}
+
+function news_add(){
+	window.open('./include/newsedit.php?newsid=-1','newwindow');
+}
+
+//下面是分享的操作
+function share_delete(t){
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'DELETEDISCOVERY',
+			id:t.parentNode.id
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-share').click();
+			else
+				alert(data);
+		}
+	});
+}
+function share_edit(t){
+	window.open('./include/shareedit.php?sharesid='+t.parentNode.id,'newwindow');
+}
+function share_moveup(t){
+	var id1,id2;
+	id2 = t.parentNode.id;
+	var s = t.parentNode.previousSibling;
+	if(s == null)
+		id1 = id2;
+	else
+		id1 = s.id;
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'CHANGEDISCOVERYSORT',
+			id1:id1,
+			id2:id2
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-share').click();
+			else
+				alert(data);
+		}
+	});
+}
+function share_movedown(t){
+	var id1,id2;
+	id1 = t.parentNode.id;
+	var s = t.parentNode.nextSibling.nextSibling;
+	if(s == null)
+		id2 = id1;
+	else
+		id2 = t.parentNode.nextSibling.id;
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'CHANGEDISCOVERYSORT',
+			id1:id1,
+			id2:id2
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-share').click();
+			else
+				alert(data);
+		}
+	});
+}
+function share_settop(t){
+	$.ajax({
+		type:'POST',
+		url:'./handle/admin_zone.php',
+		data:{
+			operation:'UPBANGDISCOVERY',
+			id:t.parentNode.id
+		},
+		success:function(data){
+			if(data == 1)
+				$('#manage-share').click();
+			else
+				alert(data);
+		}
+	});
+}
+
+function share_add(){
+	window.open('./include/shareedit.php?shareid=-1','newwindow');
+}
 function hide(){
+	$('#change-news').hide();
 	$('#check-user-data').hide();
 	$('#quiz-result-search').hide();
 	$('#passwd-reset').hide();

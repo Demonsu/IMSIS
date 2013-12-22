@@ -57,8 +57,8 @@ $(document).ready(function(){
 <!--header -->
 <?php include './include/header.php'; ?>
 
-<div class="group">
-	<div class="panel panel-success">
+<div class="group" >
+	<div class="panel panel-success" style="min-height:600px;">
 		<div class="panel-heading"><div class="panel-title">用户空间</div></div>
 		<div class="panel-body">
 

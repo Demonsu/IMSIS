@@ -1,0 +1,37 @@
+
+		{
+			"level":"4",
+			"content":[
+				
+		{
+			"title":"业务管理",
+			"content":[
+				
+		{
+			"title":"规章遵循",
+			"content":[
+				
+		{
+			"title":"国家、地方法规",
+			"vari_score":"4",
+			"contribution":"14.29",
+			"space":"0.00",
+			"need_promote":"false"
+		},
+		{
+			"title":"行业法规和内部规定(E:内部法规",
+			"vari_score":"3",
+			"contribution":"-14.29",
+			"space":"33.33",
+			"need_promote":"true"
+		}
+			],
+			"compre":"3.5",
+			"third":"4",
+			"com_rate":"87.50",
+			"promote_rate":"12.50"
+		}
+			]
+		}
+			 ]
+		}
