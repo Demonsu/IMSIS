@@ -506,13 +506,13 @@ class Admin extends DB_Connect {
 	{
 		$DISCOVERYFORMAT='
 				<li class="list-group-item" id="%s">%s
-				<label class="label label-success" onclick="news_settop(this)">置顶</label>
-				<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
-				<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
-				<label class="label label-danger" onclick="news_delete(this)">删除</label>
-				<label class="label label-warning" onclick="news_edit(this)">修改</label>
+				<label class="label label-success" onclick="share_settop(this)">置顶</label>
+				<label class="label label-info" onclick="share_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
+				<label class="label label-info" onclick="share_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
+				<label class="label label-danger" onclick="share_delete(this)">删除</label>
+				<label class="label label-warning" onclick="share_edit(this)">修改</label>
 			 	</li>
-			 	<li class="list-group-item text-center" onclick="window.location=\'./include/newsedit?newsid=-1\'"><span class="glyphicon glyphicon-plus"></span></li>
+			 	
 			  ';
 		$return_value="";
 		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC";
@@ -521,7 +521,7 @@ class Admin extends DB_Connect {
 		{
 			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],$discovery_info["title"]);
 		}
-		return $return_value;
+		return $return_value.'<li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
 	public function fetch_discovery_info($id)//获取分享的详细信息
 	{
@@ -575,24 +575,34 @@ class Admin extends DB_Connect {
 		}		
 		return 1;
 	}
-	public function change_discovery_sort($id1,$id2)//交换两个分享的位置
+	public function change_discovery_sort($id,$up)//改变分享的位置
 	{
 		//首先获取两个分享的sortvalue
-		$sql="SELECT * FROM discovery_share WHERE id='".$id1."'";
+		$sql="SELECT * FROM discovery_share WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$discovery_info1=mysql_fetch_assoc($select);
 		$sort_value1=$discoverty_info1["sort_value"];
-		$sql="SELECT * FROM discovery_share WHERE id='".$id2."'";
+		if ($up==0)
+		{
+			$sql="SELECT * FROM discovery_share WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASEC LIMIT 1";
+		}else
+		{
+			$sql="SELECT * FROM discovery_share WHERE sort_value<'".$sort_value1."' ORDER BY sort_value DESC LIMIT 1";
+		}
+		//$sql="SELECT * FROM discovery_share WHERE id='".$id2."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num==0)
+			return 1;
 		$discovery_info2=mysql_fetch_assoc($select);	
 		$sort_value2=$discovery_info2["sort_value"];	
 		//接着互换下
-		$sql="UPDATE discovery_share SET sort_value='".$sort_value2."' WHERE id='".$id1."'";
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value2."' WHERE id='".$id."'";
 		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());
 		}	
-		$sql="UPDATE discovery_share SET sort_value='".$sort_value1."' WHERE id='".$id2."'";
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value1."' WHERE id='".$discovery_info2["id"]."'";
 		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());
@@ -622,7 +632,7 @@ class Admin extends DB_Connect {
 			<label class="label label-danger" onclick="news_delete(this)">删除</label>
 			<label class="label label-warning" onclick="news_edit(this)">修改</label>
 			</li>
-			<li class="list-group-item text-center" onclick="window.location=\'./include/newsedit?newsid=-1\'"><span class="glyphicon glyphicon-plus"></span></li>
+			
 	  	';
 		$return_value="";
 		$sql="SELECT * FROM news ORDER BY sort_value DESC";
@@ -631,7 +641,7 @@ class Admin extends DB_Connect {
 		{
 			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],$news_info["title"]);
 		}
-		return $return_value;
+		return $return_value.'<li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
 	public function fetch_news_info($id)//获取新闻的详细信息
 	{
@@ -689,23 +699,33 @@ class Admin extends DB_Connect {
 		}		
 		return 1;
 	}
-	public function change_news_sort($id1,$id2)//交换两个新闻的位置
+	public function change_news_sort($id,$up)//改变新闻的位置
 	{
 		//首先获取两个新闻的sortvalue
-		$sql="SELECT * FROM news WHERE id='".$id1."'";
+		$sql="SELECT * FROM news WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$news_info1=mysql_fetch_assoc($select);
 		$sort_value1=$news_info1["sort_value"];
-		$sql="SELECT * FROM news WHERE id='".$id2."'";
+		if ($up==0)
+		{
+			$sql="SELECT * FROM news WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASEC LIMIT 1";	
+		}else
+		{
+			$sql="SELECT * FROM news WHERE sort_value<'".$sort_value1."' ORDER BY sort_value DESC LIMIT 1";
+		}
+		//$sql="SELECT * FROM news WHERE id='".$id2."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num==0)
+			return 1;
 		$news_info2=mysql_fetch_assoc($select);	
 		$sort_value2=$news_info2["sort_value"];	
-		$sql="UPDATE news SET sort_value='".$sort_value2."' WHERE id='".$id1."'";
+		$sql="UPDATE news SET sort_value='".$sort_value2."' WHERE id='".$id."'";
 		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());
 		}	
-		$sql="UPDATE news SET sort_value='".$sort_value1."' WHERE id='".$id2."'";
+		$sql="UPDATE news SET sort_value='".$sort_value1."' WHERE id='".$news_info2["id"]."'";
 		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());

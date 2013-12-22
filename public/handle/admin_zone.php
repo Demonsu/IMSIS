@@ -355,10 +355,10 @@
 			echo "权限不够";
 		}else
 		{
-			$id1=$_POST["id1"];
-			$id2=$_POST["id2"];
+			$id=$_POST["id"];
+			$up=$_POST["up"];
 			$admin=new Admin();
-			echo $admin->change_news_sort($id1,$id2);
+			echo $admin->change_news_sort($id,$up);
 		}			
 	}
 	if ($operation=="UPBANGNEWS")
@@ -448,10 +448,10 @@
 			echo "权限不够";
 		}else
 		{
-			$id1=$_POST["id1"];
-			$id2=$_POST["id2"];
+			$id=$_POST["id"];
+			$up=$_POST["up"];
 			$admin=new Admin();
-			echo $admin->change_discovery_sort($id1,$id2);	
+			echo $admin->change_discovery_sort($id,$up);	
 		}		
 	}
 	if ($operation=="UPBANGDISCOVERY")
