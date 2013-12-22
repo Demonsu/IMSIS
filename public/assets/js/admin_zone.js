@@ -969,20 +969,13 @@ function news_edit(t){
 	window.open('./include/newsedit.php?newsid='+t.parentNode.id,'newwindow');
 }
 function news_moveup(t){
-	var id1,id2;
-	id2 = t.parentNode.id;
-	var s = t.parentNode.previousSibling;
-	if(s == null)
-		id1 = id2;
-	else
-		id1 = s.id;
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGENEWSSORT',
-			id1:id1,
-			id2:id2
+			id1:t.parentNode.id,
+			id2:0
 		},
 		success:function(data){
 			if(data == 1)
@@ -993,20 +986,13 @@ function news_moveup(t){
 	});
 }
 function news_movedown(t){
-	var id1,id2;
-	id1 = t.parentNode.id;
-	var s = t.parentNode.nextSibling.nextSibling;
-	if(s == null)
-		id2 = id1;
-	else
-		id2 = t.parentNode.nextSibling.id;
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGENEWSSORT',
-			id1:id1,
-			id2:id2
+			id1:t.parentNode.id,
+			id2:1
 		},
 		success:function(data){
 			if(data == 1)
@@ -1058,22 +1044,13 @@ function share_edit(t){
 	window.open('./include/shareedit.php?sharesid='+t.parentNode.id,'newwindow');
 }
 function share_moveup(t){
-	var id1,id2;
-	id2 = t.parentNode.id;
-	var s = t.parentNode.previousSbiling;
-	alert(s.tagName);
-	if(s == null)
-		id1 = id2;
-	else
-		id1 = s.id;
-	alert(id1+' '+id2);
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGEDISCOVERYSORT',
-			id1:id1,
-			id2:id2
+			id:t.parentNode.id,
+			up:0
 		},
 		success:function(data){
 			if(data == 1)
@@ -1084,20 +1061,13 @@ function share_moveup(t){
 	});
 }
 function share_movedown(t){
-	var id1,id2;
-	id1 = t.parentNode.id;
-	var s = t.parentNode.nextSibling.nextSibling;
-	if(s == null)
-		id2 = id1;
-	else
-		id2 = t.parentNode.nextSibling.id;
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGEDISCOVERYSORT',
-			id1:id1,
-			id2:id2
+			id1:t.parentNode.id,
+			id2:1
 		},
 		success:function(data){
 			if(data == 1)
