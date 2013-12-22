@@ -18,11 +18,27 @@ $(document).ready(function(){
 			success:function(data){
 				alert(data);
 				$('#news-list').html(data);
+				hide();
 				$('#change-news').show();
 			}
 		});
 	});
-	
+	$('#manage-share').click(function(){
+		hide();
+		$.ajax({
+			type:'POST',
+			url:'./handle/admin_zone.php',
+			data:{
+				operation:'FETCHDISCOVERYLIST'
+			},
+			success:function(data){
+				alert(data);
+				$('#share-list').html(data);
+				hide();
+				$('#change-share').show();
+			}
+		});
+	});
 	//
 	$('#manage-effect-field').click(function(){
 		hide();
@@ -1111,6 +1127,7 @@ function share_add(){
 }
 function hide(){
 	$('#change-news').hide();
+	$('#change-share').hide();
 	$('#check-user-data').hide();
 	$('#quiz-result-search').hide();
 	$('#passwd-reset').hide();

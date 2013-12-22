@@ -150,8 +150,8 @@ $(document).ready(function(){
 			options.series[0] = new Object();
 			options.series[0].name = '关键变量';
 			options.series[0].data = new Array();
-			for(i=0;i<data.content[0].content.length;i++){
-				options.series[0].data.push(parseFloat(data.content[2].content[i]));
+			for(i=data.content[0].content.length;i>0;i--){
+				options.series[0].data.push(parseFloat(data.content[2].content[i-1]));
 			}
 			//alert(options.series[0].data);
 			var chart = new Highcharts.Chart(options);
