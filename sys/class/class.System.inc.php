@@ -100,6 +100,25 @@ class System extends DB_Connect {
 		}
 		return $return_value;		
 	}
+
+	public function fetch_discovery_share_list()
+	{
+		
+	}
+	
+	public function fetch_news_list()
+	{
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 ?>

@@ -502,6 +502,229 @@ class Admin extends DB_Connect {
 		return sprintf($RESULTFORMAT,$user_id,$department,$user_info["title"],$user_info["oncharge"],$user_info["speciality"],$user_info["age"],$user_info["gender"],$user_info["education"],$user_info["position"],$user_info["seniority"],$user_info["email"]);
 					
 	}
+	public function fetch_discovery_list()//获取分享的管理列表
+	{
+		$DISCOVERYFORMAT='
+				<li class="list-group-item" id="%s">%s
+				<label class="label label-success" onclick="news_settop(this)">置顶</label>
+				<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
+				<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
+				<label class="label label-danger" onclick="news_delete(this)">删除</label>
+				<label class="label label-warning" onclick="news_edit(this)">修改</label>
+			 	</li>
+			 	<li class="list-group-item text-center" onclick="window.location=\'./include/newsedit?newsid=-1\'"><span class="glyphicon glyphicon-plus"></span></li>
+			  ';
+		$return_value="";
+		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($discovery_info=mysql_fetch_assoc($select))
+		{
+			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],$discovery_info["title"]);
+		}
+		return $return_value;
+	}
+	public function fetch_discovery_info($id)//获取分享的详细信息
+	{
+		$DISCOVERYDETAIL='';
+		$return_value="";
+		$sql="SELECT * FROM discovery_share WHERE id='".$id."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$discovery_info=mysql_fetch_assoc($select);
+		$return_value=sprintf($DISCOVERYDETAIL,$discovery_info["id"]);
+	}
+	public function add_discovery_share($title,$type,$content,$time,$url)//添加一个分享
+	{
+		$sort_value=0;
+		$sql="SELECT MAX(sort_value) AS cur_value FROM discovery_share";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num!=0)
+		{
+			$result=mysql_fetch_assoc($select);
+			$sort_value=$result["cur_value"]+1;
+		}
+		$sql="INSERT INTO discovery_share
+		(
+			title,type,content,time,url,sort_value
+		)
+		VALUES
+		(
+			'".$title."','".$type."','".$content."','".$time."','".$url."','".$sort_value."'
+		)";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;
+	}
+	public function modify_discovery_share($id,$title,$type,$content,$time,$url)//修改一个分享
+	{
+		$sql="UPDATE discovery_share SET title='".$title."',type='".$type."',content='".$content."',time='".$time."',url='".$url."' WHERE id='".$id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;		
+	}
+	public function delete_discovery_share($id)//删除一个分享
+	{
+		$sql="DELETE FROM discovery_share WHERE id='".$id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;
+	}
+	public function change_discovery_sort($id1,$id2)//交换两个分享的位置
+	{
+		//首先获取两个分享的sortvalue
+		$sql="SELECT * FROM discovery_share WHERE id='".$id1."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$discovery_info1=mysql_fetch_assoc($select);
+		$sort_value1=$discoverty_info1["sort_value"];
+		$sql="SELECT * FROM discovery_share WHERE id='".$id2."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$discovery_info2=mysql_fetch_assoc($select);	
+		$sort_value2=$discovery_info2["sort_value"];	
+		//接着互换下
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value2."' WHERE id='".$id1."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}	
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value1."' WHERE id='".$id2."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;
+	}
+	public function upbang_discovery_share($id)//置顶
+	{
+		$sort_value=0;
+		$sql="SELECT MAX(sort_value) AS cur_value FROM discovery_share";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num!=0)
+		{
+			$result=mysql_fetch_assoc($select);
+			$sort_value=$result["cur_value"]+1;
+		}
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value."' WHERE　id='".$id."'";		
+	}	
+	public function fetch_news_list()//获取新闻的管理列表
+	{
+		$NEWSFORMAT='
+			<li class="list-group-item" id="%s">%s
+			<label class="label label-success" onclick="news_settop(this)">置顶</label>
+			<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
+			<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
+			<label class="label label-danger" onclick="news_delete(this)">删除</label>
+			<label class="label label-warning" onclick="news_edit(this)">修改</label>
+			</li>
+			<li class="list-group-item text-center" onclick="window.location=\'./include/newsedit?newsid=-1\'"><span class="glyphicon glyphicon-plus"></span></li>
+	  	';
+		$return_value="";
+		$sql="SELECT * FROM news ORDER BY sort_value DESC";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while ($news_info=mysql_fetch_assoc($select))
+		{
+			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],$news_info["title"]);
+		}
+		return $return_value;
+	}
+	public function fetch_news_info($id)//获取新闻的详细信息
+	{
+		$NEWSDETAIL='
+		{
+			"title":"%s",
+			"content":"%s",
+			"img_url":"%s"
+		}';
+		$return_value="";
+		$sql="SELECT * FROM news WHERE id='".$id."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$discovery_info=mysql_fetch_assoc($select);
+		$return_value=sprintf($NEWSDETAIL,$news_info["title"],$news_info["content"],$news_info["img_url"]);
+	}	
+	public function add_news($title,$content,$time,$img_url)//添加一个新闻
+	{
+		$sort_value=0;
+		$sql="SELECT MAX(sort_value) AS cur_value FROM news";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num!=0)
+		{
+			$result=mysql_fetch_assoc($select);
+			$sort_value=$result["cur_value"]+1;
+		}		
+		$sql="INSERT INTO news 
+		(
+			title,content,time,img_url,sort_value
+		)VALUES
+		(
+			'".$title."','".$content."','".$time."','".$img_url."','".$sort_value."'
+		)";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;		
+	}
+	public function modify_news($id,$title,$content,$time,$img_url)//修改一条新闻
+	{
+		$sql="UPDATE news SET title='".$title."',content='".$content."',time='".$time."',img_url='".$img_url."' WHERE id='".$id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;			
+	}
+	public function delete_news($id)//删除一个新闻
+	{
+		$sql="DELETE FROM news WHERE id='".$id."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;
+	}
+	public function change_news_sort($id1,$id2)//交换两个新闻的位置
+	{
+		//首先获取两个新闻的sortvalue
+		$sql="SELECT * FROM news WHERE id='".$id1."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$news_info1=mysql_fetch_assoc($select);
+		$sort_value1=$news_info1["sort_value"];
+		$sql="SELECT * FROM news WHERE id='".$id2."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$news_info2=mysql_fetch_assoc($select);	
+		$sort_value2=$news_info2["sort_value"];	
+		$sql="UPDATE news SET sort_value='".$sort_value2."' WHERE id='".$id1."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}	
+		$sql="UPDATE news SET sort_value='".$sort_value1."' WHERE id='".$id2."'";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;
+	}
+	public function upbang_news($id)//置顶
+	{
+		$sort_value=0;
+		$sql="SELECT MAX(sort_value) AS cur_value FROM news";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$num=mysql_num_rows($select);
+		if ($num!=0)
+		{
+			$result=mysql_fetch_assoc($select);
+			$sort_value=$result["cur_value"]+1;
+		}
+		$sql="UPDATE news SET sort_value='".$sort_value."' WHERE　id='".$id."'";		
+	}	
 }
 
 ?>

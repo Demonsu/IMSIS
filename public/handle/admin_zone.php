@@ -281,5 +281,97 @@
 			echo $admin->fetch_user_detail_info($_POST["user_id"]);	
 		}
 	}
+	if ($operation=="FETCHNEWSLIST")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$admin=new Admin();
+			echo $admin->fetch_news_list();
+		}
+		
+	}
+	if ($operation=="FETCHNEWSDETAIL")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->fetch_news_info($id);
+		}		
+	}
+	if ($operation=="ADDNEWS")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$title=$_POST["title"];
+			$content=$_POST["content"];
+			$img_url=$_POST["img_url"];
+			$time=date("Y-m-d H:i:s",time());
+			$admin=new Admin();
+			echo $admin->add_news($title,$content,$time,$img_url);
+		}				
+	}
+	if ($operation=="MODIFYNEWS")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$title=$_POST["title"];
+			$content=$_POST["content"];
+			$img_url=$_POST["img_url"];
+			$time=date("Y-m-d H:i:s",time());
+			$admin=new Admin();
+			echo $admin->modify_news($title,$content,$time,$img_url);
+		}			
+	}
+	if ($operation=="DELETENEWS")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->delete_news($id);
+		}			
+	}
+	if ($operation=="CHANGENEWSSORT")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id1=$_POST["id1"];
+			$id2=$_POST["id2"];
+			$admin=new Admin();
+			echo $admin->change_news_sort($id1,$id2);
+		}			
+	}
+	if ($operation=="UPBANGNEWS")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->upbang_news($id);
+		}			
+	}
 
 ?>
