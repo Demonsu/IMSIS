@@ -1127,6 +1127,7 @@ function share_add(){
 }
 function hide(){
 	$('#change-news').hide();
+	$('#change-share').hide();
 	$('#check-user-data').hide();
 	$('#quiz-result-search').hide();
 	$('#passwd-reset').hide();

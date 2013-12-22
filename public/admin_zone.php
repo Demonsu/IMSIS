@@ -97,7 +97,7 @@
 	
 	<div class="col-md-9" id="change-share">
 		<div class="panel panel-default">
-		  <div class="panel-heading" id="body_title">管理动态新闻</div>
+		  <div class="panel-heading" id="body_title">管理分享内容</div>
 		  <div class="panel-body">
 			<ul class="list-group" id="share-list">
 			  <li class="list-group-item" id="12">Cras justo odiodwads
@@ -115,7 +115,7 @@
 	
 	<div class="col-md-9" id="change-news">
 		<div class="panel panel-default">
-		  <div class="panel-heading" id="body_title">管理分享内容</div>
+		  <div class="panel-heading" id="body_title">管理动态新闻</div>
 		  <div class="panel-body">
 			<ul class="list-group" id="news-list">
 			  <li class="list-group-item" id="12">Cras justo odiodwads
