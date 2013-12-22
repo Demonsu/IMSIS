@@ -373,5 +373,97 @@
 			echo $admin->upbang_news($id);
 		}			
 	}
-
+	if ($operation=="FETCHDISCOVERYLIST")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$admin=new Admin();
+			echo $admin->fetch_discovery_list();			
+		}
+	}
+	if ($operation=="FETCHDISCOVERYDETAIL")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->FETCHDISCOVERYDETAIL($id);			
+		}		
+	}
+	if ($operation=="ADDDISCOVERY")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$title=$_POST["title"];
+			$type=$_POST["type"];
+			$content=$_POST["content"];
+			$time=date("Y-m-d H:i:s",time());
+			$url=$_POST["url"];
+			$admin=new Admin();
+			echo $admin->add_discovery_share($title,$type,$content,$time,$url);	
+		}
+	}
+	if ($operation=="MODIFYDISCOVERY")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$title=$_POST["title"];
+			$type=$_POST["type"];
+			$content=$_POST["content"];
+			$time=date("Y-m-d H:i:s",time());
+			$url=$_POST["url"];
+			$admin=new Admin();
+			echo $admin->modify_discovery_share($id,$title,$type,$content,$time,$url);	
+		}
+	}
+	if ($operation=="DELETEDISCOVERY")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->delete_discovery_share($id);	
+		}
+	}
+	if ($operation=="CHANGEDISCOVERYSORT")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id1=$_POST["id1"];
+			$id2=$_POST["id2"];
+			$admin=new Admin();
+			echo $admin->change_discovery_sort($id1,$id2);	
+		}		
+	}
+	if ($operation=="UPBANGDISCOVERY")
+	{
+		if ($_SESSION["PERMISSION"]!=1)
+		{
+			echo "权限不够";
+		}else
+		{
+			$id=$_POST["id"];
+			$admin=new Admin();
+			echo $admin->upbang_discovery_share($id);	
+		}			
+	}
 ?>

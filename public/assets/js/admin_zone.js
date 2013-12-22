@@ -1060,11 +1060,13 @@ function share_edit(t){
 function share_moveup(t){
 	var id1,id2;
 	id2 = t.parentNode.id;
-	var s = t.parentNode.previousSibling;
+	var s = t.parentNode.previousSbiling;
+	alert(s.tagName);
 	if(s == null)
 		id1 = id2;
 	else
 		id1 = s.id;
+	alert(id1+' '+id2);
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',

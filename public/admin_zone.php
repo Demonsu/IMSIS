@@ -3,6 +3,8 @@
 	include_once '../sys/core/init.inc.php';
 
 	//echo $result;
+	$navi="";
+	if (isset($_GET['navigation']))
 	$navi = $_GET['navigation'];
 ?>
 <html>

@@ -35,17 +35,19 @@
 		});
 		$('#confirm').click(function(){
 			if(parseInt(id) == -1){
+				//alert($('input:radio[name="filetype"]:checked').val());
 				$.ajax({
 					type:'POST',
 					url:'../handle/admin_zone.php',
 					data:{
 						operation:'ADDDISCOVERY',
 						title:htmlEncode($('#title').val()),
-						type:$('radio[name="filetype"]:checked').val(),
+						type:$(':radio[name="filetype"]:checked').val(),
 						content:htmlEncode($('textarea[name="content"]').html()),
 						url:file_url
 					},
 					success:function(data){
+						alert(data);
 						window.location = '../admin_zone.php?navigation=2';
 					}
 				});
@@ -58,11 +60,12 @@
 						operation:'MODIFYDISCOVERY',
 						id:id,
 						title:htmlEncode($('#title').val()),
-						type:$('radio[name="filetype"]:checked').val(),
+						type:$(':radio[name="filetype"]:checked').val(),
 						content:htmlEncode($('textarea[name="content"]').html()),
 						url:file_url
 					},
 					success:function(data){
+						alert(data);
 						window.location = '../admin_zone.php?navigation=2';
 					}
 				});
@@ -154,7 +157,7 @@
 		<label><input type="radio" name="filetype" value="other" />other</label>
 	</div>
 	<input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
-	<button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">上传</button>
+	<button class="button" id="buttonUpload" onClick="return ajaxFileUpload();">上传</button>
 	<div>
 		<label id="file_path"></label>
 	</div>

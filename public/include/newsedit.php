@@ -75,7 +75,7 @@
 					id:id
 				},
 				success:function(str){
-					var data = jQuery.parseJSON(str);
+					var data = parseJSON(str);
 					$('#title').val(data.title);
 					$('textarea[name="content"]').html(data.content)
 					img_url = data.img_url;
@@ -141,7 +141,7 @@
 		<textarea name="content" style="width:960px;height:400px;visibility:hidden;resize:none"></textarea>
 	</form>
 	<input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
-	<button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">上传</button>
+	<button class="button" id="buttonUpload" onClick="return ajaxFileUpload();">上传</button>
 	<div id="img-show">
 		
 	</div>
