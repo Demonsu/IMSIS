@@ -2,7 +2,7 @@
 	include_once '../sys/core/init.inc.php';
 
 	//echo $result;
-
+	$navi = $_GET['navigation'];
 ?>
 <html>
 <head>
@@ -19,10 +19,43 @@
 	<link rel="stylesheet" href="./assets/css/admin_zone.css">
 	<link rel="stylesheet" href="./assets/css/body.css">
 </head>
+<script>
+	$(document).ready(function(){
+		var navi = <?php echo $navi; ?>;
+		if(navi == 1){
+		
+		}
+		else if(navi == 2){
+		
+		}
+		else if(navi == 3){
+		
+		}
+		else if(navi == 4){
+		
+		}
+		else if(navi == 5){
+		
+		}
+		else if(navi == 6){
+		
+		}
+		else if(navi == 7){
+		
+		}
+		else if(navi == 8){
+		
+		}
+		else if(navi == 9){
+		
+		}
+	});
+</script>
 <body>
 <div class="main">
 
 <?php include './include/header.php'; ?>
+
 <div class="row">
 	<div class="col-md-3">
 		<div class="panel panel-default panel-success">
@@ -32,8 +65,8 @@
 			  <a class="list-group-item active">
 				内容管理
 			  </a>
-			  <a href="#" class="list-group-item">管理动态</a>
-			  <a href="#" class="list-group-item">管理分享</a>
+			  <a href="#" class="list-group-item" id="manage-news">管理动态</a>
+			  <a href="#" class="list-group-item" id="manage-share">管理分享</a>
 			  <a class="list-group-item active">
 				查看评测
 			  </a>
@@ -62,6 +95,41 @@
 		</div>
 	</div>
 	
+	<div class="col-md-9" id="change-share">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">管理动态新闻</div>
+		  <div class="panel-body">
+			<ul class="list-group" id="share-list">
+			  <li class="list-group-item" id="12">Cras justo odiodwads
+				<label class="label label-success" onclick="share_settop(this)">置顶</label>
+				<label class="label label-info" onclick="share_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
+				<label class="label label-info" onclick="share_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
+				<label class="label label-danger" onclick="share_delete(this)">删除</label>
+				<label class="label label-warning" onclick="share_edit(this)">修改</label>
+			  </li>
+			  <li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>
+			</ul>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="col-md-9" id="change-news">
+		<div class="panel panel-default">
+		  <div class="panel-heading" id="body_title">管理动态新闻</div>
+		  <div class="panel-body">
+			<ul class="list-group" id="news-list">
+			  <li class="list-group-item" id="12">Cras justo odiodwads
+				<label class="label label-success" onclick="news_settop(this)">置顶</label>
+				<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
+				<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
+				<label class="label label-danger" onclick="news_delete(this)">删除</label>
+				<label class="label label-warning" onclick="news_edit(this)">修改</label>
+			  </li>
+			  <li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>
+			</ul>
+		  </div>
+		</div>
+	</div>
 	<div class="col-md-9" id="change-effect-field">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理作用域</div>

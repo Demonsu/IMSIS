@@ -36,7 +36,7 @@
 					  <li><a href="#">运维服务</a></li>
 					</ul>
 				  </li>
-				  <li><a>成员</a></li>
+				  <li><a href="./include/member.php">成员</a></li>
 				  <li><a>其他栏目</a></li>
 				</ul>
 			  </div><!-- /.navbar-collapse -->
@@ -81,9 +81,9 @@
 			<div style="width:350px;font-size:20px;text-align:center;color:#ffffff;font-weight:bold;">
 				实验室简介
 			</div>
-			<p style="color:#ffffff;font-size:12px;margin-top:10px">
-				南京大学电子政务与数据智能实验室（E-government & Data Intelligence Laboratory，EG&DI lab）成立于2012年，依托于南京大学信息管理学院，面向电子政务及数据智能，结合当前信息社会发展的需要，开展电子政务系统以及大数据的相关管理与应用研究。主要研究方向包括：电子政务系统的开发与管理、电子政务服务能力管理、大数据智能、互联网商务模式（IBMs）管理、分布式信息系统设计与开发方法等。<br>
-				实验室具备充满活力的科研梯队以及良好的硬件设施环境。胡广伟副教授为实验室主要负责人，固定成员包括硕士研究生8人，本科生多名。实验室先后承担各类科研项目几十项，发表国内外学术期刊论文数十篇，出版专著多部，研究报告多部。实验室本着“充实、完善、凝炼、提升”思想，坚持“开放与联合”的原则，不断开拓进取，努力成为特色鲜明、可持续创新的电子政务系统及大数据智能研究开发基地和人才培养基地。
+			<p style="color:#ffffff;font-size:14px;margin-top:10px">
+				南京大学电子政务与数据智能实验室（E-government & Data Intelligence Laboratory，EG&DI lab）成立于2012年，依托于南京大学信息管理学院，面向电子政务及数据智能，结合当前信息社会发展的需要，开展电子政务系统以及大数据的相关管理与应用研究。主要研究方向...<br>
+				<a style="float:right;color:white">更多...</a>
 			</p>
 		</div>
 	</div>
@@ -96,18 +96,18 @@
 				</div>
 				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
 					<a href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank" title="The_big_data_revolution_in_healthcare">
-						<img src="./assets/img/index/pdf-download.jpg" width="277px"/>
+						<img src="./assets/img/index/pdf-download.jpg" width="277px" height="139px"/>
 					</a>
 				</div>
-				<ul class="list-group" style="margin-left:50px;" >
+				<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/pdf-logo.png" width="36px" />
+						<img src="./assets/img/index/icon/pdf.png" width="28px" />
 						<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/pptx-logo.png" width="36px" />
+						<img src="./assets/img/index/icon/pptx.png" width="28px" />
 						<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/zip-logo.png" width="36px" />
+						<img src="./assets/img/index/icon/zip.png" width="28px" />
 						<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
 				</ul>
 			</div>
@@ -115,15 +115,27 @@
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
 					最新动态
 				</div>
-				
+				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+					<img src="./assets/img/index/news-title.jpg" width="277px" height="139px"/>
+				</div>
+				<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
+					<li class="list-group-item list-group-item-success">
+						<img src="./assets/img/index/list.png" width="28px" />
+						<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
+					<li class="list-group-item list-group-item-success">
+						<img src="./assets/img/index/list.png" width="28px" />
+						<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
+					<li class="list-group-item list-group-item-success">
+						<img src="./assets/img/index/list.png" width="28px" />
+						<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
+				</ul>
 			</div>
 			<div class="content-three">
-				<a href="./login.php">
-					<img style="border: 0; vertical-align: middle;" src="./assets/img/index/eGov-CMM.png" alt="eGoc-CMM" border="0" height="150" width="285" />
-				</a>
+				
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
-					友情链接
+					系统入口
 				</div>
+				<!--
 				<div class="link-border">
 					<a title="南京大学主页" href="http://nju.edu.cn" target="_blank"><img src="./assets/img/index/link_1.jpg" height="72px"/></a>
 				</div>
@@ -142,6 +154,17 @@
 				<div class="link-border" style="margin-right:0px;">
 					<a title="美国政府数据中心" href="http://www.data.gov/" target="_blank"><img src="./assets/img/index/link_6.jpg" height="72px"/></a>
 				</div>
+				
+				<a href="./login.php">
+					<img style="margin-top:20px;border: 0; vertical-align: middle;" src="./assets/img/index/eGov-CMM.png" alt="eGoc-CMM" border="0" height="120" width="285" />
+				</a>-->
+			    <a href="./login.php" target="_blank">
+					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="139px"/>
+					</div>
+			    </a>
+				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
+					
 				<!--
 				<ul class="list-group" style="text-align:center" >
 				<li class="list-group-item list-group-item-success"><a title="南京大学主页" href="http://nju.edu.cn" target="_blank">南京大学主页</a></li>
@@ -156,7 +179,10 @@
 	</div>
 	
 	<div class="footer-wapper">
-		<span>Copyright©2013 All Rights Reserved</span>
+		<span class="footer-content">
+		<a>联系我们</a><span class="line-vertical"></span><a>法律声明</a><span class="line-vertical"></span><a>友情链接</a>
+		</span><br>
+		<span style="line-height:36px;">Copyright©2013 All Rights Reserved</span>
 	</div>
 </div>
 

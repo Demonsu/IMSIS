@@ -1,0 +1,32 @@
+
+		{ 
+			"content":
+			[ 
+				
+		{ 
+			"title_effect":"业务管理",
+			"effect_content":
+			[ 
+				
+		{
+			"id":"3.9",
+			"title_field":"规章遵循",
+			"field_content":[
+				
+		{
+			"title_variable":"国家、地方法规",
+			"score":"4"
+		},
+		{
+			"title_variable":"行业法规和内部规定(E:内部法规",
+			"score":"3"
+		}
+			],
+			"field_score":"3.5"
+		}
+			],
+			"effect_field_score":"3.5"
+		
+		}
+			] 
+		}

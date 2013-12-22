@@ -422,7 +422,7 @@
 				options.series[1].size = 100;
 				options.series[1].showInLegend = false;
 				options.series[1].dataLabels = new Object();
-				options.series[1].dataLabels.format = '<b>{point.name}{point.y}%</b>'
+				options.series[1].dataLabels.format = '<b>{point.name}{point.y}%</b>';
 				var chart = new Highcharts.Chart(options);
 			}
 		});	
@@ -1177,7 +1177,10 @@
 							table += '<td>'+data.table1[i].content[j].title+'</td>';
 							table += '<td style="text-align:right">'+data.table1[i].content[j].content[0]+'</td>';
 							table += '<td style="text-align:right">'+data.table1[i].content[j].content[1]+'%</td>';
-							table += '<td style="text-align:right">'+data.table1[i].content[j].content[2]+'</td>';
+							if(data.table1[i].content[j].content[2] == 'true')
+								table += '<td style="text-align:center"><span class="glyphicon glyphicon-tag"></span></td>';
+							else
+								table += '<td style="text-align:center"></td>';
 							table += '</tr>';
 						}
 					}
