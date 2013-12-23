@@ -525,12 +525,19 @@ class Admin extends DB_Connect {
 	}
 	public function fetch_discovery_info($id)//获取分享的详细信息
 	{
-		$DISCOVERYDETAIL='';
+		$DISCOVERYDETAIL='		
+		{
+			"title":"%s",
+			"content":"%s",
+			"type":"%s",
+			"url":"%s"
+		}';
 		$return_value="";
 		$sql="SELECT * FROM discovery_share WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$discovery_info=mysql_fetch_assoc($select);
-		$return_value=sprintf($DISCOVERYDETAIL,$discovery_info["id"]);
+		$return_value=sprintf($DISCOVERYDETAIL,$discovery_info["title"],$discovery_info["content"],$discovery_info["type"],$discovery_info["url"]);
+		return $return_value;
 	}
 	public function add_discovery_share($title,$type,$content,$time,$url)//添加一个分享
 	{
@@ -581,10 +588,10 @@ class Admin extends DB_Connect {
 		$sql="SELECT * FROM discovery_share WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$discovery_info1=mysql_fetch_assoc($select);
-		$sort_value1=$discoverty_info1["sort_value"];
+		$sort_value1=$discovery_info1 ["sort_value"];
 		if ($up==0)
 		{
-			$sql="SELECT * FROM discovery_share WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASEC LIMIT 1";
+			$sql="SELECT * FROM discovery_share WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASC LIMIT 1";
 		}else
 		{
 			$sql="SELECT * FROM discovery_share WHERE sort_value<'".$sort_value1."' ORDER BY sort_value DESC LIMIT 1";
@@ -620,7 +627,13 @@ class Admin extends DB_Connect {
 			$result=mysql_fetch_assoc($select);
 			$sort_value=$result["cur_value"]+1;
 		}
-		$sql="UPDATE discovery_share SET sort_value='".$sort_value."' WHERE　id='".$id."'";		
+		$sql="UPDATE discovery_share SET sort_value='".$sort_value."' WHERE id='".$id."'";
+		//echo $sql;
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;	
 	}	
 	public function fetch_news_list()//获取新闻的管理列表
 	{
@@ -708,7 +721,7 @@ class Admin extends DB_Connect {
 		$sort_value1=$news_info1["sort_value"];
 		if ($up==0)
 		{
-			$sql="SELECT * FROM news WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASEC LIMIT 1";	
+			$sql="SELECT * FROM news WHERE sort_value>'".$sort_value1."' ORDER BY sort_value ASC LIMIT 1";	
 		}else
 		{
 			$sql="SELECT * FROM news WHERE sort_value<'".$sort_value1."' ORDER BY sort_value DESC LIMIT 1";
@@ -743,7 +756,12 @@ class Admin extends DB_Connect {
 			$result=mysql_fetch_assoc($select);
 			$sort_value=$result["cur_value"]+1;
 		}
-		$sql="UPDATE news SET sort_value='".$sort_value."' WHERE　id='".$id."'";		
+		$sql="UPDATE news SET sort_value='".$sort_value."' WHERE  id='".$id."'";		
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}		
+		return 1;		
 	}	
 }
 

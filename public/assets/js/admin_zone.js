@@ -16,7 +16,7 @@ $(document).ready(function(){
 				operation:'FETCHNEWSLIST'
 			},
 			success:function(data){
-				alert(data);
+				//alert(data);
 				$('#news-list').html(data);
 				hide();
 				$('#change-news').show();
@@ -32,7 +32,7 @@ $(document).ready(function(){
 				operation:'FETCHDISCOVERYLIST'
 			},
 			success:function(data){
-				alert(data);
+				//alert(data);
 				$('#share-list').html(data);
 				hide();
 				$('#change-share').show();
@@ -974,8 +974,8 @@ function news_moveup(t){
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGENEWSSORT',
-			id1:t.parentNode.id,
-			id2:0
+			id:t.parentNode.id,
+			up:0
 		},
 		success:function(data){
 			if(data == 1)
@@ -991,8 +991,8 @@ function news_movedown(t){
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGENEWSSORT',
-			id1:t.parentNode.id,
-			id2:1
+			id:t.parentNode.id,
+			up:1
 		},
 		success:function(data){
 			if(data == 1)
@@ -1041,7 +1041,7 @@ function share_delete(t){
 	});
 }
 function share_edit(t){
-	window.open('./include/shareedit.php?sharesid='+t.parentNode.id,'newwindow');
+	window.open('./include/shareedit.php?shareid='+t.parentNode.id,'newwindow');
 }
 function share_moveup(t){
 	$.ajax({
@@ -1061,13 +1061,14 @@ function share_moveup(t){
 	});
 }
 function share_movedown(t){
+	//alert(t.parentNode.id);
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
 		data:{
 			operation:'CHANGEDISCOVERYSORT',
-			id1:t.parentNode.id,
-			id2:1
+			id:t.parentNode.id,
+			up:1
 		},
 		success:function(data){
 			if(data == 1)

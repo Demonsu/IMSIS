@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="./themes/default/default.css" />
 	<script charset="utf-8" src="./kindeditor-min.js"></script>
 	<script charset="utf-8" src="./lang/zh_CN.js"></script>
-	<script src="./ajaxfileupload/jquery.js" type="text/javascript"></script>
+	<script src="../assets/js/jquery.js" type="text/javascript"></script>
 	<script src="./ajaxfileupload/ajaxfileupload.js" type="text/javascript"></script>
 </head>
 <script>
@@ -75,11 +75,11 @@
 					id:id
 				},
 				success:function(str){
-					var data = parseJSON(str);
+					var data = jQuery.parseJSON(str);
 					$('#title').val(data.title);
-					$('textarea[name="content"]').html(data.content)
+					editor.insertHtml(data.content)
 					img_url = data.img_url;
-					$('#img-show').html('<img src="../assets/upload/'+img_url+'"/>');
+					$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'"/>');
 				}
 			});
 		}
@@ -115,7 +115,7 @@
 						{
 							alert(data.msg);
 							img_url = data.msg;
-							$('#img-show').html('<img src="../assets/upload/'+img_url+'"/>');
+							$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'"/>');
 						}
 					}
 				},

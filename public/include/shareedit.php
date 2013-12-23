@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="./themes/default/default.css" />
 	<script charset="utf-8" src="./kindeditor-min.js"></script>
 	<script charset="utf-8" src="./lang/zh_CN.js"></script>
-	<script src="./ajaxfileupload/jquery.js" type="text/javascript"></script>
+	<script src="../assets/js/jquery.js" type="text/javascript"></script>
 	<script src="./ajaxfileupload/ajaxfileupload.js" type="text/javascript"></script>
 </head>
 <script>
@@ -80,10 +80,16 @@
 					id:id
 				},
 				success:function(str){
+					alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(data.title);
-					$('textarea[name="content"]').html(data.content)
-					file_url = data.img_url;
+					editor.insertHtml(data.content);
+					file_url = data.url;
+					$(':radio').each(function(){
+						if($(this).val() == data.type){
+							this.checked = true;	
+						}
+					});
 					$('#file_path').text('./public/assets/upload/files/'+file_url);
 				}
 			});
@@ -144,7 +150,7 @@
 	</div>
 	
 	<form>
-		<textarea name="content" style="width:960px;height:400px;visibility:hidden;resize:none"></textarea>
+		<textarea id="text-area" name="content" style="width:960px;height:400px;visibility:hidden;resize:none"></textarea>
 	</form>
 	<div class="group">
 		<label>选择文件类型(分配图标)：</label>

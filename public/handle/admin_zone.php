@@ -393,7 +393,7 @@
 		{
 			$id=$_POST["id"];
 			$admin=new Admin();
-			echo $admin->FETCHDISCOVERYDETAIL($id);			
+			echo $admin->fetch_discovery_info($id);			
 		}		
 	}
 	if ($operation=="ADDDISCOVERY")
@@ -449,7 +449,7 @@
 		}else
 		{
 			$id=$_POST["id"];
-			$up=$_POST["up"];
+			$up=$_POST["up"]; 
 			$admin=new Admin();
 			echo $admin->change_discovery_sort($id,$up);	
 		}		
