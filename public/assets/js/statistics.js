@@ -864,7 +864,7 @@ $(document).ready(function(){
 		url:'statistics/' + $('#quiz_id').val() + '/table10.json',
 		success:function(data){
 			//alert(data);
-			var table = '<tr><th class="table-title" colspan=10><span title="">能力提升分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=8><span title="">能力提升分析</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">类型</th>';
 			table += '<th style="text-align:center">关键变量提升的项数(T=56)</th>';
@@ -1069,7 +1069,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/'+$('#quiz_id').val()+'/table12.json',
 		success:function(data){
-			var table = '<tr><th class="table-title" colspan=7><span title="该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。">优势能力的作用域分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=5><span title="该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。">优势能力的作用域分析</span></th></tr>';
 
 			table += '<tr style="text-align:center">';
 			table += '<th></th><th style="text-align:center">优势能力项数</th><th style="text-align:center">总项数</th><th style="text-align:center">所占比例</th><th style="text-align:center">占优势能力的百分比</th>';
