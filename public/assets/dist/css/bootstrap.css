@@ -5347,8 +5347,8 @@ a.thumbnail.active {
 
 .alert-info {
   color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #f9f9f9;
+  border-color: #dddddd;
 }
 
 .alert-info hr {
@@ -5789,6 +5789,7 @@ a.list-group-item.active:focus .list-group-item-text {
 
 .panel-default {
   border-color: #dddddd;
+
 }
 
 .panel-default > .panel-heading {
@@ -5898,13 +5899,13 @@ a.list-group-item.active:focus .list-group-item-text {
 }
 
 .panel-info {
-  border-color: #bce8f1;
+  border-color: #dddddd;
 }
 
 .panel-info > .panel-heading {
   color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  background-color: #f9f9f9;
+  border-color: #dddddd;
 }
 
 .panel-info > .panel-heading + .panel-collapse .panel-body {

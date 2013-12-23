@@ -11,7 +11,7 @@ $op = $_GET['navigation'];
 	<title>个人空间</title>
 	
 	
-	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/dist/css/bootstrap.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<script style="text/javascript" src="./assets/js/user_zone.js"></script>
@@ -58,8 +58,8 @@ $(document).ready(function(){
 <?php include './include/header.php'; ?>
 
 <div class="group" >
-	<div class="panel panel-success" style="min-height:600px;">
-		<div class="panel-heading"><div class="panel-title">用户空间</div></div>
+	<div class="panel panel-info" style="min-height:600px;">
+		<div class="panel-heading"><div class="panel-title" style="color:#000000">用户空间</div></div>
 		<div class="panel-body">
 
 			<div class="row col-md-3">
@@ -167,7 +167,7 @@ $(document).ready(function(){
 								
 						<div class="group">
 							<div class="text-center">
-								<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
+								<button class="btn btn-warning" id="readit">我已经仔细阅读说明并同意相关内容</button>
 							</div>
 						</div>
 					</div>
@@ -182,7 +182,7 @@ $(document).ready(function(){
 				  
 					<div class="form-horizontal" >
 						<div class="group" style="margin-bottom:10px;">
-							<a class="btn btn-info" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
+							<a class="btn btn-primary" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
 						</div>
 						<div class="group">
 							<div class="list-group" id="field-select">
@@ -195,7 +195,7 @@ $(document).ready(function(){
 						</div>
 						<div class="group">
 							<div class="col-md-12 text-center" style="padding-top:10px">
-								<button class="btn btn-success" id="create">确认创建</button>
+								<button class="btn btn-primary" id="create">确认创建</button>
 							</div>
 						</div>
 					</div>
@@ -218,7 +218,7 @@ $(document).ready(function(){
 						</div>
 						<div class="row" style="margin-top:10px">
 							<div class="col-md-12 text-center">
-								<button class="btn btn-success" id="d-create">确认创建</button>
+								<button class="btn btn-primary" id="d-create">确认创建</button>
 							</div>
 						</div>
 					</div>
@@ -254,7 +254,7 @@ $(document).ready(function(){
 						</div>
 						<div class="form-group">
 							<div class="col-md-12 text-center">
-								<button class="btn btn-success" id="btn-change-passwd">确认</button>
+								<button class="btn btn-primary" id="btn-change-passwd">确认</button>
 							</div>
 						</div>
 					</div>
@@ -355,7 +355,7 @@ $(document).ready(function(){
 						</div>
 						<div class="form-group">
 						<div class="col-md-8 text-right">
-							<button class="btn btn-success" id="btn-change-data">修改</button>
+							<button class="btn btn-primary" id="btn-change-data">修改</button>
 						</div>
 						</div>
 					</div>

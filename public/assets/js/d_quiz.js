@@ -270,10 +270,15 @@ function ask_for_preview(){
 					$(this.parentNode).hide();
 				}
 				if(this.checked == true){
-					$(this.parentNode).addClass('radio-selected');
+					//$(this.parentNode).addClass('radio-selected');
 				}
 			});
 			$('.button-modify').click(function(){
+				var t = this;
+				$(':radio').each(function(){
+					if(this.checked && this.parentNode.parentNode == t.parentNode.parentNode)
+						$(this.parentNode).addClass('radio-selected');
+				});
 				var siblings = $(this.parentNode).siblings();
 				var i;
 

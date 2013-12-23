@@ -102,13 +102,13 @@
 				</div>
 				<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/pdf.png" width="28px" />
+						<img src="./assets/img/index/icon/pdf.png" style="width:24px;margin:2px"/>
 						<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/pptx.png" width="28px" />
+						<img src="./assets/img/index/icon/pptx.png" style="width:24px;margin:2px"/>
 						<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
 					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/zip.png" width="28px" />
+						<img src="./assets/img/index/icon/zip.png" style="width:24px;margin:2px"/>
 						<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
 				</ul>
 			</div>

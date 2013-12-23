@@ -24,16 +24,14 @@
 }
 </style>
 <div class="group" style="margin-top:20px">
-	<div class="alert alert-success text-center dsawdasdaw" >
+	<div class="alert alert-info text-center dsawdasdaw" >
 		<h1 class="text-center"  onclick="window.location='login.php';"><strong>电子政务服务能力成熟度在线评估系统<strong><br><small>eGov-CMM</small></h1>
 		<?php
 			if (isset($_SESSION['USERID'])){
 				echo '<h4 class="text-right" >你好 <a href="user_zone.php?navigation=7" title="点击进入个人中心">'.$_SESSION['USERID'].'！</a> ';
 					
-				if($_SESSION['PERMISSION'] == '0')
-					echo '<span class="label label-info" onclick="window.location=\'./user_zone.php?navigation=4\'">我的测评</span>';
 					
-				echo ' <span class="label label-danger" onclick="window.location=\'./handle/logout.php\'">退出</span></h4>';
+				echo ' <span class="label label-warning" onclick="window.location=\'./handle/logout.php\'">退出</span></h4>';
 			}
 			else
 				echo ' <h4 class="text-right"> <span class="label label-success" onclick="window.location=\'login.php\'">登录</span></h4>';

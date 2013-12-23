@@ -1,7 +1,9 @@
-body,html,h1,h2,h3,h4,h5{
+body,h1,h2,h3,h4,h5{
 	font-family:"Microsoft YaHei", Helvetica, Arial, sans-serif;
 }
-
+p,span,label{
+	font-family:"SimSun", Helvetica, Arial, sans-serif;
+}
 .main{
 	margin:0px auto;
 	width:960px;
@@ -12,4 +14,16 @@ textarea{
 a:hover{
 	cursor:pointer;
 	text-decoration:none;
+}
+.group .alert h1{
+	color:rgb(40,74,119);
+}
+.group .alert h1 small{
+	color:rgb(128,128,128);
+}
+.jumbotron{
+	background-color:#BAD3FF;
+}
+.alert-info{
+	background-color:#BAD3FF;
 }
