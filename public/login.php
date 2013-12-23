@@ -26,13 +26,13 @@
 	<div class="col-md-8">
 		<div class="jumbotron"  style="border-radius:6px">
 		  <h2>系统简介</h2>
-		  <p style="font-size:14px">
-			本次测评以地方政府职能部门为主要研究对象，通过对电子政务系统（权利阳光系统）内部人员使用电子政务服务系统的感受，服务能力进行识别，从而明确电子政务服务能力的价值传导途径与各部分之间的关系。<br>
-			希望通过本调查了解政府内部人员（尤其是日常工作中使用电子政务系统的公务人员）对电子政务系统使用情况的感受，以及各部门应用电子政务提供服务情况的客观评价。<br>
-			您的评测结果将有助于寻找提高贵部门电子政务服务能力的方法和思路。<br>
-			调查内容包括个人信息、电子政务系统使用情况的个人感受、电子政务系统服务情况的个人感受等三项内容。<br>
-			作为本领域的专业人士，您的意见对我们的研究工作非常重要，它将是我们了解电子政务系统应用情况的重要参考依据。评测完后，我们将会根据您的评测内容给出评测分析和最终评价结果。<br>
-			<br>填写问卷时，请选择您认可的成熟度水平相应的选项，1代表成熟度水平最低，5代表成熟度水平最高。
+		  <p style="font-size:14px;text-indent:2em;">
+			本次测评以地方政府职能部门为主要研究对象，通过对电子政务系统（权利阳光系统）内部人员使用电子政务服务系统的感受，服务能力进行识别，从而明确电子政务服务能力的价值传导途径与各部分之间的关系。</p>
+			<p style="font-size:14px;text-indent:2em;">希望通过本调查了解政府内部人员（尤其是日常工作中使用电子政务系统的公务人员）对电子政务系统使用情况的感受，以及各部门应用电子政务提供服务情况的客观评价。</p>
+			<p style="font-size:14px;text-indent:2em;">您的评测结果将有助于寻找提高贵部门电子政务服务能力的方法和思路。</p>
+			<p style="font-size:14px;text-indent:2em;">调查内容包括个人信息、电子政务系统使用情况的个人感受、电子政务系统服务情况的个人感受等三项内容。</p>
+			<p style="font-size:14px;text-indent:2em;">作为本领域的专业人士，您的意见对我们的研究工作非常重要，它将是我们了解电子政务系统应用情况的重要参考依据。评测完后，我们将会根据您的评测内容给出评测分析和最终评价结果。</p>
+			<p style="font-size:14px;text-indent:2em;">填写问卷时，请选择您认可的成熟度水平相应的选项，1代表成熟度水平最低，5代表成熟度水平最高。</p>
 		  </p>
 		  <p><a class="btn btn-primary btn-lg" role="button">更多...</a></p>
 		</div>
@@ -87,38 +87,38 @@
 		<div class="group" id="login_second">
 			<div style="position:relative">
 			<div id="cover-u" style="position:absolute;width:300px;height:85px;background:#5bc0de;z-index:1002;border-radius:5px;cursor:pointer" onclick="hide_cover(1)">
-				<button type="button" class="btn btn-info btn-lg btn-block" style="width:300px;height:85px;">
+				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
 					<span class="glyphicon glyphicon-user"></span><br><h3>个人测评</h3>
 				</button>
 			</div>
 			<div class="btn-group">
-				<button class="btn btn-info" id="u_t" style="width:150px;height:85px">
+				<button class="btn btn-primary" id="u_t" style="width:150px;height:85px">
 					<span class="glyphicon glyphicon-user"></span><br><h4>开始测评</h4>
 				</button>
 				
-				<button class="btn btn-info" onclick="window.location=\'user_zone.php?navigation=4\'" style="width:150px;height:85px">
+				<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=4\'" style="width:150px;height:85px">
 					<span class="glyphicon glyphicon-th-list"></span><br><h4>我的测评</h4>
 				</button>
 			</div>
 			</div>
-			<label class="label-control alert alert-success">个人评测说明:<br>个人测评中用户选择自己想要测评的关键域进行测评，每个用户只能看到自己的测评</label>
+			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">单人测评模式:<br>您可以选择自己熟知的领域，对您所在的部门的某些流程进行测评。测评后可直接获取报表结果。</label>
 			<div style="position:relative">
 			<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer"  onclick="hide_cover(2)">
-				<button type="button" class="btn btn-warning btn-lg btn-block" style="width:300px;height:85px;">
+				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
 					<span class="glyphicon glyphicon-briefcase"></span><br><h3>单位测评</h3>
 				</button>
 			</div>
 			<div class="btn-group" style="position:relative">
-				<button class="btn btn-warning" id="d_t" style="width:150px;height:85px">
+				<button class="btn btn-primary" id="d_t" style="width:150px;height:85px">
 					<span class="glyphicon glyphicon-briefcase"></span><br><h4>创建测评</h4>
 				</button>
 				
-				<button class="btn btn-warning" onclick="window.location=\'user_zone.php?navigation=5\'" style="width:150px;height:85px">
+				<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=5\'" style="width:150px;height:85px">
 					<span class="glyphicon glyphicon-th-list"></span><br><h4>单位测评</h4>
 				</button>
 			</div>
 			</div>
-			<label class="label-control alert alert-success">单位评测说明:<br>单位测评创建时所有属于本单位的用户都可以看到并进行测评，每个用户可以选择自己想要测评的关键域进行测评，只有所有关键域都测评完之后才能查看结果</label>
+			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">多人模式:<br>您可以选择自己熟知的领域，与您的同事一起完成对单位的测评。报告结果会在所有测评项完成后获得。</label>
 		</div>
 		
 		' ;
@@ -170,10 +170,10 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-6 text-right">
-						<button class="btn btn-success" id="d-create">确认创建</button>
+						<button class="btn btn-primary" id="d-create">确认创建</button>
 					</div>
 					<div class="col-md-6 text-left">
-						<button class="btn btn-danger" id="d-cancel">取消创建</button>
+						<button class="btn btn-warning" id="d-cancel">取消创建</button>
 					</div>
 				</div>
 			</div>
@@ -199,7 +199,7 @@
 		
 				<div class="form-group">
 					<div class="col-md-12 text-center">
-						<button class="btn btn-success" id="readit">我已经仔细阅读说明并同意相关内容</button>
+						<button class="btn btn-warning" id="readit">我已经仔细阅读说明并同意相关内容</button>
 					</div>
 				</div>
 			</div>
@@ -211,7 +211,7 @@
 	<div class="u_cover_content">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-			<h3 class="panel-title">选择你想要测评的域然后创建
+			<h3 class="panel-title">选择你想要测评的项目
 				<div style="float:right" class="glyphicon glyphicon-remove-circle" onClick="hide()"></div>
 			</h3>
 		  </div>
@@ -220,7 +220,7 @@
 			<div class="form-horizontal">
 				<div class="group">
 					<div style="margin-bottom:10px;">
-						<a class="btn btn-info" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
+						<a class="btn btn-primary" id="all-select">全选</a> <a class="btn btn-warning" id="cancel-select">清除</a>
 					</div>
 					<div class="list-group" id="field-select">
 						
@@ -229,16 +229,16 @@
 				<div class="form-group">
 					
 					<div class="col-md-12">
-						<label class="label-control">输入备注（可选）：</label>
+						<label class="label-control">输入备注（测试名，可选）：</label>
 						<textarea id="user-remark" class="form-control" rows="3"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6 text-right">
-						<button class="btn btn-success" id="create">确认创建</button>
+						<button class="btn btn-primary" id="create">确认创建</button>
 					</div>
 					<div class="col-md-6 text-left">
-						<button class="btn btn-danger" id="u-cancel">取消创建</button>
+						<button class="btn btn-warning" id="u-cancel">取消创建</button>
 					</div>
 				</div>
 			</div>

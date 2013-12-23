@@ -1,5 +1,5 @@
 .over-done{
-	background-color:#CCCCCC;
+	background-color:#e0e0e0;
 }
 .over-doing{
 	background-color:yellow;
@@ -11,6 +11,21 @@
 	color:white;
 }
 .radio-selected{
-	background-color:#5cb85c;
+	background-color:#bce8f1;
 	border-radius:5px;
+	padding:4px;
+}
+.list-group-item label{
+	font-weight:normal;
+	margin-left:1em;
+}
+.button-modify{
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background-color:#39b3d7;
+	color:#ffffff;
+	border-color:#428bca
+}
+.panel-info>.panel-heading,.panel-default>.panel-heading{
+	background-color:#BAD3FF;
 }

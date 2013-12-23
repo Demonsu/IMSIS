@@ -55,7 +55,7 @@ $(document).ready(function(){
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
-				operation:'FETCHPALEQUESTIONNAIRE',
+				operation:'FETCHPALEQUESTIONNAIRE'
 			},
 			success:function(data){
 				//alert(data);
@@ -142,7 +142,7 @@ $(document).ready(function(){
 			type:'POST',
 			url:'handle/user_zone.php',
 			data:{
-				operation:'CHECKDEPARTMENTQUESTIONNAIRE',
+				operation:'CHECKDEPARTMENTQUESTIONNAIRE'
 			},
 			success:function(data){
 				$('#loading-cover').hide();

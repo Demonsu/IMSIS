@@ -45,3 +45,15 @@ table{
  margin-top:25px;
  margin-bottom:25px;
 }
+
+
+#navbar-example{
+	
+	background-color:#d9edf7;
+	border-color:#bce8f1;
+}
+.table-title{
+	font-size:28px;
+	text-align:center;
+}
+

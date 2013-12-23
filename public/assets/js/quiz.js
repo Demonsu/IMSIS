@@ -123,11 +123,13 @@ function ask_for_preview(){
 				if(this.checked == false){
 					$(this.parentNode).hide();
 				}
-				if(this.checked == true){
-					$(this.parentNode).addClass('radio-selected');
-				}
 			});
 			$('.button-modify').click(function(){
+				var t = this;
+				$(':radio').each(function(){
+					if(this.checked && this.parentNode.parentNode == t.parentNode.parentNode)
+						$(this.parentNode).addClass('radio-selected');
+				});
 				var siblings = $(this.parentNode).siblings();
 				var i;
 
@@ -161,6 +163,18 @@ function set_checked(name,val){
 
 function getprogress(){//获取第一步左边的进度表，调用函数获取问卷
 	$('#loading-cover').show();
+	$.ajax({
+		type:'POST',
+		url:'handle/quiz.php',
+		data:{
+			operation:'FETCHANSWERPROCESS',
+			quiz_id:$('#quiz_id').val()
+		},
+		success:function(data){
+			alert(data);
+			$('#answered-quiz').text(data);
+		}
+	});
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -207,7 +221,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				$('.select-field').each(function(){
 					$(this).click(function(){
 						//alert($(this.parentNode.parentNode).html());
-						if(!$(this.parentNode).hasClass('over-doing') && !$(this.parentNode).hasClass('over-done')){
+						if(!$(this.parentNode).hasClass('over-doing')){
 							var t = this;
 							var varNum = 0;
 							var checkedNum = 0;
@@ -223,6 +237,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 							if(checkedNum * 6 >= varNum){
 								var sub = window.confirm('你已经填完当前关键域，是否保存');
 								if(sub){
+									//alert(phpChar);
 									$('#loading-cover').show();
 									$.ajax({
 										type:'POST',
@@ -335,10 +350,20 @@ function get_key_field(t){//获取第一步右边的问卷
 			$('#quiz-answer').html(data);
 			$(':radio').click(function(){
 				var name = this.name;
+				var temp = 0;
 				$(':radio').each(function(){
-					if(this.name == name)
+					if(this.name == name && $(this.parentNode).hasClass('radio-selected')){
 						$(this.parentNode).removeClass('radio-selected');
+						temp++;
+					}
 				});
+				if(temp == 0){
+					temp = $('#answered-quiz').text();
+					var s = temp.split('/');
+					$('#answered-quiz').text((parseInt(s[0])+1)+'/'+s[1]);
+					if(parseInt(s[0])+1 == parseInt(s[1]))
+						$('#next-key-field').text('完成测评');
+				}
 				$(this.parentNode).addClass('radio-selected');
 			});
 			$('#loading-cover').hide();

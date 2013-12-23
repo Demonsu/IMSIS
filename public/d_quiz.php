@@ -82,7 +82,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-right">
-				<button class="btn btn-success" id="confirm-target">确认</button>
+				<button class="btn btn-primary" id="confirm-target">确认</button>
 				</div>
 			</div>
 		</div>
@@ -101,7 +101,7 @@
 	  </div>
 	  <div class="form-group">
 		<div class="col-md-12 text-right">
-		<button class="btn btn-success" id="submit-result">提交</button>
+		<button class="btn btn-primary" id="submit-result">提交</button>
 		</div>
 	  </div>
 	</div>
@@ -121,7 +121,7 @@
             </div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<button class="btn btn-success" id="d_confirm">确认</button>
+					<button class="btn btn-primary" id="d_confirm">确认</button>
 				</div>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 						Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<button class="btn btn-success" id="readit">我已经仔细阅读《XXX》并同意相关内容</button>
+					<button class="btn btn-warning" id="readit">我已经仔细阅读《XXX》并同意相关内容</button>
 				</div>
 			</div>
 		</div>
@@ -210,7 +210,7 @@
 				</div>
 				<div class="text-right row">
 					<div class="col-md-12">
-						<button class="btn btn-success" id="next-key-field">下一个关键域</button>
+						<button class="btn btn-primary" id="next-key-field">保存并继续</button>
 					</div>
 				</div>
 			</div>

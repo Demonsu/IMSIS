@@ -85,17 +85,17 @@ a .over-doing:hover{
 			</div>
 			<div class="text-right row">
 				<div class="col-md-12">
-					<button class="btn btn-success" id="confirm-target">确定</button>
+					<button class="btn btn-primary" id="confirm-target">确定</button>
 				</div>
 			</div>
 		</div>
 	  </div>
 	</div>
 </div>
-<div class="row" id="third" class="display:none">
+<div class="group" id="third" class="display:none">
 	<div class="panel panel-default">
 	  <div class="panel-heading">
-		<h3 class="panel-title">预览结果并提交答案</h3>
+		<h3 class="panel-title">预览结果</h3>
 	  </div>
 	  <div class="panel-body">
 		<div class="form-group">
@@ -104,7 +104,7 @@ a .over-doing:hover{
 			</div>
 			<div class="text-right row">
 				<div class="col-md-12">
-					<button class="btn btn-success" id="submit-quiz">提交</button>
+					<button class="btn btn-primary" id="submit-quiz">提交</button>
 				</div>
 			</div>
 		</div>
@@ -116,7 +116,7 @@ a .over-doing:hover{
 	<div class="col-md-3">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-			<h3 class="panel-title">问卷进度</h3>
+			<h3 class="panel-title">问卷进度 <span> 已答:<label id="answered-quiz">7/10</label></span></h3>
 		  </div>
 		  <div class="panel-body" id="quiz-progress">
 			<div class="list-group">
@@ -154,7 +154,7 @@ a .over-doing:hover{
 				</div>
 				<div class="text-right row">
 					<div class="col-md-12">
-						<button class="btn btn-success" id="next-key-field">下一个关键域</button>
+						<button class="btn btn-primary" id="next-key-field">保存并继续</button>
 					</div>
 				</div>
 			</div>
