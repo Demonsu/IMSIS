@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	$_BASE_PATH="../../";
 
@@ -28,6 +29,7 @@
 		});
 	});
 	var file_url = '';
+	var img_url = '';
 	$(document).ready(function(){
 		var id = $('#newsid').val();
 		$('#cancel').click(function(){
@@ -44,7 +46,8 @@
 						title:htmlEncode($('#title').val()),
 						type:$(':radio[name="filetype"]:checked').val(),
 						content:htmlEncode($('textarea[name="content"]').html()),
-						url:file_url
+						url:file_url,
+						img_url:img_url
 					},
 					success:function(data){
 						alert(data);
@@ -62,7 +65,8 @@
 						title:htmlEncode($('#title').val()),
 						type:$(':radio[name="filetype"]:checked').val(),
 						content:htmlEncode($('textarea[name="content"]').html()),
-						url:file_url
+						url:file_url,
+						img_url:img_url
 					},
 					success:function(data){
 						alert(data);
@@ -85,24 +89,26 @@
 					$('#title').val(data.title);
 					editor.insertHtml(data.content);
 					file_url = data.url;
+					img_url = data.img_url;
 					$(':radio').each(function(){
 						if($(this).val() == data.type){
 							this.checked = true;	
 						}
 					});
 					$('#file_path').text('./public/assets/upload/files/'+file_url);
+					$('#img-path').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
 				}
 			});
 		}
 	});
 	function htmlEncode(str) {
 		var s = "";  
-		if (str.length == 0) return "";  
-		s = str.replace(/&/g, "&amp;");  
-		s = s.replace(/</g, "&lt;");  
-		s = s.replace(/>/g, "&gt;");    
-		s = s.replace(/'/g, "&apos;");  
-		s = s.replace(/"/g, "&quot;");  
+		if (str.length == 0) return "";
+		s = str.replace(/&/g, "&amp;");
+		s = s.replace(/</g, "&lt;");
+		s = s.replace(/>/g, "&gt;");
+		s = s.replace(/'/g, "&apos;");
+		s = s.replace(/"/g, "&quot;");
 		return s;  
 	};
 	function ajaxFileUpload()
@@ -140,6 +146,41 @@
 		return false;
 
 	}
+	function ajaxFileUpload2()
+	{
+		$.ajaxFileUpload
+		(
+			{
+				url:'./ajaxfileupload/doajaxfileupload.php',
+				secureuri:false,
+				fileElementId:'fileToUpload2',
+				dataType: 'json',
+				data:{name:'logan', id:'id'},
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							alert(data.msg);
+							img_url = data.msg;
+							$('#img-path').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+		
+		return false;
+
+	}
 </script>
 <body>
 <div class="main">
@@ -162,10 +203,19 @@
 		<label><input type="radio" name="filetype" value="pdf" />.pdf</label>
 		<label><input type="radio" name="filetype" value="other" />other</label>
 	</div>
+	<label>请选择要分享的文件并上传</label>
 	<input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
 	<button class="button" id="buttonUpload" onClick="return ajaxFileUpload();">上传</button>
 	<div>
 		<label id="file_path"></label>
+	</div>
+	<br>
+	<label>请选择要用于置顶的图片并上传</label>
+	<input id="fileToUpload2" type="file" size="45" name="fileToUpload" class="input">
+	<button class="button" id="buttonUpload2" onClick="return ajaxFileUpload2();">上传</button>
+	
+	<div id="img-path">
+		
 	</div>
 	<p style="float:right">
 		<button type="button" class="btn btn-success" id="confirm">确定</button>

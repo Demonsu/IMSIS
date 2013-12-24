@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	$_BASE_PATH="../../";
 
@@ -80,7 +81,7 @@
 					$('#title').val(data.title);
 					editor.insertHtml(data.content)
 					img_url = data.img_url;
-					$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'"/>');
+					$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
 				}
 			});
 		}
@@ -116,7 +117,7 @@
 						{
 							alert(data.msg);
 							img_url = data.msg;
-							$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'"/>');
+							$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
 						}
 					}
 				},
@@ -143,7 +144,7 @@
 	</form>
 	<input id="fileToUpload" type="file" size="45" name="fileToUpload" class="input">
 	<button class="button" id="buttonUpload" onClick="return ajaxFileUpload();">上传</button>
-	<div id="img-show">
+	<div id="img-show" style="max-width:600px;">
 		
 	</div>
 	<p style="float:right">

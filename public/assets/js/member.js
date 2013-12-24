@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+	$.ajax({
+		
+	});
+	
 	$('#news-id').click(function(){
 		hide();
 		$('#news-panel').show();
