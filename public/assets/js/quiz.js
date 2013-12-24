@@ -171,7 +171,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 			quiz_id:$('#quiz_id').val()
 		},
 		success:function(data){
-			alert(data);
+			//alert(data);
 			$('#answered-quiz').text(data);
 		}
 	});

@@ -519,7 +519,7 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($discovery_info=mysql_fetch_assoc($select))
 		{
-			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],$discovery_info["title"]);
+			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],htmlspecialchars_decode($discovery_info["title"],ENT_QUOTES));
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
@@ -530,16 +530,18 @@ class Admin extends DB_Connect {
 			"title":"%s",
 			"content":"%s",
 			"type":"%s",
-			"url":"%s"
+			"url":"%s",
+			"img_url":"%s"
 		}';
 		$return_value="";
 		$sql="SELECT * FROM discovery_share WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$discovery_info=mysql_fetch_assoc($select);
-		$return_value=sprintf($DISCOVERYDETAIL,$discovery_info["title"],$discovery_info["content"],$discovery_info["type"],$discovery_info["url"]);
+		//htmlspecialchars_decode($comment_row['comment'],ENT_QUOTES)
+		$return_value=sprintf($DISCOVERYDETAIL,htmlspecialchars_decode($discovery_info["title"],ENT_QUOTES),htmlspecialchars_decode($discovery_info["content"],ENT_QUOTES),$discovery_info["type"],$discovery_info["url"]);
 		return $return_value;
 	}
-	public function add_discovery_share($title,$type,$content,$time,$url)//添加一个分享
+	public function add_discovery_share($title,$type,$content,$time,$url,$img_url)//添加一个分享
 	{
 		$sort_value=0;
 		$sql="SELECT MAX(sort_value) AS cur_value FROM discovery_share";
@@ -552,11 +554,11 @@ class Admin extends DB_Connect {
 		}
 		$sql="INSERT INTO discovery_share
 		(
-			title,type,content,time,url,sort_value
+			title,type,content,time,url,sort_value,img_url
 		)
 		VALUES
 		(
-			'".$title."','".$type."','".$content."','".$time."','".$url."','".$sort_value."'
+			'".$title."','".$type."','".$content."','".$time."','".$url."','".$sort_value."','".$img_url."'
 		)";
 		if (!mysql_query($sql,$this->root_conn))
 		{
@@ -564,9 +566,9 @@ class Admin extends DB_Connect {
 		}
 		return 1;
 	}
-	public function modify_discovery_share($id,$title,$type,$content,$time,$url)//修改一个分享
+	public function modify_discovery_share($id,$title,$type,$content,$time,$url,$img_url)//修改一个分享
 	{
-		$sql="UPDATE discovery_share SET title='".$title."',type='".$type."',content='".$content."',time='".$time."',url='".$url."' WHERE id='".$id."'";
+		$sql="UPDATE discovery_share SET title='".$title."',type='".$type."',content='".$content."',time='".$time."',url='".$url."',img_url='".$img_url."' WHERE id='".$id."'";
 		if (!mysql_query($sql,$this->root_conn))
 		{
 		  die('Error: ' . mysql_error());
@@ -652,7 +654,7 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($news_info=mysql_fetch_assoc($select))
 		{
-			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],$news_info["title"]);
+			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],htmlspecialchars_decode($news_info["title"],ENT_QUOTES));
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
@@ -667,8 +669,10 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$sql="SELECT * FROM news WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
-		$discovery_info=mysql_fetch_assoc($select);
-		$return_value=sprintf($NEWSDETAIL,$news_info["title"],$news_info["content"],$news_info["img_url"]);
+		$news_info=mysql_fetch_assoc($select);
+		//htmlspecialchars_decode($comment_row['comment'],ENT_QUOTES)
+		$return_value=sprintf($NEWSDETAIL,htmlspecialchars_decode($news_info["title"],ENT_QUOTES),htmlspecialchars_decode($news_info["content"],ENT_QUOTES),$news_info["img_url"]);
+		return $return_value;
 	}	
 	public function add_news($title,$content,$time,$img_url)//添加一个新闻
 	{
