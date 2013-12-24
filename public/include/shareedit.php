@@ -50,8 +50,10 @@
 						img_url:img_url
 					},
 					success:function(data){
-						alert(data);
-						window.location = '../admin_zone.php?navigation=2';
+						if(data == 1)
+							window.location = '../admin_zone.php?navigation=2';
+						else
+							alert(data);
 					}
 				});
 			}
@@ -69,8 +71,10 @@
 						img_url:img_url
 					},
 					success:function(data){
-						alert(data);
-						window.location = '../admin_zone.php?navigation=2';
+						if(data == 1)
+							window.location = '../admin_zone.php?navigation=2';
+						else
+							alert(data);
 					}
 				});
 			}
