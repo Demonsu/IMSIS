@@ -3,7 +3,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'handle/system.php',
 		data:{
-			
+			operation:'FETCHSHARELIST'
 		},
 		success:function(data){
 			alert(data);
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'handle/system.php',
 		data:{
-			
+			operation:'FETCHNEWSLIST'
 		},
 		success:function(data){
 			alert(data);
