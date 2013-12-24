@@ -1,6 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-	
+
+	$type = $_GET['type'];
+	$id = '';
+	if($type == 'news'){
+		$id = $_GET['id'];
+	}
 ?>
 <html>
 <head>
@@ -19,12 +24,13 @@
 			margin-left:30px;
 			margin-right:30px;
 		}
-		.title-div{
+		#title-div{
 			width:100%;
 			text-align:center;
 		}
-		.content-div{
+		#content-div{
 			width:100%;
+			min-height:500px;
 		}
 		p{
 			text-indent:2em;
@@ -32,7 +38,25 @@
 	</style>
 	<script>
 		$(document).ready(function(){
-			
+			var type = '<?php echo $type; ?>';
+			var id = '';
+			if(type == 'news'){
+				id = <?php echo $id; ?>;
+				$.ajax({
+					type:'POST',
+					url:'../handle/admin_zone.php',
+					data:{
+						operation:'FETCHNEWSDETAIL',
+						id:id
+					},
+					success:function(str){
+						//alert(str);
+						var data = jQuery.parseJSON(str);
+						//$('#title-div').text(data.title);
+						$('#content-div').html(data.content);
+					}
+				});
+			}
 		});
 	</script>
 </head>
@@ -52,10 +76,7 @@
 </div>
 
 <div class="main-content">
-	<div class="title-div">
-	
-	</div>
-	<div class="content-div">
+	<div id="content-div">
 	
 	</div>
 </div>

@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 function hide(){
 	$('#link-panel').hide();
-	$('#contant-panel').hide();
+	$('#contact-panel').hide();
 	$('#news-panel').hide();
 	$('#field-panel').hide();
 	$('#service-panel').hide();

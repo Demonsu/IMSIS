@@ -88,7 +88,7 @@
 					id:id
 				},
 				success:function(str){
-					alert(str);
+					//alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(data.title);
 					editor.insertHtml(data.content);

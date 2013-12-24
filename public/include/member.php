@@ -73,7 +73,7 @@
 	<div style="float:left;width:660px;" id="share-panel">
 		<h3>探索与分享</h3>
 		<hr>
-		<div id="media-content" id="share-list">
+		<div id="share-list">
 			<div class="media">
 			  <a class="pull-left">
 				<img class="media-object" src="../assets/img/index/icon/pptx.png" width="64px">
