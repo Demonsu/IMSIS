@@ -169,7 +169,7 @@ class System extends DB_Connect {
 			  </a>
 			  <div class="media-body">
 				<h4 class="media-heading"><a href="../assets/upload/files/%s">%s</a></h4>
-				%s
+				aa%s
 			  </div>
 		</div>
 		';

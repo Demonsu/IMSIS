@@ -44,7 +44,7 @@
 	}
 	if ($operation=="FETCHNEWSLIST2")
 	{
-		echo $admin->fetch_news_list_2();
+		echo $system->fetch_news_list_2();
 	}
 
 ?>

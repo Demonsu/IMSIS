@@ -2,17 +2,18 @@ $(document).ready(function(){
 
 	$.ajax({
 		type:'POST',
-		url:'handle/system.php'
+		url:'../handle/system.php',
 		data:{
 			operation:'FETCHSHARELIST2'
 		},
 		success:function(data){
+			alert(data);
 			$('#share-list').html(data);
 		}
 	});
 	$.ajax({
 		type:'POST',
-		url:'handle/system.php'
+		url:'../handle/system.php',
 		data:{
 			operation:'FETCHNEWSLIST2'
 		},
