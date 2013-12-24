@@ -26,31 +26,31 @@
 	$(document).ready(function(){
 		var navi = <?php echo $navi; ?>;
 		if(navi == 1){
-		
+			$('#manage-news').click();
 		}
 		else if(navi == 2){
-		
+			$('#manage-share').click();
 		}
 		else if(navi == 3){
-		
+			$('#search-quiz').click();
 		}
 		else if(navi == 4){
-		
+			$('#manage-effect-field').click();
 		}
 		else if(navi == 5){
-		
+			$('#"manage-key-field').click();
 		}
 		else if(navi == 6){
-		
+			$('#manage-key-variable').click();
 		}
 		else if(navi == 7){
-		
+			$('#manage-target').click();
 		}
 		else if(navi == 8){
-		
+			$('#check-user').click();
 		}
 		else if(navi == 9){
-		
+			$('#change-passwd').click();
 		}
 	});
 </script>
@@ -74,7 +74,7 @@
 				查看评测
 			  </a>
 			  <a href="#" class="list-group-item" id="search-quiz">按条件搜索评测结果</a>
-			  <a href="#" class="list-group-item">评测结果总览</a>
+			  <!--<a href="#" class="list-group-item">评测结果总览</a>-->
 			  <a class="list-group-item active">
 				设置指标
 			  </a>
@@ -103,14 +103,7 @@
 		  <div class="panel-heading" id="body_title">管理分享内容</div>
 		  <div class="panel-body">
 			<ul class="list-group" id="share-list">
-			  <li class="list-group-item" id="12">Cras justo odiodwads
-				<label class="label label-success" onclick="share_settop(this)">置顶</label>
-				<label class="label label-info" onclick="share_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
-				<label class="label label-info" onclick="share_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
-				<label class="label label-danger" onclick="share_delete(this)">删除</label>
-				<label class="label label-warning" onclick="share_edit(this)">修改</label>
-			  </li>
-			  <li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -121,14 +114,7 @@
 		  <div class="panel-heading" id="body_title">管理动态新闻</div>
 		  <div class="panel-body">
 			<ul class="list-group" id="news-list">
-			  <li class="list-group-item" id="12">Cras justo odiodwads
-				<label class="label label-success" onclick="news_settop(this)">置顶</label>
-				<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
-				<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
-				<label class="label label-danger" onclick="news_delete(this)">删除</label>
-				<label class="label label-warning" onclick="news_edit(this)">修改</label>
-			  </li>
-			  <li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -138,12 +124,7 @@
 		  <div class="panel-heading" id="body_title">管理作用域</div>
 		  <div class="panel-body">
 			<ul class="list-group" id="effect-field-list">
-			  <li class="list-group-item" id="12">Cras justo odiodwads
-				<label class="label label-danger" onClick="delete_effect_field(this)">删除</label>
-				<label class="label label-info" onClick="show_hide_effect_field(this)">显示</label>
-				<label class="label label-warning" onClick="modify_effect_field(this)">修改</label>
-			  </li>
-			  <li class="list-group-item text-center" onClick="add_effect_field()"><span class="glyphicon glyphicon-plus"></span></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -172,12 +153,7 @@
 				
 			</select>
 			<ul class="list-group" id="key-field-list">
-			  <li class="list-group-item" id="">Cras justo odiodwads
-				<label class="label label-danger" onClick="delete_key_field(this)">删除</label>
-				<label class="label label-info" onClick="show_hide_key_field(this)">显示</label>
-				<label class="label label-warning" onClick="modify_key_field(this)">修改</label>
-			  </li>
-			  <li class="list-group-item text-center" onClick="add_key_field()"><span class="glyphicon glyphicon-plus"></span></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -215,12 +191,7 @@
 				</div>
 			</div>
 			<ul class="list-group" id="key-variable-list">
-			  <li class="list-group-item" id="">Cras justo odiodwads
-				<label class="label label-danger" onClick="delete_key_variable(this)">删除</label>
-				<label class="label label-info" onClick="show_hide_key_variable(this)">显示</label>
-				<label class="label label-warning" onClick="modify_key_variable(this)">修改</label>
-			  </li>
-			  <li class="list-group-item text-center" onClick="add_key_variable()"><span class="glyphicon glyphicon-plus"></span></li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -393,41 +364,7 @@
 				</ul>
 			</div>
 			<ul class="list-group" id="user-info-list">
-			  <li href="#" class="list-group-item" id="quiz-1">
-				<div class="input-group">
-				  <span class="input-group-addon">用户名</span>
-				  <span class="input-group-addon">密码</span>
-				  <span class="input-group-addon">负责工作</span>
-				  <span class="input-group-addon">专长</span>
-				  <span class="input-group-addon">
-					<button class="btn btn-default" type="button" onClick="user_data(this)">更多信息...</button>
-					<button class="btn btn-default" type="button" id="quiz-list1">问卷列表</button>
-					<script>
-						$(function(){
-							$('#quiz-list1').click(function(){
-								$('#quiz-list-1').toggle();
-							});
-						});
-					</script>
-				  </span>
-				</div>
-				<div class="list-group" id="quiz-list-1" style="margin-bottom:0">
-					<a href="#" class="list-group-item">Morbi leo risus</a>
-					<a href="#" class="list-group-item">Porta ac consectetur ac</a>
-					<a href="#" class="list-group-item">Vestibulum at eros</a>
-				</div>
-			  </li>
-			  <li href="#" class="list-group-item">
-				<div class="input-group">
-				  <span class="input-group-addon">用户名</span>
-				  <span class="input-group-addon">密码</span>
-				  <span class="input-group-addon">负责工作</span>
-				  <span class="input-group-addon">专长</span>
-				</div>
-			  </li>
-			  <li href="#" class="list-group-item">Morbi leo risus</li>
-			  <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-			  <li href="#" class="list-group-item">Vestibulum at eros</li>
+			  
 			</ul>
 		  </div>
 		</div>
@@ -451,14 +388,6 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9">
-		<div class="panel panel-default">
-		  <div class="panel-heading" id="body_title"></div>
-		  <div class="panel-body">
-			
-		  </div>
-		</div>
-	</div>
 	
 </div>
 <?php include './include/footer.php' ?>
