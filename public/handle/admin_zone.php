@@ -408,8 +408,9 @@
 			$content=$_POST["content"];
 			$time=date("Y-m-d H:i:s",time());
 			$url=$_POST["url"];
+			$img_url=$_POST["img_url"];
 			$admin=new Admin();
-			echo $admin->add_discovery_share($title,$type,$content,$time,$url);	
+			echo $admin->add_discovery_share($title,$type,$content,$time,$url,$img_url);	
 		}
 	}
 	if ($operation=="MODIFYDISCOVERY")
@@ -425,8 +426,9 @@
 			$content=$_POST["content"];
 			$time=date("Y-m-d H:i:s",time());
 			$url=$_POST["url"];
+			$img_url=$_POST["img_url"];
 			$admin=new Admin();
-			echo $admin->modify_discovery_share($id,$title,$type,$content,$time,$url);	
+			echo $admin->modify_discovery_share($id,$title,$type,$content,$time,$url,$img_url);	
 		}
 	}
 	if ($operation=="DELETEDISCOVERY")
