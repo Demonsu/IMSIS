@@ -430,6 +430,25 @@ class Questionnaire extends DB_Connect {
 		}
 		return $return_value;	
 	}
+	public function fetch_quiz_answer_process($user_id,$quiz_id)
+	{
+		$RESULTFORMAT='%s/%s';
+		$already_answer_num=0;
+		$total_question_num=0;
+		//获取属于该用户的关键域
+		$sql="SELECT * FROM questionnaire_content WHERE questionnaire_id='".$quiz_id."' AND user_id='".$user_id."' ";
+		$content_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+		while($quiz_content=mysql_fetch_assoc($content_select))
+		{
+			$sql="SELECT * FROM key_variable WHERE key_field_id='".$quiz_content["key_field_id"]."' AND available='1'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$key_variable_num=mysql_num_rows($select);
+			$total_question_num=$total_question_num+$key_variable_num;
+			if ($quiz_content['state']!=0)
+				$already_answer_num=$already_answer_num+$key_variable_num;
+		}
+		return sprintf($RESULTFORMAT,$already_answer_num,$total_question_num);
+	}
 	public function fetch_my_key_variable($quiz_id,$key_field_id)
 	{
 		$return_value="";
@@ -567,17 +586,24 @@ class Questionnaire extends DB_Connect {
 		foreach($answer_list as $answer)
 		{
 			//首先查看答案中是否已经有了这个问卷的答案
-			//$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' and key_variable_id='".$answer["key_variable_id"]."'";
-			//$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
-			//$num=mysql_num_rows($select);
-			$sql="INSERT INTO questionnaire_answer
-			(
-				questionnaire_id,key_variable_id,answer,answer_time
-			)VALUES
-			(
-				'".$quiz_id."','".$answer["key_variable_id"]."','".$answer["answer"]."','".$currenttime."'
-			)";
-
+			$sql="SELECT * FROM questionnaire_answer WHERE questionnaire_id='".$quiz_id."' and key_variable_id='".$answer["key_variable_id"]."'";
+			$select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
+			$num=mysql_num_rows($select);
+			if ($num==0)
+			{
+				$sql="INSERT INTO questionnaire_answer
+				(
+					questionnaire_id,key_variable_id,answer,answer_time
+				)VALUES
+				(
+					'".$quiz_id."','".$answer["key_variable_id"]."','".$answer["answer"]."','".$currenttime."'
+				)";
+			}else
+			{
+				$sql="UPDATE questionnaire_answer 
+				SET answer='".$answer["answer"]."',answer_time='".$currenttime."' 
+				WHERE questionnaire_id='".$quiz_id."' AND key_variable_id='".$answer["key_variable_id"]."'";
+			}
 			if (!mysql_query($sql,$this->root_conn))
 			{
 			  die('Error: ' . mysql_error());
@@ -737,7 +763,7 @@ class Questionnaire extends DB_Connect {
 		$return_value="";
 		$KEYFIELDFORMAT='<a class="list-group-item active">%s.%s %s<div style="float:right"></div></a> ';
 		$KEYVARIABLEFORMAT='<a class="list-group-item">
-					<p class="">%s %s<button class="button-modify">修改</button></p>
+					<p class="">%s %s<button class="button-modify" style="float:right">修改</button></p>
 						<label ><input type="radio" name="radio%s" value="1" >
 						%s</label><br>
 						<label ><input type="radio" name="radio%s" value="2">

@@ -30,5 +30,13 @@
 	{
 		echo $system->fetch_oncharge();
 	}
+	if ($operation=="FETCHSHARELIST")
+	{
+		echo $system->fetch_discovery_share_list();
+	}
+	if ($operation=="FETCHNEWSLIST")
+	{
+		echo $system->fetch_news_list();
+	}
 
 ?>

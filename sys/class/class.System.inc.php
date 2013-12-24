@@ -103,12 +103,61 @@ class System extends DB_Connect {
 
 	public function fetch_discovery_share_list()
 	{
-		
+		$FIRSTSHARE='			
+			<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+				<a href="./assets/download/%s" target="_blank" title="%s">
+					<img src="./assets/img/index/%s" width="277px" height="139px"/>
+				</a>
+			</div>
+			';
+		$SHAREFORMAT='				
+			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
+				%s
+			</ul>
+		';
+		$SHAREITEMFORMAT='
+			<li class="list-group-item list-group-item-success">
+			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
+			<a title="点击预览" href="./assets/download/%s" target="_blank">%s</a></li>
+		';		
+		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 4";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$first=mysql_fetch_assoc($select);
+		$first_item=sprintf($FIRSTSHARE,$first["url"],$first["title"],$first["img_url"]);
+		$share_body="";
+		while ($share=mysql_fetch_assoc($select))
+		{
+			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"]);
+		}
+		return $first_item.sprintf($SHAREFORMAT,$share_body);
 	}
 	
 	public function fetch_news_list()
 	{
-		
+		$FIRSTNESFORMAT='
+		<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+			<img src="./assets/img/index/%s" title="%s" width="277px" height="139px"/>
+		</div>';
+		$NEWSITEM='
+			<li class="list-group-item list-group-item-success">
+			<img src="./assets/img/index/list.png" width="28px" />
+			<a title="点击下载"  id="%s" target="_blank">%s</a></li>
+		';
+		$NEWS='
+			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
+			%s
+			</ul>
+		';
+		$sql="SELECT * FROM news ORDER BY sort_value DESC LIMIT 4";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$first=mysql_fetch_assoc($select);
+		$first_item=sprintf($FIRSTNESFORMAT,$first["img_url"],$first["title"]);
+		$news_body="";
+		while ($news=mysql_fetch_assoc($select))
+		{
+			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"]);
+		}
+		return $first_item.sprintf($NEWS,$news_body);		
 	}
 	
 	

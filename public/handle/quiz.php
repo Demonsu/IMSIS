@@ -23,7 +23,18 @@
 			echo $questionnaire->fetch_quiz_process($_SESSION["USERID"],$_POST["quiz_id"]);
 		}
 	}
-	
+	if ($operation=="FETCHANSWERPROCESS")//获取问卷答题进度
+	{
+		if (!isset($_SESSION["USERID"]))
+			echo "登陆信息已失效，请重新登陆";
+		else
+		{
+			//echo $_SESSION["USERID"];
+			//echo $_POST["quiz_id"]."!!";
+			$questionnaire=new Questionnaire();
+			echo $questionnaire->fetch_quiz_answer_process($_SESSION["USERID"],$_POST["quiz_id"]);
+		}
+	}	
 	if ($operation=="FETCHKEYVARIABLE")//获取一个关键域下的所有题目
 	{
 		$questionnaire=new Questionnaire();
