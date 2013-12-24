@@ -1,7 +1,24 @@
 $(document).ready(function(){
 
 	$.ajax({
-		
+		type:'POST',
+		url:'handle/system.php'
+		data:{
+			operation:'FETCHSHARELIST2'
+		},
+		success:function(data){
+			$('#share-list').html(data);
+		}
+	});
+	$.ajax({
+		type:'POST',
+		url:'handle/system.php'
+		data:{
+			operation:'FETCHNEWSLIST2'
+		},
+		success:function(data){
+			$('#news-list').html(data);
+		}
 	});
 	
 	$('#news-id').click(function(){
@@ -28,11 +45,21 @@ $(document).ready(function(){
 		hide();
 		$('#brief-panel').show();
 	});
+	$('#link-id').click(function(){
+		hide();
+		$('#link-panel').show();
+	});
+	$('#contact-id').click(function(){
+		hide();
+		$('#contact-panel').show();
+	});
 	hide();
 	$('#brief-panel').show();
 });
 
 function hide(){
+	$('#link-panel').hide();
+	$('#contant-panel').hide();
 	$('#news-panel').hide();
 	$('#field-panel').hide();
 	$('#service-panel').hide();
