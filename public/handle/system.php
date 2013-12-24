@@ -38,5 +38,13 @@
 	{
 		echo $system->fetch_news_list();
 	}
+	if ($operation=="FETCHSHARELIST2")
+	{
+		echo $system->fetch_share_list_2();
+	}
+	if ($operation=="FETCHNEWSLIST2")
+	{
+		echo $admin->fetch_news_list_2();
+	}
 
 ?>

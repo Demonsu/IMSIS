@@ -160,6 +160,46 @@ class System extends DB_Connect {
 		}
 		return $first_item.sprintf($NEWS,$news_body);		
 	}
+	public function fetch_share_list_2()
+	{
+		$SHAREFORMAT='			
+		<div class="media">
+			  <a class="pull-left">
+				<img class="media-object" src="../assets/img/index/icon/%s.png" width="64px">
+			  </a>
+			  <div class="media-body">
+				<h4 class="media-heading"><a href="../assets/upload/files/%s">%s</a></h4>
+				%s
+			  </div>
+		</div>
+		';
+		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$return_value="";
+		while ($share=mysql_fetch_assoc($select))
+		{
+			$return_value=$return_value.sprintf($SHAREFORMAT,$share["type"],$share["url"],$share["title"],$share["content"]);
+		}
+		return $return_value;
+		
+	}
+	public function fetch_news_list_2()
+	{
+		$NEWSFORMAT='
+		<tr>
+			<td><a id="news_%s" onclick="opennews(this)">%s</a></td>
+			<td>%s</td>	
+		</tr>';
+		$sql="SELECT * FROM news ORDER BY sort_value DESC";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$return_value="";
+		while ($news=mysql_fetch_assoc($select))
+		{
+			$return_value=$return_value.sprintf($NEWSFORMAT,$news["id"],$news["title"],$news["time"]);
+		}
+		return $return_value;
+	}
+	
 	
 	
 	
