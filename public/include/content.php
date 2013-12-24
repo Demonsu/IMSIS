@@ -44,16 +44,16 @@
 				id = <?php echo $id; ?>;
 				$.ajax({
 					type:'POST',
-					url:'../handle/admin_zone.php',
+					url:'../handle/system.php',
 					data:{
 						operation:'FETCHNEWSDETAIL',
 						id:id
 					},
 					success:function(str){
 						//alert(str);
-						var data = jQuery.parseJSON(str);
+						//var data = jQuery.parseJSON(str);
 						//$('#title-div').text(data.title);
-						$('#content-div').html(data.content);
+						$('#content-div').html(str);
 					}
 				});
 			}

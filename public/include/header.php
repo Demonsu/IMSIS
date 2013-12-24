@@ -28,9 +28,10 @@
 		<h1 class="text-center"  onclick="window.location='login.php';"><strong>电子政务服务能力成熟度在线评估系统<strong><br><small>eGov-CMM</small></h1>
 		<?php
 			if (isset($_SESSION['USERID'])){
-				echo '<h4 class="text-right" >你好 <a href="user_zone.php?navigation=7" title="点击进入个人中心">'.$_SESSION['USERID'].'！</a> ';
-					
-					
+				if ($_SESSION["USERID"]!="admin")
+					echo '<h4 class="text-right" >你好 <a href="user_zone.php?navigation=7" title="点击进入个人中心">'.$_SESSION['USERID'].'！</a> ';
+				else
+					echo '<h4 class="text-right" >你好 <a href="admin_zone.php?navigation=7" title="点击进入个人中心">'.$_SESSION['USERID'].'！</a> ';
 				echo ' <span class="label label-warning" onclick="window.location=\'./handle/logout.php\'">退出</span></h4>';
 			}
 			else

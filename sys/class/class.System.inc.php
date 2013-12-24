@@ -199,7 +199,14 @@ class System extends DB_Connect {
 		}
 		return $return_value;
 	}
-	
+	public function fetch_news_detail($id)
+	{
+		//htmlspecialchars_decode($comment_row['comment'],ENT_QUOTES)));
+		$sql="SELECT * FROM news WHERE id='".$id."'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		$news=mysql_fetch_assoc($select);	
+		return htmlspecialchars_decode($news["content"],ENT_QUOTES);
+	}
 	
 	
 	

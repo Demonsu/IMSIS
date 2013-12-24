@@ -46,5 +46,10 @@
 	{
 		echo $system->fetch_news_list_2();
 	}
+	if ($operation=="FETCHNEWSDETAIL")
+	{
+		$id=$_POST["id"];
+		echo $system->fetch_news_detail($id);
+	}
 
 ?>
