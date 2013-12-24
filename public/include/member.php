@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<?php
+	
+?>
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -57,8 +61,8 @@
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" id="share-id"> 探索与分享</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-certificate span-level" id="news-id"> 最新动态</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 成员</span></td></tr>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 友情链接</span></td></tr>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 联系我们</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="link-id"> 友情链接</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="contact-id"> 联系我们</span></td></tr>
 		<!--<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_IBM()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_MIS()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_other()"> </span></td></tr>-->
@@ -107,8 +111,30 @@
 		<hr>
 		<table style="width:100%;" id="news-list">
 			<tr>
-				<td>2010-11-05 到 2010-11-07</td>
-				<td>第八届机器学习及其应用研讨会<br>第五届机器学习及其应用学生研讨会</td>
+				<td><a id="news_%s" onclick="opennews(this)">第五届机器学习及其应用学生研讨会</a></td>
+				<td>2010-11-05 到 2010-11-07</td>	
+			</tr>
+		</table>
+	</div>
+	
+	<div style="float:left;width:660px;" id="link-panel">
+		<h3>友情链接</h3>
+		<hr>
+		<table style="width:100%;" id="news-list">
+			<tr>
+				<td><a id="news_%s" onclick="opennews(this)">第五届机器学习及其应用学生研讨会</a></td>
+				<td>2010-11-05 到 2010-11-07</td>	
+			</tr>
+		</table>
+	</div>
+	
+	<div style="float:left;width:660px;" id="contact-panel">
+		<h3>联系我们</h3>
+		<hr>
+		<table style="width:100%;" id="news-list">
+			<tr>
+				<td><a id="news_%s" onclick="opennews(this)">第五届机器学习及其应用学生研讨会</a></td>
+				<td>2010-11-05 到 2010-11-07</td>	
 			</tr>
 		</table>
 	</div>

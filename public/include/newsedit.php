@@ -46,7 +46,10 @@
 						img_url:img_url
 					},
 					success:function(data){
-						window.location = '../admin_zone.php?navigation=1';
+						if(data == 1)
+							window.location = '../admin_zone.php?navigation=1';
+						else
+							alert(data);
 					}
 				});
 			}
@@ -62,7 +65,10 @@
 						img_url:img_url
 					},
 					success:function(data){
-						window.location = '../admin_zone.php?navigation=1';
+						if(data == 1)
+							window.location = '../admin_zone.php?navigation=1';
+						else
+							alert(data);
 					}
 				});
 			}
