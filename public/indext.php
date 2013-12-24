@@ -94,41 +94,45 @@
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
 					探索与分享
 				</div>
-				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-					<a href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank" title="The_big_data_revolution_in_healthcare">
-						<img src="./assets/img/index/pdf-download.jpg" width="277px" height="139px"/>
-					</a>
+				<div id="share-div">
+					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+						<a href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank" title="The_big_data_revolution_in_healthcare">
+							<img src="./assets/img/index/pdf-download.jpg" width="277px" height="139px"/>
+						</a>
+					</div>
+					<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/icon/pdf.png" style="width:24px;margin:2px"/>
+							<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/icon/pptx.png" style="width:24px;margin:2px"/>
+							<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/icon/zip.png" style="width:24px;margin:2px"/>
+							<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
+					</ul>
 				</div>
-				<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/pdf.png" style="width:24px;margin:2px"/>
-						<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/pptx.png" style="width:24px;margin:2px"/>
-						<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/icon/zip.png" style="width:24px;margin:2px"/>
-						<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
-				</ul>
 			</div>
 			<div class="content-two">
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
 					最新动态
 				</div>
-				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-					<img src="./assets/img/index/news-title.jpg" width="277px" height="139px"/>
+				<div id="news-div">
+					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+						<img src="./assets/img/index/news-title.jpg" width="277px" height="139px"/>
+					</div>
+					<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/list.png" width="28px" />
+							<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/list.png" width="28px" />
+							<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
+						<li class="list-group-item list-group-item-success">
+							<img src="./assets/img/index/list.png" width="28px" />
+							<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
+					</ul>
 				</div>
-				<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/list.png" width="28px" />
-						<a title="Hadoop平台架构" href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank">医疗大数据革命</a></li>
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/list.png" width="28px" />
-						<a title="Hadoop平台架构" href="./assets/download/Hadoop平台架构.pptx" target="_blank">Hadoop平台架构</a></li>
-					<li class="list-group-item list-group-item-success">
-						<img src="./assets/img/index/list.png" width="28px" />
-						<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
-				</ul>
 			</div>
 			<div class="content-three">
 				

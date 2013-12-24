@@ -27,6 +27,11 @@
 			cursor:pointer;
 		}
 	</style>
+	<script>
+		$(document).ready(function(){
+			
+		});
+	</script>
 </head>
 <body>
 
@@ -52,6 +57,8 @@
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" id="share-id"> 探索与分享</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-certificate span-level" id="news-id"> 最新动态</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 成员</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 友情链接</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 联系我们</span></td></tr>
 		<!--<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_IBM()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_MIS()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_other()"> </span></td></tr>-->
@@ -62,7 +69,7 @@
 	<div style="float:left;width:660px;" id="share-panel">
 		<h3>探索与分享</h3>
 		<hr>
-		<div id="media-content">
+		<div id="media-content" id="share-list">
 			<div class="media">
 			  <a class="pull-left">
 				<img class="media-object" src="../assets/img/index/icon/pptx.png" width="64px">
@@ -98,7 +105,7 @@
 	<div style="float:left;width:660px;" id="news-panel">
 		<h3>最新动态</h3>
 		<hr>
-		<table style="width:100%;">
+		<table style="width:100%;" id="news-list">
 			<tr>
 				<td>2010-11-05 到 2010-11-07</td>
 				<td>第八届机器学习及其应用研讨会<br>第五届机器学习及其应用学生研讨会</td>
@@ -116,25 +123,24 @@
 	</div>
 	
 	<div style="float:left;width:660px;" id="field-panel">
-		<h3>研究领域</h3>
+		<h2>研究领域</h2>
+		<h3>探索视点</h3>
 		<hr>
-		<table style="width:100%;">
-			<tr>
-				<td>2010-11-05 到 2010-11-07</td>
-				<td>第八届机器学习及其应用研讨会<br>第五届机器学习及其应用学生研讨会</td>
-			</tr>
-		</table>
+		
+		<h3>科研成果</h3>
+		<hr>
 	</div>
 	
 	<div style="float:left;width:660px;" id="service-panel">
-		<h3>服务</h3>
+		<h2>服务</h2>
+		<h3>咨询服务</h3>
 		<hr>
-		<table style="width:100%;">
-			<tr>
-				<td>2010-11-05 到 2010-11-07</td>
-				<td>第八届机器学习及其应用研讨会<br>第五届机器学习及其应用学生研讨会</td>
-			</tr>
-		</table>
+		
+		<h3>开发服务</h3>
+		<hr>
+		
+		<h3>运维服务</h3>
+		<hr>
 	</div>
 	
 	<div style="float:left;width:660px;" id="member-panel">
