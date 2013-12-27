@@ -118,7 +118,7 @@ class System extends DB_Connect {
 		$SHAREITEMFORMAT='
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
-			<a title="点击预览" href="./assets/uplaod/files/%s" target="_blank">%s</a></li>
+			<a title="点击预览" href="./assets/upload/files/%s" target="_blank">%s</a></li>
 		';		
 		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 4";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);

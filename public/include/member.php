@@ -187,9 +187,7 @@
 			<tr><td><a>XXX</a></td><td>硕士</td></tr>
 		</table>
 	</div>
-</div>
 
-</div>
 
 </body>
 </html>
