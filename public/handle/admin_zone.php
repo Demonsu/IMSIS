@@ -295,15 +295,11 @@
 	}
 	if ($operation=="FETCHNEWSDETAIL")
 	{
-		if ($_SESSION["PERMISSION"]!=1)
-		{
-			echo "权限不够";
-		}else
-		{
+
 			$id=$_POST["id"];
 			$admin=new Admin();
 			echo $admin->fetch_news_info($id);
-		}		
+			
 	}
 	if ($operation=="ADDNEWS")
 	{
@@ -333,7 +329,7 @@
 			$img_url=$_POST["img_url"];
 			$time=date("Y-m-d H:i:s",time());
 			$admin=new Admin();
-			echo $admin->modify_news($title,$content,$time,$img_url);
+			echo $admin->modify_news($id,$title,$content,$time,$img_url);
 		}			
 	}
 	if ($operation=="DELETENEWS")

@@ -11,7 +11,7 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$EFFECTFIELDFORMAT='	
 			<li class="list-group-item" id="%s">%s
-				<label class="label label-danger" onclick="delete_effect_field(this)">删除</label>
+				<label class="label label-warning" onclick="delete_effect_field(this)">删除</label>
 				<label class="label label-info" onclick="show_hide_effect_field(this)">%s</label>
 				<label class="label label-warning" onclick="modify_effect_field(this)">修改</label>
 			</li>	
@@ -96,7 +96,7 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$EFFECTFIELDFORMAT='	
 			<li class="list-group-item" id="%s">%s
-				<label class="label label-danger" onclick="delete_key_field(this)">删除</label>
+				<label class="label label-warning" onclick="delete_key_field(this)">删除</label>
 				<label class="label label-info" onclick="show_hide_key_field(this)">%s</label>
 				<label class="label label-warning" onclick="modify_key_field(this)">修改</label>
 			</li>	
@@ -185,7 +185,7 @@ class Admin extends DB_Connect {
 		$return_value="";
 		$EFFECTFIELDFORMAT='	
 			<li class="list-group-item" id="%s">%s
-				<label class="label label-danger" onclick="delete_key_variable(this)">删除</label>
+				<label class="label label-warning" onclick="delete_key_variable(this)">删除</label>
 				<label class="label label-info" onclick="show_hide_key_variable(this)">%s</label>
 				<label class="label label-warning" onclick="modify_key_variable(this)">修改</label>
 			</li>	
@@ -200,6 +200,8 @@ class Admin extends DB_Connect {
 			$available="隐藏";
 			if ($key_variable_info["available"]==0)
 				$available="显示";
+			$temp=explode('（',$key_variable_info["question"]);
+			$key_variable_info["question"]=$temp[0];
 			$return_value=$return_value.sprintf($EFFECTFIELDFORMAT,$key_variable_info["id"],$key_variable_info["question"],$available);
 		}
 		$return_value=$return_value.$ADDEFFECTFIELDFORMAT;
@@ -408,10 +410,17 @@ class Admin extends DB_Connect {
 			</div>		
 			<script>
 				$(function(){
-					$("#quiz-list%s").click(function(){
-						$("#quiz-list-%s").toggle();
-					});
-					$("#quiz-list-%s").hide();
+					if($("#quiz-list-%s").html().length < 10)
+					{
+						$("#quiz-list%s").attr("disabled",true);
+					}
+					else{
+						$("#quiz-list%s").click(function(){
+							
+								$("#quiz-list-%s").toggle();
+						});
+						$("#quiz-list-%s").hide();
+					}
 				});
 			</script> 
 		';
@@ -455,7 +464,7 @@ class Admin extends DB_Connect {
 				}else
 					$all_quiz=$all_quiz.sprintf($QUIZUNDOFORMAT,$quiz_info["id"],$quiz_info["create_time"]." ".$quiz_info["remark"]." ".$quiz_info["user_id"]);
 			}
-			$all_quiz=sprintf($QUIZFORMAT,$user_info["id"],$all_quiz,$user_info["id"],$user_info["id"],$user_info["id"]);
+			$all_quiz=sprintf($QUIZFORMAT,$user_info["id"],$all_quiz,$user_info["id"],$user_info["id"],$user_info["id"],$user_info["id"],$user_info["id"]);
 			$user_list=$user_list.sprintf($USERFORMAT,$user_info["id"],$user_info["id"],$user_info["password"],$user_info["oncharge"],$user_info["speciality"],$user_info["id"],$all_quiz);
 		}
 		return $user_list;
@@ -506,10 +515,10 @@ class Admin extends DB_Connect {
 	{
 		$DISCOVERYFORMAT='
 				<li class="list-group-item" id="%s">%s
-				<label class="label label-success" onclick="share_settop(this)">置顶</label>
+				<label class="label label-primary" onclick="share_settop(this)">置顶</label>
 				<label class="label label-info" onclick="share_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
 				<label class="label label-info" onclick="share_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
-				<label class="label label-danger" onclick="share_delete(this)">删除</label>
+				<label class="label label-warning" onclick="share_delete(this)">删除</label>
 				<label class="label label-warning" onclick="share_edit(this)">修改</label>
 			 	</li>
 			 	
@@ -641,10 +650,10 @@ class Admin extends DB_Connect {
 	{
 		$NEWSFORMAT='
 			<li class="list-group-item" id="%s">%s
-			<label class="label label-success" onclick="news_settop(this)">置顶</label>
+			<label class="label label-primary" onclick="news_settop(this)">置顶</label>
 			<label class="label label-info" onclick="news_moveup(this)"><span class="glyphicon glyphicon-chevron-up"></span></label>
 			<label class="label label-info" onclick="news_movedown(this)"><span class="glyphicon glyphicon-chevron-down"></span></label>
-			<label class="label label-danger" onclick="news_delete(this)">删除</label>
+			<label class="label label-warning" onclick="news_delete(this)">删除</label>
 			<label class="label label-warning" onclick="news_edit(this)">修改</label>
 			</li>
 			

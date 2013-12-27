@@ -42,10 +42,11 @@
 					data:{
 						operation:'ADDNEWS',
 						title:htmlEncode($('#title').val()),
-						content:htmlEncode($('textarea[name="content"]').html()),
+						content:htmlEncode(editor.html()),
 						img_url:img_url
 					},
 					success:function(data){
+						
 						if(data == 1)
 							window.location = '../admin_zone.php?navigation=1';
 						else
@@ -61,10 +62,11 @@
 						operation:'MODIFYNEWS',
 						id:id,
 						title:htmlEncode($('#title').val()),
-						content:htmlEncode($('textarea[name="content"]').html()),
+						content:htmlEncode(editor.html()),
 						img_url:img_url
 					},
 					success:function(data){
+						alert(htmlEncode(editor.html()));
 						if(data == 1)
 							window.location = '../admin_zone.php?navigation=1';
 						else
