@@ -2,17 +2,18 @@ $(document).ready(function(){
 
 	$.ajax({
 		type:'POST',
-		url:'handle/system.php',
+		url:'../handle/system.php',
 		data:{
 			operation:'FETCHSHARELIST2'
 		},
 		success:function(data){
+			alert(data);
 			$('#share-list').html(data);
 		}
 	});
 	$.ajax({
 		type:'POST',
-		url:'handle/system.php',
+		url:'../handle/system.php',
 		data:{
 			operation:'FETCHNEWSLIST2'
 		},
@@ -56,10 +57,7 @@ $(document).ready(function(){
 	hide();
 	$('#brief-panel').show();
 });
-function opennews(t){
-	var s = t.id.split('_');
-	window.open('./include/content.php?type=news&id='+s[1],'newwindow');
-}
+
 function hide(){
 	$('#link-panel').hide();
 	$('#contact-panel').hide();
