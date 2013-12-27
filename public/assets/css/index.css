@@ -4,6 +4,7 @@ body{
 
 /* 以下为头header部分的css */
 .header-group{
+	position:relative;
 	background-color:#ffffff;
 	background-image:url('../img/index/header-start-bg.jpg');
 	background-repeat:no-repeat;
@@ -163,4 +164,37 @@ body{
 	width:1px;
 	margin-left:10px;
 	margin-right:10px;
+}
+
+.title-search-panel{
+	
+}
+.btn-mine{
+	border:1px solid #357ebd;
+	border-left:0px;
+	background-color:#428bca;
+	color:#ffffff;
+	border-radius:0px 5px 5px 0px;
+	margin-left:-4px;
+	line-height:18px;
+}
+.carousel-indicators{
+	top:184px;
+	left:534px;
+}
+.carousel-indicators li{
+	border-color:#333333;
+
+	height:12px;
+	width:12px;
+	margin:0px;
+	padding:0px;
+	margin-right:-1px;
+	color:#000000;
+}
+.carousel-indicators .active{
+	background-color:#ffffff;
+	height:12px;
+	width:12px;
+	margin-right:-1px;
 }

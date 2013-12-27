@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-	
+	$navi = $_GET['navigation'];
 ?>
 <html>
 <head>
@@ -33,7 +33,31 @@
 	</style>
 	<script>
 		$(document).ready(function(){
-			
+			var navi = <?php echo $navi; ?>;
+			if(navi == 1){
+				$('#brief-id').click();
+			}
+			else if(navi == 2){
+				$('#field-id').click();
+			}
+			else if(navi == 3){
+				$('#service-id').click();
+			}
+			else if(navi == 4){
+				$('#share-id').click();
+			}
+			else if(navi == 5){
+				$('#news-id').click();
+			}
+			else if(navi == 6){
+				$('#member-id').click();
+			}
+			else if(navi == 7){
+				$('#link-id').click();
+			}
+			else if(navi == 8){
+				$('#contact-id').click();
+			}
 		});
 	</script>
 </head>
@@ -188,6 +212,8 @@
 		</table>
 	</div>
 </div>
+
+<?php include 'index_footer.php'; ?>
 
 </div>
 

@@ -27,3 +27,15 @@ a:hover{
 .alert-info{
 	background-color:#BAD3FF;
 }
+
+/*以下是footer的代码*/
+.footer-container{
+	margin-top:20px;
+	margin-bottom:10px;
+	float:left;
+	width:960px;
+	text-align:center;
+}
+.footer-cover a{
+	font-size:12px;
+}

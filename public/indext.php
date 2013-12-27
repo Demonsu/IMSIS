@@ -16,6 +16,11 @@
 <div class="main">
 	<div class="header-group">
 		<img src="./assets/img/index/logo.png" height="60px" alt="logo" />
+		<div class="title-search-panel" style="float:right;margin-right:10px;margin-top:14px;">
+			<p style="text-align:right;line-height:13px;font-size:12px;">网站导航 | 加入收藏</p>
+		    <input type="text" id="search-name" style="height:22px;margin-top;border-radius:5px 0px 0px 5px;border-right:0px;">
+			<button class="btn-mine" type="button" id="search-go">搜索</button>
+		</div>
 		<div class="navi-container">
 			<nav class="navbar navbar-mine" role="navigation">
 			  <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,19 +30,25 @@
 				  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">研究领域<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					  <li><a href="#">探索视点</a></li>
-					  <li><a href="#">科研成果</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=2');">探索视点</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=2');">科研成果</a></li>
 					</ul>
 				  </li>
 				  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">服务<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					  <li><a href="#">咨询服务</a></li>
-					  <li><a href="#">开发服务</a></li>
-					  <li><a href="#">运维服务</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">咨询服务</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">开发服务</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">运维服务</a></li>
 					</ul>
 				  </li>
-				  <li><a href="./include/member.php">成员</a></li>
+				  <li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">成员<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+					  <li><a href="javascript:window.open('./include/member.php?navigation=6');">实验室成员</a></li>
+					  <li><a href="javascript:window.open('./include/member.php?navigation=6');">实验室相册</a></li>
+					</ul>
+				  </li>
 				  <li><a>其他栏目</a></li>
 				</ul>
 			  </div><!-- /.navbar-collapse -->
@@ -48,6 +59,12 @@
 	<div class="main-wapper">
 		<div class="view-content">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<ul class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active" title="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1" title="2"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2" title="3"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="3" title="4"></li>
+				</ul>
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner">
 				<div class="item active">
@@ -57,6 +74,11 @@
 				</div>
 				<div class="item">
 				  <img src="./assets/img/index/homepage_0.jpg" alt="...">
+				  <div class="carousel-caption">
+				  </div>
+				</div>
+				<div class="item">
+				  <img src="./assets/img/index/homepage.jpg" alt="...">
 				  <div class="carousel-caption">
 				  </div>
 				</div>
@@ -92,7 +114,7 @@
 	<div class="main-content">
 		<div class="content-container">
 			<div class="content-one">
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=4')">
 					探索与分享
 				</div>
 				<div id="share-div">
@@ -115,7 +137,7 @@
 				</div>
 			</div>
 			<div class="content-two">
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=5')">
 					最新动态
 				</div>
 				<div id="news-div">
@@ -184,8 +206,9 @@
 	</div>
 	
 	<div class="footer-wapper">
+		
 		<span class="footer-content">
-		<a>联系我们</a><span class="line-vertical"></span><a>法律声明</a><span class="line-vertical"></span><a>友情链接</a>
+		<a>联系我们</a> | <a>法律声明</a> | <a>友情链接</a> | <a>网站地图</a>
 		</span><br>
 		<span style="line-height:36px;">Copyright©2013 All Rights Reserved</span>
 	</div>
