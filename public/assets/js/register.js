@@ -8,6 +8,7 @@ var check_position = false;
 var check_work = false;
 
 $(document).ready(function(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/system.php',
@@ -63,6 +64,7 @@ $(document).ready(function(){
 			$('#select3').append(data);
 		}
 	});
+	$('#loading-cover').hide();
 	$('#select1').change(function(){
 		var select1 = $('#select1').val();
 		if (select1=='710000' || select1=='810000' || select1=='820000' || select1=='100000')
@@ -71,7 +73,7 @@ $(document).ready(function(){
 			$('#select2').attr("disabled",true);
 		}
 		else if(select1 != 0){
-			
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/system.php',
@@ -86,22 +88,24 @@ $(document).ready(function(){
 					$('#select2').append(data);
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	$('#inputId').blur(function(){
 		var id = $('#inputId').val();
-		var pattern = new RegExp(/^[a-zA-Z0-9_]{6,20}$/);
+		var pattern = new RegExp(/^[a-zA-Z0-9_\u4e00-\u9fa5]{6,20}$/);
 		if(id.length < 6 || id.length > 20){
 			$('#errorId').text('用户名长度限制为6~20个字符');
 			$('.hasId').addClass('has-error');
 			check_id = false;
 		}
 		else if(!pattern.test(id)){
-			$('#errorId').text('用户名要求:字母大小写、数字、下划线(_)');
+			$('#errorId').text('中文或英文字母大小写、数字、下划线(_)');
 			$('.hasId').addClass('has-error');
 			check_id = false;
 		}
 		else{
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/register.php',
@@ -122,6 +126,7 @@ $(document).ready(function(){
 					}
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	$('#inputPassword').blur(function(){
@@ -172,6 +177,7 @@ $(document).ready(function(){
 		//alert($('#selectGender').val());
 		if(check_id == true && check_passwd == true && check_passwd2 == true ){
 			//alert(1);
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/register.php',
@@ -222,6 +228,7 @@ $(document).ready(function(){
 					}
 				}
 			});
+			$('#loading-cover').hide();
 		}
 		else{
 			$('#errorRegister').text('请检查输入')

@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 		success:function(data){
 			
-			var table = '<tr><th class="table-title" colspan=3><span title="此表可帮助发现，关键变量集中的趋势，成熟度高的关键变量越多，总体能力越好">关键变量统计分布</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=3><span title="此表可帮助发现，关键变量集中的趋势，成熟度高的关键变量越多，总体能力越好">关键变量统计表</span></th></tr>';
 			var i;
 			table += '<tr>';
 			for(i=0;i<data.content.length;i++){
@@ -92,7 +92,7 @@ $(document).ready(function(){
 					type: 'bar'
 				},
 				title: {
-					text: '2.关键变量统计分布'
+					text: '关键变量统计分布'
 				},
 				subtitle: {
 					text: '百分比率'
@@ -187,7 +187,7 @@ $(document).ready(function(){
 					type: 'bar'
 				},
 				title: {
-					text: '关键域（KDs）得分表'
+					text: '关键域（KDs）得分图'
 				},
 				subtitle: {
 					text: ''
@@ -491,7 +491,7 @@ $(document).ready(function(){
 		url:'statistics/' + $('#quiz_id').val() + '/table7.json',
 		success:function(data){
 			var level = new Array('1','2','3','4','5');
-			table = '<tr><th class="table-title" colspan=7><span title="此表是目标能力与实际能力之间的比较，“完成比例”指标告诉我们，未达到较高一级成熟度的原因，是某些关键域未完成，即完成度小于100。也可以得到哪些关键域表现优异，即完成度超过了较高一级成熟度的目标。">能力对比图</span></th></tr>';
+			table = '<tr><th class="table-title" colspan=7><span title="此表是目标能力与实际能力之间的比较，“完成比例”指标告诉我们，未达到较高一级成熟度的原因，是某些关键域未完成，即完成度小于100。也可以得到哪些关键域表现优异，即完成度超过了较高一级成熟度的目标。">能力对比表</span></th></tr>';
 			table += '<tr style="text-align:center"> <th></th> <th></th> <th style="text-align:center">实际得分</th> <th style="text-align:center">成熟度'+level[data.first-1]+'级</th> <th style="text-align:center">完成比例</th> <th style="text-align:center">成熟度'+level[data.second-1]+'级</th> <th style="text-align:center">完成比例</th> </tr>';
 			var i;
 			for(i=0;i<data.content.length;i++){
@@ -529,7 +529,7 @@ $(document).ready(function(){
 					type: 'bar'
 				},
 				title: {
-					text: '能力对比图'
+					text: '能力成熟度对比图'
 				},
 				subtitle: {
 					text: ''
@@ -613,7 +613,7 @@ $(document).ready(function(){
 		url:'statistics/' + $('#quiz_id').val() + '/table8.json',
 		success:function(data){
 			var ar = new Array('一','二','三','四','五');
-			var table = '<tr><th class="table-title" colspan=11><span title="此表是在能力对比的基础上对短缺能力的详细描述，贡献率是指每个关键变量对整体得分贡献了多少，贡献的越少，能力越不足。因而从贡献率可以发现短缺的关键变量。同时，与较高一级成熟度比较，完成比例告诉我们，现在能力完成了目标能力的比例，提升空间有多大。在这样一个提升空间内，细分下来，可看到每个关键节点（关键变量）的提升空间，从而指导在不同关键变量下应该付出多大的努力。">短缺能力详细信息</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=11><span title="此表是在能力对比的基础上对短缺能力的详细描述，贡献率是指每个关键变量对整体得分贡献了多少，贡献的越少，能力越不足。因而从贡献率可以发现短缺的关键变量。同时，与较高一级成熟度比较，完成比例告诉我们，现在能力完成了目标能力的比例，提升空间有多大。在这样一个提升空间内，细分下来，可看到每个关键节点（关键变量）的提升空间，从而指导在不同关键变量下应该付出多大的努力。">短缺能力详细信息表</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">领域</th>';
 			table += '<th style="text-align:center">残缺的关键域</th>';
@@ -677,7 +677,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/' + $('#quiz_id').val() + '/table9.json',
 		success:function(data){
-			var table = '<tr><th class="table-title" colspan=8><span title="该表是对整个能力提升工作量的描述。很明显，百分比越大，说明需要提升的方面越多，工作量越大，在提升能力的过程中，应该多分配资源。">短缺能力的作用域分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=8><span title="该表是对整个能力提升工作量的描述。很明显，百分比越大，说明需要提升的方面越多，工作量越大，在提升能力的过程中，应该多分配资源。">短缺能力的作用域分析表</span></th></tr>';
 			table += '<tr>';
 			table += '<th colspan=5 style="text-align:center">短缺能力的领域分析表</th>';
 			table += '</tr>';
@@ -864,7 +864,7 @@ $(document).ready(function(){
 		url:'statistics/' + $('#quiz_id').val() + '/table10.json',
 		success:function(data){
 			//alert(data);
-			var table = '<tr><th class="table-title" colspan=8><span title="">能力提升分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=8><span title="">能力提升分析表</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">类型</th>';
 			table += '<th style="text-align:center">关键变量提升的项数(T=56)</th>';
@@ -1011,7 +1011,7 @@ $(document).ready(function(){
 		url:'statistics/'+ $('#quiz_id').val() +'/table11.json',
 		success:function(data){
 			var ar = new Array('一','二','三','四','五');
-			var table = '<tr><th class="table-title" colspan=10><span title="通过贡献率大小可以获知优势能力中具体哪个流程表现最佳，贡献率大于0，表示该流程（关键变量）已经超越比现有能力高一级的能力等级的要求，表现极佳。就关键域而言，与现有等级要求对比，超越比例是超出要求的部分。优秀指数则用于指出，优秀关键域中关键变量之间的优秀程度。">优势能力详细信息</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=10><span title="通过贡献率大小可以获知优势能力中具体哪个流程表现最佳，贡献率大于0，表示该流程（关键变量）已经超越比现有能力高一级的能力等级的要求，表现极佳。就关键域而言，与现有等级要求对比，超越比例是超出要求的部分。优秀指数则用于指出，优秀关键域中关键变量之间的优秀程度。">优势能力详细信息表</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">领域</th>';
 			table += '<th style="text-align:center">优势能力</th>';
@@ -1069,7 +1069,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/'+$('#quiz_id').val()+'/table12.json',
 		success:function(data){
-			var table = '<tr><th class="table-title" colspan=5><span title="该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。">优势能力的作用域分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=5><span title="该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。">优势能力的作用域分析表</span></th></tr>';
 
 			table += '<tr style="text-align:center">';
 			table += '<th></th><th style="text-align:center">优势能力项数</th><th style="text-align:center">总项数</th><th style="text-align:center">所占比例</th><th style="text-align:center">占优势能力的百分比</th>';
@@ -1198,7 +1198,7 @@ $(document).ready(function(){
 		type:'POST',
 		url:'statistics/'+$('#quiz_id').val()+'/table13.json',
 		success:function(data){
-			var table = '<tr><th class="table-title" colspan=7><span title="按照优秀指数的大小，获知优秀的关键变量有哪些。">优势能力的数量分析</span></th></tr>';
+			var table = '<tr><th class="table-title" colspan=7><span title="按照优秀指数的大小，获知优秀的关键变量有哪些。">优势能力的数量分析表</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">领域</th>';
 			table += '<th style="text-align:center">优秀关键变量的项数(T=56)</th>';
@@ -1297,6 +1297,10 @@ $(document).ready(function(){
 			table += '<td colspan=3 style="text-align:center">'+data.level+'级</td>';
 			table += '</tr>';
 			$('#t14').html(table);
+			
+			$('#test-level').html(data.level);
+			$('#test-total').html(data.content[1].content[0]);
+			$('#test-bad').html(data.content[1].content[1]);
 		}
 	});
 	$('#index-show').click(function(){

@@ -23,7 +23,7 @@ $(document).ready(function(){
 				remark:$('#user-remark').val()
 			},
 			success:function(data){
-				$('#loading-cover').hide();
+				
 				if (!isNaN(data))
 				{
 					//alert("创建成功");
@@ -35,6 +35,7 @@ $(document).ready(function(){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	
 	$('#d-create').click(function(){//单位测评问卷创建
@@ -115,12 +116,13 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				if(data == 1){
-					$('#loading-cover').hide();
 					alert('修改成功');
-				}	else
-				alert(data);
+				}	
+				else
+					alert(data);
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	$('#all-select').click(function(){
 		//alert(1);
@@ -181,9 +183,10 @@ function user_test(){
 					});
 				}
 			});
-			$('#loading-cover').hide();
+			
 		}
 	});
+	$('#loading-cover').hide();
 }
 function doremark(){//单位测评创建时提示
 	$('#loading-cover').show();
@@ -199,7 +202,7 @@ function doremark(){//单位测评创建时提示
 				if(returnVal){
 					hide();
 					$('#enter-remark').show();
-					$('#loading-cover').hide();
+					
 				}
 				else{
 					d_list();
@@ -208,10 +211,11 @@ function doremark(){//单位测评创建时提示
 			else if(data == 0){
 				hide();
 				$('#enter-remark').show();
-				$('#loading-cover').hide();
+				
 			}		
 		}
 	});
+	$('#loading-cover').hide();
 }
 function depart_test(){
 	//alert($('#d-remark').val());
@@ -226,7 +230,7 @@ function depart_test(){
 		success:function(data){
 			if(!isNaN(data)){
 				alert('创建成功，请到我的测评中的单位测评中进行测评');
-				$('#loading-cover').hide();
+				//$('#loading-cover').hide();
 				d_list();
 			}
 			else{
@@ -234,6 +238,7 @@ function depart_test(){
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 function nc_list(){//未完成列表
 	$('#loading-cover').show();
@@ -248,9 +253,10 @@ function nc_list(){//未完成列表
 			hide();
 			$('#nc-list-items').html(data);
 			$('#nc-list').show();
-			$('#loading-cover').hide();
+			//$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function c_list(){//已完成列表
 	$('#loading-cover').show();
@@ -265,9 +271,10 @@ function c_list(){//已完成列表
 			hide();
 			$('#c-list-items').html(data);
 			$('#c-list').show();
-			$('#loading-cover').hide();
+			//$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function d_list(){//单位测评列表
 	$('#loading-cover').show();
@@ -281,9 +288,10 @@ function d_list(){//单位测评列表
 			hide();
 			$('#d-list-items').html(data);
 			$('#d-list').show();
-			$('#loading-cover').hide();
+			//$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function change_passwd(){//修改密码
 	hide();
@@ -316,9 +324,10 @@ function fetch_userdata(){
 			$('#inputPosition').val(data.position);
 			$('#inputTime').val(data.time);
 			$('#inputEmail').val(data.email);
-			$('#loading-cover').hide();
+			//$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function deleteitem(t,no){
 	var returnVal = window.confirm('执行操作后不可恢复，是否确定删除？','你确定要删除吗');
@@ -333,7 +342,7 @@ function deleteitem(t,no){
 			},
 			success:function(data){
 				if(data == 1){
-					$('#loading-cover').hide();
+					//$('#loading-cover').hide();
 					alert('删除成功');
 					//t.parentNode.hide();
 					if(no == 1)
@@ -348,6 +357,7 @@ function deleteitem(t,no){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 	}
 }
 function checkresult(t){
@@ -361,6 +371,7 @@ function d_continue(t){
 	window.location = 'd_quiz.php?quiz_id='+t.parentNode.id;
 }
 function reformresult(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -373,6 +384,7 @@ function reformresult(t){
 			window.location = "statistics.php?quiz_id="+t.parentNode.id;
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function hide(){//隐藏函数

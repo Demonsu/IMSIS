@@ -11,6 +11,7 @@ $(document).ready(function(){
 			success:function(data){
 				//alert(data);
 				if(data == 0){
+					$('#loading-cover').show();
 					$.ajax({
 						type:'POST',
 						url:'handle/user_zone.php',
@@ -60,9 +61,10 @@ $(document).ready(function(){
 									}
 								}
 							});
-							$('#loading-cover').hide();
+							
 						}
 					});
+					$('#loading-cover').hide();
 				}
 				else if(data == 1){
 					$('#loading-cover').hide();
@@ -71,6 +73,7 @@ $(document).ready(function(){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 		
 	});
 	$('#d_confirm').click(function(){
@@ -103,7 +106,7 @@ $(document).ready(function(){
 				}
 			}
 		});
-		
+		$('#loading-cover').hide();
 		
 	});
 	$('#next-key-field').click(function(){
@@ -137,11 +140,12 @@ $(document).ready(function(){
 						fetch_left();
 					}
 					else{
-						$('#loading-cover').hide();
+						//$('#loading-cover').hide();
 						//上传失败
 					}
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	$('#confirm-target').click(function(){
@@ -151,6 +155,7 @@ $(document).ready(function(){
 			phpChar += id + ':' + this.value +';';
 		});
 		//alert(phpChar);
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -170,7 +175,7 @@ $(document).ready(function(){
 				}
 			}
 		});
-		
+		$('#loading-cover').hide();
 	});
 	$('#submit-result').click(function(){
 		var phpChar1 = '';
@@ -216,11 +221,13 @@ $(document).ready(function(){
 					
 			}
 		});
+		$('#loading-cover').hide();
 		hide();
 		$('#progressBar').css('width','100%');
 	});
 });
 function ask_for_target(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -250,8 +257,10 @@ function ask_for_target(){
 			}
 		}
 	});	
+	$('#loading-cover').hide();
 }
 function ask_for_preview(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -298,11 +307,12 @@ function ask_for_preview(){
 			hide();
 			$('#fifth').show();
 			$('#progressBar').css('width','90%');
-			$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function fetch_left(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -329,9 +339,11 @@ function fetch_left(){
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 function fetch_right(t){
 	var id = t.id;
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -350,9 +362,11 @@ function fetch_right(t){
 				});
 				$(this.parentNode).addClass('radio-selected');
 			});
-			$('#loading-cover').hide();
+			$('body,html').animate({scrollTop:"180px"});
+			
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function set_checked(name,val){

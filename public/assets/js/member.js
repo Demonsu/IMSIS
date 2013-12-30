@@ -7,7 +7,7 @@ $(document).ready(function(){
 			operation:'FETCHSHARELIST2'
 		},
 		success:function(data){
-			alert(data);
+			//alert(data);
 			$('#share-list').html(data);
 		}
 	});
@@ -21,7 +21,10 @@ $(document).ready(function(){
 			$('#news-list').html(data);
 		}
 	});
-	
+	$('#brief-id').click(function(){
+		hide();
+		$('#brief-panel').show();
+	});
 	$('#news-id').click(function(){
 		hide();
 		$('#news-panel').show();

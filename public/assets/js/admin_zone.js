@@ -9,6 +9,7 @@ $(document).ready(function(){
 	//管理动态新闻
 	$('#manage-news').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'./handle/admin_zone.php',
@@ -22,9 +23,11 @@ $(document).ready(function(){
 				$('#change-news').show();
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	$('#manage-share').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'./handle/admin_zone.php',
@@ -38,10 +41,12 @@ $(document).ready(function(){
 				$('#change-share').show();
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	//
 	$('#manage-effect-field').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -54,9 +59,11 @@ $(document).ready(function(){
 			}
 		});
 		$('#change-effect-field').show();
+		$('#loading-cover').hide();
 	});
 	$('#manage-key-field').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -69,6 +76,7 @@ $(document).ready(function(){
 			}
 		});
 		$('#change-key-field').show();
+		$('#loading-cover').hide();
 	});
 	$('#fetch-effect-field-list').change(function(){
 		effect_field1 = $('#fetch-effect-field-list').val()
@@ -79,6 +87,7 @@ $(document).ready(function(){
 	});
 	$('#manage-key-variable').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -91,8 +100,10 @@ $(document).ready(function(){
 			}
 		});
 		$('#change-key-variable').show();
+		$('#loading-cover').hide();
 	});
 	$('#fetch-effect-field-list2').change(function(){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -105,6 +116,7 @@ $(document).ready(function(){
 				$('#fetch-key-field-list2').html('<option value=0>请选择关键域</option>'+data);
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	$('#fetch-key-field-list2').change(function(){
 		key_field2 = $('#fetch-key-field-list2').val()
@@ -115,6 +127,7 @@ $(document).ready(function(){
 	});
 	//作用域
 	$('#confirm-effect-field').click(function(){
+		$('#loading-cover').show();
 		if(effect_field_change){
 			$.ajax({
 				type:'POST',
@@ -151,6 +164,7 @@ $(document).ready(function(){
 				}
 			});
 		}
+		$('#loading-cover').hide();
 	});
 	$('#cancel-effect-field').click(function(){
 		$('#effect-field-input').val('');
@@ -158,6 +172,7 @@ $(document).ready(function(){
 	});
 	//关键域
 	$('#confirm-key-field').click(function(){
+		$('#loading-cover').show();
 		if(key_field_change){
 			$.ajax({
 				type:'POST',
@@ -198,6 +213,7 @@ $(document).ready(function(){
 				}
 			});
 		}
+		$('#loading-cover').hide();
 	});
 	$('#cancel-key-field').click(function(){
 		$('#key-field-input').val('');
@@ -205,6 +221,7 @@ $(document).ready(function(){
 	});
 	//关键域
 	$('#confirm-key-variable').click(function(){
+		$('#loading-cover').show();
 		if(key_variable_change){
 			$.ajax({
 				type:'POST',
@@ -257,6 +274,7 @@ $(document).ready(function(){
 				}
 			});
 		}
+		$('#loading-cover').hide();
 	});
 	$('#cancel-key-variable').click(function(){
 		$('#key-variable-input').val('');
@@ -309,6 +327,7 @@ $(document).ready(function(){
 		$('#passwd-reset').show();
 	});
 	$('#btn-change-passwd').click(function(){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -328,6 +347,7 @@ $(document).ready(function(){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	
 	//条件查找
@@ -344,7 +364,7 @@ $(document).ready(function(){
 			$('#select2').attr('disabled',true);
 		}
 		else if(select1 != 0){
-			
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/system.php',
@@ -358,6 +378,7 @@ $(document).ready(function(){
 					$('#select2').html('<option value="0">请选择城市</option>'+data);
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	$('#area-check').change(function(){
@@ -370,6 +391,7 @@ $(document).ready(function(){
 			$('#select3').attr('disabled',true);
 		}
 		else{
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/system.php',
@@ -394,6 +416,7 @@ $(document).ready(function(){
 			$('#select1').attr('disabled',false);
 			$('#select2').attr('disabled',false);
 			$('#select3').attr('disabled',false);
+			$('#loading-cover').hide();
 		}
 	});
 	$('#timespan-check').change(function(){
@@ -437,6 +460,7 @@ $(document).ready(function(){
 		var quiz_state = $(':radio[name="radio-setstate"]:checked').val();
 		
 		$('#search-result-list').html('');
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -454,6 +478,7 @@ $(document).ready(function(){
 				$('#search-result-list').html(data);
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	$('#time-start').datepicker();
 	$('#time-end').datepicker();
@@ -461,6 +486,7 @@ $(document).ready(function(){
 	//用户数据
 	$('#check-user').click(function(){
 		hide();
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/system.php',
@@ -494,6 +520,7 @@ $(document).ready(function(){
 			}
 		});
 		$('#check-user-data').show();
+		$('#loading-cover').hide();
 	});
 	$('#select-province').change(function(){
 		var select1 = $('#select-province').val();
@@ -503,7 +530,7 @@ $(document).ready(function(){
 			$('#select-city').attr('disabled',true);
 		}
 		else if(select1 != 0){
-			
+			$('#loading-cover').show();
 			$.ajax({
 				type:'POST',
 				url:'handle/system.php',
@@ -517,6 +544,7 @@ $(document).ready(function(){
 					$('#select-city').html('<option value="0">请选择城市</option>'+data);
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	$('#user-search-btn').click(function(){
@@ -524,7 +552,7 @@ $(document).ready(function(){
 		var city = $('#select-city').val();
 		var department = $('#select-department').val();
 		var title = $('#select-title').val();
-		
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -539,6 +567,7 @@ $(document).ready(function(){
 				$('#user-info-list').html(data);
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	$('#user-info-cover').click(function(){
 		$('#user-info-cover').hide();
@@ -550,6 +579,7 @@ $(document).ready(function(){
 function user_data(t){
 	var id = t.parentNode.parentNode.parentNode.id;
 	var token = id.split('-');
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -573,6 +603,7 @@ function user_data(t){
 			$('#user-info-cover').show();
 		}
 	});
+	$('#loading-cover').hide();
 }
 function user_quiz(t){
 	id = t.parentNode.parentNode.parentNode.id;
@@ -580,6 +611,7 @@ function user_quiz(t){
 	$('#quiz-list-'+token[1]).toggle();
 }
 function fetch_key_field_list(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -591,9 +623,11 @@ function fetch_key_field_list(t){
 			$('#key-field-list').html(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function fetch_key_variable_list(t){
 	//alert(t);
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -606,6 +640,7 @@ function fetch_key_variable_list(t){
 			$('#key-variable-list').html(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 //这里是作用域的操作
 function delete_effect_field(t){
@@ -613,6 +648,7 @@ function delete_effect_field(t){
 	alert('删除后你将再也看不到与该关键域相关的东西');
 	var returnType = window.confirm('确认删除吗？')
 	if(returnType){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -629,6 +665,7 @@ function delete_effect_field(t){
 					alert(data);
 			}
 		});
+		$('#loading-cover').hide();
 	} 
 }
 function modify_effect_field(t){
@@ -653,6 +690,7 @@ function show_hide_effect_field(t){
 	}
 	else
 		temp = 0;
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -673,6 +711,7 @@ function show_hide_effect_field(t){
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 //这里是关键域的操作
 function delete_key_field(t){
@@ -680,6 +719,7 @@ function delete_key_field(t){
 	alert('删除后你将再也看不到与该关键域相关的东西');
 	var returnType = window.confirm('确认删除吗？')
 	if(returnType){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -695,6 +735,7 @@ function delete_key_field(t){
 					alert(data);
 			}
 		});
+		$('#loading-cover').hide();
 	} 
 }
 function modify_key_field(t){
@@ -718,7 +759,7 @@ function show_hide_key_field(t){
 	}
 	else
 		temp = 0;
-	
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -739,6 +780,7 @@ function show_hide_key_field(t){
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 //关键变量
 function delete_key_variable(t){
@@ -746,6 +788,7 @@ function delete_key_variable(t){
 	alert('删除后你将再也看不到与该关键域相关的东西');
 	var returnType = window.confirm('确认删除吗？')
 	if(returnType){
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/admin_zone.php',
@@ -761,6 +804,7 @@ function delete_key_variable(t){
 					alert(data);
 			}
 		});
+		$('#loading-cover').hide();
 	} 
 }
 function modify_key_variable(t){
@@ -768,6 +812,7 @@ function modify_key_variable(t){
 	key_variable_change = true;
 	$('#key-variable-title').text('修改关键域名称');
 	$('#key-variable-id').val(t.parentNode.id);
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -787,6 +832,7 @@ function modify_key_variable(t){
 		}
 	});
 	$('#key-variable-cover').show();
+	$('#loading-cover').hide();
 }
 function add_key_variable(){
 	key_variable_change = false;
@@ -806,7 +852,7 @@ function show_hide_key_variable(t){
 	}
 	else
 		temp = 0;
-	
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -827,9 +873,11 @@ function show_hide_key_variable(t){
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function fetch_target_form(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/admin_zone.php',
@@ -874,6 +922,7 @@ function fetch_target_form(){
 					$(this).blur(function(){
 						var val = $(this).val();
 						if(val == '-1' || val == '' || (!isNaN(val) && parseFloat(val) >= 1 && parseFloat(val) <= 5)){
+							$('#loading-cover').show();
 							$.ajax({
 								type:'POST',
 								url:'handle/admin_zone.php',
@@ -888,6 +937,7 @@ function fetch_target_form(){
 									//alert(data);
 								}
 							});
+							$('#loading-cover').hide();
 						}
 						else{
 							alert('"'+val+'"不符合要求，范围1~5');
@@ -897,6 +947,7 @@ function fetch_target_form(){
 			});
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function deleteitem(t,no){
@@ -912,7 +963,6 @@ function deleteitem(t,no){
 			},
 			success:function(data){
 				if(data == 1){
-					$('#loading-cover').hide();
 					alert('删除成功');
 					//t.parentNode.hide();
 					if(no == 1)
@@ -927,6 +977,7 @@ function deleteitem(t,no){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 	}
 }
 function checkresult(t){
@@ -934,6 +985,7 @@ function checkresult(t){
 
 }
 function reformresult(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -946,10 +998,12 @@ function reformresult(t){
 			window.location = "statistics.php?quiz_id="+t.parentNode.id;
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 //管理动态新闻
 function news_delete(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -964,11 +1018,13 @@ function news_delete(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function news_edit(t){
 	window.open('./include/newsedit.php?newsid='+t.parentNode.id,'newwindow');
 }
 function news_moveup(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -984,8 +1040,10 @@ function news_moveup(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function news_movedown(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1001,8 +1059,10 @@ function news_movedown(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function news_settop(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1017,6 +1077,7 @@ function news_settop(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function news_add(){
@@ -1025,6 +1086,7 @@ function news_add(){
 
 //下面是分享的操作
 function share_delete(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1039,11 +1101,13 @@ function share_delete(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function share_edit(t){
 	window.open('./include/shareedit.php?shareid='+t.parentNode.id,'newwindow');
 }
 function share_moveup(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1059,9 +1123,11 @@ function share_moveup(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function share_movedown(t){
 	//alert(t.parentNode.id);
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1077,8 +1143,10 @@ function share_movedown(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 function share_settop(t){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'./handle/admin_zone.php',
@@ -1093,6 +1161,7 @@ function share_settop(t){
 				alert(data);
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function share_add(){

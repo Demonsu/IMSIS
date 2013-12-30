@@ -29,7 +29,7 @@ $(document).ready(function(){
 				},
 				success:function(data){
 					//alert(data);
-					$('#loading-cover').hide();
+					
 					if(data == 1){
 						getprogress();
 					}
@@ -38,6 +38,7 @@ $(document).ready(function(){
 					}
 				}
 			});
+			$('#loading-cover').hide();
 		}
 	});
 	
@@ -48,6 +49,7 @@ $(document).ready(function(){
 			phpChar += id + ':' + this.value +';';
 		});
 		//alert(phpChar);
+		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
 			url:'handle/quiz.php',
@@ -64,6 +66,7 @@ $(document).ready(function(){
 				}
 			}
 		});
+		$('#loading-cover').hide();
 	});
 	
 	$('#submit-quiz').click(function(){
@@ -101,11 +104,13 @@ $(document).ready(function(){
 				window.location = 'statistics.php?quiz_id='+ $('#quiz_id').val();
 			}
 		});
+		$('#loading-cover').hide();
 		
 	});
 	
 });
 function ask_for_preview(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -149,9 +154,9 @@ function ask_for_preview(){
 			hide();
 			$('#third').show();
 			$('#progressBar').css('width','80%');
-			$('#loading-cover').hide();
 		}
 	});
+	$('#loading-cover').hide();
 }	
 function set_checked(name,val){
 	$(':radio').each(function(){
@@ -249,7 +254,6 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 										},
 										success:function(data){
 											//alert(data);
-											$('#loading-cover').hide();
 											if(data == 1){
 												$('.over-doing').addClass('over-done');
 											}
@@ -258,6 +262,7 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 											}
 										}
 									});
+									$('#loading-cover').hide();
 								}
 							}
 							$('#loading-cover').show();
@@ -286,9 +291,9 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 										});
 										$(this.parentNode).addClass('radio-selected');
 									});
-									$('#loading-cover').hide();
 								}
 							});
+							$('#loading-cover').hide();
 						}
 					});
 				});
@@ -296,13 +301,14 @@ function getprogress(){//获取第一步左边的进度表，调用函数获取�
 				$('.over-doing').each(function(){
 					get_key_field(this);
 				});
-				$('#loading-cover').hide();
 			}
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function ask_for_target(){
+	$('#loading-cover').show();
 	$.ajax({
 		type:'POST',
 		url:'handle/quiz.php',
@@ -315,6 +321,7 @@ function ask_for_target(){
 				ask_for_preview();
 			}
 			else if(data == 0){
+				$('#loading-cover').show();
 				$.ajax({
 					type:'POST',
 					url:'handle/quiz.php',
@@ -330,9 +337,11 @@ function ask_for_target(){
 						$('#confirm-target').click();
 					}
 				});
+				$('#loading-cover').hide();
 			}
 		}
 	});	
+	$('#loading-cover').hide();
 }
 
 function get_key_field(t){//获取第一步右边的问卷
@@ -366,9 +375,10 @@ function get_key_field(t){//获取第一步右边的问卷
 				}
 				$(this.parentNode).addClass('radio-selected');
 			});
-			$('#loading-cover').hide();
+			$('body,html').animate({scrollTop:"180px"});
 		}
 	});
+	$('#loading-cover').hide();
 }
 
 function hide(){
