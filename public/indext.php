@@ -159,20 +159,20 @@
 				</div>
 			</div>
 			<div class="content-three">
-				<!--
+				
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
 					系统入口
 				</div>
-				-->
+				
 			    <a href="./login.php" target="_blank" title="eGov-CMM">
 					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
 						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="139px"/>
 					</div>
 			    </a>
-				<!--
+				
 				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
-				-->
-				<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>
+			
+				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
 				
 			</div>
 		</div>
