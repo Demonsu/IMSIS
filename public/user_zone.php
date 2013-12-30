@@ -62,7 +62,7 @@ $(document).ready(function(){
 		<div class="panel-heading"><div class="panel-title" style="color:#000000">用户空间</div></div>
 		<div class="panel-body">
 
-			<div class="row col-md-3">
+			<div style="float:left;width:200px;padding-right:15px;">
 				<div class="panel-group" id="accordion">
 				  <div class="panel panel-default">
 					<div class="panel-heading">
@@ -119,7 +119,8 @@ $(document).ready(function(){
 				</div>
 			</div>
 
-			<div class="col-md-9" style="width:725px;padding-right:0px;">
+			<div style="width:725px;padding-right:0px;float:left;">
+			
 				<div class="panel panel-default" id="nc-list" style="display:none">
 				  <div class="panel-heading">
 					<h3 class="panel-title">未完成的测评</h3>

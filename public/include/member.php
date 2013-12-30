@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
-	
+	$navi = $_GET['navigation'];
 ?>
 <html>
 <head>
@@ -30,10 +30,43 @@
 			border:1px solid #a94442;
 			cursor:pointer;
 		}
+		.main{
+			padding:5px;
+			border-radius:5px;
+			background-color:#ffffff;
+			height:500px;
+		}
+		body{
+			background-color:rgb(235,235,235);
+		}
 	</style>
 	<script>
 		$(document).ready(function(){
-			
+			var navi = <?php echo $navi; ?>;
+			if(navi == 1){
+				$('#brief-id').click();
+			}
+			else if(navi == 2){
+				$('#field-id').click();
+			}
+			else if(navi == 3){
+				$('#service-id').click();
+			}
+			else if(navi == 4){
+				$('#share-id').click();
+			}
+			else if(navi == 5){
+				$('#news-id').click();
+			}
+			else if(navi == 6){
+				$('#member-id').click();
+			}
+			else if(navi == 7){
+				$('#link-id').click();
+			}
+			else if(navi == 8){
+				$('#contact-id').click();
+			}
 		});
 	</script>
 </head>
@@ -54,7 +87,7 @@
 
 <div style="float:left;">
 	<table>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-home span-level" onclick="window.location='../indext.php'"> 首页</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-home span-level" onclick="window.location='../index.php'"> 首页</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-pushpin span-level" id="brief-id"> 简介</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-book span-level" id="field-id"> 研究领域</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-cloud span-level" id="service-id"> 服务</span></td></tr>
@@ -122,8 +155,28 @@
 		<hr>
 		<table style="width:100%;" id="news-list">
 			<tr>
-				<td><a id="news_%s" onclick="opennews(this)">第五届机器学习及其应用学生研讨会</a></td>
-				<td>2010-11-05 到 2010-11-07</td>	
+				<td>南京大学：</td>
+				<td><a href="http://nju.edu.cn" target="_blank">http://nju.edu.cn</a></td>	
+			</tr>
+			<tr>
+				<td>南京大学信息管理学院：</td>
+				<td><a href="http://im.nju.edu.cn/" target="_blank">http://im.nju.edu.cn/</a></td>	
+			</tr>
+			<tr>
+				<td>中国政务网站服务能力建设网：</td>
+				<td><a href="http://www.gwd.gov.cn/" target="_blank">http://www.gwd.gov.cn/</a></td>	
+			</tr>
+			<tr>
+				<td>北京市政务数据资源网：</td>
+				<td><a href="http://www.bjdata.gov.cn/" target="_blank">http://www.bjdata.gov.cn/</a></td>	
+			</tr>
+			<tr>
+				<td>上海市政务数据服务网：</td>
+				<td><a href="http://www.datashanghai.gov.cn/" target="_blank">http://www.datashanghai.gov.cn/</a></td>	
+			</tr>
+			<tr>
+				<td>美国政府数据中心：</td>
+				<td><a href="http://www.data.gov/" target="_blank">http://www.data.gov/</a></td>	
 			</tr>
 		</table>
 	</div>
@@ -133,8 +186,8 @@
 		<hr>
 		<table style="width:100%;" id="news-list">
 			<tr>
-				<td><a id="news_%s" onclick="opennews(this)">第五届机器学习及其应用学生研讨会</a></td>
-				<td>2010-11-05 到 2010-11-07</td>	
+				<td></td>
+				<td></td>	
 			</tr>
 		</table>
 	</div>
@@ -188,6 +241,8 @@
 		</table>
 	</div>
 
-
+</div>
+<?php include './index_footer.php'; ?>
+</div>
 </body>
 </html>

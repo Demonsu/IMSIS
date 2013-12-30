@@ -230,7 +230,7 @@
 	  </div>
 	  <div class="tab-pane col-md-12">
 		  <div class="jumbotron group" style="border-radius:6px">
-			<h2>您目前组织的优势之处</h2>
+			<h2>优势分析</h2>
 		  </div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t11">
@@ -262,7 +262,7 @@
 	  </div>
 	  <div class="tab-pane col-md-12">
 		  <div class="jumbotron group" style="border-radius:6px">
-			<h2>您目前组织的短缺之处</h2>
+			<h2>组织弱项分析</h2>
 		  </div>
 	  </div>
 	  <div class="tab-pane" id="tab-show-t8">
@@ -290,7 +290,7 @@
 	  </div>
 	  <div class="tab-pane col-md-12">
 		  <div class="jumbotron group" style="border-radius:6px">
-			<h2>以下是我们对您组织的能力提升的建议</h2>
+			<h2>对组织能力提升的建议</h2>
 		  </div>
 	  </div>
 	  

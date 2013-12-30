@@ -138,10 +138,12 @@
 	  <div class="panel-body">
 	  
 		<div class="group">
-						Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
+			<p>测评须知：</p>
+				<p>您好！您正在使用电子政务服务管理能力测评系统，问卷中您所填写的信息和数据仅作为电子政务服务能力测评及学术研究之用，绝不会泄露或做其他用途，请放心如实填写。<br>
+				请在填写过程中如实填写，这样您才能得到相对真实的测评结果和中肯的测评建议。</p>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<button class="btn btn-warning" id="readit">我已经仔细阅读《XXX》并同意相关内容</button>
+					<button class="btn btn-warning" id="readit">我已经仔细阅读说明并同意相关内容</button>
 				</div>
 			</div>
 		</div>

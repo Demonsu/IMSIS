@@ -23,8 +23,8 @@
 <!--header -->
 <?php include './include/header.php'; ?>
 <div class="row">
-	<div class="col-md-8">
-		<div class="jumbotron"  style="border-radius:6px">
+	<div style="width:675px;padding-left:15px;float:left;padding-right:15px">
+		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;">
 		  <h2>系统简介</h2>
 		  <p style="font-size:14px;text-indent:2em;">
 			本次测评以地方政府职能部门为主要研究对象，通过对电子政务系统（权利阳光系统）内部人员使用电子政务服务系统的感受，服务能力进行识别，从而明确电子政务服务能力的价值传导途径与各部分之间的关系。</p>
@@ -37,7 +37,7 @@
 		  <p><a class="btn btn-primary btn-lg" role="button">更多...</a></p>
 		</div>
 	</div>
-	<div class="col-md-4">
+	<div style="width:300px;float:left;">
 		<?php 
 			if (isset($_COOKIE['username']))
 			{
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 			<div class="form-group text-right">
-				<button id="login" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="login" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				<button id="register" class="btn btn-warning">注册</button>
 				<span style="margin-right:20px"><input type="checkbox" id="remember"> 记住密码</span>
 			</div>
