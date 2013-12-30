@@ -597,7 +597,7 @@ $(document).ready(function(){
 				}
 			}
 			options.series[1] = new Object();
-			options.series[1].name = '成熟度3级';
+			options.series[1].name = '成熟度'+level[data.second-1]+'级';
 			options.series[1].data = new Array();
 			options.series[1].color = Highcharts.getOptions().colors[3];
 			for(i=0;i<data.content.length;i++){
