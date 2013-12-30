@@ -60,9 +60,9 @@
 <?php include './include/header.php'; ?>
 
 <div class="row">
-	<div class="col-md-3">
-		<div class="panel panel-default panel-success">
-		  <div class="panel-heading">管理员功能</div>
+	<div style="width:248px;padding-left:15px;padding-right:15px;float:left;">
+		<div class="panel panel-default panel-success" style="border-color:#dddddd;">
+		  <div class="panel-heading" style="color:#000000;border-color:#dddddd;">管理员功能</div>
 		  <div class="panel-body">
 			<div class="list-group">
 			  <a class="list-group-item active">
@@ -98,7 +98,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="change-share">
+	<div id="change-share">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理分享内容</div>
 		  <div class="panel-body">
@@ -109,7 +109,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="change-news">
+	<div id="change-news">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理动态新闻</div>
 		  <div class="panel-body">
@@ -119,7 +119,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col-md-9" id="change-effect-field">
+	<div id="change-effect-field">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理作用域</div>
 		  <div class="panel-body">
@@ -145,7 +145,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="change-key-field">
+	<div id="change-key-field">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理关键域</div>
 		  <div class="panel-body">
@@ -174,7 +174,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="change-key-variable">
+	<div id="change-key-variable">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">管理关键变量</div>
 		  <div class="panel-body">
@@ -235,7 +235,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="target-change">
+	<div id="target-change">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">修改关键域目标值</div>
 		  <div class="panel-body">
@@ -246,7 +246,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="quiz-result-search">
+	<div id="quiz-result-search">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">条件查找</div>
 		  <div class="panel-body">
@@ -299,7 +299,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="passwd-reset">
+	<div id="passwd-reset">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">修改管理员密码</div>
 		  <div class="panel-body">
@@ -335,7 +335,7 @@
 		</div>
 	</div>
 	
-	<div class="col-md-9" id="check-user-data">
+	<div id="check-user-data">
 		<div class="panel panel-default">
 		  <div class="panel-heading" id="body_title">用户资料查询</div>
 		  <div class="panel-body">

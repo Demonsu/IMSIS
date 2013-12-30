@@ -146,3 +146,9 @@ table{
  margin-top:25px;
  margin-bottom:25px;
 }
+
+
+#change-share,#change-news,#change-effect-field,#change-key-field,#change-key-variable,#target-change,#quiz-result-search,#passwd-reset,#check-user-data{
+	float:left;
+	width:726px;
+}
