@@ -176,6 +176,7 @@ $(document).ready(function(){
 				if(!isNaN(data)){
 					alert('创建成功，请到我的测评中的单位测评中进行测评');
 					$('#cover').hide();
+					window.location = 'user_zone.php?navigation=5';
 				}
 				else{
 					alert(data);
