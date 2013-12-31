@@ -34,10 +34,17 @@
 			padding:5px;
 			border-radius:5px;
 			background-color:#ffffff;
-			height:500px;
+			height:590px;
 		}
 		body{
 			background-color:rgb(235,235,235);
+		}
+		table a{
+			color:#000000;
+		}
+		#content{
+			height:450px;
+			overflow:auto;
 		}
 	</style>
 	<script>
@@ -67,6 +74,12 @@
 			else if(navi == 8){
 				$('#contact-id').click();
 			}
+			else if(navi == 9){
+				$('#map-id').click();
+			}
+			else if(navi == 10){
+				$('#law-id').click();
+			}
 		});
 	</script>
 </head>
@@ -94,16 +107,18 @@
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" id="share-id"> 探索与分享</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-certificate span-level" id="news-id"> 最新动态</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="member-id"> 成员</span></td></tr>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="link-id"> 友情链接</span></td></tr>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-user span-level" id="contact-id"> 联系我们</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-link span-level" id="link-id"> 友情链接</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-phone-alt span-level" id="contact-id"> 联系我们</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-globe span-level" id="map-id"> 网站地图</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-briefcase span-level" id="law-id"> 法律声明</span></td></tr>
 		<!--<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_IBM()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_MIS()"> </span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-download-alt span-level" onclick="show_other()"> </span></td></tr>-->
 	</table>
 </div>
 
-<div style="float:left;width:660px;padding:0px 20px 0px 20px;border-left:1px solid #a94442" id="content">
-	<div style="float:left;width:660px;" id="share-panel">
+<div style="float:left;width:770px;padding:0px 20px 0px 20px;border-left:1px solid #a94442" id="content">
+	<div style="float:left;width:720px;" id="share-panel">
 		<h3>探索与分享</h3>
 		<hr>
 		<div id="share-list">
@@ -139,7 +154,7 @@
 		</div>
 	</div>
 	
-	<div style="float:left;width:660px;" id="news-panel">
+	<div style="float:left;width:720px;" id="news-panel">
 		<h3>最新动态</h3>
 		<hr>
 		<table style="width:100%;" id="news-list">
@@ -149,8 +164,58 @@
 			</tr>
 		</table>
 	</div>
-	
-	<div style="float:left;width:660px;" id="link-panel">
+	<div style="float:left;width:720px;" id="law-panel">
+		<h3>法律声明</h3>
+		<hr>
+		<p style="text-indent:2em;">
+			衷心欢迎您光临电子政务与数据智能（ilab.nju.edu.cn 以下简称本网站）！
+			</p><p style="text-indent:2em;">1．本网站提供的任何内容（包括但不限于数据、文字、图表、图像、声音或录像等）的版权均属于网研中心或相关权利人。已经网研中心许可的媒体、网站，在下载、转载使用时必须注明“稿件来源：中国政务网站服务能力建设网”，违者将依法追究责任。未经网研中心或相关权利人事先的书面许可，您不得以任何方式擅自复制、再造、传播、出版、转帖、改编或陈列本网站的内容。同时，未经网研中心书面许可，对于本网站上的任何内容，任何人不得在非网研中心所属的服务器上做镜像。未经授权不得链接本网站，违者将依法追究责任。任何未经授权使用本网站的行为都将违反《中华人民共和国著作权法》和其他法律法规以及有关国际公约的规定。
+			</p><p style="text-indent:2em;">2．网研中心不能保证本网站上任何内容的正确性、及时性、完整性和可靠性以及使用这些内容得出的结果。网研中心以及其分支机构、员工、代理以及其他任何代表（以下简称相关人）对于本网站内容的任何错误、不准确和遗漏以及使用本网站内容得出的结果都将不承担任何责任。
+			</p><p style="text-indent:2em;">任何情况下，网研中心及相关人对于进入或使用本网站引起的任何依赖本网站内容而做出的决定或采取的行动不承担任何责任，对进入或使用本网站而产生的任何直接的、间接的、惩罚性的损失或其他任何形式的损失包括但不限于业务中断、数据丢失或利润损失不承担任何责任。
+		</p>
+	</div>
+	<div style="float:left;width:720px;" id="map-panel">
+		<h3>网站地图</h3>
+		<hr>
+		<table style="width:100%;">
+			<tr>
+				<td><a href="../index.php" style="font-weight:bold;background-color:#aaaaaa">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></td>
+				<td>
+					<a href="?navigation=1">实验室简介</a>‖
+					<a href="?navigation=2">研究领域</a>‖
+					<a href="?navigation=3">服务</a>‖
+					<a href="?navigation=4">探索与分享</a>‖
+					<a href="?navigation=5">最新动态</a>‖
+					<a href="?navigation=6">成员</a>‖
+					<a href="?navigation=7">友情链接</a>‖
+					<a href="?navigation=8">联系我们</a>
+				</td>	
+			</tr>
+			<tr>
+				<td><a href="../index.php" style="font-weight:bold;text-align:right">研究领域</a></td>
+				<td>
+					<a href="?navigation=2">探索视点</a>‖
+					<a href="?navigation=2">科研成果</a>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="../index.php" style="font-weight:bold;text-align:right">服务</a></td>
+				<td>
+					<a href="?navigation=3">咨询服务</a>‖
+					<a href="?navigation=3">开发服务</a>‖
+					<a href="?navigation=3">运维服务</a>
+				</td>
+			</tr>
+			<tr>
+				<td><a href="../index.php" style="font-weight:bold;text-align:right">成员</a></td>
+				<td>
+					<a href="?navigation=3">实验室成员</a>‖
+					<a href="?navigation=3">相册</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="float:left;width:720px;" id="link-panel">
 		<h3>友情链接</h3>
 		<hr>
 		<table style="width:100%;" id="news-list">
@@ -181,18 +246,32 @@
 		</table>
 	</div>
 	
-	<div style="float:left;width:660px;" id="contact-panel">
+	<div style="float:left;width:720px;" id="contact-panel">
 		<h3>联系我们</h3>
 		<hr>
-		<table style="width:100%;" id="news-list">
+		
+		<table style="width:300px;" style="float:left;">
 			<tr>
-				<td></td>
+				<td>邮箱：</td>
+				<td></td>	
+			</tr>
+			<tr>
+				<td>电话：</td>
+				<td></td>	
+			</tr>
+			<tr>
+				<td>传真：</td>
+				<td></td>	
+			</tr>
+			<tr>
+				<td>地址：</td>
 				<td></td>	
 			</tr>
 		</table>
+		<img src="../assets/img/index/map.png" style="float:right"/>
 	</div>
 	
-	<div style="float:left;width:660px;" id="brief-panel">
+	<div style="float:left;width:720px;" id="brief-panel">
 		<h3>实验室简介</h3>
 		<hr>
 		<img src="../assets/img/index/homepage.jpg" style="float:right" width="360"/>
@@ -201,7 +280,7 @@
 		</p>
 	</div>
 	
-	<div style="float:left;width:660px;" id="field-panel">
+	<div style="float:left;width:720px;" id="field-panel">
 		<h2>研究领域</h2>
 		<h3>探索视点</h3>
 		<hr>
@@ -210,7 +289,7 @@
 		<hr>
 	</div>
 	
-	<div style="float:left;width:660px;" id="service-panel">
+	<div style="float:left;width:720px;" id="service-panel">
 		<h2>服务</h2>
 		<h3>咨询服务</h3>
 		<hr>
@@ -222,7 +301,7 @@
 		<hr>
 	</div>
 	
-	<div style="float:left;width:660px;" id="member-panel">
+	<div style="float:left;width:720px;" id="member-panel">
 		<h3>成员</h3>
 		<hr>
 		<table style="width:600px" id="member-content">

@@ -57,11 +57,21 @@ $(document).ready(function(){
 		hide();
 		$('#contact-panel').show();
 	});
+	$('#map-id').click(function(){
+		hide();
+		$('#map-panel').show();
+	});
+	$('#law-id').click(function(){
+		hide();
+		$('#law-panel').show();
+	});
 	hide();
 	$('#brief-panel').show();
 });
 
 function hide(){
+	$('#law-panel').hide();
+	$('#map-panel').hide()
 	$('#link-panel').hide();
 	$('#contact-panel').hide();
 	$('#news-panel').hide();

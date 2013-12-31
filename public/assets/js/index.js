@@ -22,6 +22,10 @@ $(document).ready(function(){
 			$('#news-div').html(data);
 		}
 	});
+	
+	$('#search-go').click(function(){
+		window.open('./include/search.php?search='+$('#search-name').val());
+	});
 });
 
 function opennews(t){
@@ -43,6 +47,6 @@ function AddFavorite() {
 		//alert(2);
         window.external.AddFavorite("http://ilab.nju.edu.cn", "电子政务与数据只能实验室(E-government & Data Intelligence Laboratory)");
     } else {
-        alert('添加失败\n您可以尝试通过快捷键' + ctrl + ' + D 加入到收藏夹~')
+        alert('通过快捷键' + ctrl + ' + D 加入到收藏夹~')
     }
 }

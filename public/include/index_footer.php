@@ -8,10 +8,10 @@
 				</td>
 				<td>
 					<span class="footer-cover">
-					<a>联系我们</a>
-					| <a>法律声明</a>
+					<a href="?navigation=8">联系我们</a>
+					| <a href="?navigation=10">法律声明</a>
 					| <a href="?navigation=7">友情链接</a>
-					| <a>网站地图</a>
+					| <a  href="?navigation=9">网站地图</a>
 					</span>
 				</td>
 				<td rowspan=2 style="width:350px"></td>

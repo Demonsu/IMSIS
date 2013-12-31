@@ -17,7 +17,7 @@
 	<div class="header-group">
 		<img src="./assets/img/index/logo.png" height="60px" alt="logo" />
 		<div class="title-search-panel" style="float:right;margin-right:10px;margin-top:14px;">
-			<p style="text-align:right;line-height:13px;font-size:12px;">网站导航 | <span style="cursor:pointer;" onclick="AddFavorite()">加入收藏</span></p>
+			<p style="text-align:right;line-height:13px;font-size:12px;"><span style="cursor:pointer;" onclick="window.open('./include/member.php?navigation=9')">网站导航</span> | <span style="cursor:pointer;" onclick="AddFavorite()">加入收藏</span></p>
 		    <input type="text" id="search-name" style="height:22px;margin-top;border-radius:5px 0px 0px 5px;border-right:0px;">
 			<button class="btn-mine" type="button" id="search-go">搜索</button>
 		</div>
@@ -49,7 +49,7 @@
 					  <li><a href="javascript:window.open('./include/member.php?navigation=6');">实验室相册</a></li>
 					</ul>
 				  </li>
-				  <li><a>其他栏目</a></li>
+				 
 				</ul>
 			  </div><!-- /.navbar-collapse -->
 			</nav>
@@ -114,6 +114,24 @@
 	<div class="main-content">
 		<div class="content-container">
 			<div class="content-one">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
+					系统入口
+				</div>
+				
+			    <a href="./login.php" target="_blank" title="eGov-CMM">
+					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="139px"/>
+					</div>
+			    </a>
+				
+				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
+			
+				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
+				
+				
+				
+			</div>
+			<div class="content-two">
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=5')">
 					最新动态
 				</div>
@@ -135,7 +153,8 @@
 				</div>
 				
 			</div>
-			<div class="content-two">
+			<div class="content-three">
+				
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=4')">
 					探索与分享
 				</div>
@@ -158,23 +177,6 @@
 					</ul>
 				</div>
 			</div>
-			<div class="content-three">
-				
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
-					系统入口
-				</div>
-				
-			    <a href="./login.php" target="_blank" title="eGov-CMM">
-					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="139px"/>
-					</div>
-			    </a>
-				
-				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
-			
-				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
-				
-			</div>
 		</div>
 	</div>
 	
@@ -188,10 +190,10 @@
 				</td>
 				<td>
 					<span class="footer-content">
-					<a>联系我们</a>
-					| <a>法律声明</a>
+					<a href="./include/member.php?navigation=8">联系我们</a>
+					| <a href="./include/member.php?navigation=10">法律声明</a>
 					| <a href="./include/member.php?navigation=7">友情链接</a>
-					| <a>网站地图</a>
+					| <a href="./include/member.php?navigation=9">网站地图</a>
 					</span>
 				</td>
 				<td rowspan=2 style="width:350px"></td>
