@@ -100,7 +100,7 @@
 
 <div style="float:left;">
 	<table>
-		<tr><td class="td-css"><span class="glyphicon glyphicon-home span-level" onclick="window.location='../index.php'"> 首页</span></td></tr>
+		<tr><td class="td-css"><span class="glyphicon glyphicon-home span-level" onclick="window.location='../indext.php'"> 首页</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-pushpin span-level" id="brief-id"> 简介</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-book span-level" id="field-id"> 研究领域</span></td></tr>
 		<tr><td class="td-css"><span class="glyphicon glyphicon-cloud span-level" id="service-id"> 服务</span></td></tr>

@@ -35,7 +35,7 @@
 	<script>
 		$(document).ready(function(){
 			var search = $('#search').val();
-			alert(search);
+			//alert(search);
 			$.ajax({
 				type:'POST',
 				url:'../handle/system.php',
@@ -44,7 +44,7 @@
 					key_word:search
 				},
 				success:function(str){
-					alert(str);
+					//alert(str);
 					
 					var data = jQuery.parseJSON(str);
 					var show = '';
