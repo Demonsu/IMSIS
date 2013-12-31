@@ -238,7 +238,7 @@ class System extends DB_Connect {
 			$return_value=$return_value.sprintf($ITEMFORMAT,$share["title"],$share["time"],"share",$share["url"]);
 		}		
 		
-		return $return_value;
+		return "[".$return_value."]";
 			
 	}
 	
