@@ -207,6 +207,40 @@ class System extends DB_Connect {
 		$news=mysql_fetch_assoc($select);	
 		return htmlspecialchars_decode($news["content"],ENT_QUOTES);
 	}
+	public function search_website($key_word)
+	{
+		$ITEMFORMAT='
+			{
+				"title":"%s",
+				"time":"%s",
+				"type":"%s",
+				"id":"%s"
+			}';	
+		$return_value="";
+		$sql="SELECT * FROM news WHERE title like '%".$key_word."%' or content like '%".$key_word."%' or time like '%".$key_word."%'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($news=mysql_fetch_assoc($select))
+		{
+			if ($return_value!="")
+			{
+				$return_value=$return_value.",";
+			}
+			$return_value=$return_value.sprintf($ITEMFORMAT,$news["title"],$news["time"],"news",$news["id"]);
+		}
+		$sql="SELECT * FROM discovery_share WHERE title like '%".$key_word."%' or content like '%".$key_word."%' or time like '%".$key_word."%'";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($share=mysql_fetch_assoc($select))
+		{
+			if ($return_value!="")
+			{
+				$return_value=$return_value.",";
+			}
+			$return_value=$return_value.sprintf($ITEMFORMAT,$share["title"],$share["time"],"share",$share["url"]);
+		}		
+		
+		return $return_value;
+			
+	}
 	
 	
 	

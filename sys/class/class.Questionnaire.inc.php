@@ -10,7 +10,7 @@ class Questionnaire extends DB_Connect {
 	{
 		$return_value="";
 		$EFFECTFORMAT='<a class="list-group-item active"><input type="checkbox" id="%s" value="%s">%s</a>';
-	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
+	    $KEYFORMAT='<a class="list-group-item"><label><input type="checkbox" id="%s" value="%s" > %s</label></a>';
 		//获取所有的作用域
 		$sql="SELECT * FROM effect_field";
 		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
@@ -98,12 +98,12 @@ class Questionnaire extends DB_Connect {
 	public function fetch_department_questionnaire($user_id,$quiz_id)//获取单位评测的问卷
 	{
 		$return_value="";
-		$EFFECTFORMAT='<a class="list-group-item active"><input type="checkbox" id="%s" value="%s">%s</a>';
-	    $KEYFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" > %s</a>';
-		$KEYUNDOFORMAT='<a class="list-group-item"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
-		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
+		$EFFECTFORMAT='<a class="list-group-item active"><label><input type="checkbox" id="%s" value="%s">%s</label></a>';
+	    $KEYFORMAT='<a class="list-group-item"><label><input type="checkbox" id="%s" value="%s" > %s</label></a>';
+		$KEYUNDOFORMAT='<a class="list-group-item"><label><input type="checkbox" id="%s" value="%s" checked> %s</label></a>';
+		$KEYDONEFORMAT='<a class="list-group-item key_field_done" title="您已经作答过的关键域"><label><input type="checkbox" id="%s" value="%s" checked> %s</label></a>';
 		//$KEYSUBMITFORMAT='<a class="list-group-item key_field_done" title="您已经提交过的关键域"><input type="checkbox" id="%s" value="%s" checked> %s</a>';
-		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><input type="checkbox" id="%s" value="%s" checked disabled> %s</a>';
+		$KEYOTHERDONEFORMAT='<a class="list-group-item" title="别人已经选择的关键域"><label><input type="checkbox" id="%s" value="%s" checked disabled> %s</label></a>';
 		//获取所有的作用域
 		$sql="SELECT * FROM effect_field";
 		$effect_select=mysql_query($sql,$this->root_conn)or trigger_error(mysql_error(),E_USER_ERROR);
