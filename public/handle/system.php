@@ -51,5 +51,10 @@
 		$id=$_POST["id"];
 		echo $system->fetch_news_detail($id);
 	}
+	if ($operation=="SEARCHWEBSITE")
+	{
+		$key_word=$_POST["key_word"];
+		echo $system->search_website($key_word);
+	}
 
 ?>

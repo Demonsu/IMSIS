@@ -624,8 +624,18 @@ class Statistics extends DB_Connect {
 			$mature_level++;
 		}
 		$this->mature_level=$mature_level;
-		$mature_level_first=$mature_level-1;
-		$mature_level_second=$mature_level;
+		if ($mature_level>5)
+		{
+			$this->mature_level=5;
+			$mature_level_first=5;
+			$mature_level_second=5;
+		}
+		else
+		{
+			$mature_level_first=$mature_level-1;
+			$mature_level_second=$mature_level;
+		}
+
 		$all_effect_field="";
 		foreach($this->quiz->effect_field_list as $effect_field)
 		{
@@ -786,7 +796,7 @@ class Statistics extends DB_Connect {
 			"total":["%s","%s","%.2f"]
 		}';
 		$total_test_items=0;
-		$total_short_items=0;
+		$total_short_items=0.00000001;
 		foreach($this->quiz->effect_field_list as $effect_field)
 		{
 			foreach($effect_field->key_field_list as $key_field)
@@ -807,7 +817,7 @@ class Statistics extends DB_Connect {
 			if ($effect_field->score!=-1)
 			{
 				$effect_field_test_items=0;
-				$effect_field_short_items=0;
+				$effect_field_short_items=0.0000001;
 				foreach($effect_field->key_field_list as $key_field)
 				{
 					if ($key_field->score!=-1)
