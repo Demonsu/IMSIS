@@ -34,9 +34,6 @@
 					echo '<h4 class="text-right" style="color:#000000">你好 <a href="admin_zone.php?navigation=7" style="color:#000000" title="点击进入管理员页面">'.$_SESSION['USERID'].'</a> ';
 				echo ' <span class="label label-warning" onclick="window.location=\'./handle/logout.php\'">退出</span></h4>';
 			}
-			else
-				echo ' <h4 class="text-right"> <span class="label label-success" onclick="window.location=\'login.php\'">登录</span></h4>';
-
 		?>
 		
 	</div>
