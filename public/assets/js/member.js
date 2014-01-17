@@ -81,3 +81,8 @@ function hide(){
 	$('#share-panel').hide();
 	$('#brief-panel').hide();
 }
+
+function opennews(t){
+	var s = t.id.split('_');
+	window.open('./include/content.php?type=news&id='+s[1],'newwindow');
+}
