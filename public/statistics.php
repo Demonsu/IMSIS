@@ -120,7 +120,7 @@
 			同样你也可以将测评结果生产的表格以及图标下载到您的PC上<br>
 			<br>
 		  </p>
-		  <p><a class="btn btn-primary btn-lg" role="button" onClick="method1()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
+		  <p><a class="btn btn-primary btn-lg" role="button" onClick="export1()"><span class="glyphicon glyphicon-tasks"></span> 导出报表</a></p>
 		</div>
 	  </div>
 	  <div class="tab-pane col-md-12">

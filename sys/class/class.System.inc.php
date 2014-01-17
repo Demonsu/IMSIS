@@ -106,19 +106,22 @@ class System extends DB_Connect {
 		$FIRSTSHARE='			
 			<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
 				<a href="./assets/upload/files/%s" target="_blank" title="%s">
-					<img src="./assets/upload/pics/%s" width="277px" height="139px"/>
+					<img src="./assets/upload/pics/%s" width="277px" height="90px"/>
 				</a>
 			</div>
 			';
 		$SHAREFORMAT='				
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
 				%s
+			
 			</ul>
 		';
 		$SHAREITEMFORMAT='
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
-			<a title="点击预览" href="./assets/upload/files/%s" target="_blank">%s</a></li>
+			<a title="点击预览" href="./assets/upload/files/%s" target="_blank">%s</a>
+			<span style="float:right;margin-top:2.5px;">2013-12-25</span></li>
+			
 		';		
 		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 4";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
@@ -137,16 +140,18 @@ class System extends DB_Connect {
 		$FIRSTNESFORMAT='
 		<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
 		<a id="news_%s" onclick="opennews(this)">
-			<img src="./assets/upload/pics/%s" title="%s" width="277px" height="139px"/></a>
+			<img src="./assets/upload/pics/%s" title="%s" width="277px" height="90px"/></a>
 		</div>';
 		$NEWSITEM='
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/list.png" width="28px" />
-			<a title="点击下载"  id="news_%s" onclick="opennews(this)">%s</a></li>
+			<a title="点击下载"  id="news_%s" onclick="opennews(this)">%s</a>
+			<span style="float:right;margin-top:2.5px;">2013-12-25</span></li>
 		';
 		$NEWS='
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
 			%s
+			
 			</ul>
 		';
 		$sql="SELECT * FROM news ORDER BY sort_value DESC LIMIT 4";
