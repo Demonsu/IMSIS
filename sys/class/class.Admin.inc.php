@@ -536,9 +536,9 @@ class Admin extends DB_Connect {
 	{
 		$DISCOVERYDETAIL='		
 		{
-			"title":"%s",
-			"content":"%s",
-			"type":"%s",
+			"title":\'%s\',
+			"content":\'%s\',
+			"type":\'%s\',
 			"url":"%s",
 			"img_url":"%s"
 		}';
@@ -672,7 +672,7 @@ class Admin extends DB_Connect {
 		$NEWSDETAIL='
 		{
 			"title":"%s",
-			"content":"%s",
+			"content":\'%s\',
 			"img_url":"%s"
 		}';
 		$return_value="";
