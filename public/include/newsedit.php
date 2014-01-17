@@ -75,7 +75,7 @@
 				});
 			}
 		});
-		if(id != -1){
+		if(parseInt(id) != -1){
 			$.ajax({
 				type:'POST',
 				url:'../handle/admin_zone.php',
@@ -86,8 +86,8 @@
 				success:function(str){
 					//alert(str);
 					var data = jQuery.parseJSON(str);
-					$('#title').val(data.title);
-					editor.insertHtml(data.content)
+					$('#title').val(htmlDecode(data.title));
+					editor.insertHtml(htmlDeconde(data.content));
 					img_url = data.img_url;
 					$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
 				}
@@ -104,6 +104,16 @@
 		s = s.replace(/"/g, "&quot;");  
 		return s;  
 	};
+	function htmlDecode(str){
+		var s = "";
+		if(str.length == 0) return "";
+		s = str.replace(/&amp;/g,"&");
+		s = s.replace(/&lt;/g, "<");  
+		s = s.replace(/&gt;/g, ">");    
+		s = s.replace(/&apos;/g, "'");  
+		s = s.replace(/&quot;/g, '"');
+		return s;
+	}
 	function ajaxFileUpload()
 	{
 		$.ajaxFileUpload

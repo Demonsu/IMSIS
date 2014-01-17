@@ -88,10 +88,10 @@
 					id:id
 				},
 				success:function(str){
-					//alert(str);
+					alert(str);
 					var data = jQuery.parseJSON(str);
-					$('#title').val(data.title);
-					editor.insertHtml(data.content);
+					$('#title').val(htmlDecode(data.title));
+					editor.insertHtml(htmlDecode(data.content));
 					file_url = data.url;
 					img_url = data.img_url;
 					$(':radio').each(function(){
@@ -115,6 +115,16 @@
 		s = s.replace(/"/g, "&quot;");
 		return s;  
 	};
+	function htmlDecode(str){
+		var s = "";
+		if(str.length == 0) return "";
+		s = str.replace(/&amp;/g,"&");
+		s = s.replace(/&lt;/g, "<");  
+		s = s.replace(/&gt;/g, ">");    
+		s = s.replace(/&apos;/g, "'");  
+		s = s.replace(/&quot;/g, '"');
+		return s;
+	}
 	function ajaxFileUpload()
 	{
 		$.ajaxFileUpload
