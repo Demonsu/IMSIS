@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class System extends DB_Connect {
 
@@ -119,18 +119,19 @@ class System extends DB_Connect {
 		$SHAREITEMFORMAT='
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
-			<a title="点击预览" href="./assets/upload/files/%s" target="_blank">%s</a>
-			<span style="float:right;margin-top:2.5px;">2013-12-25</span></li>
+			<a title="点击下载" href="./assets/upload/files/%s" target="_blank">%s</a>
+			<span style="float:right;margin-top:2.5px;">%s</span></li>
 			
 		';		
-		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 4";
+		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 7";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$first=mysql_fetch_assoc($select);
 		$first_item=sprintf($FIRSTSHARE,$first["url"],$first["title"],$first["img_url"]);
 		$share_body="";
 		while ($share=mysql_fetch_assoc($select))
 		{
-			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"]);
+			$temp_time=explode(" ",$share["time"]);
+			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($SHAREFORMAT,$share_body);
 	}
@@ -145,8 +146,8 @@ class System extends DB_Connect {
 		$NEWSITEM='
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/list.png" width="28px" />
-			<a title="点击下载"  id="news_%s" onclick="opennews(this)">%s</a>
-			<span style="float:right;margin-top:2.5px;">2013-12-25</span></li>
+			<a title="点击预览"  id="news_%s" onclick="opennews(this)">%s</a>
+			<span style="float:right;margin-top:2.5px;">%s</span></li>
 		';
 		$NEWS='
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
@@ -154,14 +155,15 @@ class System extends DB_Connect {
 			
 			</ul>
 		';
-		$sql="SELECT * FROM news ORDER BY sort_value DESC LIMIT 4";
+		$sql="SELECT * FROM news ORDER BY sort_value DESC LIMIT 7";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$first=mysql_fetch_assoc($select);
 		$first_item=sprintf($FIRSTNESFORMAT,$first["id"],$first["img_url"],$first["title"]);
 		$news_body="";
 		while ($news=mysql_fetch_assoc($select))
 		{
-			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"]);
+			$temp_time=explode(" ",$news["time"]);
+			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($NEWS,$news_body);		
 	}
@@ -173,8 +175,8 @@ class System extends DB_Connect {
 				<img class="media-object" src="../assets/img/index/icon/%s.png" width="64px">
 			  </a>
 			  <div class="media-body">
-				<h4 class="media-heading"><a href="../assets/upload/files/%s">%s</a></h4>
-				aa%s
+				<h4 class="media-heading"><a href="../assets/upload/files/%s">%s</a><span style="float:right">%s</span></h4>
+				%s
 			  </div>
 		</div>
 		';
@@ -183,7 +185,8 @@ class System extends DB_Connect {
 		$return_value="";
 		while ($share=mysql_fetch_assoc($select))
 		{
-			$return_value=$return_value.sprintf($SHAREFORMAT,$share["type"],$share["url"],$share["title"],$share["content"]);
+
+			$return_value=$return_value.sprintf($SHAREFORMAT,$share["type"],$share["url"],$share["title"],$share["time"],$share["content"]);
 		}
 		return $return_value;
 		
