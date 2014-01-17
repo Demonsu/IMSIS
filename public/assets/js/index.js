@@ -7,6 +7,9 @@ $(document).ready(function(){
 		},
 		success:function(data){
 			//alert(data);
+			data = data.replace(/\r/g,"");
+			data = data.replace(/\n/g,"");
+			data = data.replace(/\t/g,"");
 			$('#share-div').html(htmlDecode(data));
 		}
 	});
@@ -19,6 +22,9 @@ $(document).ready(function(){
 		},
 		success:function(data){
 			//alert(data);
+			data = data.replace(/\r/g,"");
+			data = data.replace(/\n/g,"");
+			data = data.replace(/\t/g,"");
 			$('#news-div').html(htmlDecode(data));
 		}
 	});

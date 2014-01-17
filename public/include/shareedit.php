@@ -89,7 +89,10 @@
 					id:id
 				},
 				success:function(str){
-					alert(str);
+					//alert(str);
+					str = str.replace(/\r/g,"");
+					str = str.replace(/\n/g,"");
+					str = str.replace(/\t/g,"");
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
 					editor.insertHtml(htmlDecode(data.content));

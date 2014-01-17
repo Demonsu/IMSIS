@@ -85,6 +85,10 @@
 				},
 				success:function(str){
 					//alert(str);
+					str = str.replace(/\r/g,"");
+					str = str.replace(/\n/g,"");
+					str = str.replace(/\t/g,"");
+					//alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
 					editor.insertHtml(htmlDecode(data.content));
@@ -99,9 +103,9 @@
 		if (str.length == 0) return "";  
 		s = str.replace(/&/g, "&amp;");  
 		s = s.replace(/</g, "&lt;");  
-		s = s.replace(/>/g, "&gt;");    
+		s = s.replace(/>/g, "&gt;");  
 		s = s.replace(/'/g, "&apos;");  
-		s = s.replace(/"/g, "&quot;");  
+		s = s.replace(/"/g, "&quot;");
 		return s;  
 	};
 	function htmlDecode(str){

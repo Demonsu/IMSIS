@@ -53,6 +53,9 @@
 						//alert(str);
 						//var data = jQuery.parseJSON(str);
 						//$('#title-div').text(data.title);
+						str = str.replace(/\r/g,"");
+						str = str.replace(/\n/g,"");
+						str = str.replace(/\t/g,"");
 						$('#content-div').html(htmlDecode(str));
 					}
 				});
