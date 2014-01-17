@@ -528,17 +528,18 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($discovery_info=mysql_fetch_assoc($select))
 		{
-			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],htmlspecialchars_decode($discovery_info["title"],ENT_QUOTES));
+			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],$discovery_info["title"]);
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
 	public function fetch_discovery_info($id)//获取分享的详细信息
 	{
+		//return "fuck";
 		$DISCOVERYDETAIL='		
 		{
-			"title":\'%s\',
-			"content":\'%s\',
-			"type":\'%s\',
+			"title":"%s",
+			"content":"%s",
+			"type":"%s",
 			"url":"%s",
 			"img_url":"%s"
 		}';
@@ -547,7 +548,7 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$discovery_info=mysql_fetch_assoc($select);
 		//htmlspecialchars_decode($comment_row['comment'],ENT_QUOTES)
-		$return_value=sprintf($DISCOVERYDETAIL,htmlspecialchars_decode($discovery_info["title"],ENT_QUOTES),htmlspecialchars_decode($discovery_info["content"],ENT_QUOTES),$discovery_info["type"],$discovery_info["url"]);
+		$return_value=sprintf($DISCOVERYDETAIL,$discovery_info["title"],$discovery_info["content"],$discovery_info["type"],$discovery_info["url"],$discovery_info["img_url"]);
 		return $return_value;
 	}
 	public function add_discovery_share($title,$type,$content,$time,$url,$img_url)//添加一个分享
@@ -663,7 +664,7 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($news_info=mysql_fetch_assoc($select))
 		{
-			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],htmlspecialchars_decode($news_info["title"],ENT_QUOTES));
+			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],$news_info["title"]);
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>';
 	}
@@ -680,7 +681,7 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$news_info=mysql_fetch_assoc($select);
 		//htmlspecialchars_decode($comment_row['comment'],ENT_QUOTES)
-		$return_value=sprintf($NEWSDETAIL,htmlspecialchars_decode($news_info["title"],ENT_QUOTES),htmlspecialchars_decode($news_info["content"],ENT_QUOTES),$news_info["img_url"]);
+		$return_value=sprintf($NEWSDETAIL,$news_info["title"],$news_info["content"],$news_info["img_url"]);
 		return $return_value;
 	}	
 	public function add_news($title,$content,$time,$img_url)//添加一个新闻

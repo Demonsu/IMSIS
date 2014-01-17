@@ -213,7 +213,7 @@ class System extends DB_Connect {
 		$sql="SELECT * FROM news WHERE id='".$id."'";
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		$news=mysql_fetch_assoc($select);	
-		return htmlspecialchars_decode($news["content"],ENT_QUOTES);
+		return $news["content"];
 	}
 	public function search_website($key_word)
 	{
