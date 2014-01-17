@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	$_BASE_PATH="../../";
 
@@ -84,7 +84,7 @@
 					id:id
 				},
 				success:function(str){
-					//alert(str);
+					alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
 					editor.insertHtml(htmlDecode(data.content));
@@ -103,7 +103,7 @@
 		s = s.replace(/'/g, "&apos;");  
 		s = s.replace(/"/g, "&quot;");  
 		return s;  
-	};
+	}
 	function htmlDecode(str){
 		var s = "";
 		if(str.length == 0) return "";

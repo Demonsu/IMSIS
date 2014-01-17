@@ -673,7 +673,7 @@ class Admin extends DB_Connect {
 		$NEWSDETAIL='
 		{
 			"title":"%s",
-			"content":\'%s\',
+			"content":"%s",
 			"img_url":"%s"
 		}';
 		$return_value="";

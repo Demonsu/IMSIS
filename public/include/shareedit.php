@@ -58,7 +58,7 @@
 				});
 			}
 			else{
-				alert(htmlEncode(editor.html()));
+				//alert(htmlEncode(editor.html()));
 				$.ajax({
 					type:'POST',
 					url:'../handle/admin_zone.php',
@@ -89,7 +89,7 @@
 					id:id
 				},
 				success:function(str){
-					alert(str);
+					//alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
 					editor.insertHtml(htmlDecode(data.content));
