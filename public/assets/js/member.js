@@ -8,7 +8,7 @@ $(document).ready(function(){
 		},
 		success:function(data){
 			//alert(data);
-			$('#share-list').html(data);
+			$('#share-list').html(htmlDecode(data));
 		}
 	});
 	$.ajax({
@@ -18,7 +18,7 @@ $(document).ready(function(){
 			operation:'FETCHNEWSLIST2'
 		},
 		success:function(data){
-			$('#news-list').html(data);
+			$('#news-list').html(htmlDecode(data));
 		}
 	});
 	$('#brief-id').click(function(){
@@ -81,7 +81,16 @@ function hide(){
 	$('#share-panel').hide();
 	$('#brief-panel').hide();
 }
-
+function htmlDecode(str){
+	var s = "";
+	if(str.length == 0) return "";
+	s = str.replace(/&amp;/g,"&");
+	s = s.replace(/&lt;/g, "<");  
+	s = s.replace(/&gt;/g, ">");    
+	s = s.replace(/&apos;/g, "'");  
+	s = s.replace(/&quot;/g, '"');
+	return s;
+}
 function opennews(t){
 	var s = t.id.split('_');
 	window.open('./include/content.php?type=news&id='+s[1],'newwindow');

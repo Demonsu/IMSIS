@@ -53,11 +53,21 @@
 						//alert(str);
 						//var data = jQuery.parseJSON(str);
 						//$('#title-div').text(data.title);
-						$('#content-div').html(str);
+						$('#content-div').html(htmlDecode(str));
 					}
 				});
 			}
 		});
+		function htmlDecode(str){
+			var s = "";
+			if(str.length == 0) return "";
+			s = str.replace(/&amp;/g,"&");
+			s = s.replace(/&lt;/g, "<");  
+			s = s.replace(/&gt;/g, ">");    
+			s = s.replace(/&apos;/g, "'");  
+			s = s.replace(/&quot;/g, '"');
+			return s;
+		}
 	</script>
 </head>
 <body>

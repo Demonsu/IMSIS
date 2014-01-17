@@ -114,7 +114,7 @@
 		s = s.replace(/'/g, "&apos;");
 		s = s.replace(/"/g, "&quot;");
 		return s;  
-	};
+	}
 	function htmlDecode(str){
 		var s = "";
 		if(str.length == 0) return "";

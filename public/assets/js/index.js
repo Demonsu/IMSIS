@@ -7,7 +7,7 @@ $(document).ready(function(){
 		},
 		success:function(data){
 			//alert(data);
-			$('#share-div').html(data);
+			$('#share-div').html(htmlDecode(data));
 		}
 	});
 	
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		},
 		success:function(data){
 			//alert(data);
-			$('#news-div').html(data);
+			$('#news-div').html(htmlDecode(data));
 		}
 	});
 	
@@ -27,7 +27,16 @@ $(document).ready(function(){
 		window.open('./include/search.php?search='+$('#search-name').val());
 	});
 });
-
+function htmlDecode(str){
+	var s = "";
+	if(str.length == 0) return "";
+	s = str.replace(/&amp;/g,"&");
+	s = s.replace(/&lt;/g, "<");  
+	s = s.replace(/&gt;/g, ">");    
+	s = s.replace(/&apos;/g, "'");  
+	s = s.replace(/&quot;/g, '"');
+	return s;
+}
 function opennews(t){
 	var s = t.id.split('_');
 	window.open('./include/content.php?type=news&id='+s[1],'newwindow');
