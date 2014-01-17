@@ -1328,3 +1328,14 @@ function download_result(){
 function hide(){
 	$('.tab-pane').hide();
 }
+
+function export1(){
+	try{
+		method1();
+	}
+	catch(e){
+		alert("导出Excel失败，改为导出pdf");
+		window.print();
+	}
+
+}

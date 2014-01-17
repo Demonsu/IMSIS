@@ -4,6 +4,7 @@ body{
 
 /* 以下为头header部分的css */
 .header-group{
+	margin-top:10px;
 	position:relative;
 	background-color:#ffffff;
 	background-image:url('../img/index/header-start-bg.jpg');

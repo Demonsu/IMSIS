@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -114,30 +114,13 @@
 	<div class="main-content">
 		<div class="content-container">
 			<div class="content-one">
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
-					系统入口
-				</div>
-				
-			    <a href="./login.php" target="_blank" title="eGov-CMM">
-					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="139px"/>
-					</div>
-			    </a>
-				
-				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
-			
-				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
-				
-				
-				
-			</div>
-			<div class="content-two">
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=5')">
 					最新动态
 				</div>
 				<div id="news-div">
+				<!--
 					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-						<img src="./assets/img/index/news-title.jpg" width="277px" height="139px"/>
+						<img src="./assets/img/index/news-title.jpg" width="277px" height="90px"/>
 					</div>
 					<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
 						<li class="list-group-item list-group-item-success">
@@ -150,18 +133,22 @@
 							<img src="./assets/img/index/list.png" width="28px" />
 							<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
 					</ul>
+					-->
 				</div>
 				
-			</div>
-			<div class="content-three">
 				
+				
+				
+			</div>
+			<div class="content-two">
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=4')">
 					探索与分享
 				</div>
 				<div id="share-div">
+				<!--
 					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
 						<a href="./assets/download/The_big_data_revolution_in_healthcare.pdf" target="_blank" title="The_big_data_revolution_in_healthcare">
-							<img src="./assets/img/index/pdf-download.jpg" width="277px" height="139px"/>
+							<img src="./assets/img/index/pdf-download.jpg" width="277px" height="90px"/>
 						</a>
 					</div>
 					<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
@@ -175,7 +162,24 @@
 							<img src="./assets/img/index/icon/zip.png" style="width:24px;margin:2px"/>
 							<a title="电子政务服务能力" href="./assets/download/电子政务服务能力.zip" target="_blank">电子政务服务能力</a></li>
 					</ul>
+					-->
 				</div>
+			</div>
+			<div class="content-three">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
+					系统入口
+				</div>
+				
+			    <a href="./login.php" target="_blank" title="eGov-CMM">
+					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="90px"/>
+					</div>
+			    </a>
+				
+				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
+			
+				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
+				
 			</div>
 		</div>
 	</div>
