@@ -1,4 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -167,7 +169,7 @@
 			</div>
 			<div class="content-three">
 				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold">
-					系统入口
+					电子政务评测系统
 				</div>
 				
 			    <a href="./login.php" target="_blank" title="eGov-CMM">
@@ -187,7 +189,7 @@
 	<div class="footer-wapper">
 		<table style="width:100%;">
 			<tr>
-				<td rowspan=2 style="width:350px;text-align:right">
+				<td rowspan=2 style="width:340px;text-align:right">
 					<a href="http://www.nju.edu.cn/" target="_blank">
 					<img src="./assets/img/index/nju.png" width="50" />
 					</a>
@@ -200,7 +202,7 @@
 					| <a href="./include/member.php?navigation=9">网站地图</a>
 					</span>
 				</td>
-				<td rowspan=2 style="width:350px"></td>
+				<td rowspan=2 style="width:340px"></td>
 			</tr>
 			<tr>
 				<td>

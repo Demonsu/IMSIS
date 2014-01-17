@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	$_BASE_PATH="../../";
 
@@ -45,7 +45,7 @@
 						operation:'ADDDISCOVERY',
 						title:htmlEncode($('#title').val()),
 						type:$(':radio[name="filetype"]:checked').val(),
-						content:htmlEncode($('textarea[name="content"]').html()),
+						content:htmlEncode(editor.html()),
 						url:file_url,
 						img_url:img_url
 					},
@@ -58,6 +58,7 @@
 				});
 			}
 			else{
+				alert(htmlEncode(editor.html()));
 				$.ajax({
 					type:'POST',
 					url:'../handle/admin_zone.php',
@@ -66,7 +67,7 @@
 						id:id,
 						title:htmlEncode($('#title').val()),
 						type:$(':radio[name="filetype"]:checked').val(),
-						content:htmlEncode($('textarea[name="content"]').html()),
+						content:htmlEncode(editor.html()),
 						url:file_url,
 						img_url:img_url
 					},
@@ -79,7 +80,7 @@
 				});
 			}
 		});
-		if(id != -1){
+		if(parseInt(id) != -1){
 			$.ajax({
 				type:'POST',
 				url:'../handle/admin_zone.php',
