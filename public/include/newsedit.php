@@ -87,7 +87,7 @@
 					//alert(str);
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
-					editor.insertHtml(htmlDeconde(data.content));
+					editor.insertHtml(htmlDecode(data.content));
 					img_url = data.img_url;
 					$('#img-show').html('<img src="../assets/upload/pics/'+img_url+'" style="max-width:500px;">');
 				}
