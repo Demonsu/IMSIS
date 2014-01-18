@@ -84,15 +84,11 @@
 					id:id
 				},
 				success:function(str){
-<<<<<<< HEAD
 					//alert(str);
 					str = str.replace(/\r/g,"");
 					str = str.replace(/\n/g,"");
 					str = str.replace(/\t/g,"");
 					//alert(str);
-=======
-					alert(str);
->>>>>>> b6f4dc0ef5de434642e71183f5acc9db76b48cd2
 					var data = jQuery.parseJSON(str);
 					$('#title').val(htmlDecode(data.title));
 					editor.insertHtml(htmlDecode(data.content));
