@@ -23,8 +23,8 @@
 <!--header -->
 <?php include './include/header.php'; ?>
 <div class="row">
-	<div style="width:675px;padding-left:15px;float:left;padding-right:15px">
-		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;">
+	<div style="width:675px;padding-left:15px;float:left;padding-right:15px;">
+		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;height:400px;">
 		  <h2>系统简介</h2>
 		  <p style="font-size:16px;text-indent:2em;">
 			电子政务服务能力成熟度模型是以各级政府职能部门为主要研究对象的能力调查。通过电子政务系统领导者对在行电子政务系统运营情况的回答，分析电子政务系统能力的建设情况，从内部评估政府电子化的成熟程度</p>

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<title>������������ڽ��ܶ�</title>
+	<title>政府网络服务公众接受度</title>
 	
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
@@ -145,82 +145,82 @@
 <body>
 <div class="main">
 <?php include "include/header.php"; ?>
-<h3><b>������Ϣ</b></h3>
+<h3><b>个人信息</b></h3>
 <table style="width:100%;">
 	<tr>
-		<td style="width:20%;">�Ա�</td>
+		<td style="width:20%;">性别</td>
 		<td>
-			<label>��:</label><span id="gender1"></span>
-			<label>Ů:</label><span id="gender2"></span>
+			<label>男:</label><span id="gender1"></span>
+			<label>女:</label><span id="gender2"></span>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:20%;">����</td>
+		<td style="width:20%;">年龄</td>
 		<td>
-			<span id="age"></span><label>��</label>
+			<span id="age"></span><label>岁</label>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:20%;">��λ����</td>
+		<td style="width:20%;">单位性质</td>
 		<td>
-			<p><label>���һ���:</label><span id="depart1"></span></p>
-			<p><label>˽Ӫ��ҵ:</label><span id="depart2"></span></p>
-			<p><label>��ҵ��λ:</label><span id="depart3"></span></p>
-			<p><label>������ҵ:</label><span id="depart4"></span></p>
-			<p><label>������ҵ:</label><span id="depart5"></span></p>
-			<p><label>����:</label><span id="depart6"></span></p>
+			<p><label>国家机关:</label><span id="depart1"></span></p>
+			<p><label>私营企业:</label><span id="depart2"></span></p>
+			<p><label>事业单位:</label><span id="depart3"></span></p>
+			<p><label>国有企业:</label><span id="depart4"></span></p>
+			<p><label>外资企业:</label><span id="depart5"></span></p>
+			<p><label>其他:</label><span id="depart6"></span></p>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:20%;">����</td>
+		<td style="width:20%;">收入</td>
 		<td>
-			<p><label>2000Ԫ/�¼�����:</label><span id="pay1"></span></p>
-			<p><label>2000~3500Ԫ/��:</label><span id="pay2"></span></p>
-			<p><label>3500~5000Ԫ/��:</label><span id="pay3"></span></p>
-			<p><label>5000~7000Ԫ/��:</label><span id="pay4"></span></p>
-			<p><label>7000~10000Ԫ/��:</label><span id="pay5"></span></p>
-			<p><label>10000~50000Ԫ/��:</label><span id="pay6"></span></p>
-			<p><label>50000Ԫ/������:</label><span id="pay7"></span></p>
+			<p><label>2000元/月及以下:</label><span id="pay1"></span></p>
+			<p><label>2000~3500元/月:</label><span id="pay2"></span></p>
+			<p><label>3500~5000元/月:</label><span id="pay3"></span></p>
+			<p><label>5000~7000元/月:</label><span id="pay4"></span></p>
+			<p><label>7000~10000元/月:</label><span id="pay5"></span></p>
+			<p><label>10000~50000元/月:</label><span id="pay6"></span></p>
+			<p><label>50000元/月以上:</label><span id="pay7"></span></p>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:20%;">ѧ��</td>
+		<td style="width:20%;">学历</td>
 		<td>
-			<label>��ʿ:</label><span id="edu1"></span>
-			<label>˶ʿ:</label><span id="edu2"></span>
-			<label>����:</label><span id="edu3"></span>
-			<label>��ר:</label><span id="edu4"></span>
-			<label>��ר/��У:</label><span id="edu5"></span>
-			<label>����:</label><span id="edu6"></span>
-			<label>����:</label><span id="edu7"></span>
-			<label>����:</label><span id="edu8"></span>
+			<label>博士:</label><span id="edu1"></span>
+			<label>硕士:</label><span id="edu2"></span>
+			<label>本科:</label><span id="edu3"></span>
+			<label>大专:</label><span id="edu4"></span>
+			<label>中专/技校:</label><span id="edu5"></span>
+			<label>高中:</label><span id="edu6"></span>
+			<label>初中:</label><span id="edu7"></span>
+			<label>其他:</label><span id="edu8"></span>
 		</td>
 	</tr>
 	<tr>
-		<td style="width:20%;">����ʱ��</td>
+		<td style="width:20%;">工作时间</td>
 		<td>
-			<span id="time"></span><label>��</label>
+			<span id="time"></span><label>年</label>
 		</td>
 	</tr>
 </table>
-<h3><b>���ڽ���̬�ȵ���</b></h3>
+<h3><b>公众接受态度调查</b></h3>
 <table style="width:100%;">
 	<tr>
 		<th style="width:15%;">
-			<b>����</b>
+			<b>主题</b>
 		</th>
 		<th style="width:70%;">
-			<b>�������</b>
+			<b>相关问题</b>
 		</th>
-		<th><b>�ǳ�ͬ��</b></th><th><b>ͬ��</b></th><th><b>������</b></th><th><b>��ͬ��</b></th><th><b>�ǳ���ͬ��</b></th>
+		<th><b>非常同意</b></th><th><b>同意</b></th><th><b>可能是</b></th><th><b>不同意</b></th><th><b>非常不同意</b></th>
 	</tr>
 	
 	<tr>
 		<td rowspan=4>
-			��֪������
+			感知有用性
 		</td>
 		<td id="q1">
-			����ͨ��������վ��ȡ��Ϣ�����»��빫����Ա���н�����
+			可以通过政府网站获取信息、办事或与公务人员进行交流。
 		</td>
 		<td id="r1-1"></td>
 		<td id="r1-2"></td>
@@ -230,7 +230,7 @@
 	</tr>
 	<tr>
 		<td id="q2">
-			������վ���һ�ȡ��Ϣ�����»��빫����Ա���н��������ס�
+			政府网站让我获取信息、办事或与公务人员进行交流更容易。
 		</td>
 		<td id="r2-1"></td>
 		<td id="r2-2"></td>
@@ -240,7 +240,7 @@
 	</tr>
 	<tr>
 		<td id="q3">
-			ͨ��������վ��ȡ��Ϣ�����»��빫����Ա��������ʱ����̡�
+			通过政府网站获取信息、办事或与公务人员交流花费时间更短。
 		</td>
 		<td id="r3-1"></td>
 		<td id="r3-2"></td>
@@ -250,7 +250,7 @@
 	</tr>
 	<tr>
 		<td id="q4">
-			ͨ��������վ��ȡ��Ϣ�����»��빫����Ա�������������⡣
+			通过政府网站获取信息、办事或与公务人员交流更令人满意。
 		</td>
 		<td id="r4-1"></td>
 		<td id="r4-2"></td>
@@ -261,10 +261,10 @@
 	
 	<tr>
 		<td rowspan=4>
-			��֪������
+			感知易用性
 		</td>
 		<td id="q5">
-			���Ҷ��ԣ�ѧϰ��ϵͳ���ѡ�
+			对我而言，学习该系统不难。
 		</td>
 		<td id="r5-1"></td>
 		<td id="r5-2"></td>
@@ -274,7 +274,7 @@
 	</tr>
 	<tr>
 		<td id="q6">
-			ʹ���������Ϸ���ϵͳ���¸����ס�
+			使用政府网上服务系统办事更容易。
 		</td>
 		<td id="r6-1"></td>
 		<td id="r6-2"></td>
@@ -284,7 +284,7 @@
 	</tr>
 	<tr>
 		<td id="q7">
-			Ū���������Ϸ���ϵͳ��ʹ�÷��������ס�
+			弄懂政府网上服务系统的使用方法很容易。
 		</td>
 		<td id="r7-1"></td>
 		<td id="r7-2"></td>
@@ -294,7 +294,7 @@
 	</tr>
 	<tr>
 		<td id="q8">
-			�Һܿ��������ʹ���������Ϸ���ϵͳ������������ˡ�
+			我很快就能熟练使用政府网上服务系统进行事务办理了。
 		</td>
 		<td id="r8-1"></td>
 		<td id="r8-2"></td>
@@ -305,10 +305,10 @@
 	
 	<tr>
 		<td rowspan=3>
-			ʹ����Ϊ
+			使用行为
 		</td>
 		<td id="q9">
-			�Ҿ���ʹ���������Ϸ���ϵͳ���¡�
+			我经常使用政府网上服务系统办事。
 		</td>
 		<td id="r9-1"></td>
 		<td id="r9-2"></td>
@@ -318,7 +318,7 @@
 	</tr>
 	<tr>
 		<td id="q10">
-			�Ҿ������������Ϸ���ϵͳʹ���г��ֵ�����������������Ա���н�����
+			我经常就政府网上服务系统使用中出现的问题与政府工作人员进行交流。
 		</td>
 		<td id="r10-1"></td>
 		<td id="r10-2"></td>
@@ -328,7 +328,7 @@
 	</tr>
 	<tr>
 		<td id="q11">
-			ͨ�����Ͻ������������Ϸ���ϵͳ�Ĺ��ܸĽ��ܴ�
+			通过不断交流，政府网上服务系统的功能改进很大。
 		</td>
 		<td id="r11-1"></td>
 		<td id="r11-2"></td>
@@ -339,10 +339,10 @@
 	
 	<tr>
 		<td rowspan=3>
-			ʹ����Ը
+			使用意愿
 		</td>
 		<td id="q12">
-			��ϲ��ʹ���������Ϸ���ϵͳ���¡�
+			我喜欢使用政府网上服务系统办事。
 		</td>
 		<td id="r12-1"></td>
 		<td id="r12-2"></td>
@@ -352,7 +352,7 @@
 	</tr>
 	<tr>
 		<td id="q13">
-			�һ��ٴ�ʹ���������Ϸ���ϵͳ���¡�
+			我会再次使用政府网上服务系统办事。
 		</td>
 		<td id="r13-1"></td>
 		<td id="r13-2"></td>
@@ -362,7 +362,7 @@
 	</tr>
 	<tr>
 		<td id="q14">
-			�һ��Ƽ�����ʹ���������Ϸ���ϵͳ���¡�
+			我会推荐朋友使用政府网上服务系统办事。
 		</td>
 		<td id="r14-1"></td>
 		<td id="r14-2"></td>
@@ -372,7 +372,7 @@
 	</tr>
 </table>
 
-<p>�Ա��ʾ�����Ľ���</p>
+<p>对本问卷调查的建议</p>
 <div style="width:100%;overflow:auto;height:200px;" id="t1">
 
 </div>
