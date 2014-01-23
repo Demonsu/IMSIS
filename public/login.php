@@ -35,7 +35,7 @@
 			<p style="font-size:14px;text-indent:2em;">作为本领域的专业人士，您的意见对我们的研究工作非常重要，它将是我们了解电子政务系统应用情况的重要参考依据。评测完后，我们将会根据您的评测内容给出评测分析和最终评价结果。</p>
 			<p style="font-size:14px;text-indent:2em;">填写问卷时，请选择您认可的成熟度水平相应的选项，1代表成熟度水平最低，5代表成熟度水平最高。</p>
 		  </p>-->
-		  <p><a id="more" <?php if(isset($_SESSION["PERMISSION"])) ; else echo 'style="display:none"'; ?>" class="btn btn-primary btn-lg" role="button" href="./user_zone.php?navigation=1">更多...</a></p>
+		  <p><a id="more" <?php if(isset($_SESSION["PERMISSION"])) ; else echo 'style="display:none"'; ?>" class="btn btn-primary btn-lg" role="button" href="./user_zone.php?navigation=7">更多...</a></p>
 		</div>
 	</div>
 	<div style="width:300px;float:left;">
