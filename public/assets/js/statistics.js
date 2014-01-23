@@ -180,6 +180,7 @@ $(document).ready(function(){
 					table += '</tr>';
 				}
 			}
+			table += '<tr><td style="text-align:right" colspan=3>半分制换算方法：0-0.3=>0|0.3-0.8=>0.5|0.8-1=>1</td></tr>';
 			$('#t3').html(table);
 			var options = {
 				chart: {
@@ -616,7 +617,7 @@ $(document).ready(function(){
 			var table = '<tr><th class="table-title" colspan=11><span title="此表是在能力对比的基础上对短缺能力的详细描述，贡献率是指每个关键变量对整体得分贡献了多少，贡献的越少，能力越不足。因而从贡献率可以发现短缺的关键变量。同时，与较高一级成熟度比较，完成比例告诉我们，现在能力完成了目标能力的比例，提升空间有多大。在这样一个提升空间内，细分下来，可看到每个关键节点（关键变量）的提升空间，从而指导在不同关键变量下应该付出多大的努力。">短缺能力详细信息表</span></th></tr>';
 			table += '<tr style="text-align:center">';
 			table += '<th style="text-align:center">领域</th>';
-			table += '<th style="text-align:center">残缺的关键域</th>';
+			table += '<th style="text-align:center">短缺的关键域</th>';
 			table += '<th colspan="2" style="text-align:center">关键变量得分</th>';
 			table += '<th style="text-align:center">综合得分</th>';
 			table += '<th style="text-align:center">贡献率</th>';
@@ -678,9 +679,7 @@ $(document).ready(function(){
 		url:'statistics/' + $('#quiz_id').val() + '/table9.json',
 		success:function(data){
 			var table = '<tr><th class="table-title" colspan=8><span title="该表是对整个能力提升工作量的描述。很明显，百分比越大，说明需要提升的方面越多，工作量越大，在提升能力的过程中，应该多分配资源。">短缺能力的作用域分析表</span></th></tr>';
-			table += '<tr>';
-			table += '<th colspan=5 style="text-align:center">短缺能力的领域分析表</th>';
-			table += '</tr>';
+
 			table += '<tr>';
 			table += '<th></th><th style="text-align:center">短缺能力项数</th><th style="text-align:center">被测项数</th><th style="text-align:center">所占比例</th><th style="text-align:center">占短缺能力的百分比</th>';
 			table += '</tr>';
@@ -1072,7 +1071,7 @@ $(document).ready(function(){
 			var table = '<tr><th class="table-title" colspan=5><span title="该图标用于站在作用域的角度，描述优势作用域的优秀比例。用于帮助四个领域的负责人员从部门的角度，获得部门优秀关键域的比例，比例越大，部分的流程工作越好，规范化程度越高。">优势能力的作用域分析表</span></th></tr>';
 
 			table += '<tr style="text-align:center">';
-			table += '<th></th><th style="text-align:center">优势能力项数</th><th style="text-align:center">总项数</th><th style="text-align:center">所占比例</th><th style="text-align:center">占优势能力的百分比</th>';
+			table += '<th></th><th style="text-align:center">优势能力项数</th><th style="text-align:center">被测项数</th><th style="text-align:center">所占比例</th><th style="text-align:center">占优势能力的百分比</th>';
 			table += '</tr>';
 			var i;
 			for(i=0;i<data.content.length;i++){
@@ -1162,7 +1161,7 @@ $(document).ready(function(){
 					plotShadow: false
 				},
 				title: {
-					text: '占短缺能力的百分比'
+					text: '占优势能力的百分比'
 				},
 				tooltip: {
 					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -1184,7 +1183,7 @@ $(document).ready(function(){
 			options.series = new Array();
 			options.series[0] = new Object();
 			options.series[0].type = 'pie';
-			options.series[0].name = '占短缺能力的百分比';
+			options.series[0].name = '占优势能力的百分比';
 			options.series[0].data = new Array();
 			for(i=0;i<data.content.length;i++){
 				options.series[0].data[i] = new Array();

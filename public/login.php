@@ -9,7 +9,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<title>个人空间</title>
+	<title>eGov-CMM</title>
 	
 	<link rel="stylesheet" href="./assets/css/login.css">
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
@@ -26,15 +26,16 @@
 	<div style="width:675px;padding-left:15px;float:left;padding-right:15px">
 		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;">
 		  <h2>系统简介</h2>
-		  <p style="font-size:14px;text-indent:2em;">
-			本次测评以地方政府职能部门为主要研究对象，通过对电子政务系统（权利阳光系统）内部人员使用电子政务服务系统的感受，服务能力进行识别，从而明确电子政务服务能力的价值传导途径与各部分之间的关系。</p>
+		  <p style="font-size:16px;text-indent:2em;">
+			电子政务服务能力成熟度模型是以各级政府职能部门为主要研究对象的能力调查。通过电子政务系统领导者对在行电子政务系统运营情况的回答，分析电子政务系统能力的建设情况，从内部评估政府电子化的成熟程度</p>
+<!--
 			<p style="font-size:14px;text-indent:2em;">希望通过本调查了解政府内部人员（尤其是日常工作中使用电子政务系统的公务人员）对电子政务系统使用情况的感受，以及各部门应用电子政务提供服务情况的客观评价。</p>
 			<p style="font-size:14px;text-indent:2em;">您的评测结果将有助于寻找提高贵部门电子政务服务能力的方法和思路。</p>
 			<p style="font-size:14px;text-indent:2em;">调查内容包括个人信息、电子政务系统使用情况的个人感受、电子政务系统服务情况的个人感受等三项内容。</p>
 			<p style="font-size:14px;text-indent:2em;">作为本领域的专业人士，您的意见对我们的研究工作非常重要，它将是我们了解电子政务系统应用情况的重要参考依据。评测完后，我们将会根据您的评测内容给出评测分析和最终评价结果。</p>
 			<p style="font-size:14px;text-indent:2em;">填写问卷时，请选择您认可的成熟度水平相应的选项，1代表成熟度水平最低，5代表成熟度水平最高。</p>
-		  </p>
-		  <p><a class="btn btn-primary btn-lg" role="button">更多...</a></p>
+		  </p>-->
+		  <p><a id="more" <?php if(isset($_SESSION["PERMISSION"])) ; else echo 'style="display:none"'; ?>" class="btn btn-primary btn-lg" role="button" href="./user_zone.php?navigation=1">更多...</a></p>
 		</div>
 	</div>
 	<div style="width:300px;float:left;">
@@ -74,10 +75,14 @@
 					<input type="password" class="form-control" id="inputPassword" placeholder="输入密码" value="'.$password.'">
 				</div>
 			</div>
-			<div class="form-group text-right">
-				<button id="login" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-				<button id="register" class="btn btn-warning">注册</button>
+			<div class="form-group text-center">
+				<p>
 				<span style="margin-right:20px"><input type="checkbox" id="remember"> 记住密码</span>
+				<a href="javascript:alert(\'请联系我们\');">忘记密码？</a>
+				</p>
+				<button id="login" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="register" class="btn btn-warning">注册</button>
+				
 			</div>
 		</div>
 		' ;

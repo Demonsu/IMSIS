@@ -53,32 +53,7 @@
 	  <div class="panel-body">
 		<div class="form-group">
 			<div class="list-group" id="target_select">
-			  <a href="#" class="list-group-item active">
-				作用域
-			  </a>
-			  <a class="panel-group" id="accordion">
-				  <div class="panel panel-default" style="margin-bottom:0px;">
-					<div class="panel-heading">
-					  <h4 class="panel-title">
-						<a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse11">
-						  Collapsible Group Item #1
-						</a>
-						<select style="float:right" id="1">
-						  <option value="0">0</option>
-						  <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3" selected>3</option>
-						  <option value="4">4</option>
-						</select>
-					  </h4>
-					</div>
-					<div id="collapse11" class="panel-collapse collapse in">
-					  <div class="panel-body">
-						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus <br>terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-					  </div>
-					</div>
-				  </div>
-			  </a>
+			  
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-right">

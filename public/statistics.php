@@ -9,7 +9,7 @@
 <html >
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<title>问卷</title>
+	<title>问卷查看</title>
 	
 
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
@@ -115,6 +115,7 @@
 	  <div class="tab-pane col-md-12" id="tab-show-t0">
 		<div class="jumbotron" style="border-radius:6px">
 		  <h1>统计结果查看</h1>
+		  <h4>成熟度说明：1-意识 2-流程化 3-标准化 4-质量改进 5-持续改进</h4>
 		  <p>
 			在这个页面你可以根据你所填写的问卷生成相应的评测指标<br>
 			同样你也可以将测评结果生产的表格以及图标下载到您的PC上<br>
