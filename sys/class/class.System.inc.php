@@ -250,9 +250,165 @@ class System extends DB_Connect {
 			
 	}
 	
-	
-	
-	
+	public function answer_gov_quiz($answer_list,$question_suggestion,$quiz_suggestion)//第二份问卷
+	{
+		foreach($answer_list as $answer_item)
+		{
+			if ($answer_item!="")
+			{
+				$temp=explode(":",$answer_item);
+				$answer_id=$temp[0];
+				$answer=$temp[1];
+				$sql="UPDATE gov_quiz_answer_statistic SET answer_".$answer."=answer_".$answer."+1 WHERE id='".$answer_id."'";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}	
+			}
+		}
+		
+		$sql="INSERT INTO gov_quiz_question_suggestion
+		(
+			answer
+		)VALUES
+		(
+			'".$question_suggestion."'
+		)";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		
+		$sql="INSERT INTO gov_quiz_suggestion
+		(
+			answer
+		)VALUES
+		(
+			'".$quiz_suggestion."'
+		)";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}
+		return 1;
+	}
+	public function answer_pub_quiz($answer_list,$quiz_suggestion)
+	{
+		$index=1;
+		foreach($answer_list as $answer_item)
+		{
+			if ($answer_item!="")
+			{
+				$temp=explode(":",$answer_item);
+				$answer_id=$temp[0];
+				$answer=$temp[1];
+				$sql="";
+				if ($index==2)
+				{
+					$sql="UPDATE pub_quiz_answer_statistic SET answer_1=answer_1+'".$answer."' WHERE id='".$answer_id."'";
+				}else
+				if ($index==6)
+				{
+					$sql="UPDATE pub_quiz_answer_statistic SET answer_1=answer_1+'".$answer."' WHERE id='".$answer_id."'";
+				}
+				else
+				$sql="UPDATE pub_quiz_answer_statistic SET answer_".$answer."=answer_".$answer."+1 WHERE id='".$answer_id."'";
+				if (!mysql_query($sql,$this->root_conn))
+				{
+				  die('Error: ' . mysql_error());
+				}
+				$index++;	
+			}
+		}
+		
+		$sql="INSERT INTO pub_quiz_suggestion
+		(
+			suggestion
+		)VALUES
+		(
+			'".$quiz_suggestion."'
+		)";
+		if (!mysql_query($sql,$this->root_conn))
+		{
+		  die('Error: ' . mysql_error());
+		}	
+		return 1;
+	}
+	public function fetch_gov_quiz_statistic()
+	{
+		$statistic_list="";
+		$sql="SELECT * FROM gov_quiz_answer_statistic";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($result=mysql_fetch_assoc($select))		
+		{
+			//echo $statistic_list;
+			if ($statistic_list!="")
+				$statistic_list=$statistic_list.",";	
+			$statistic_list=$statistic_list.sprintf("[%s,%s,%s,%s,%s]",$result["answer_1"],$result["answer_2"],$result["answer_3"],$result["answer_4"],$result["answer_5"]);
+			//echo $statistic_list."<br>";
+		}
+		return "[".$statistic_list."]";
+	}
+	public function fetch_gov_quiz_question_suggestion()
+	{
+		$suggestion_list="";
+		$sql="SELECT * FROM gov_quiz_question_suggestion";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($result=mysql_fetch_assoc($select))		
+		{
+			//echo $statistic_list;
+			if ($suggestion_list!="")
+				$suggestion_list=$suggestion_list.",";	
+			$suggestion_list=$suggestion_list.'"'.$result["answer"].'"';
+			//echo $statistic_list."<br>";
+		}		
+		return "[".$suggestion_list."]";
+	}
+	public function fetch_gov_quiz_suggestion()
+	{
+		$suggestion_list="";
+		$sql="SELECT * FROM gov_quiz_suggestion";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($result=mysql_fetch_assoc($select))		
+		{
+			//echo $statistic_list;
+			if ($suggestion_list!="")
+				$suggestion_list=$suggestion_list.",";	
+			$suggestion_list=$suggestion_list.'"'.$result["answer"].'"';
+			//echo $statistic_list."<br>";
+		}		
+		return "[".$suggestion_list."]";	
+	}
+	public function fetch_pub_quiz_statistics()
+	{
+		$statistic_list="";
+		$sql="SELECT * FROM pub_quiz_answer_statistic";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($result=mysql_fetch_assoc($select))		
+		{
+			//echo $statistic_list;
+			if ($statistic_list!="")
+				$statistic_list=$statistic_list.",";	
+			$statistic_list=$statistic_list.sprintf("[%s,%s,%s,%s,%s,%s,%s,%s]",$result["answer_1"],$result["answer_2"],$result["answer_3"],$result["answer_4"],$result["answer_5"],$result["answer_6"],$result["answer_7"],$result["answer_8"]);
+			//echo $statistic_list."<br>";
+		}
+		return "[".$statistic_list."]";		
+	}
+	public function fetch_pub_quiz_suggestion()
+	{
+		$suggestion_list="";
+		$sql="SELECT * FROM pub_quiz_suggestion";
+		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
+		while($result=mysql_fetch_assoc($select))		
+		{
+			//echo $statistic_list;
+			if ($suggestion_list!="")
+				$suggestion_list=$suggestion_list.",";	
+			$suggestion_list=$suggestion_list.'"'.$result["suggestion"].'"';
+			//echo $statistic_list."<br>";
+		}		
+		return "[".$suggestion_list."]";		
+	}
 	
 	
 	
