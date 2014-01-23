@@ -44,11 +44,11 @@
 			}
 			var chr = '';
 			chr += '1:'+$(':radio[name="gender"]:checked').val()+';';
-			chr += '1:'+$('#age').val()+';';
-			chr += '1:'+$(':radio[name="depart"]:checked').val()+';';
-			chr += '1:'+$(':radio[name="pay"]:checked').val()+';';
-			chr += '1:'+$(':radio[name="edu"]:checked').val()+';';
-			chr += '1:'+$('#time').val()+';';
+			chr += '2:'+$('#age').val()+';';
+			chr += '3:'+$(':radio[name="depart"]:checked').val()+';';
+			chr += '4:'+$(':radio[name="pay"]:checked').val()+';';
+			chr += '5:'+$(':radio[name="edu"]:checked').val()+';';
+			chr += '6:'+$('#time').val()+';';
 			for(i=1;i<=14;i++){
 				chr += (i+6)+':'+$(':radio[name="radio'+i+'"]:checked').val()+';';
 			}
