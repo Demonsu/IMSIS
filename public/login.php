@@ -24,7 +24,7 @@
 <?php include './include/header.php'; ?>
 <div class="row">
 	<div style="width:675px;padding-left:15px;float:left;padding-right:15px;">
-		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;height:400px;">
+		<div class="jumbotron"  style="border-radius:6px;background-color:#e5e5e5;height:600px;">
 		  <h2>系统简介</h2>
 		  <p style="font-size:16px;text-indent:2em;">
 			电子政务服务能力成熟度模型是以各级政府职能部门为主要研究对象的能力调查。通过电子政务系统领导者对在行电子政务系统运营情况的回答，分析电子政务系统能力的建设情况，从内部评估政府电子化的成熟程度</p>
@@ -124,6 +124,13 @@
 			</div>
 			</div>
 			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">多人模式:<br>您可以选择自己熟知的领域，与您的同事一起完成对单位的测评。报告结果会在所有测评项完成后获得。</label>
+			<div style="position:relative">
+			<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer">
+				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;"  onclick="window.open(\'./quiz_gov.php\')"> 
+					<span class="glyphicon glyphicon-briefcase"></span><br><h3>问卷调查</h3>
+				</button>
+			</div>
+			</div>
 		</div>
 		
 		' ;

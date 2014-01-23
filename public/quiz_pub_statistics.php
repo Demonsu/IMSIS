@@ -11,6 +11,7 @@
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="./assets/css/body.css">
+	
 	<script>
 	$(document).ready(function(){
 		$.ajax({
@@ -25,7 +26,7 @@
 				$('#gender1').text(data[0][0]);
 				$('#gender2').text(data[0][1]);
 				
-				$('#age').text(data[1][0]);
+				$('#age').text(Math.round(data[1][0]/(data[0][0]+data[1][0])));
 				
 				$('#depart1').text(data[2][0]);
 				$('#depart2').text(data[2][1]);
