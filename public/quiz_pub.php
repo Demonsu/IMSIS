@@ -55,6 +55,7 @@
 			alert(chr);
 			
 			$.ajax({
+				type:'POST',
 				url:'./handle/system.php',
 				data:{
 					operation:'ANSWERPUBQUIZ',
