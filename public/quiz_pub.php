@@ -144,20 +144,20 @@
 <h3><b>个人信息</b></h3>
 <table style="width:100%;">
 	<tr>
-		<th style="width:20%;">性别</th>
+		<td style="width:20%;">性别</td>
 		<td>
 			<label class="checked"><input type="radio" name="gender" value="1" checked />男</label>
 			<label><input type="radio" name="gender" value="2"/>女</label>
 		</td>
 	</tr>
 	<tr>
-		<th style="width:20%;">年龄</th>
+		<td style="width:20%;">年龄</td>
 		<td>
 			<label><input type="text" id="age" value="30"/>岁</label>
 		</td>
 	</tr>
 	<tr>
-		<th style="width:20%;">单位性质</th>
+		<td style="width:20%;">单位性质</td>
 		<td>
 			<p><label class="checked"><input type="radio" name="depart" value="1" checked />国家机关</label></p>
 			<p><label><input type="radio" name="depart" value="2"/>私营企业</label></p>
@@ -168,7 +168,7 @@
 		</td>
 	</tr>
 	<tr>
-		<th style="width:20%;">收入</th>
+		<td style="width:20%;">收入</td>
 		<td>
 			<p><label class="checked"><input type="radio" name="pay" value="1" checked />2000元/月及以下</label></p>
 			<p><label><input type="radio" name="pay" value="2"/>2000~3500元/月</label></p>
@@ -180,7 +180,7 @@
 		</td>
 	</tr>
 	<tr>
-		<th style="width:20%;">学历</th>
+		<td style="width:20%;">学历</td>
 		<td>
 			<label class="checked"><input type="radio" name="edu" value="1" checked />博士</label>
 			<label><input type="radio" name="edu" value="2"/>硕士</label>
@@ -193,7 +193,7 @@
 		</td>
 	</tr>
 	<tr>
-		<th style="width:20%;">工作时间</th>
+		<td style="width:20%;">工作时间</td>
 		<td>
 			<label><input type="text" id="time" value="5"/>年</label>
 		</td>
