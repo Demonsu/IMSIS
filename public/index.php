@@ -172,20 +172,25 @@
 					电子政务评测系统
 				</div>
 				
-			    <a href="./login.php" target="_blank" title="eGov-CMM">
-					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="90px"/>
+			   
+				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+					<div style="padding:10px;">
+						<a href="./login.php" target="_blank" title="eGov-CMM" >
+							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="border-radius:5px;" />
+						</a>
+						<a href="./quiz_pub.php" target="_blank" title="" >
+							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="margin-left:18px;border-radius:5px;" />
+						</a>
+						<a href="#" title="更多..." >
+							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="margin-left:18px;border-radius:5px;" />
+						</a>
 					</div>
-			    </a>
+				</div>
+			    
 				
 				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
 			
 				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
-				<a href="./quiz_pub.php" target="_blank" title="政府网络服务公众接受度调查问卷">
-					<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
-						<img src="./assets/img/index/eGov-CMM.jpg" width="277px" height="90px"/>
-					</div>
-			    </a>
 			</div>
 		</div>
 	</div>
