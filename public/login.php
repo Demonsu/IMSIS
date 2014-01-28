@@ -91,46 +91,47 @@
 				echo '
 		<div class="group" id="login_second">
 			<div style="position:relative">
-			<div id="cover-u" style="position:absolute;width:300px;height:85px;background:#5bc0de;z-index:1002;border-radius:5px;cursor:pointer" onclick="hide_cover(1)">
-				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
-					<span class="glyphicon glyphicon-user"></span><br><h3>个人测评</h3>
-				</button>
-			</div>
-			<div class="btn-group">
-				<button class="btn btn-primary" id="u_t" style="width:150px;height:85px">
-					<span class="glyphicon glyphicon-user"></span><br><h4>开始测评</h4>
-				</button>
-				
-				<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=4\'" style="width:150px;height:85px">
-					<span class="glyphicon glyphicon-th-list"></span><br><h4>我的测评</h4>
-				</button>
-			</div>
+				<div id="cover-u" style="position:absolute;width:300px;height:85px;background:#5bc0de;z-index:1002;border-radius:5px;cursor:pointer" onclick="hide_cover(1)">
+					<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
+						<span class="glyphicon glyphicon-user"></span><br><h3>个人测评</h3>
+					</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-primary" id="u_t" style="width:150px;height:85px">
+						<span class="glyphicon glyphicon-user"></span><br><h4>开始测评</h4>
+					</button>
+					
+					<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=4\'" style="width:150px;height:85px">
+						<span class="glyphicon glyphicon-th-list"></span><br><h4>我的测评</h4>
+					</button>
+				</div>
 			</div>
 			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">单人测评模式:<br>您可以选择自己熟知的领域，对您所在的部门的某些流程进行测评。测评后可直接获取报表结果。</label>
 			<div style="position:relative">
-			<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer"  onclick="hide_cover(2)">
-				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
-					<span class="glyphicon glyphicon-briefcase"></span><br><h3>单位测评</h3>
-				</button>
-			</div>
-			<div class="btn-group" style="position:relative">
-				<button class="btn btn-primary" id="d_t" style="width:150px;height:85px">
-					<span class="glyphicon glyphicon-briefcase"></span><br><h4>创建测评</h4>
-				</button>
-				
-				<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=5\'" style="width:150px;height:85px">
-					<span class="glyphicon glyphicon-th-list"></span><br><h4>单位测评</h4>
-				</button>
-			</div>
+				<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer"  onclick="hide_cover(2)">
+					<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;">
+						<span class="glyphicon glyphicon-briefcase"></span><br><h3>单位测评</h3>
+					</button>
+				</div>
+				<div class="btn-group" style="position:relative">
+					<button class="btn btn-primary" id="d_t" style="width:150px;height:85px">
+						<span class="glyphicon glyphicon-briefcase"></span><br><h4>创建测评</h4>
+					</button>
+					
+					<button class="btn btn-primary" onclick="window.location=\'user_zone.php?navigation=5\'" style="width:150px;height:85px">
+						<span class="glyphicon glyphicon-th-list"></span><br><h4>单位测评</h4>
+					</button>
+				</div>
 			</div>
 			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">多人模式:<br>您可以选择自己熟知的领域，与您的同事一起完成对单位的测评。报告结果会在所有测评项完成后获得。</label>
 			<div style="position:relative">
-			<div id="cover-d" style="position:absolute;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer">
-				<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;"  onclick="window.open(\'./quiz_gov.php\')"> 
-					<span class="glyphicon glyphicon-briefcase"></span><br><h3>问卷调查</h3>
-				</button>
+				<div id="cover-d" style="position:relative;width:300px;height:85px;background:#ed9c28;z-index:1002;border-radius:5px;cursor:pointer">
+					<button type="button" class="btn btn-primary btn-lg btn-block" style="width:300px;height:85px;"  onclick="window.open(\'./quiz_gov.php\')"> 
+						<span class="glyphicon glyphicon-briefcase"></span><br><h3>问卷调查</h3>
+					</button>
+				</div>
 			</div>
-			</div>
+			<label class="label-control alert alert-info" style="color:#000000;font-weight:normal">调查政府内部人员对电子政务系统使用情况的感受</label>
 		</div>
 		
 		' ;
