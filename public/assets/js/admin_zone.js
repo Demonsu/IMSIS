@@ -330,13 +330,14 @@ $(document).ready(function(){
 		$('#loading-cover').show();
 		$.ajax({
 			type:'POST',
-			url:'handle/admin_zone.php',
+			url:'handle/user_zone.php',
 			data:{
 				operation:'CHANGEPASSWORD',
 				old_pass:$('#originPasswd').val(),
 				new_pass:$('#newPasswd').val()
 			},
 			success:function(data){
+				//alert(data);
 				if(data == 1){
 					alert('修改成功');
 					window.location.reload();

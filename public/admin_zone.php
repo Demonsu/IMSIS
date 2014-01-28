@@ -90,9 +90,15 @@
 			  </a>
 			  <a href="#" class="list-group-item" id="check-user">查看用户资料</a>
 			  <a class="list-group-item active">
+				问卷统计
+			  </a>
+			  <a href="./quiz_gov_statistics.php" target="_blank" class="list-group-item">政府问卷</a>
+			  <a href="./quiz_pub_statistics.php" target="_blank" class="list-group-item">公众问卷</a>
+			  <a class="list-group-item active">
 				账户管理
 			  </a>
 			  <a href="#" class="list-group-item" id="change-passwd">修改管理员密码</a>
+			  
 			</div>
 		  </div>
 		</div>
