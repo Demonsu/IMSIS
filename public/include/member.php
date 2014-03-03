@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 	$navi = $_GET['navigation'];
 ?>
@@ -287,6 +287,112 @@
 		
 		<h3>科研成果</h3>
 		<hr>
+		<h4>主要科研项目</h4>
+		<table>
+			<tr>
+				<th>项目来源</th>
+				<th>项目名称</th>
+				<th>起始时间</th>
+			</tr>
+			<tr>
+				<td>教育部人文社会科学基金</td>
+				<td>电子政务服务能力影响因素实证研究</td>
+				<td>2008</td>
+			</tr>
+			<tr>
+				<td>江苏省高校哲学社会科学基金</td>
+				<td>电子政务服务能力管理机制实证研究：基于江苏省典型政府服务部门的实验</td>
+				<td>2009</td>
+			</tr>
+			<tr>
+				<td>2010年省科技型企业技术创新基金</td>
+				<td>安元重大危险源网络化安全监管与应急管理GIS平台研发</td>
+				<td>2010</td>
+			</tr>
+			<tr>
+				<td>国家科技支撑计划子课题</td>
+				<td>基于创新应用链的创新型企业评价体系研究与实证</td>
+				<td>2011</td>
+			</tr>
+			<tr>
+				<td>江苏省高校哲学社会科学基金</td>
+				<td>江苏政府职能部门电子政务能力提升路径研究</td>
+				<td>2012</td>
+			</tr>
+		</table>
+		
+		<h4>代表性论文</h4>
+		<ul>
+			<li>
+				胡广伟. 电子政务服务能力管理路径研究进展[J]. 电子政务,2013,(7).
+			</li>
+			<li>
+				胡广伟,顾日红. 电子参与及其决策模式选择方法研究[J]. 情报科学,2013,(5).
+			</li>
+			<li>
+				胡广伟,邓三鸿,卢明欣,石进. 电子政务服务能力测评模型的结构与关系分析[J]. 管理学报,2012,(5).
+			</li>
+			<li>
+				胡广伟,潘文文,顾日红. 电子政务服务、内容及其规划方法[J]. 电子政务,2010,(9).
+			</li>
+			<li>
+			胡广伟,顾日红,陈建生. 电子政务服务能力管理研究的问题与思路[J]. 电子政务,2010,(9).
+			</li>
+			<li>
+			胡广伟. 电子政务服务能力测评体系研究[J]. 电子政务,2010,(9).
+			</li>
+			<li>
+			胡广伟,蒋婉洁,官佳琪,王婷,王婧. 地方政府职能部门电子政务服务能力现状分析[J]. 电子政务,2010,(9).
+			</li>
+			<li>
+			胡广伟,潘文文. 电子政务的概念:国际同行的视角[J]. 电子政务,2010,(9).
+			</li>
+			<li>
+			胡广伟. 电子政务实施管理框架探析[J]. 情报杂志,2010,(6).
+			</li>
+			<li>
+			胡广伟,潘文文,顾日红. 电子政务服务及其应用层次模型探讨[J]. 情报杂志,2010,(3).
+			</li>
+			<li>
+			Guangwei Hu, Hui Lin, Wenwen Pan. Conceptualizing and Examining E-Government Service Capability: A Review and Empirical Study. Journal of the American Society for Information Science and Technology,2013,64(11)：2379–2395
+			</li>
+			<li>
+			Guangwei Hu, Jin Shi, Wenwen Pan, Jie Wang. A hierarchical model of e-government service capability: An empirical analysis.Government Information Quarterly,2012(29):564-572
+			</li>
+			<li>
+			Guangwei Hu, Wenwen Pan, Jie Wang. The distinctive lexicon and consensual conception of e-Government: an exploratory perspective. International Review of Administrative Sciences,2010, 76(3): 577–597
+			</li>
+			<li>
+			顾日红,胡广伟,. 电子政务战略管理对其服务能力的影响路径分析[J]. 电子政务,2012,(5).
+			</li>
+			<li>
+			丁锐,胡广伟,. 政府业务整合水平对电子政务服务能力的影响[J]. 情报杂志,2013,(7).
+			</li>
+			<li>
+			丁锐,胡广伟,. 电子政务环境下政府业务整合水平评测模型研究[J]. 电子政务,2012,(6).
+			</li>
+			<li>
+			吴云,胡广伟,. 电子政务服务能力成熟度模型演化路径探讨[J]. 电子政务,2013,(10).
+			</li>
+			<li>
+			吴云,胡广伟,. 政务社交媒体研究进展[J]. 电子政务,2013,(5).
+			</li>
+		</ul>
+		<h4>代表性专著及研究报告</h4>
+		<ul>
+			<li>
+			电子政务服务管理／胡广伟著．南京：南京大学出版社，2010.7
+			</li>
+			<li>
+			电子政务服务能力管理理论与方法／胡广伟著．北京：科学出版社，2014.1
+			</li>
+			<li>
+			江苏省典型政府服务部门电子政务服务能力调研报告
+			</li>
+			<li>
+			江苏省典型政府服务部门电子政务服务能力管理机制政策咨询报告
+			</li>
+		</ul>
 	</div>
 	
 	<div style="float:left;width:720px;" id="service-panel">
@@ -305,18 +411,18 @@
 		<h3>成员</h3>
 		<hr>
 		<table style="width:600px" id="member-content">
-			<tr style="border-bottom:1px solid #000000"><th colspan=2>教师</th></tr>
-			<tr><td><a>XXX</a></td><td>博士,教授</td></tr>
-			<tr><td><a>XXX</a></td><td>博士,教授</td></tr>
-			<tr><td><a>XXX</a></td><td>博士,教授</td></tr>
-			<tr style="border-bottom:1px solid #000000"><th colspan=2>博士</th></tr>
-			<tr><td><a>XXX</a></td><td>博士</td></tr>
-			<tr><td><a>XXX</a></td><td>博士</td></tr>
-			<tr><td><a>XXX</a></td><td>博士</td></tr>
-			<tr style="border-bottom:1px solid #000000"><th colspan=2>硕士</th></tr>
-			<tr><td><a>XXX</a></td><td>硕士</td></tr>
-			<tr><td><a>XXX</a></td><td>硕士</td></tr>
-			<tr><td><a>XXX</a></td><td>硕士</td></tr>
+			<tr style="border-bottom:1px solid #000000"><th colspan=3>实验室主任</th></tr>
+			<tr><td><a href="http://im.nju.edu.cn/showstaff.aspx?departmentid=6&titleid=4&id=28">胡广伟</a></td><td>博士</td><td>副教授</td></tr>
+			<tr><td>&nbsp;</td><td> </td><td> </td></tr>
+			<tr style="border-bottom:1px solid #000000"><th colspan=3>实验室成员</th></tr>
+			<tr><td><a>丁锐</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>吴云</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>田原</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>李妍</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>徐蕾</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>刘柳</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>汪松兴</a></td><td>情报学</td><td>硕士研究生</td></tr>
+			<tr><td><a>夏航宇</a></td><td>情报学</td><td>硕士研究生</td></tr>
 		</table>
 	</div>
 

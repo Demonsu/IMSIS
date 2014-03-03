@@ -32,23 +32,23 @@
 				  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">研究领域<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					  <li><a href="javascript:window.open('./include/member.php?navigation=2');">探索视点</a></li>
-					  <li><a href="javascript:window.open('./include/member.php?navigation=2');">科研成果</a></li>
+					  <li><a href="./include/member.php?navigation=2">探索视点</a></li>
+					  <li><a href="./include/member.php?navigation=2">科研成果</a></li>
 					</ul>
 				  </li>
 				  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">服务<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">咨询服务</a></li>
-					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">开发服务</a></li>
-					  <li><a href="javascript:window.open('./include/member.php?navigation=3');">运维服务</a></li>
+					  <li><a href="./include/member.php?navigation=3">咨询服务</a></li>
+					  <li><a href="./include/member.php?navigation=3">开发服务</a></li>
+					  <li><a href="./include/member.php?navigation=3">运维服务</a></li>
 					</ul>
 				  </li>
 				  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">成员<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-					  <li><a href="javascript:window.open('./include/member.php?navigation=6');">实验室成员</a></li>
-					  <li><a href="javascript:window.open('./include/member.php?navigation=6');">实验室相册</a></li>
+					  <li><a href="./include/member.php?navigation=6">实验室成员</a></li>
+					  <li><a href="./include/member.php?navigation=6">实验室相册</a></li>
 					</ul>
 				  </li>
 				 

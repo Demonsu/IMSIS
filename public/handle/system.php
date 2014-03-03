@@ -64,13 +64,13 @@
 		$answer_list=$_POST["answer_list"];
 		$question_suggestion=$_POST["question_suggestion"];
 		$quiz_suggestion=$_POST["quiz_suggestion"];
-		echo $syetem->answer_gov_quiz(explode(';',$answer_list),$question_suggestion,$quiz_suggestion);
+		echo $system->answer_gov_quiz(explode(';',$answer_list),$question_suggestion,$quiz_suggestion);
 	}
 	if ($operation=="ANSWERPUBQUIZ")//回答公众问卷
 	{
 		$answer_list=$_POST["answer_list"];
 		$quiz_suggestion=$_POST["quiz_suggestion"];		
-		echo $syetem->answer_pub_quiz(explode(';',$answer_list),$quiz_suggestion);
+		echo $system->answer_pub_quiz(explode(';',$answer_list),$quiz_suggestion);
 	}
 	if ($operation=="FETCHGOVQUIZSTATISTICS")//获取政府问卷统计数据
 	{
