@@ -69,22 +69,22 @@
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner">
 				<div class="item active">
-				  <img src="./assets/img/index/stage-healthdata.jpg" alt="...">
-				  <div class="carousel-caption">
-				  </div>
-				</div>
-				<div class="item">
 				  <img src="./assets/img/index/homepage_0.jpg" alt="...">
 				  <div class="carousel-caption">
 				  </div>
 				</div>
 				<div class="item">
-				  <img src="./assets/img/index/homepage.jpg" alt="...">
+				  <img src="./assets/img/index/homepage_1.jpg" alt="...">
 				  <div class="carousel-caption">
 				  </div>
 				</div>
 				<div class="item">
-				  <img src="./assets/img/index/homepage.jpg" alt="...">
+				  <img src="./assets/img/index/homepage_2.jpg" alt="...">
+				  <div class="carousel-caption">
+				  </div>
+				</div>
+				<div class="item">
+				  <img src="./assets/img/index/homepage_3.jpg" alt="...">
 				  <div class="carousel-caption">
 				  </div>
 				</div>
