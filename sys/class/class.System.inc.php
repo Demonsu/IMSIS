@@ -1,5 +1,27 @@
 ﻿<?php
-
+function strlen_utf8($str) 
+{  
+	$i = 0;  
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]);  
+		$count++;  
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	return $count;  
+} 
 class System extends DB_Connect {
 
 
@@ -131,6 +153,8 @@ class System extends DB_Connect {
 		while ($share=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$share["time"]);
+			if (strlen_utf8($share["title"])>12)
+				$share["title"]=mb_substr($share["title"],0,12,'utf-8')."...";
 			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($SHAREFORMAT,$share_body);
@@ -163,6 +187,8 @@ class System extends DB_Connect {
 		while ($news=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$news["time"]);
+			if (strlen_utf8($news["title"])>12)
+				$news["title"]=mb_substr($news["title"],0,12,'utf-8')."...";
 			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($NEWS,$news_body);		
