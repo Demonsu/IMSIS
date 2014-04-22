@@ -175,21 +175,21 @@
 				<div class="down3" style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;float:left;width:100px;">
 					<div style="padding:10px;">
 						<a href="./login.php" target="_blank" title="eGov-CMM">
-							<img src="./assets/img/index/eGov-CMM0.png" width="70px" height="70px" style="border-radius:5px;" />
+							<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="border-radius:5px;" />
 						</a>
 						<a href="./quiz_pub.php" target="_blank" title="">
 							<img src="./assets/img/index/eGov-CMM1.png" width="70px" height="70px" style="margin-top:18px;border-radius:5px;" />
 						</a>
 						<a href="#" title="更多..." >
-							<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="margin-top:18px;border-radius:5px;" />
+							<img src="./assets/img/index/eGov-CMM0.png" width="70px" height="70px" style="margin-top:18px;border-radius:5px;" />
 						</a>
 					</div>
 				</div>
 			    <div class="down3" style="padding:4px;margin-top:10px;margin-left:10px;float:left;width:130px;">
 					<div style="padding:10px;">
-						<p style="height:70px;">.......</p>
-                        <p style="height:70px;margin-top:18px">..........</p>
-                        <p style="height:70px;margin-top:18px">..............</p>
+						<p style="height:70px;">电子政务服务能力成熟度在线评估系统</p>
+                        <p style="height:70px;margin-top:18px">公众满意度调查系统</p>
+                        <p style="height:70px;margin-top:18px">更多</p>
 					</div>
 				</div>
 				<!--
