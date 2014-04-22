@@ -142,7 +142,7 @@ class System extends DB_Connect {
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
 			<a title="点击下载" href="./assets/upload/files/%s" target="_blank">%s</a>
-			<span style="float:right;margin-top:2.5px;">%s</span></li>
+			<span style="float:right;margin-top:6px;font-size:3px">%s</span></li>
 			
 		';		
 		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 7";
@@ -171,7 +171,7 @@ class System extends DB_Connect {
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/list.png" width="28px" />
 			<a title="点击预览"  id="news_%s" onclick="opennews(this)">%s</a>
-			<span style="float:right;margin-top:2.5px;">%s</span></li>
+			<span style="float:right;margin-top:6px;font-size:3px">%s</span></li>
 		';
 		$NEWS='
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
