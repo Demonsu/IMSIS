@@ -18,7 +18,7 @@
 	<div class="header-group">
 		<img src="./assets/img/index/logo.png" height="60px" alt="logo" />
 		<div class="title-search-panel" style="float:right;margin-right:10px;margin-top:14px;">
-			<p style="text-align:right;line-height:13px;font-size:12px;"><span style="cursor:pointer;" onclick="window.open('./include/member.php?navigation=9')">网站导航</span> | <span style="cursor:pointer;" onclick="AddFavorite()">加入收藏</span></p>
+			<p style="text-align:right;line-height:13px;font-size:12px;"><span style="cursor:pointer;" onClick="window.open('./include/member.php?navigation=9')">网站导航</span> | <span style="cursor:pointer;" onClick="AddFavorite()">加入收藏</span></p>
 		    <input type="text" id="search-name" style="height:22px;margin-top;border-radius:5px 0px 0px 5px;border-right:0px;">
 			<button class="btn-mine" type="button" id="search-go">搜索</button>
 		</div>
@@ -115,7 +115,7 @@
 	<div class="main-content">
 		<div class="content-container">
 			<div class="content-one">
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=5')">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onClick="window.open('./include/member.php?navigation=5')">
 					最新动态
 				</div>
 				<div id="news-div">
@@ -142,7 +142,7 @@
 				
 			</div>
 			<div class="content-two">
-				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onclick="window.open('./include/member.php?navigation=4')">
+				<div style="text-align:center;color:#931414;font-size:20px;font-weight:bold;cursor:pointer" onClick="window.open('./include/member.php?navigation=4')">
 					探索与分享
 				</div>
 				<div id="share-div">
@@ -171,24 +171,30 @@
 					电子政务评测系统
 				</div>
 				
-			   
-				<div style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;">
+
+				<div class="down3" style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;float:left;width:100px;">
 					<div style="padding:10px;">
-						<a href="./login.php" target="_blank" title="eGov-CMM" >
-							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="border-radius:5px;" />
+						<a href="./login.php" target="_blank" title="eGov-CMM">
+							<img src="./assets/img/index/eGov-CMM0.jpg" width="70px" height="70px" style="border-radius:5px;" />
 						</a>
-						<a href="./quiz_pub.php" target="_blank" title="" >
-							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="margin-left:18px;border-radius:5px;" />
+						<a href="./quiz_pub.php" target="_blank" title="">
+							<img src="./assets/img/index/eGov-CMM1.jpg" width="70px" height="70px" style="margin-top:18px;border-radius:5px;" />
 						</a>
 						<a href="#" title="更多..." >
-							<img src="./assets/img/index/eGov-CMM.jpg" width="70px" height="70px" style="margin-left:18px;border-radius:5px;" />
+							<img src="./assets/img/index/eGov-CMM2.jpg" width="70px" height="70px" style="margin-top:18px;border-radius:5px;" />
 						</a>
 					</div>
 				</div>
-			    
-				
-				<p style="margin:10px 25px 0px 25px;">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
-			
+			    <div class="down3" style="padding:4px;margin-top:10px;margin-left:10px;float:left;width:130px;">
+					<div style="padding:10px;">
+						<p style="height:70px;">.......</p>
+                        <p style="height:70px;margin-top:18px">..........</p>
+                        <p style="height:70px;margin-top:18px">..............</p>
+					</div>
+				</div>
+				<!--
+				<p style="width:135px;margin:10px 25px 0px 25px;float:left">电子政务服务能力成熟度在线评估系统旨在帮助用户快速了解评估的内容、方法、流程，以及引导用户在线完成整个评估过程，并将结果反馈。</p>
+			-->
 				<!--<div style="width:285px;height:1px;background-color:#000000;margin-top:10px;margin-bottom:10px;"></div>-->
 			</div>
 		</div>
