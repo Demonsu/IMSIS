@@ -187,8 +187,8 @@ class System extends DB_Connect {
 		while ($news=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$news["time"]);
-			if (strlen_utf8($news["title"])>14)
-				$news["title"]=mb_substr($news["title"],0,14,'utf-8')."...";
+			if (strlen_utf8($news["title"])>13)
+				$news["title"]=mb_substr($news["title"],0,13,'utf-8')."...";
 			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($NEWS,$news_body);		
