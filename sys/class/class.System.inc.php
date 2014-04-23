@@ -142,7 +142,7 @@ class System extends DB_Connect {
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/icon/%s.png" style="width:24px;margin:2px"/>
 			<a title="点击下载" href="./assets/upload/files/%s" target="_blank">%s</a>
-			<span style="float:right;margin-top:6px;font-size:3px">%s</span></li>
+			<span style="float:right;margin-top:6px;font-size:10px">%s</span></li>
 			
 		';		
 		$sql="SELECT * FROM discovery_share ORDER BY sort_value DESC LIMIT 7";
@@ -153,8 +153,8 @@ class System extends DB_Connect {
 		while ($share=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$share["time"]);
-			if (strlen_utf8($share["title"])>12)
-				$share["title"]=mb_substr($share["title"],0,12,'utf-8')."...";
+			if (strlen_utf8($share["title"])>13)
+				$share["title"]=mb_substr($share["title"],0,13,'utf-8')."...";
 			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($SHAREFORMAT,$share_body);
@@ -171,7 +171,7 @@ class System extends DB_Connect {
 			<li class="list-group-item list-group-item-success">
 			<img src="./assets/img/index/list.png" width="28px" />
 			<a title="点击预览"  id="news_%s" onclick="opennews(this)">%s</a>
-			<span style="float:right;margin-top:6px;font-size:3px">%s</span></li>
+			<span style="float:right;margin-top:6px;font-size:10px">%s</span></li>
 		';
 		$NEWS='
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
@@ -187,8 +187,8 @@ class System extends DB_Connect {
 		while ($news=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$news["time"]);
-			if (strlen_utf8($news["title"])>12)
-				$news["title"]=mb_substr($news["title"],0,12,'utf-8')."...";
+			if (strlen_utf8($news["title"])>14)
+				$news["title"]=mb_substr($news["title"],0,14,'utf-8')."...";
 			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($NEWS,$news_body);		

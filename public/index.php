@@ -172,7 +172,7 @@
 				</div>
 				
 
-				<div class="down3" style="border:1px solid #aaaaaa;padding:3px;margin-top:10px;float:left;width:100px;">
+				<div class="down3" style="border:0px;padding:3px;margin-top:10px;float:left;width:100px;">
 					<div style="padding:10px;">
 						<a href="./login.php" target="_blank" title="eGov-CMM">
 							<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="border-radius:5px;" />
