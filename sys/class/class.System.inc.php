@@ -6,8 +6,9 @@ function strlen_utf8($str)
 	$len = strlen ($str);  
 	while ($i < $len) 
 	{  
-		$chr = ord ($str[$i]);  
-		$count++;  
+		$chr = ord ($str[$i]); 
+		$count++;
+		//echo $count."</br>";
 		$i++;  
 		if($i >= $len) break;  
 		if($chr & 0x80) 
@@ -20,6 +21,73 @@ function strlen_utf8($str)
 			}  
 		}  
 	}  
+	return $count;  
+} 
+function titlelen_utf8($str) 
+{  
+	$i = 0;  
+	$len_str=0;
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]); 
+		if (ctype_alnum($chr))
+		{
+			$len_str++;
+		} else
+		{
+			$len_str=$len_str+2;
+		}
+		//if ($len_str<26)
+		//echo $count."</br>";
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	//echo $len_str."</br>";
+	return $len_str;  
+} 
+function cutlen_utf8($str) 
+{  
+	$i = 0;  
+	$len_str=0;
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]); 
+		if (ctype_alnum($chr))
+		{
+			$len_str++;
+		} else
+		{
+			$len_str=$len_str+2;
+		}
+		if ($len_str<24)
+			$count++;
+		//echo $count."</br>";
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	//echo $count."</br>";
 	return $count;  
 } 
 class System extends DB_Connect {
@@ -153,8 +221,10 @@ class System extends DB_Connect {
 		while ($share=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$share["time"]);
-			if (strlen_utf8($share["title"])>13)
-				$share["title"]=mb_substr($share["title"],0,13,'utf-8')."...";
+			if (titlelen_utf8($share["title"])>24)
+			{
+				$share["title"]=mb_substr($share["title"],0,cutlen_utf8($share["title"]),'utf-8')."...";
+			}
 			$share_body=$share_body.sprintf($SHAREITEMFORMAT,$share["type"],$share["url"],$share["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($SHAREFORMAT,$share_body);
@@ -187,8 +257,10 @@ class System extends DB_Connect {
 		while ($news=mysql_fetch_assoc($select))
 		{
 			$temp_time=explode(" ",$news["time"]);
-			if (strlen_utf8($news["title"])>13)
-				$news["title"]=mb_substr($news["title"],0,13,'utf-8')."...";
+			if (titlelen_utf8($news["title"])>24)
+			{
+				$news["title"]=mb_substr($news["title"],0,cutlen_utf8($news["title"]),'utf-8')."...";
+			}
 			$news_body=$news_body.sprintf($NEWSITEM,$news["id"],$news["title"],$temp_time[0]);
 		}
 		return $first_item.sprintf($NEWS,$news_body);		
