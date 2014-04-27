@@ -239,9 +239,11 @@ class System extends DB_Connect {
 		</div>';
 		$NEWSITEM='
 			<li class="list-group-item list-group-item-success">
-			<img src="./assets/img/index/list.png" width="28px" />
+			<div style="height:28px">
+			<img src="./assets/img/index/list.png" width="22px" />
 			<a title="点击预览"  id="news_%s" onclick="opennews(this)">%s</a>
 			<span style="float:right;margin-top:6px;font-size:10px">%s</span></li>
+			</div>
 		';
 		$NEWS='
 			<ul class="list-group" style="margin-left:-7px;margin-top:10px;" >
