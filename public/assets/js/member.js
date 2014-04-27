@@ -93,5 +93,5 @@ function htmlDecode(str){
 }
 function opennews(t){
 	var s = t.id.split('_');
-	window.open('./include/content.php?type=news&id='+s[1],'newwindow');
+	window.open('./content.php?type=news&id='+s[1],'newwindow');
 }
