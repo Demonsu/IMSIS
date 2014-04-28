@@ -171,7 +171,36 @@
 					电子政务评测系统
 				</div>
 				
-
+				<div style="width:285px;float:left">
+                	<div style="width:90px;height:110px;padding:10px;float:left;">
+                    	<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
+                        <p style="width:70px;text-align:center">XXXX</p>
+                    </div>
+                    <div style="width:195px;float:left;padding-top:20px">
+                    	电子政务服务能力成熟度在线评估系统
+                    </div>
+                </div>
+                
+                <div style="width:285px;float:left">
+                	<div style="width:90px;height:110px;padding:10px;float:left;">
+                    	<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
+                        <p style="width:70px;text-align:center">XXXX</p>
+                    </div>
+                    <div style="width:195px;float:left;padding-top:20px">
+                    	电子政务服务能力成熟度在线评估系统
+                    </div>
+                </div>
+                
+                <div style="width:285px;float:left">
+                	<div style="width:90px;height:110px;padding:10px;float:left;">
+                    	<img src="./assets/img/index/eGov-CMM2.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
+                        <p style="width:70px;text-align:center">XXXX</p>
+                    </div>
+                    <div style="width:195px;float:left;padding-top:20px">
+                    	电子政务服务能力成熟度在线评估系统
+                    </div>
+                </div>
+                <!--
 				<div class="down3" style="border:0px;padding:3px;margin-top:10px;float:left;width:100px;">
 					<div style="padding:10px;">
 						<a href="./login.php" target="_blank" title="eGov-CMM">
