@@ -20,29 +20,29 @@
 	if (! empty ( $_FILES [$fileElementName] ['error'] )) {
 		switch ($_FILES [$fileElementName] ['error']) {
 			case '1' :
-				$error = 'ÉÏ´«µÄÎÄ¼ş´óĞ¡³¬³öÁËphp.ini µÄÏŞÖÆ';
+				$error = 'ä¸Šä¼ çš„æ–‡ä»¶å¤§å°è¶…å‡ºäº†php.ini çš„é™åˆ¶';
 				break;
 			case '2' :
-				$error = 'ÉÏ´«µÄÎÄ¼ş´óĞ¡³¬³öÁËhtml ÖĞµÄ±íµ¥ÉèÖÃ';
+				$error = 'ä¸Šä¼ çš„æ–‡ä»¶å¤§å°è¶…å‡ºäº†html ä¸­çš„è¡¨å•è®¾ç½®';
 				break;
 			case '3' :
-				$error = 'ÎÄ¼şÉÏ´«ÖĞ¶Ï';
+				$error = 'æ–‡ä»¶ä¸Šä¼ ä¸­æ–­';
 				break;
 			case '4' :
-				$error = 'Ã»ÓĞÉÏ´«ÎÄ¼ş';
+				$error = 'æ²¡æœ‰ä¸Šä¼ æ–‡ä»¶';
 				break;
 			case '6' :
-				$error = 'ÕÒ²»µ½ÁÙÊ±ÎÄ¼ş¼Ğ';
+				$error = 'æ‰¾ä¸åˆ°ä¸´æ—¶æ–‡ä»¶å¤¹';
 				break;
 			case '7' :
-				$error = 'ÎÄ¼şĞ´Èë´ÅÅÌ´íÎó';
+				$error = 'æ–‡ä»¶å†™å…¥ç£ç›˜é”™è¯¯';
 				break;
 			case '8' :
-				$error = 'ÉÏ´«ÎÄ¼şÀ©Õ¹Ãû´íÎó';
+				$error = 'ä¸Šä¼ æ–‡ä»¶æ‰©å±•åé”™è¯¯';
 				break;
 			case '999' :
 			default :
-				$error = 'Î´ÖªÉÏ´«´íÎó';
+				$error = 'æœªçŸ¥ä¸Šä¼ é”™è¯¯';
 		}
 	} elseif (empty ( $_FILES ['fileToUpload'] ['tmp_name'] ) || $_FILES ['fileToUpload'] ['tmp_name'] == 'none') {
 		$error = 'No file was uploaded..';
@@ -63,7 +63,7 @@
 			$name = $fileName . ' (' . $count . ')';
 		}
 		if (! move_uploaded_file ( $_FILES [$fileElementName] ['tmp_name'], $path . $name . $fileType )) {
-			$error = '±£´æÎÄ¼şÊ§°Ü';
+			$error = 'ä¿å­˜æ–‡ä»¶å¤±è´¥';
 		} else {
 			
 			$result ['fullname'] = $path . $name . $fileType;
