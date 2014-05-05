@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<title>电子政务与数据智能Lab-主页</title>
+	<title>智慧政务与数据智能实验室主页</title>
 	
 	<link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
 	<script style="text/javascript" src="./assets/js/jquery.js"></script>
@@ -106,7 +106,7 @@
 				实验室简介
 			</div>
 			<p style="color:#ffffff;font-size:14px;margin-top:10px">
-				南京大学电子政务与数据智能实验室（E-government & Data Intelligence Laboratory，EG&DI lab）成立于2012年，依托于南京大学信息管理学院，面向电子政务及数据智能，结合当前信息社会发展的需要，开展电子政务系统以及大数据的相关管理与应用研究。主要研究方向...<br>
+				南京大智慧政务与数据智能实验室（iGovernment and Data Intelligence Laboratory ,IG&DI)成立于2012年，依托于南京大学信息管理学院，面向电子政务及数据智能，结合当前信息社会发展的需要，开展电子政务系统以及大数据的相关管理与应用研究。主要研究方向...<br>
 				<a style="float:right;color:white" href="./include/member.php?navigation=1">更多...</a>
 			</p>
 		</div>
