@@ -1,5 +1,95 @@
 ﻿<?php
-
+function strlen_utf8($str) 
+{  
+	$i = 0;  
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]); 
+		$count++;
+		//echo $count."</br>";
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	return $count;  
+} 
+function titlelen_utf8($str) 
+{  
+	$i = 0;  
+	$len_str=0;
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]); 
+		if (ctype_alnum($chr))
+		{
+			$len_str++;
+		} else
+		{
+			$len_str=$len_str+2;
+		}
+		//if ($len_str<26)
+		//echo $count."</br>";
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	//echo $len_str."</br>";
+	return $len_str;  
+} 
+function cutlen_utf8($str) 
+{  
+	$i = 0;  
+	$len_str=0;
+	$count = 0;  
+	$len = strlen ($str);  
+	while ($i < $len) 
+	{  
+		$chr = ord ($str[$i]); 
+		if (ctype_alnum($chr))
+		{
+			$len_str++;
+		} else
+		{
+			$len_str=$len_str+2;
+		}
+		if ($len_str<50)
+			$count++;
+		//echo $count."</br>";
+		$i++;  
+		if($i >= $len) break;  
+		if($chr & 0x80) 
+		{  
+			$chr <<= 1;  
+			while ($chr & 0x80) 
+			{  
+				$i++;  
+				$chr <<= 1;  
+			}  
+		}  
+	}  
+	//echo $count."</br>";
+	return $count;  
+} 
 class Admin extends DB_Connect {
 
 
@@ -528,6 +618,10 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($discovery_info=mysql_fetch_assoc($select))
 		{
+			if (titlelen_utf8($discovery_info["title"])>50)
+			{
+				$discovery_info["title"]=mb_substr($discovery_info["title"],0,cutlen_utf8($discovery_info["title"]),'utf-8')."...";
+			}
 			$return_value=$return_value.sprintf($DISCOVERYFORMAT,$discovery_info["id"],$discovery_info["title"]);
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="share_add()"><span class="glyphicon glyphicon-plus"></span></li>';
@@ -664,6 +758,10 @@ class Admin extends DB_Connect {
 		$select=mysql_query($sql,$this->root_conn) or trigger_error(mysql_error(),E_USER_ERROR);
 		while ($news_info=mysql_fetch_assoc($select))
 		{
+			if (titlelen_utf8($news_info["title"])>50)
+			{
+				$news_info["title"]=mb_substr($news_info["title"],0,cutlen_utf8($news_info["title"]),'utf-8')."...";
+			}
 			$return_value=$return_value.sprintf($NEWSFORMAT,$news_info["id"],$news_info["title"]);
 		}
 		return $return_value.'<li class="list-group-item text-center" onclick="news_add()"><span class="glyphicon glyphicon-plus"></span></li>';
