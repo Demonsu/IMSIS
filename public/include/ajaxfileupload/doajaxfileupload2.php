@@ -19,7 +19,6 @@
 	$num = strrpos ( $_FILES [$fileElementName] ['name'], '.' );
 	$fileName = substr ( $_FILES [$fileElementName] ['name'], 0, $num ); // file name
 	$fileType = substr ( $_FILES [$fileElementName] ['name'], $num, 8 ); // file type
-	
 	if (! empty ( $_FILES [$fileElementName] ['error'] )) {
 		switch ($_FILES [$fileElementName] ['error']) {
 			case '1' :
@@ -65,7 +64,8 @@
 			$count ++;
 			$name = $fileName . ' (' . $count . ')';
 		}
-		if (! move_uploaded_file ( $_FILES [$fileElementName] ['tmp_name'], $path . $name . $fileType )) {
+		$save_name=iconv("UTF-8","gb2312", $name);
+		if (! move_uploaded_file ( $_FILES [$fileElementName] ['tmp_name'], $path . $save_name . $fileType )) {
 			$error = '保存文件失败';
 		} else {
 			

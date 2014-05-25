@@ -62,7 +62,8 @@
 			$count ++;
 			$name = $fileName . ' (' . $count . ')';
 		}
-		if (! move_uploaded_file ( $_FILES [$fileElementName] ['tmp_name'], $path . $name . $fileType )) {
+		$save_name=iconv("UTF-8","gb2312", $name);
+		if (! move_uploaded_file ( $_FILES [$fileElementName] ['tmp_name'], $path . $save_name . $fileType )) {
 			$error = '保存文件失败';
 		} else {
 			

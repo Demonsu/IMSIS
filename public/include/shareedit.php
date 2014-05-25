@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <?php
 	$_BASE_PATH="../../";
 
@@ -143,6 +144,7 @@
 				data:{name:'logan', id:'id'},
 				success: function (data, status)
 				{
+					//alert("error:"+data.error+" msg:"+data.msg);
 					if(typeof(data.error) != 'undefined')
 					{
 						if(data.error != '')
