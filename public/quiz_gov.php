@@ -12,6 +12,16 @@
 	<script style="text/javascript" src="./assets/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="./assets/css/body.css">
 	<script>
+	function htmlEncode1(str) {
+		var s = "";  
+		if (str.length == 0) return "";  
+		s = str.replace(/&/g, "&amp;");  
+		s = s.replace(/</g, "&lt;");  
+		s = s.replace(/>/g, "&gt;");  
+		s = s.replace(/'/g, "&apos;");  
+		s = s.replace(/"/g, "&quot;");
+		return s;  
+	}
 	var num = new Array();
 	$(document).ready(function(){
 		for(var j=0;j<44;j++){
@@ -54,12 +64,12 @@
 				data:{
 					operation:'ANSWERGOVQUIZ',
 					answer_list:chr,
-					question_suggestion:htmlEncode($('#t1').val()),
-					quiz_suggestion:htmlEncode($('#t2').val())
+					question_suggestion:htmlEncode1($('#t1').val()),
+					quiz_suggestion:htmlEncode1($('#t2').val())
 				},
 				success:function(data){
 					if(data == 1){
-						window.location('./user_zone.php?navigation=7');
+						window.location.href='./user_zone.php?navigation=7';
 					}
 					else
 						alert(data);
@@ -67,16 +77,7 @@
 			});
 		});
 	});
-	function htmlEncode(str) {
-		var s = "";  
-		if (str.length == 0) return "";  
-		s = str.replace(/&/g, "&amp;");  
-		s = s.replace(/</g, "&lt;");  
-		s = s.replace(/>/g, "&gt;");  
-		s = s.replace(/'/g, "&apos;");  
-		s = s.replace(/"/g, "&quot;");
-		return s;  
-	}
+
 	</script>
 	<style>
 	.checked{

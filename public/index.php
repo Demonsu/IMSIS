@@ -202,10 +202,12 @@
                 <div style="width:285px;float:left">
                 	<div style="width:90px;height:110px;padding:10px;float:left;">
                     	<img src="./assets/img/index/eGov-CMM0.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
-                        <p style="width:70px;text-align:center">更多</p>
+                        <p style="width:70px;text-align:center">问卷</p>
                     </div>
                     <div style="width:195px;float:left;padding-top:20px">
-                    	后续系统，正在建设
+                    <a href="./quiz_gov.php" target="_blank" title="eGov-CMM">
+                    	政府满意度调查系统
+                    </a>
                     </div>
                 </div>
                 <!--
