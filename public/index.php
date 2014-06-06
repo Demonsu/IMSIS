@@ -187,7 +187,7 @@
                 
                 <div style="width:285px;float:left">
                 	<div style="width:90px;height:110px;padding:10px;float:left;">
-                    <a href="./quiz_pub.php.php" target="_blank" title="eGov-quiz">
+                    <a href="./quiz_pub.php" target="_blank" title="eGov-quiz">
                     	<img src="./assets/img/index/eGov-CMM1.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
                         <p style="width:70px;text-align:center">问卷</p>
                     </a>
@@ -201,8 +201,10 @@
                 
                 <div style="width:285px;float:left">
                 	<div style="width:90px;height:110px;padding:10px;float:left;">
+                    <a href="./quiz_gov.php" target="_blank" title="eGov-quiz">
                     	<img src="./assets/img/index/eGov-CMM0.png" width="70px" height="70px" style="border-radius:5px;float:left;" />
                         <p style="width:70px;text-align:center">问卷</p>
+                     </a>
                     </div>
                     <div style="width:195px;float:left;padding-top:20px">
                     <a href="./quiz_gov.php" target="_blank" title="eGov-CMM">
